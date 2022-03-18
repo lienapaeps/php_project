@@ -17,7 +17,7 @@ We are creating a web-app on which students of the Thomas More University can di
 The purpose of this platform is to inspire eachother and showcase own work to peers, combined with a private social environment.
 
 
-## 🖌️Branding🖌️
+## 🎨Brandin🎨
 > *branding will be displayed later*
 
 - [ ] Decide on brand name

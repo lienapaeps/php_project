@@ -51,8 +51,8 @@ The purpose of this platform is to inspire eachother and showcase own work to pe
 
 
 ### 🎇Level 1🎇
-- [ ] Sign up
-- [ ] Sign in
+- [x] Sign up
+- [x] Sign in
 - [ ] Reset password
 - [ ] Log out
 - [ ] Profile adjustment: profile picture

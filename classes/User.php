@@ -42,8 +42,8 @@ class User
         }
 
         // email has to end with '@student.thomasmore.be' or '@thomasmore.be'
-        if (!str_ends_with($email, "@student.thomasmore.be") || !str_ends_with($email, "@thomasmore.be")) {
-            throw new Exception("Email is invalid. It has to end with @student.thomasmore.be or @thomasmore.be");
+        if (!str_ends_with($email, "@student.thomasmore.be") && !str_ends_with($email, "@thomasmore.be")) {
+            throw new Exception("Email format is invalid.");
         }
 
         $this->email = $email;
@@ -110,5 +110,23 @@ class User
         $statement->bindValue(":email", $this->email);
         $statement->bindValue(":password", $password);
         return $statement->execute();
+    }
+
+    // this function checks if email already excists in database
+    public function checkEmail($email)
+    {
+        $conn = DB::getConnection();
+        $statement = $conn->prepare("select * from users where email = :email");
+        $statement->bindValue(":email", $email);
+        $statement->execute();
+
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+            // email exists
+            throw new Exception("This email already exists.");
+        } else {
+            // email does not exist
+        }
     }
 }

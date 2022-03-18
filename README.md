@@ -35,6 +35,11 @@ The purpose of this platform is to inspire eachother and showcase own work to pe
 - Use [BEM css standards](https://9elements.com/bem-cheat-sheet/).
 - Use the [Bootstrap](https://getbootstrap.com/) framework for page layout.
 - Use [Fontawesome v5](https://fontawesome.com/v5/search?s=duotone) for icons.
+- We work mobile first, using following breakpoints (from Bootstrap):
+
+| Small | Medium | Large | X-Large | XX-Large |
+|-------|--------|-------|---------|----------|
+| 576px | 768px  | 992px | 1200px  | 1400px   |
 
 
 ## 💻Features💻

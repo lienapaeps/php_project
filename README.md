@@ -17,7 +17,7 @@ We are creating a web-app on which students of the Thomas More University can di
 The purpose of this platform is to inspire eachother and showcase own work to peers, combined with a private social environment.
 
 
-## 🎨Brandin🎨
+## 🎨Branding🎨
 > *branding will be displayed later*
 
 - [ ] Decide on brand name
@@ -27,12 +27,22 @@ The purpose of this platform is to inspire eachother and showcase own work to pe
 - [ ] Decide on other interface features
 
 
+## ⚙Practical agreements⚙
+- Fork the git repository and work on a local branch.
+- Consistently commit changes.
+- Every time you finish a feature (marked done in Trello), make a pull request on the main project.
+
+- Use [BEM css standards](https://9elements.com/bem-cheat-sheet/).
+- Use the [Bootstrap](https://getbootstrap.com/) framework for page layout.
+- Use [Fontawesome v5](https://fontawesome.com/v5/search?s=duotone) for icons.
+
+
 ## 💻Features💻
 > *Features are grouped in our sprints
 > 
 > Levels are added by our teacher to distinguish group skills
 > 
-> ⚡ stands for AJAX implementation*
+> ⚡ stands for AJAX implementation
 
 
 ### 🎇Level 1🎇

@@ -29,7 +29,9 @@ The purpose of this platform is to inspire eachother and showcase own work to pe
 
 ## 💻Features💻
 > *Features are grouped in our sprints
+> 
 > Levels are added by our teacher to distinguish group skills
+> 
 > ⚡ stands for AJAX implementation*
 
 

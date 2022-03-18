@@ -2,7 +2,25 @@
 
 include_once("bootstrap.php");
 
+if (!empty($_POST)) {
+    try {
+        $user = new User();
 
+        $user->setUsername($_POST['username']);
+        $user->setPassword($_POST['password']);
+        $user->setEmail($_POST['email']);
+
+        $user->checkEmail($user->getEmail());
+
+        $user->register();
+
+        session_start();
+        $_SESSION['user'] = $user->getUsername();
+        header("Location: index.php");
+    } catch (Throwable $e) {
+        $error = $e->getMessage();
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -69,9 +87,15 @@ include_once("bootstrap.php");
 
         <h1 class="form__title">Sign up to ProjectName</h1>
 
-        <div class="alert alert-danger">Here you can display errors</div>
+        <?php if (isset($error)) : ?>
+            <div class="alert alert-danger"><?php echo $error ?></div>
+        <?php endif; ?>
 
         <form action="" method="POST">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" name="username" id="username" class="form-control" required">
+            </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email adress</label>
                 <input type="email" name="email" id="email" class="form-control" required">

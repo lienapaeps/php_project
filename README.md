@@ -1,6 +1,8 @@
 # php_project
 
-## Team
-* Jef Fasseur
-* Ricky Heylen
-* Liena Paeps
+## Team Members
+| Name          | Role             |
+| ------------- |:----------------:|
+| Jef Fasseur   | Frontend Lead    |
+| Ricky Heylen  | Project Manager  |
+| Liena Paeps   | Backend Lead     |

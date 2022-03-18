@@ -8,3 +8,20 @@ html {
 body {
     width: 100%;
 }
+
+/* 768px en desktop: 1200px */
+@media screen and (min-width: 768px) {
+    body {
+        background-color: aqua;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .offcanvas-title {
+        order: 3;
+    }
+
+    form.d-flex {
+        order: 2;
+    }
+}

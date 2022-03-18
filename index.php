@@ -1,7 +1,6 @@
 <?php
 
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,10 +20,12 @@
 </head>
 
 <body>
-    <?php include_once("header.inc.php");?>
-
+    <div>
+        <?php include_once("header.inc.php");?>
+    </div>
+    
     <main>
-        
+        <h3>azertyuk</h3>
     </main>
 </body>
 

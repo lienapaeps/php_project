@@ -17,14 +17,14 @@
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Vibbar ++</h5>
                 </div>
                 <div class="offcanvas-body">
-                    <form class="d-flex">
+                    <form id="searchbar" class="d-flex searchbar mx-xl-4">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-primary" type="submit"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-outline-primary searchbar--btn" type="submit"><i class="fas fa-search"></i></button>
                     </form>
 
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Link</a>

@@ -20,12 +20,20 @@
 </head>
 
 <body>
-    <div>
-        <?php include_once("header.inc.php");?>
-    </div>
+    <?php include_once("header.inc.php");?>
     
-    <main>
-        <h3>azertyuk</h3>
+    <main class="container-fluid">
+        <div class="hero text-center">
+            <img class="w-50 mx-auto d-block" src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/20943391-scaled.jpg" alt="Hero image">
+            <h1>Discover the best designers & creatives of Thomas More</h1>
+            <p>
+                Vibbar ++ is the most important destination to find & showcase creative work and give a voice to the design & develop students of Thomas More.
+            </p>
+            <div>
+                <p><small class="text-muted">No account yet?</small></p>
+                <a class="offcanvas-title btn btn-primary" href="register.php">Sign up</a>
+            </div>
+        </div>
     </main>
 </body>
 

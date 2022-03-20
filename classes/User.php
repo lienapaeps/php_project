@@ -60,9 +60,9 @@ class User
     // set value of password
     public function setPassword($password)
     {
-        // password should be longer than 6
-        if (strlen($password) < 6) {
-            throw new Exception("Password must be longer than 6 characters.");
+        // password length should be 6 or longer
+        if (strlen($password) <= 6) {
+            throw new Exception("Password must be longer than 5 characters.");
         }
 
         // password cannot be empty

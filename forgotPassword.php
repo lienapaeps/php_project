@@ -1,20 +1,6 @@
 <?php
+
 include_once("bootstrap.php");
-
-if (!empty($_POST)) {
-    try {
-        $user = new User();
-        $user->setEmail($_POST['email']);
-        $user->setPassword($_POST['password']);
-
-        if ($user->canLogin($user->getEmail(), $user->getPassword())) {
-            session_start();
-            header("Location: index.php");
-        }
-    } catch (Throwable $e) {
-        $error = $e->getMessage();
-    }
-}
 
 ?>
 <!DOCTYPE html>
@@ -37,7 +23,7 @@ if (!empty($_POST)) {
             margin-top: 4em;
         }
 
-        .signin__form {
+        .reset__password__form {
             width: 100%;
             background-color: #fff;
             padding: 2em;
@@ -48,17 +34,9 @@ if (!empty($_POST)) {
             font-size: 1.5em;
         }
 
-        .form__link {
-            text-align: center;
-        }
-
-        .form__link__password {
-            text-align: left;
-        }
-
         /* Medium devices (tablets, 768px and up) */
         @media only screen and (min-width: 768px) {
-            .signin__form {
+            .reset__password__form {
                 width: 80%;
                 margin-left: auto;
                 margin-right: auto;
@@ -67,7 +45,7 @@ if (!empty($_POST)) {
 
         /* X-Large devices (large desktops, 1200px and up) */
         @media only screen and (min-width: 1200px) {
-            .signin__form {
+            .reset__password__form {
                 width: 65%;
                 margin-left: auto;
                 margin-right: auto;
@@ -75,14 +53,15 @@ if (!empty($_POST)) {
         }
     </style>
 
-    <title>IMD Showcase | Log in</title>
+    <title>IMD Showcase | Reset Password</title>
 </head>
 
 <body>
 
-    <section class="signin__form">
+    <section class="reset__password__form">
 
-        <h1 class="form__title">Sign in to ProjectName</h1>
+        <h1 class="form__title">Forgot password?</h1>
+        <p>Enter the email adress you used when you joined and we'll send you instructions to reset your password.</p>
 
         <?php if (isset($error)) : ?>
             <div class="alert alert-danger"><?php echo $error ?></div>
@@ -93,29 +72,10 @@ if (!empty($_POST)) {
                 <label for="email" class="form-label">Email adress</label>
                 <input type="email" name="email" id="email" class="form-control" required">
             </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" id="password" class="form-control" required">
-            </div>
-            <div class="mb-3 form__link__password">
-                <a href="reset.php">Forgot password?</a>
-            </div>
-            <div class="mb-3">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="check">
-                    <label class="form-check-label" for="check">
-                        Remember me
-                    </label>
-                </div>
-            </div>
             <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="submit">Sign In</button>
+                <button class="btn btn-primary" type="submit">Send reset instructions</button>
             </div>
         </form>
-
-        <div class="mt-3 form__link">
-            <a href="register.php">Don't have a account? <span>Sign up now</span></a>
-        </div>
     </section>
 
 </body>

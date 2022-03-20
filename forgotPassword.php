@@ -23,7 +23,7 @@ include_once("bootstrap.php");
             margin-top: 4em;
         }
 
-        .reset__password__form {
+        .forgot__password__form {
             width: 100%;
             background-color: #fff;
             padding: 2em;
@@ -36,7 +36,7 @@ include_once("bootstrap.php");
 
         /* Medium devices (tablets, 768px and up) */
         @media only screen and (min-width: 768px) {
-            .reset__password__form {
+            .forgot__password__form {
                 width: 80%;
                 margin-left: auto;
                 margin-right: auto;
@@ -45,7 +45,7 @@ include_once("bootstrap.php");
 
         /* X-Large devices (large desktops, 1200px and up) */
         @media only screen and (min-width: 1200px) {
-            .reset__password__form {
+            .forgot__password__form {
                 width: 65%;
                 margin-left: auto;
                 margin-right: auto;
@@ -53,12 +53,12 @@ include_once("bootstrap.php");
         }
     </style>
 
-    <title>IMD Showcase | Reset Password</title>
+    <title>IMD Showcase | Forgot Password</title>
 </head>
 
 <body>
 
-    <section class="reset__password__form">
+    <section class="forgot__password__form">
 
         <h1 class="form__title">Forgot password?</h1>
         <p>Enter the email adress you used when you joined and we'll send you instructions to reset your password.</p>

@@ -98,7 +98,7 @@ if (!empty($_POST)) {
                 <input type="password" name="password" id="password" class="form-control" required">
             </div>
             <div class="mb-3 form__link__password">
-                <a href="reset.php">Forgot password?</a>
+                <a href="forgotPassword.php">Forgot password?</a>
             </div>
             <div class="mb-3">
                 <div class="form-check">

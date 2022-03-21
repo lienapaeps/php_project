@@ -36,9 +36,11 @@
         </div>
     </div>
 
-    <main class="dashboard container-fluid">
-        <ul class="nav nav-pills py-4 overflow-scroll flex-nowrap justify-content-center">
-            <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">All</a></li>
+    <main class="dashboard container">
+        <ul class="nav nav-pills pb-4 my-4 overflow-scroll flex-nowrap justify-content-md-center">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" aria-current="page">All</a>
+            </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">Animation</a>
             </li>
@@ -59,8 +61,8 @@
             </li>
         </ul>
 
-        <div class="d-flex flex-wrap justify-content-center">
-            <div href="#" class="card bg-light my-4" style="max-width: 38rem;">
+        <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+            <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
                 <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
                 <div class="card-body">
                     <h4 class="card-title">Card title</h4>
@@ -70,7 +72,7 @@
             </div>
 
             <!-- Extra cards to check out responsiveness -->
-            <div href="#" class="card bg-light my-4" style="max-width: 38rem;">
+            <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
                 <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
                 <div class="card-body">
                     <h4 class="card-title">Card title</h4>
@@ -79,7 +81,7 @@
                 </div>
             </div>
 
-            <div href="#" class="card bg-light my-4" style="max-width: 38rem;">
+            <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
                 <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
                 <div class="card-body">
                     <h4 class="card-title">Card title</h4>
@@ -88,7 +90,7 @@
                 </div>
             </div>
 
-            <div href="#" class="card bg-light my-4" style="max-width: 38rem;">
+            <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
                 <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
                 <div class="card-body">
                     <h4 class="card-title">Card title</h4>
@@ -97,7 +99,16 @@
                 </div>
             </div>
 
-            <div href="#" class="card bg-light my-4" style="max-width: 38rem;">
+            <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
+                <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
+                    <a href="#" class="btn btn-primary">Button</a>
+                </div>
+            </div>
+
+            <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
                 <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
                 <div class="card-body">
                     <h4 class="card-title">Card title</h4>

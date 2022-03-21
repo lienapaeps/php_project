@@ -36,8 +36,8 @@
         </div>
     </div>
 
-    <main class="dashboard container">
-        <ul class="nav nav-pills py-4 overflow-scroll flex-nowrap">
+    <main class="dashboard container-fluid">
+        <ul class="nav nav-pills py-4 overflow-scroll flex-nowrap justify-content-center">
             <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">All</a></li>
             <li class="nav-item">
                 <a href="#" class="nav-link">Animation</a>
@@ -59,7 +59,7 @@
             </li>
         </ul>
 
-        <div class="d-flex flex-wrap">
+        <div class="d-flex flex-wrap justify-content-center">
             <div href="#" class="card bg-light my-4" style="max-width: 38rem;">
                 <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
                 <div class="card-body">
@@ -68,8 +68,48 @@
                     <a href="#" class="btn btn-primary">Button</a>
                 </div>
             </div>
+
+            <!-- Extra cards to check out responsiveness -->
+            <div href="#" class="card bg-light my-4" style="max-width: 38rem;">
+                <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
+                    <a href="#" class="btn btn-primary">Button</a>
+                </div>
+            </div>
+
+            <div href="#" class="card bg-light my-4" style="max-width: 38rem;">
+                <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
+                    <a href="#" class="btn btn-primary">Button</a>
+                </div>
+            </div>
+
+            <div href="#" class="card bg-light my-4" style="max-width: 38rem;">
+                <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
+                    <a href="#" class="btn btn-primary">Button</a>
+                </div>
+            </div>
+
+            <div href="#" class="card bg-light my-4" style="max-width: 38rem;">
+                <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
+                    <a href="#" class="btn btn-primary">Button</a>
+                </div>
+            </div>
+            <!-- End of extra cards -->
         </div>
     </main>
+
+    <?php include_once("footer.inc.php"); ?>
 </body>
 
 </html>

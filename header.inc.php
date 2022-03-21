@@ -14,7 +14,7 @@
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
                         <!-- <i class="fas fa-times"></i> -->
                     </button>
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Vibbar ++</h5>
+                    <a class="offcanvas-title" id="offcanvasNavbarLabel"><strong>Vibbar ++</strong></a>
                 </div>
                 <div class="offcanvas-body">
                     <form id="searchbar" class="d-flex searchbar mx-xl-4">

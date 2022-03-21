@@ -7,7 +7,15 @@
 
             <a class="navbar-brand" href="index.php"><strong>Vibbar ++</strong></a>
 
-            <a class="offcanvas-title btn btn-primary" href="login.php">Sign in</a>
+            <div class="not-signed-in d-none">
+                <a class="offcanvas-title btn btn-primary" href="login.php">Sign in</a>
+            </div>
+
+            <div class="signed-in d-flex align-items-center">
+                <p class="me-2 fw-bolder">Username</p>
+                <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-2" style="height: 30px; width: 30px;">
+            </div>
+            
 
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
@@ -33,6 +41,8 @@
                             <a class="nav-link" href="#">Link</a>
                         </li>
                     </ul>
+
+                    <a href="logout.php" class="btn btn-primary">Log out</a>
                 </div>
             </div>
         </div>

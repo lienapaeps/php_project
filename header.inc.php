@@ -11,9 +11,25 @@
                 <a class="offcanvas-title btn btn-primary" href="login.php">Sign in</a>
             </div>
 
-            <div class="signed-in d-flex align-items-center">
-                <p class="me-2 fw-bolder">Username</p>
-                <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-2" style="height: 30px; width: 30px;">
+            <!-- offcanvas toggle menu for profile and log out -->
+            <div id="nav__profile" class="signed-in d-flex align-items-center">
+                <button class="btn d-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <p class="me-2 fw-bolder">Username</p>
+                    <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-2" style="height: 30px; width: 30px;">
+                </button>
+                <div class="offcanvas offcanvas-end" tab-index="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                        <div class="d-inline-flex">
+                            <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-2" style="height: 30px; width: 30px;">
+                            <p class="me-2 fw-bolder">Username</p>
+                        </div>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body d-inline-flex flex-column">
+                        <a href="profile.php">Profile</a>
+                        <a href="logout.php" class="btn btn-secondary">Log out</a>
+                    </div>
+                </div>
             </div>
             
 

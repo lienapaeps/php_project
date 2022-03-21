@@ -37,4 +37,8 @@ a {
     #offcanvasNavbar {
         margin: 0 1em;
     }
+
+    #nav__profile {
+        order: 4;
+    }
 }

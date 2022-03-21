@@ -19,15 +19,13 @@
                 </button>
                 <div class="offcanvas offcanvas-end" tab-index="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                     <div class="offcanvas-header">
-                        <div class="d-inline-flex">
-                            <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-2" style="height: 30px; width: 30px;">
-                            <p class="me-2 fw-bolder">Username</p>
-                        </div>
-                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        <button type="button" class="btn-close text-reset justify-content-end" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body d-inline-flex flex-column">
-                        <a href="profile.php">Profile</a>
-                        <a href="logout.php" class="btn btn-secondary">Log out</a>
+                        <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle mx-auto d-block" style="height: 50px; width: 50px;">
+                        <h4 class="me-2 mb-4 fw-bolder text-center">Username</h4>
+                        <a href="profile.php" class="text-center my-2">Profile</a>
+                        <a href="logout.php" class="btn btn-outline-secondary text-center my-2 w-50 mx-auto d-block">Log out</a>
                     </div>
                 </div>
             </div>

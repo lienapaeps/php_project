@@ -41,4 +41,8 @@ a {
     #nav__profile {
         order: 4;
     }
+
+    #offcanvasRight {
+        display: none;
+    }
 }

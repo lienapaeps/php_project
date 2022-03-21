@@ -22,16 +22,51 @@
 <body>
     <?php include_once("header.inc.php");?>
     
-    <main class="container-fluid">
-        <div class="hero text-center">
+    <div class="container-fluid hero-empty-state py-4 border-bottom">
+        <div class="hero-container text-center">
             <img class="w-50 mx-auto d-block" src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/20943391-scaled.jpg" alt="Hero image">
-            <h1>Discover the best designers & creatives of Thomas More</h1>
+            <h1 class="fw-bold">Discover the best designers & creatives of Thomas More</h1>
             <p>
                 Vibbar ++ is the most important destination to find & showcase creative work and give a voice to the design & develop students of Thomas More.
             </p>
             <div>
                 <p><small class="text-muted">No account yet?</small></p>
                 <a class="offcanvas-title btn btn-primary" href="register.php">Sign up</a>
+            </div>
+        </div>
+    </div>
+
+    <main class="dashboard container">
+        <ul class="nav nav-pills py-4 overflow-scroll flex-nowrap">
+            <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">All</a></li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Animation</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Branding</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Illustration</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Mobile</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-nowrap">Product Design</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Webdesign</a>
+            </li>
+        </ul>
+
+        <div class="d-flex flex-wrap">
+            <div href="#" class="card bg-light my-4" style="max-width: 38rem;">
+                <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
+                    <a href="#" class="btn btn-primary">Button</a>
+                </div>
             </div>
         </div>
     </main>

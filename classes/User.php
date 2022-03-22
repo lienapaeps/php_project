@@ -61,7 +61,7 @@ class User
     public function setPassword($password)
     {
         // password length should be 6 or longer
-        if (strlen($password) <= 6) {
+        if (strlen($password) < 5) {
             throw new Exception("Password must be longer than 5 characters.");
         }
 
@@ -89,6 +89,7 @@ class User
             return true;
         } else {
             // password is incorrect
+            throw new Exception("Password is incorrect.");
             return false;
         }
 
@@ -125,6 +126,24 @@ class User
         if ($user) {
             // email exists
             throw new Exception("This email already exists.");
+        } else {
+            // email does not exist
+        }
+    }
+
+    // this function checks if email already excists in database
+    public function checkUsername($username)
+    {
+        $conn = DB::getConnection();
+        $statement = $conn->prepare("select * from users where username = :username");
+        $statement->bindValue(":username", $username);
+        $statement->execute();
+
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+            // email exists
+            throw new Exception("This username already exists.");
         } else {
             // email does not exist
         }

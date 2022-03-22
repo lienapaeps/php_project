@@ -10,7 +10,10 @@ if (!empty($_POST)) {
         $user->setPassword($_POST['password']);
         $user->setEmail($_POST['email']);
 
-        $user->checkEmail($user->getEmail());
+        $email = $user->getEmail();
+        $username = $user->getUsername();
+        $user->checkEmail($email);
+        $user->checkUsername($username);
 
         $user->register();
 

@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+}
+
+nav, footer {
+    background-color: gray;
+    height: 150px;
+}
+
+body {
+    background-color: #eee;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-top: 4em;
+}
+
+/* STYLE FOR PROFILE PAGE */
+
+.profile__body {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.profile__course {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: .9em;
+    color: rgb(165, 165, 165);
+}
+
+.profile__main {
+    margin: 10%;
+    min-height: 500px;
+}
+
+.profile__header {
+    margin: 0 10%;
+}
+
+.profile__nav {
+    margin-top: 5%;
+}
+
+.profile__imageBox {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 2em;
+    padding: 4px;
+    max-width: 40%;
+    border-radius: 500px;
+    max-width: 200px;
+}
+
+.profile__image {
+    width: 100%;
+    height: auto;
+    border: solid 3px rgb(165, 165, 165);
+    border-radius: 500px;
+    transition: .5s;
+}
+
+.profile__image:hover {
+    border: solid 3px rgb(52, 0, 194);
+    cursor: pointer;
+}
+
+.profile__mainInfo {
+    margin-top: 1em;
+    padding-left: 1em;
+}
+
+.profile__description {
+    max-width: 100%;
+    margin: 2em 0;
+    font-size: .9em;
+}
+
+.profile__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5em;
+    color: gray;
+    text-transform: uppercase;
+}
+
+.image-upload__form {
+    background-color: rgb(236, 236, 236);
+    padding: 2em;
+    border-radius: 6px;
+    position: fixed;
+    z-index: 1;
+    top: 30%;
+    left: 2em;
+    right: 2em;
+    display: none;
+}
+
+.image-form__title {
+    font-size: 1.5em;
+}
+
+/* STYLE FOR ACCOUNT FORMS */
+
+.register__form, .signin__form, 
+.reset__password__form, .forgot__password__form {
+    width: 100%;
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 6px;
+}
+
+.form__link__password {
+    text-align: left;
+}
+
+.form__title {
+    font-size: 1.5em;
+}
+
+.form__link {
+    text-align: center;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .register__form, .signin__form, .reset__password__form, .forgot__password__form {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .image-upload__form {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .profile__mainInfo {
+        padding-left: 2em;
+    }
+
+    .profile__description {
+        max-width: 80%;
+    }
+
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .register__form, .signin_form, .reset__password__form, .forgot__password__form {
+        width: 65%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .image-upload__form {
+        width: 65%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .profile__description {
+        max-width: 60%;
+    }
+
+}
+
+/* END STYLE FOR ACCOUNT FORMS */

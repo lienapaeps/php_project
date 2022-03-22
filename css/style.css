@@ -1,0 +1,44 @@
+body {
+    background-color: #eee;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-top: 4em;
+}
+
+.register__form, .signin__form, 
+.reset__password__form, .forgot__password__form {
+    width: 100%;
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 6px;
+}
+
+.form__link__password {
+    text-align: left;
+}
+
+.form__title {
+    font-size: 1.5em;
+}
+
+.form__link {
+    text-align: center;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .register__form, .signin__form, .reset__password__form, .forgot__password__form {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .register__form, .signin_form, .reset__password__form, .forgot__password__form {
+        width: 65%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

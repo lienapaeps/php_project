@@ -43,7 +43,7 @@ if (!empty($_POST)) {
             margin-top: 4em;
         }
 
-        .signup__form {
+        .register__form {
             width: 100%;
             background-color: #fff;
             padding: 2em;
@@ -60,7 +60,7 @@ if (!empty($_POST)) {
 
         /* Medium devices (tablets, 768px and up) */
         @media only screen and (min-width: 768px) {
-            .signup__form {
+            .register__form {
                 width: 80%;
                 margin-left: auto;
                 margin-right: auto;
@@ -69,7 +69,7 @@ if (!empty($_POST)) {
 
         /* X-Large devices (large desktops, 1200px and up) */
         @media only screen and (min-width: 1200px) {
-            .signup__form {
+            .register__form {
                 width: 65%;
                 margin-left: auto;
                 margin-right: auto;
@@ -83,9 +83,9 @@ if (!empty($_POST)) {
 
 <body>
 
-    <section class="signup__form">
+    <section class="register__form">
 
-        <h1 class="form__title">Sign up to ProjectName</h1>
+        <h1 class="form__title">Register to ProjectName</h1>
 
         <?php if (isset($error)) : ?>
             <div class="alert alert-danger"><?php echo $error ?></div>
@@ -105,12 +105,12 @@ if (!empty($_POST)) {
                 <input type="password" name="password" id="password" class="form-control" required">
             </div>
             <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="submit">Sign Up</button>
+                <button class="btn btn-primary" type="submit">Register</button>
             </div>
         </form>
 
         <div class="mt-3 form__link">
-            <a href="login.php">Already have a account? <span>Sign in now</span></a>
+            <a href="login.php">Already have a account? <span>Log in now</span></a>
         </div>
     </section>
 

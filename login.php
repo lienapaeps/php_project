@@ -7,8 +7,12 @@ if (!empty($_POST)) {
         $user->setEmail($_POST['email']);
         $user->setPassword($_POST['password']);
 
-        if ($user->canLogin($user->getEmail(), $user->getPassword())) {
+        $email = $user->getEmail();
+        $password = $user->getPassword();
+
+        if ($user->canLogin($email, $password)) {
             session_start();
+            $_SESSION['user'] = $user->getUsername();
             header("Location: index.php");
         }
     } catch (Throwable $e) {
@@ -82,7 +86,7 @@ if (!empty($_POST)) {
 
     <section class="signin__form">
 
-        <h1 class="form__title">Sign in to ProjectName</h1>
+        <h1 class="form__title">Log in to ProjectName</h1>
 
         <?php if (isset($error)) : ?>
             <div class="alert alert-danger"><?php echo $error ?></div>
@@ -109,12 +113,12 @@ if (!empty($_POST)) {
                 </div>
             </div>
             <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="submit">Sign In</button>
+                <button class="btn btn-primary" type="submit">Log In</button>
             </div>
         </form>
 
         <div class="mt-3 form__link">
-            <a href="register.php">Don't have a account? <span>Sign up now</span></a>
+            <a href="register.php">Don't have a account? <span>Register now</span></a>
         </div>
     </section>
 

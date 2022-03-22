@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="./css/style.css">
     </head>
 
-    <body>
+    <body class="profile__body">
         <nav></nav>
         <section class="image-upload__form border center">
             <h1 class="image-form__title">Upload a profile picture</h1>

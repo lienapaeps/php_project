@@ -13,9 +13,7 @@ nav, footer {
 body {
     width: 100%;
     background-color: #eee;
-    margin-left: 2em;
-    margin-right: 2em;
-    margin-top: 4em;
+
 }
 
 a {
@@ -121,10 +119,10 @@ a {
 
 .register__form, .signin__form, 
 .reset__password__form, .forgot__password__form {
-    width: 100%;
     background-color: #fff;
     padding: 2em;
     border-radius: 6px;
+    margin: 4em 2em 0 2em;
 }
 
 .form__link__password {

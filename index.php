@@ -20,9 +20,7 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-    <p>tis gelukt!</p>
-=======
+
     <?php include_once("header.inc.php");?>
     
     <div class="container-fluid hero-empty-state py-4 border-bottom">
@@ -124,7 +122,7 @@
     </main>
 
     <?php include_once("footer.inc.php"); ?>
->>>>>>> jef-dashboard
+
 </body>
 
 </html>

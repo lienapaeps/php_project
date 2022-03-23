@@ -16,7 +16,7 @@
         <!-- Fontawesome icons -->
     <script src="https://kit.fontawesome.com/d5a678d06c.js" crossorigin="anonymous"></script>
         <!-- Own CSS file -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?<?php echo time() ?>">
 </head>
 
 <body>

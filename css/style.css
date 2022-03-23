@@ -5,11 +5,6 @@ html {
     box-sizing: border-box;
 }
 
-nav, footer {
-    background-color: gray;
-    height: 150px;
-}
-
 body {
     width: 100%;
     background-color: #eee;

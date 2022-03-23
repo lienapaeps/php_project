@@ -1,5 +1,7 @@
-<<<<<<< HEAD
-* {
+*,
+html {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -9,10 +11,20 @@ nav, footer {
 }
 
 body {
+    width: 100%;
     background-color: #eee;
     margin-left: 2em;
     margin-right: 2em;
     margin-top: 4em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.hide-mobile {
+    display: none;
 }
 
 /* STYLE FOR PROFILE PAGE */
@@ -169,38 +181,6 @@ body {
         max-width: 60%;
     }
 
-}
-
-/* END STYLE FOR ACCOUNT FORMS */
-=======
-*,
-html {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    width: 100%;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.hidden {
-    display: none;
-}
-
-.hide-mobile {
-    display: none;
-}
-
-/* 768px en desktop: 1200px */
-@media screen and (min-width: 768px) {}
-
-@media screen and (min-width: 1200px) {
     a.offcanvas-title {
         order: 3;
     }
@@ -228,5 +208,6 @@ a {
     .hide-mobile {
         display: inherit;
     }
+
 }
->>>>>>> jef-dashboard
+

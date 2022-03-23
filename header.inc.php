@@ -14,7 +14,7 @@
             <!-- offcanvas toggle menu for profile and log out -->
             <div id="nav__profile" class="signed-in d-flex align-items-center">
                 <button class="btn d-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                    <p class="me-2 fw-bolder">Username</p>
+                    <p class="me-2 fw-bolder hide-mobile">Username</p>
                     <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-2" style="height: 30px; width: 30px;">
                 </button>
                 <div class="offcanvas offcanvas-end" tab-index="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
@@ -25,7 +25,7 @@
                         <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle mx-auto d-block" style="height: 50px; width: 50px;">
                         <h4 class="me-2 mb-4 fw-bolder text-center">Username</h4>
                         <a href="profile.php" class="text-center my-2">Profile</a>
-                        <a href="logout.php" class="btn btn-outline-secondary text-center my-2 w-50 mx-auto d-block">Log out</a>
+                        <a href="logout.php" id="btnLogout" class="btn btn-outline-secondary text-center my-2 w-50 mx-auto d-block">Log out</a>
                     </div>
                 </div>
             </div>
@@ -55,8 +55,6 @@
                             <a class="nav-link" href="#">Link</a>
                         </li>
                     </ul>
-
-                    <a href="logout.php" class="btn btn-primary">Log out</a>
                 </div>
             </div>
         </div>

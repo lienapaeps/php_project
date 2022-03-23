@@ -18,6 +18,10 @@ a {
     display: none;
 }
 
+.hide-mobile {
+    display: none;
+}
+
 /* 768px en desktop: 1200px */
 @media screen and (min-width: 768px) {}
 
@@ -44,5 +48,9 @@ a {
 
     #offcanvasRight {
         display: none;
+    }
+
+    .hide-mobile {
+        display: inherit;
     }
 }

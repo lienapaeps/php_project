@@ -126,6 +126,15 @@ body {
     text-align: center;
 }
 
+.arrow__back {
+    font-size: 2em;
+    color: #111;
+}
+
+.arrow__back i {
+    margin-bottom: .6em;
+}
+
 /* Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .register__form, .signin__form, .reset__password__form, .forgot__password__form {

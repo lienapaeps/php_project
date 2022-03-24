@@ -131,7 +131,7 @@ class User
         }
     }
 
-    // this function checks if email already excists in database
+    // this function checks if username already excists in database
     public function checkUsername($username)
     {
         $conn = DB::getConnection();
@@ -142,10 +142,10 @@ class User
         $user = $statement->fetch(PDO::FETCH_ASSOC);
 
         if ($user) {
-            // email exists
+            // username exists
             throw new Exception("This username already exists.");
         } else {
-            // email does not exist
+            // username does not exist
         }
     }
 }

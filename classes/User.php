@@ -105,11 +105,18 @@ class User
 
         $password = password_hash($this->password, PASSWORD_DEFAULT, $options);
 
+        $muted = 0;
+        $admin = 0;
+        $warned = 0;
+
         $conn = DB::getConnection();
-        $statement = $conn->prepare("insert into users (username, email, password) values (:username, :email, :password);");
+        $statement = $conn->prepare("insert into users (username, email, password, muted, admin, warned) values (:username, :email, :password, :muted, :admin, :warned);");
         $statement->bindValue(":username", $this->username);
         $statement->bindValue(":email", $this->email);
         $statement->bindValue(":password", $password);
+        $statement->bindValue(":muted", $muted);
+        $statement->bindValue(":admin", $admin);
+        $statement->bindValue(":warned", $warned);
         return $statement->execute();
     }
 

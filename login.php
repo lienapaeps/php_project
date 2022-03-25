@@ -77,3 +77,14 @@ if (!empty($_POST)) {
 </body>
 
 </html>
+
+<!-- Admins:
+
+email: lienapaeps@thomasmore.be
+password: 1234567
+
+email: jeffasseur@thomasmore.be
+password: 1234567
+
+email: rickyheylen@thomasmore.be
+password: 1234567 -->

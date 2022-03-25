@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 22, 2022 at 01:27 PM
+-- Generation Time: Mar 25, 2022 at 01:42 PM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -32,18 +32,23 @@ CREATE TABLE `users` (
   `username` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `backup_mail` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `profile_img` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `backup_email` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `profile_img` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `course` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bio` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `muted` tinyint(1) NOT NULL,
+  `admin` tinyint(1) NOT NULL,
+  `warned` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `backup_mail`, `profile_img`) VALUES
-(1, 'test', 'test@thomasmore.be', '$2y$13$GwONw5TALHvZIB1fOMP6EeZKj8rRLyUEvTtPC19kWjx9.AB2P0AaC', NULL, NULL),
-(2, 'liena', 'liena@thomasmore.be', '$2y$13$MvcGQVyEVMAtd2yx0LRWteNuxn8m9jdmBZp48SXXQxuz/FmUQBB.K', NULL, NULL),
-(3, 'p66liena', 'lienapaeps@thomasmore.be', '$2y$13$Vh0Ho.JENeUYGRr5fr.5reS5zAkUsblwJKdvgCKaSQs3q6wQ3TT2G', NULL, NULL);
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `backup_email`, `profile_img`, `course`, `bio`, `muted`, `admin`, `warned`) VALUES
+(1, 'p66liena', 'lienapaeps@thomasmore.be', '$2y$13$qxOtOj3qTUiV5Zf0IDJRluk8l32y32xs4DbaXZdBA31izJTfaVM4a', NULL, NULL, NULL, NULL, 0, 1, 0),
+(2, 'jefke', 'jeffasseur@thomasmore.be', '$2y$13$KcnN7rl.YQPeqdojESug9OxXwk3gcCZhy5rFLqo5lkB6ri.IiAt.i', NULL, NULL, NULL, NULL, 0, 1, 0),
+(3, 'rix', 'rickyheylen@thomasmore.be', '$2y$13$ygwBw3.gK7LjnDCrAfL3MuT1Ro5pDjZ6QXQq2.l9QPcn/liMBslUq', NULL, NULL, NULL, NULL, 0, 1, 0);
 
 --
 -- Indexes for dumped tables

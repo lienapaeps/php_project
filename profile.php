@@ -1,5 +1,7 @@
 <?php
 
+    include_once("ProfileImgForm.inc.php");
+
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,15 +15,14 @@
         <script src="https://kit.fontawesome.com/d5a678d06c.js" crossorigin="anonymous"></script>
             <!-- Own CSS file -->
         <link rel="stylesheet" href="css/style.css?<?php echo time() ?>">
-    </head>
+    </head> 
 
     <body class="profile__body">
         
         <?php include_once("header.inc.php"); ?>
 
-        <section class="image-upload__form border center">
+        <section class="image-upload__form border center col-6 offset-md-4">
             <h1 class="image-form__title">Upload a profile picture</h1>
-            <p>Please pick a file not larger than 500kb.</p>
     
             <?php if (isset($errorImage)): ?>
                 <div class="alert alert-danger"><?php echo $errorImage ?></div>
@@ -36,12 +37,13 @@
                 <div class="alert alert-danger"><?php echo $errorFileExists ?></div>
             <?php endif; ?>
 
-            <form action="upload.php" method="POST" enctype="multipart/form-data">
-                <div class="mb-3">
-                    <input type="file" name="fileUpload" id="fileUpload" class="image-form__upload">
+            <form action="profile.php" method="POST" enctype="multipart/form-data">
+                <div class="mb-3 form-group">
+                    <label for="profileImgUpload">Please pick a file not larger than 500kb:</label>
+                    <input type="file" name="profileImgUpload" id="profileImgUpload" class="image-form__upload form-control">
                 </div>
-                <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="submit" name="submit">Upload</button>
+                <div class="d-grid gap-2 form-group">
+                    <button class="btn btn-primary" type="submit" name="submitProfileImage">Upload</button>
                     <a class="form-cancel btn btn-danger" onclick="hideForm">Cancel</a>
                 </div>
             </form>
@@ -50,7 +52,7 @@
         <section class="profile">
             <div class="profile__header row">
                 <div class="profile__imageBox col-sm-4 col-md-3 col-lg-3">
-                    <img onclick="showForm" src="<?php echo $target_file; ?>" alt="profile image" class="profile__image">
+                    <img onclick="showForm" src="<?php echo $target; ?>" alt="profile image" class="profile__image">
                 </div>
                 <div class="profile__mainInfo col-sm-8 col-md-9 col-lg-9">
                     <div class="profile__username"><h1>Username</h1></div>

@@ -12,12 +12,14 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: museo-sans, sans-serif;
+    font-weight: 500;
+    font-style: normal;
 }
 
 body {
     width: 100%;
     background-color: #eee;
-
 }
 
 a {
@@ -60,6 +62,10 @@ a:hover {
 
 .nav-link {
     color: var(--IMD_Blue);
+}
+
+.bg-green {
+    background-color: var(--IMD_Green);
 }
 
 /* STYLE FOR PROFILE PAGE */

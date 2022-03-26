@@ -17,6 +17,8 @@
     <script src="https://kit.fontawesome.com/d5a678d06c.js" crossorigin="anonymous"></script>
         <!-- Own CSS file -->
     <link rel="stylesheet" href="css/style.css?<?php echo time() ?>">
+    <!-- Font: Museo Sans -->
+    <link rel="stylesheet" href="https://use.typekit.net/kkv2fee.css">
 </head>
 
 <body>

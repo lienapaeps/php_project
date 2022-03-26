@@ -5,7 +5,7 @@
                 <span class="navbar-toggler-icon"><i class="fas fa-bars align-middle"></i></span>
             </button>
 
-            <a class="navbar-brand" href="index.php"><strong>Vibbar ++</strong></a>
+            <a class="navbar-brand" href="index.php"><strong>Vibar</strong></a>
 
             <div class="not-signed-in d-none">
                 <a class="offcanvas-title btn btn-primary" href="login.php">Sign in</a>

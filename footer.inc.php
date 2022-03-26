@@ -1,9 +1,9 @@
-<footer class="pt-4 bg-light mt-4">
+<footer class="pt-4 bg-green mt-4">
     <div class="container pt-4">
     <div class="row py-4">
         <div class="col-lg-3 mb-4">
             <a href="index.php" class="d-inline-flex align-items-center mb-2 fs-3 text-decoration-none">
-                <strong>Vibbar ++</strong>
+                <strong>Vibar</strong>
             </a>
             <p><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi ad totam rem necessitatibus dignissimos quidem minus, obcaecati quia quibusdam laborum tempore odio.</small></p>
             <ul class="nav mb-2">
@@ -43,7 +43,7 @@
     </div>
 
     <div class="row pt-4 text-center">
-        <p class="text-muted">© 2022 Vibbar ++. All rights reserved.</p>
+        <p class="text-muted">© 2022 Vibar. All rights reserved.</p>
     </div>
     </div>
 </footer>

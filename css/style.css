@@ -1,5 +1,6 @@
 :root {
     --IMD_Blue: #0600FF;
+    --IMD_Blue_Dark: #0400B5;
     --IMD_Green: #CCF950;
     --IMD_Pink: #FCD7F7;
     --White: #FFF;
@@ -26,6 +27,39 @@ a {
 
 .hide-mobile {
     display: none;
+}
+
+/* OVERWRITE BASIC BOOTSTRAP CLASSES */
+a:hover {
+    color: var(--IMD_Blue_Dark);
+}
+
+.nav-link:hover {
+    color: var(--IMD_Blue_Dark);
+}
+
+.btn-primary {
+    background-color: var(--IMD_Blue);
+    border-color: var(--IMD_Blue);
+}
+
+.btn-primary:hover {
+    background-color: var(--IMD_Blue_Dark);
+    border-color: var(--IMD_Blue_Dark);
+}
+
+.btn-outline-primary {
+    color: var(--IMD_Blue);
+    border-color: var(--IMD_Blue);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--IMD_Blue_Dark);
+    border-color: var(--IMD_Blue_Dark);
+}
+
+.nav-link {
+    color: var(--IMD_Blue);
 }
 
 /* STYLE FOR PROFILE PAGE */

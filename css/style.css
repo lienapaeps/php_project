@@ -1,3 +1,11 @@
+:root {
+    --IMD_Blue: #0600FF;
+    --IMD_Green: #CCF950;
+    --IMD_Pink: #FCD7F7;
+    --White: #FFF;
+    --Black: #111;
+}
+
 *,
 html {
     margin: 0;
@@ -112,8 +120,10 @@ a {
 
 /* STYLE FOR ACCOUNT FORMS */
 
-.register__form, .signin__form, 
-.reset__password__form, .forgot__password__form {
+.register__form,
+.signin__form,
+.reset__password__form,
+.forgot__password__form {
     background-color: #fff;
     padding: 2em;
     border-radius: 6px;
@@ -134,7 +144,11 @@ a {
 
 /* Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-    .register__form, .signin__form, .reset__password__form, .forgot__password__form {
+
+    .register__form,
+    .signin__form,
+    .reset__password__form,
+    .forgot__password__form {
         width: 80%;
         margin-left: auto;
         margin-right: auto;
@@ -158,7 +172,11 @@ a {
 
 /* X-Large devices (large desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    .register__form, .signin_form, .reset__password__form, .forgot__password__form {
+
+    .register__form,
+    .signin_form,
+    .reset__password__form,
+    .forgot__password__form {
         width: 65%;
         margin-left: auto;
         margin-right: auto;
@@ -203,4 +221,3 @@ a {
     }
 
 }
-

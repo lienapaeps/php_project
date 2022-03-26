@@ -38,6 +38,7 @@
     </div>
 
     <main class="dashboard container">
+        <!--
         <ul class="nav nav-pills pb-4 my-4 overflow-scroll flex-nowrap justify-content-md-center">
             <li class="nav-item">
                 <a href="#" class="nav-link active" aria-current="page">All</a>
@@ -61,6 +62,7 @@
                 <a href="#" class="nav-link">Webdesign</a>
             </li>
         </ul>
+        -->
 
         <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
             <!-- PHP foreach(): -->

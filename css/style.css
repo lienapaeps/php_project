@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'blaak';
+    src: url(./../assets/fonts/BlaakRegular_PERSONAL.ttf),
+        url(./../assets/fonts/BlaakBold_PERSONAL.ttf);
+}
+
+@font-face {
+    font-family: 'blaakBlack';
+    src: url(./../assets/fonts/BlaakBlack_PERSONAL.ttf);
+}
+
 :root {
     --IMD_Blue: #0600FF;
     --IMD_Blue_Dark: #0400B5;
@@ -66,6 +77,18 @@ a:hover {
 
 .bg-green {
     background-color: var(--IMD_Green);
+}
+
+.logo {
+    font-family: 'blaakBlack', museo-sans, sans-serif;
+    font-size: 1.3em;
+    letter-spacing: 1px;
+    color: var(--IMD_Blue);
+}
+
+.menu-title {
+    font-family: 'blaak', museo-sans, sans-serif;
+    font-weight: bold;
 }
 
 /* STYLE FOR PROFILE PAGE */

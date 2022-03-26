@@ -28,10 +28,10 @@
     <div class="container-fluid hero-empty-state py-4 border-bottom">
         <div class="hero-container text-center">
             <img class="w-50 mx-auto d-block" src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/20943391-scaled.jpg" alt="Hero image">
-            <h1 class="fw-bold">Discover the best designers & creatives of Thomas More</h1>
-            <p>
-                Vibbar ++ is the most important destination to find & showcase creative work and give a voice to the design & develop students of Thomas More.
-            </p>
+            <h1 class="fw-bold mt-4">Discover the best designers & creatives of Thomas More</h1>
+            <h5 class="fw-normal">
+                Vibar is the most important destination to find & showcase creative work and give a voice to the design & develop students of Thomas More.
+            </h5>
             <div>
                 <p><small class="text-muted">No account yet?</small></p>
                 <a class="offcanvas-title btn btn-primary" href="register.php">Sign up</a>
@@ -66,10 +66,10 @@
         </ul>
         -->
 
-        <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+        <div class="d-flex flex-wrap justify-content-center gap-2 my-4">
             <!-- PHP foreach(): -->
             <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
-                <img src=<?php echo "https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png"; ?> class="card-image-top" alt="Card top image">
+                <img src=<?php echo "https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png"; ?> class="card-image-top rounded-top" alt="Card top image">
                 <div class="card-body">
                     <h4 class="card-title"><?php echo "Card title"; ?></h4>
                     <p class="card-text"><?php echo "Card Description"; ?></p>

@@ -29,5 +29,3 @@ Each weight has an italic version, totaling in twelve styles.
 
 For further information, please read the FAQ:
 http://www.mansgreback.com/faq
-
-

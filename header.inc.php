@@ -1,11 +1,11 @@
 <header>
-    <nav class="navbar navbar-expand-xl bg-light">
+    <nav class="navbar navbar-expand-xl">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"><i class="fas fa-bars align-middle"></i></span>
             </button>
 
-            <a class="navbar-brand" href="index.php"><strong>Vibar</strong></a>
+            <a class="navbar-brand" href="index.php"><strong class="logo">Vibar</strong></a>
 
             <div class="not-signed-in d-none">
                 <a class="offcanvas-title btn btn-primary" href="login.php">Sign in</a>

@@ -106,13 +106,14 @@ class User
 
         $statement->execute();
         $user = $statement->fetch(PDO::FETCH_ASSOC);
-        $hash = $user["password"];
 
         if (!$user) {
             // er is een onbestaande gebruiker ingevuld
             throw new Exception("We couldn't find an account matching the email and password you entered. Please check your email and password and try again.");
             return false;
         }
+
+        $hash = $user["password"];
 
         if (password_verify($password, $hash)) {
             // password is correct

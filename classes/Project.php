@@ -8,7 +8,7 @@ class Project
     public static function getAll()
     {
         $conn = DB::getConnection();
-        $statement = $conn->prepare("select * from projects");
+        $statement = $conn->prepare("select * from projects order by time ASC"); // oud naar niew
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }

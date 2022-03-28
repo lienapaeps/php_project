@@ -1,6 +1,9 @@
 <?php
+include_once("bootstrap.php");
 
 session_start();
+
+$projects = Project::getAll();
 
 ?>
 <!DOCTYPE html>
@@ -66,68 +69,74 @@ session_start();
         </ul>
 
         <!-- empty state -->
-        <div>
-            <p>There is no content to show yet.</p>
+        <?php if (empty($projects)) : ?>
+            <div>
+                <p>There is no content to show yet.</p>
+            </div>
+            <!-- end empty state -->
+
+        <?php else : ?>
+            <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+                <?php foreach ($projects as $project) : ?>
+                    <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
+                        <img src="<?php echo $project['cover_img']; ?>" class="card-image-top" alt="Card top image">
+                        <div class="card-body">
+                            <h4 class="card-title"><?php echo $project['title']; ?></h4>
+                            <p class="card-text"><?php echo $project['description']; ?></p>
+                            <a href="#" class="btn btn-primary">Button</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+        <!-- Extra cards to check out responsiveness -->
+        <!-- <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
+            <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
+                <a href="#" class="btn btn-primary">Button</a>
+            </div>
         </div>
-        <!-- end empty state -->
 
-        <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
-            <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
-                <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
-                    <a href="#" class="btn btn-primary">Button</a>
-                </div>
+        <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
+            <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
+                <a href="#" class="btn btn-primary">Button</a>
             </div>
-
-            <!-- Extra cards to check out responsiveness -->
-            <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
-                <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
-                    <a href="#" class="btn btn-primary">Button</a>
-                </div>
-            </div>
-
-            <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
-                <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
-                    <a href="#" class="btn btn-primary">Button</a>
-                </div>
-            </div>
-
-            <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
-                <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
-                    <a href="#" class="btn btn-primary">Button</a>
-                </div>
-            </div>
-
-            <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
-                <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
-                    <a href="#" class="btn btn-primary">Button</a>
-                </div>
-            </div>
-
-            <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
-                <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
-                    <a href="#" class="btn btn-primary">Button</a>
-                </div>
-            </div>
-            <!-- End of extra cards -->
         </div>
+
+        <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
+            <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
+                <a href="#" class="btn btn-primary">Button</a>
+            </div>
+        </div>
+
+        <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
+            <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
+                <a href="#" class="btn btn-primary">Button</a>
+            </div>
+        </div>
+
+        <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
+            <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
+                <a href="#" class="btn btn-primary">Button</a>
+            </div>
+        </div> -->
+        <!-- End of extra cards -->
+        <!-- </div> -->
     </main>
 
     <?php include_once("footer.inc.php"); ?>

@@ -1,6 +1,6 @@
 <footer class="pt-4 bg-green mt-4">
     <div class="container pt-4">
-        <div class="row py-4">
+        <div class="row py-4 justify-content-between">
             <div class="col-lg-3 mb-4">
                 <a href="index.php" class="d-inline-flex align-items-center mb-2 fs-3 text-decoration-none">
                     <strong class="logo">Vibar</strong>
@@ -23,7 +23,7 @@
                 </ul>
             </div>
 
-            <div class="col-6 col-lg-2 mb-2">
+            <div class="col-6 col-lg-3 mb-2">
                 <h5 class="menu-title">Developers</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2">

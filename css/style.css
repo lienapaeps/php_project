@@ -15,6 +15,7 @@
     --IMD_Green: #CCF950;
     --IMD_Pink: #FCD7F7;
     --White: #FFF;
+    --Grey: #EEEEEE;
     --Black: #111;
 }
 
@@ -30,7 +31,7 @@ html {
 
 body {
     width: 100%;
-    background-color: #eee;
+    background-color: var(--Grey);
 }
 
 a {
@@ -141,7 +142,7 @@ a:hover {
 }
 
 .profile__image:hover {
-    border: solid 3px rgb(52, 0, 194);
+    border: solid 3px var(--IMD_Blue_Dark);
     cursor: pointer;
 }
 
@@ -235,6 +236,39 @@ a:hover {
 
 /* X-Large devices (large desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+
+    .hero-container {
+        display: grid;
+        grid-template-columns: 2fr 2fr;
+        min-height: 30vh;
+        align-items: center;
+        padding: 2em;
+        gap: 2em;
+    }
+
+    .hero-image {
+        grid-column: 1 / 2;
+        width: 100%;
+    }
+
+    img.w-50 {
+        width: 100% !important;
+    }
+
+    .hero-text {
+        grid-column: 2 / 3;
+        text-align: left;
+        /*padding: 1em;*/
+    }
+
+    .hero-text>h1 {
+        font-size: 3.2em;
+    }
+
+    .hero-cta {
+        text-align: center;
+        margin-top: 4em;
+    }
 
     .register__form,
     .signin_form,

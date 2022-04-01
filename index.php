@@ -27,14 +27,16 @@
     
     <div class="container-fluid hero-empty-state py-4 border-bottom">
         <div class="hero-container text-center">
-            <img class="w-50 mx-auto d-block" src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/20943391-scaled.jpg" alt="Hero image">
-            <h1 class="fw-bold mt-4">Discover the best designers & creatives of Thomas More</h1>
-            <h5 class="fw-normal">
-                Vibar is the most important destination to find & showcase creative work and give a voice to the design & develop students of Thomas More.
-            </h5>
-            <div>
-                <p><small class="text-muted">No account yet?</small></p>
-                <a class="offcanvas-title btn btn-primary" href="register.php">Sign up</a>
+            <img class="w-50 mx-auto d-block hero-image" src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/20943391-scaled.jpg" alt="Hero image">
+            <div class="hero-text">
+                <h1 class="fw-bold mt-4">Discover the best designers & creatives of Thomas More</h1>
+                <h5 class="fw-normal">
+                    Vibar is the most important destination to find & showcase creative work and give a voice to the design & develop students of Thomas More.
+                </h5>
+                <div class="hero-cta">
+                    <p><small class="text-muted">No account yet?</small></p>
+                    <a class="offcanvas-title btn btn-primary" href="register.php">Sign up</a>
+                </div>
             </div>
         </div>
     </div>

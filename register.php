@@ -44,32 +44,41 @@ if (!empty($_POST)) {
 
     <section class="register__form">
 
-        <h1 class="form__title">Register to ProjectName</h1>
+        <h1 class="form__title">Register to Vibar</h1>
 
-        <?php if (isset($error)) : ?>
-            <div class="alert alert-danger"><?php echo $error ?></div>
+        <?php if (isset($error)): ?>
+            <div class="alert alert-danger"><?php echo $error; ?></div>
         <?php endif; ?>
 
         <form action="" method="POST">
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" name="username" id="username" class="form-control" required">
+            <div class="mb-3 form-floating">
+                <input type="text" name="username" id="username" class="form-control" placeholder="Username" required">
+                <label for="username">Username</label>
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email adress</label>
-                <input type="email" name="email" id="email" class="form-control" required">
+
+            <div class="mb-3 form-floating">
+                <input type="email" name="email" id="email" class="form-control" placeholder="name@example.be" required">
+                <label for="email">Email adress</label>
             </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" id="password" class="form-control" required">
+
+            <div class="mb-3 form-floating">
+                <input type="password" name="password" id="password" class="form-control" placeholder="123456" required">
+                <label for="password">Password</label>
             </div>
-            <div class="d-grid gap-2">
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" value="" type="checkbox" name="agree" id="agree">
+                <label for="agree" class="form-check-label">Creating an account means you are okay with our <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a>, and our default <a href="#">Notification Settings</a>.</label>
+            </div>
+
+            <div class="d-grid gap-2 mb-3">
                 <button class="btn btn-primary" type="submit">Register</button>
             </div>
+
         </form>
 
         <div class="mt-3 form__link">
-            <a href="login.php">Already have a account? <span>Log in now</span></a>
+            <a href="login.php">Already have a account? <span style="text-decoration: underline;">Log in now</span></a>
         </div>
     </section>
 

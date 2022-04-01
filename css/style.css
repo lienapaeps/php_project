@@ -188,9 +188,9 @@ a:hover {
 .signin__form,
 .reset__password__form,
 .forgot__password__form {
-    background-color: #fff;
+    background-color: var(--White);
     padding: 2em;
-    border-radius: 6px;
+    border-radius: .5em;
     margin: 4em 2em 0 2em;
 }
 
@@ -204,6 +204,21 @@ a:hover {
 
 .form__link {
     text-align: center;
+}
+
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
+    border: 2px solid var(--IMD_Blue);
+}
+
+.form__title {
+    font-family: blaakblack, museo-sans, sans-serif;
+    font-size: 2.5em;
+    color: var(--IMD_Blue);
+}
+
+.form-check-input:checked {
+    background-color: var(--IMD_Blue);
+    color: var(--IMD_Blue);
 }
 
 /* Medium devices (tablets, 768px and up) */

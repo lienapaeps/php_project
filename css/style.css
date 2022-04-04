@@ -231,6 +231,14 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
     margin-bottom: .6em;
 }
 
+/* STYLE FOR PROJECTS */
+.card-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
 /* Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
 

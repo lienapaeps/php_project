@@ -160,6 +160,8 @@
             document.querySelector(".profile__infos").style.display = "grid";
             document.querySelector(".profile__projects").style.display = "none";
             document.querySelector(".profile__showcase").style.display = "none";
+            
+            navigate.preventDefault();
         });
 
         document.querySelector("#profileProjects").addEventListener("click", (navigate) => {
@@ -170,6 +172,8 @@
             document.querySelector(".profile__infos").style.display = "none";
             document.querySelector(".profile__projects").style.display = "block";
             document.querySelector(".profile__showcase").style.display = "none";
+
+            navigate.preventDefault();
         });
 
         document.querySelector("#profileShowcase").addEventListener("click", (navigate) => {
@@ -180,6 +184,8 @@
             document.querySelector(".profile__infos").style.display = "none";
             document.querySelector(".profile__projects").style.display = "none";
             document.querySelector(".profile__showcase").style.display = "block";
+
+            navigate.preventDefault();
         });
 
 

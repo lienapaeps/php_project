@@ -183,6 +183,10 @@ a:hover {
     height: 24px;
 }
 
+#profilePersonalInfo {
+    color: var(--IMD_Blue);
+}
+
 .profile__infoLink i {
     height: 32px;
     width: 32px;

@@ -3,7 +3,20 @@ include_once("bootstrap.php");
 
 session_start();
 
+if (isset($_SESSION["user"])) {
+    $loggedin = true;
+} else {
+    $loggedin = false;
+}
+
 $projects = Project::getAll();
+
+function getUser($id)
+{
+    $user = User::getUserById($id);
+    $name = $user["username"];
+    return $name;
+}
 
 ?>
 <!DOCTYPE html>
@@ -74,6 +87,12 @@ $projects = Project::getAll();
         </ul>
         -->
 
+        <?php if ($loggedin) : ?>
+            <h1>Je bent ingelogd</h1>
+        <?php else : ?>
+            <h1>Je bent NIET ingelogd</h1>
+        <?php endif; ?>
+
         <!-- empty state -->
         <?php if (empty($projects)) : ?>
             <div>
@@ -82,14 +101,23 @@ $projects = Project::getAll();
             <!-- end empty state -->
 
         <?php else : ?>
-            <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+            <div class="card-group gap-3">
                 <?php foreach ($projects as $project) : ?>
-                    <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
-                        <img src="<?php echo $project['cover_img']; ?>" class="card-image-top" alt="Card top image">
+                    <div class="card">
+                        <a href="project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
+                            <img class="card-img" src="<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
+                        </a>
                         <div class="card-body">
-                            <h4 class="card-title"><?php echo $project['title']; ?></h4>
-                            <p class="card-text"><?php echo $project['description']; ?></p>
-                            <a href="#" class="btn btn-primary">Button</a>
+                            <div class="card-left">
+                                <h5 class="card-title"><?php echo htmlspecialchars($project["title"]); ?></h5>
+                                <?php if ($loggedin) : ?>
+                                    <a href="profile.php?filteruser=<?php echo htmlspecialchars($project["user_id"]); ?>" class="card-link"><?php echo htmlspecialchars(getUser($project["user_id"])); ?></a>
+                                <?php endif; ?>
+                            </div>
+                            <div class="card-right">
+                                <a href="#" class="card-link"><i class="far fa-heart"></i> 101</a>
+                                <a href="#" class="card-link"><i class="fas fa-eye"></i> 101</a>
+                            </div>
                         </div>
                     </div>
                 <?php endforeach; ?>

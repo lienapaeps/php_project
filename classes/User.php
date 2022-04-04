@@ -186,4 +186,14 @@ class User
             // username does not exist
         }
     }
+
+    // this function gets the user id
+    public static function getUserById(int $id)
+    {
+        $conn = DB::getConnection();
+        $statement = $conn->prepare("select * from users where id = :id");
+        $statement->bindValue("id", $id);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
 }

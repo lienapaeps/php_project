@@ -3,6 +3,12 @@ include_once("bootstrap.php");
 
 session_start();
 
+if (isset($_SESSION["user"])) {
+    $loggedin = true;
+} else {
+    $loggedin = false;
+}
+
 $projects = Project::getAll();
 
 function getUser($id)
@@ -98,7 +104,9 @@ function getUser($id)
                         <div class="card-body">
                             <div class="card-left">
                                 <h5 class="card-title"><?php echo htmlspecialchars($project["title"]); ?></h5>
-                                <a href="profile.php?filteruser=<?php echo htmlspecialchars($project["user_id"]); ?>" class="card-link"><?php echo htmlspecialchars(getUser($project["user_id"])); ?></a>
+                                <?php if ($loggedin) : ?>
+                                    <a href="profile.php?filteruser=<?php echo htmlspecialchars($project["user_id"]); ?>" class="card-link"><?php echo htmlspecialchars(getUser($project["user_id"])); ?></a>
+                                <?php endif; ?>
                             </div>
                             <div class="card-right">
                                 <a href="#" class="card-link"><i class="far fa-heart"></i> 101</a>

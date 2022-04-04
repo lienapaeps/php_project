@@ -87,6 +87,12 @@ function getUser($id)
         </ul>
         -->
 
+        <?php if ($loggedin) : ?>
+            <h1>Je bent ingelogd</h1>
+        <?php else : ?>
+            <h1>Je bent NIET ingelogd</h1>
+        <?php endif; ?>
+
         <!-- empty state -->
         <?php if (empty($projects)) : ?>
             <div>

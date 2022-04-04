@@ -6,6 +6,7 @@ class User
 {
     private $username;
     private $email;
+    private $backupEmail;
     private $password;
 
     // get value of username
@@ -51,6 +52,25 @@ class User
         return $this;
     }
 
+    // get value of backup email
+    public function getBackupEmail()
+    {
+        return $this->backupEmail;
+    }
+
+    // set value of backup email
+    public function setBackupEmail($backupEmail)
+    {
+        // backup email cannot be empty
+        if (empty($backupEmail)) {
+            throw new Exception("Email cannot be empty.");
+        }
+
+        $this->backupEmail = $backupEmail;
+
+        return $this;
+    }
+
     // get value of password
     public function getPassword()
     {
@@ -78,10 +98,21 @@ class User
     public function canLogin($email, $password)
     {
         $conn = DB::getConnection();
-        $statement = $conn->prepare("select * from users where email = :email");
+        $statement = $conn->prepare("select * from users where email = :email OR backup_email = :backup_email");
         $statement->bindValue(":email", $email);
+
+        $backupEmail = $this->getBackupEmail();
+        $statement->bindValue(":backup_email", $backupEmail);
+
         $statement->execute();
         $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if (!$user) {
+            // er is een onbestaande gebruiker ingevuld
+            throw new Exception("We couldn't find an account matching the email and password you entered. Please check your email and password and try again.");
+            return false;
+        }
+
         $hash = $user["password"];
 
         if (password_verify($password, $hash)) {
@@ -105,11 +136,18 @@ class User
 
         $password = password_hash($this->password, PASSWORD_DEFAULT, $options);
 
+        $muted = 0;
+        $admin = 0;
+        $warned = 0;
+
         $conn = DB::getConnection();
-        $statement = $conn->prepare("insert into users (username, email, password) values (:username, :email, :password);");
+        $statement = $conn->prepare("insert into users (username, email, password, muted, admin, warned) values (:username, :email, :password, :muted, :admin, :warned);");
         $statement->bindValue(":username", $this->username);
         $statement->bindValue(":email", $this->email);
         $statement->bindValue(":password", $password);
+        $statement->bindValue(":muted", $muted);
+        $statement->bindValue(":admin", $admin);
+        $statement->bindValue(":warned", $warned);
         return $statement->execute();
     }
 
@@ -131,7 +169,7 @@ class User
         }
     }
 
-    // this function checks if email already excists in database
+    // this function checks if username already excists in database
     public function checkUsername($username)
     {
         $conn = DB::getConnection();
@@ -142,10 +180,10 @@ class User
         $user = $statement->fetch(PDO::FETCH_ASSOC);
 
         if ($user) {
-            // email exists
+            // username exists
             throw new Exception("This username already exists.");
         } else {
-            // email does not exist
+            // username does not exist
         }
     }
 }

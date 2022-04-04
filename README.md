@@ -9,7 +9,7 @@
 
 
 ## 🐱‍👤Project Name🐱‍👤
-> *to be defined*
+> Vibar, *derived from the Swedish word for Vibes, think of the IMDvibes*
 
 
 ## 🖇️Project Summary🖇️
@@ -20,9 +20,9 @@ The purpose of this platform is to inspire eachother and showcase own work to pe
 ## 🎨Branding🎨
 > *branding will be displayed later*
 
-- [ ] Decide on brand name
-- [ ] Decide on fonts
-- [ ] Decide on colors
+- [x] Decide on brand name
+- [x] Decide on fonts
+- [x] Decide on colors
 - [ ] Decide on logo
 - [ ] Decide on other interface features
 
@@ -31,6 +31,7 @@ The purpose of this platform is to inspire eachother and showcase own work to pe
 - Fork the git repository and work on a local branch.
 - Consistently commit changes.
 - Every time you finish a feature (marked done in Trello), make a pull request on the main project.
+- Send in our private chat when you make a push or pull request.
 
 - Use [BEM css standards](https://9elements.com/bem-cheat-sheet/).
 - Use the [Bootstrap](https://getbootstrap.com/) framework for page layout.
@@ -54,7 +55,7 @@ The purpose of this platform is to inspire eachother and showcase own work to pe
 - [x] Sign up
 - [x] Sign in
 - [ ] Reset password
-- [ ] Log out
+- [x] Log out
 - [ ] Profile adjustment: profile picture
 --------
 - [ ] Profile adjustment: personal info

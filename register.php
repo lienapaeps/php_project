@@ -12,6 +12,7 @@ if (!empty($_POST)) {
 
         $email = $user->getEmail();
         $username = $user->getUsername();
+
         $user->checkEmail($email);
         $user->checkUsername($username);
 

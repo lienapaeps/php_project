@@ -1,6 +1,12 @@
 <?php
+include_once("bootstrap.php");
 
-?><!DOCTYPE html>
+session_start();
+
+$projects = Project::getAll();
+
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,12 +16,12 @@
     <title>PHP Project</title>
 
     <!-- links to css and scripts -->
-        <!-- Bootstrap -->
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    
-        <!-- Fontawesome icons -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- Fontawesome icons -->
     <script src="https://kit.fontawesome.com/d5a678d06c.js" crossorigin="anonymous"></script>
-        <!-- Own CSS file -->
+    <!-- Own CSS file -->
     <link rel="stylesheet" href="css/style.css?<?php echo time() ?>">
     <!-- Font: Museo Sans -->
     <link rel="stylesheet" href="https://use.typekit.net/kkv2fee.css">
@@ -23,8 +29,8 @@
 
 <body>
 
-    <?php include_once("header.inc.php");?>
-    
+    <?php include_once("header.inc.php"); ?>
+
     <div class="container-fluid hero-empty-state py-4 border-bottom">
         <div class="hero-container text-center">
             <img class="w-50 mx-auto d-block hero-image" src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/20943391-scaled.jpg" alt="Hero image">
@@ -68,18 +74,75 @@
         </ul>
         -->
 
-        <div class="d-flex flex-wrap justify-content-center gap-2 my-4">
-            <!-- PHP foreach(): -->
-            <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
-                <img src=<?php echo "https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png"; ?> class="card-image-top rounded-top" alt="Card top image">
-                <div class="card-body">
-                    <h4 class="card-title"><?php echo "Card title"; ?></h4>
-                    <p class="card-text"><?php echo "Card Description"; ?></p>
-                    <a href="#" class="btn btn-primary">Button</a>
-                </div>
+        <!-- empty state -->
+        <?php if (empty($projects)) : ?>
+            <div>
+                <p>There is no content to show yet.</p>
             </div>
-            <!-- PHP endforeach; -->
+            <!-- end empty state -->
+
+        <?php else : ?>
+            <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+                <?php foreach ($projects as $project) : ?>
+                    <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
+                        <img src="<?php echo $project['cover_img']; ?>" class="card-image-top" alt="Card top image">
+                        <div class="card-body">
+                            <h4 class="card-title"><?php echo $project['title']; ?></h4>
+                            <p class="card-text"><?php echo $project['description']; ?></p>
+                            <a href="#" class="btn btn-primary">Button</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+        <!-- Extra cards to check out responsiveness -->
+        <!-- <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
+            <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
+                <a href="#" class="btn btn-primary">Button</a>
+            </div>
         </div>
+
+        <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
+            <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
+                <a href="#" class="btn btn-primary">Button</a>
+            </div>
+        </div>
+
+        <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
+            <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
+                <a href="#" class="btn btn-primary">Button</a>
+            </div>
+        </div>
+
+        <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
+            <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
+                <a href="#" class="btn btn-primary">Button</a>
+            </div>
+        </div>
+
+        <div href="#" class="card bg-light rounded-3" style="max-width: 24rem;">
+            <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/Social-Media.png" class="card-image-top" alt="Card top image">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">djkfhkqsgkdfjhgksjghlskjfghksjghlsglsdfbhlkghlksfdjhvlfgj</p>
+                <a href="#" class="btn btn-primary">Button</a>
+            </div>
+        </div> -->
+        <!-- End of extra cards -->
+        <!-- </div> -->
     </main>
 
     <?php include_once("footer.inc.php"); ?>

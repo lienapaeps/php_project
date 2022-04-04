@@ -13,12 +13,16 @@ include_once("bootstrap.php");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="css/style.css?<?php echo time() ?>" rel="stylesheet">
 
+    <script src="https://kit.fontawesome.com/ef10571a33.js" crossorigin="anonymous"></script>
+
     <title>IMD Showcase | Forgot Password</title>
 </head>
 
 <body>
 
     <section class="forgot__password__form">
+
+        <a href="login.php" class="arrow__back"><i class="fa-solid fa-arrow-left"></i></a>
 
         <h1 class="form__title">Forgot password?</h1>
         <p>Enter the email adress you used when you joined and we'll send you instructions to reset your password.</p>

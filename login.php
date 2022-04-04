@@ -4,10 +4,19 @@ include_once("bootstrap.php");
 if (!empty($_POST)) {
     try {
         $user = new User();
-        $user->setEmail($_POST['email']);
+
+        $email = "";
+
+        if (str_ends_with($_POST['email'], "@student.thomasmore.be") && str_ends_with($_POST['email'], "@thomasmore.be")) {
+            $user->setEmail($_POST['email']);
+            $email = $user->getEmail();
+        } else {
+            $user->setBackupEmail($_POST['email']);
+            $email = $user->getBackupEmail();
+        }
+
         $user->setPassword($_POST['password']);
 
-        $email = $user->getEmail();
         $password = $user->getPassword();
 
         if ($user->canLogin($email, $password)) {
@@ -77,3 +86,14 @@ if (!empty($_POST)) {
 </body>
 
 </html>
+
+<!-- Admins:
+
+email: lienapaeps@thomasmore.be
+password: 1234567
+
+email: jeffasseur@thomasmore.be
+password: 1234567
+
+email: rickyheylen@thomasmore.be
+password: 1234567 -->

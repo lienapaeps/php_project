@@ -123,21 +123,22 @@ a:hover {
 }
 
 .profile__imageBox {
-    display: flex;
+    display:flex;
     justify-content: center;
-    align-items: flex-start;
-    margin-top: 2em;
+    align-items: center;
+    flex-grow: 1;
+    margin-top: 2em; 
     padding: 4px;
-    max-width: 40%;
-    border-radius: 500px;
+    border-radius: 100%;
     max-width: 200px;
+    max-height: 200px;
 }
 
 .profile__image {
     width: 100%;
-    height: auto;
-    border: solid 3px rgb(165, 165, 165);
-    border-radius: 500px;
+    height: 100%;
+    border: solid 4px rgb(165, 165, 165);
+    border-radius: 100%;
     transition: .5s;
 }
 
@@ -219,6 +220,15 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
 .form-check-input:checked {
     background-color: var(--IMD_Blue);
     color: var(--IMD_Blue);
+}
+
+.arrow__back {
+    font-size: 2em;
+    color: #111;
+}
+
+.arrow__back i {
+    margin-bottom: .6em;
 }
 
 /* Medium devices (tablets, 768px and up) */

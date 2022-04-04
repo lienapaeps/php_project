@@ -5,6 +5,13 @@ session_start();
 
 $projects = Project::getAll();
 
+function getUser($id)
+{
+    $user = User::getUserById($id);
+    $name = $user["username"];
+    return $name;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,13 +92,13 @@ $projects = Project::getAll();
             <div class="card-group gap-3">
                 <?php foreach ($projects as $project) : ?>
                     <div class="card">
-                        <a href="test.php">
+                        <a href="project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
                             <img class="card-img" src="<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
                         </a>
                         <div class="card-body">
                             <div class="card-left">
                                 <h5 class="card-title"><?php echo htmlspecialchars($project["title"]); ?></h5>
-                                <a href="" class="card-text"><?php echo htmlspecialchars($project["user_id"]); ?></a>
+                                <a href="profile.php?filteruser=<?php echo htmlspecialchars($project["user_id"]); ?>" class="card-link"><?php echo htmlspecialchars(getUser($project["user_id"])); ?></a>
                             </div>
                             <div class="card-right">
                                 <a href="#" class="card-link"><i class="far fa-heart"></i> 101</a>

@@ -238,6 +238,14 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
     justify-content: space-between;
 }
 
+.card-title {
+    font-family: blaakblack, museo-sans, sans-serif;
+    font-size: 1.5em;
+}
+
+.card-link {
+    font-family: museo-sans, sans-serif;
+}
 
 /* Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) {

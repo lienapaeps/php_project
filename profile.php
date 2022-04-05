@@ -38,7 +38,7 @@
                 <div class="alert alert-danger"><?php echo $errorFileExists ?></div>
             <?php endif; ?>
 
-            <form action="profile.php" method="POST" enctype="multipart/form-data">
+            <form class="form__upload" action="profile.php" method="POST" enctype="multipart/form-data">
                 <div class="mb-3 form-group">
                     <label for="profileImgUpload">Please pick a file not larger than 500kb:</label>
                     <input type="file" name="profileImgUpload" id="profileImgUpload" class="image-form__upload form-control">

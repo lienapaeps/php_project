@@ -2,6 +2,27 @@
 
 include_once("bootstrap.php");
 
+if(!empty($_POST)) {
+    $email = $_POST['email'];
+    $user = new User();
+    $user = $user->findByEmail($email);
+    if ($user) {
+        if($user['email'] == $email || $user['backup_email'] == $email) {
+            $message = "Check your email for a password reset link.";
+            echo $message;
+        } else {
+            $message = "No user found with that email address.";
+            echo $message;
+        }
+    }
+    else {
+        echo "No user found with that email address.";
+    }
+    // var_dump($user);
+    // echo $user['email'];
+    
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +35,7 @@ include_once("bootstrap.php");
     <link href="css/style.css?<?php echo time() ?>" rel="stylesheet">
 
     <script src="https://kit.fontawesome.com/ef10571a33.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
     <title>IMD Showcase | Forgot Password</title>
 </head>
@@ -22,22 +44,28 @@ include_once("bootstrap.php");
 
     <section class="forgot__password__form">
 
-        <a href="login.php" class="arrow__back"><i class="fa-solid fa-arrow-left"></i></a>
+        <a href="login.php" class="arrow__back"><i class="bi bi-arrow-left"></i></a>
 
         <h1 class="form__title">Forgot password?</h1>
-        <p>Enter the email adress you used when you joined and we'll send you instructions to reset your password.</p>
+        <p>Enter your email adress and we'll send you an email with instructions to reset your password.</p>
 
         <?php if (isset($error)) : ?>
             <div class="alert alert-danger"><?php echo $error ?></div>
         <?php endif; ?>
 
         <form action="" method="POST">
-            <div class="mb-3">
-                <label for="email" class="form-label">Email adress</label>
-                <input type="email" name="email" id="email" class="form-control" required">
+            
+            <div class="mb-3 form-floating">
+                <input type="email" name="email" id="email" class="form-control" placeholder="name@example.be" required">
+                <label for="email">Email adress</label>
             </div>
+
+            <div class="alert-message alert alert-danger mb-3">
+                <span>This email is not found</span>
+            </div>
+
             <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="submit">Send reset instructions</button>
+                <button class="btn btn-primary" type="submit" name="password-reset-token">Send reset instructions</button>
             </div>
         </form>
     </section>

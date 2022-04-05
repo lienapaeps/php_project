@@ -47,20 +47,20 @@ if (!empty($_POST)) {
 
     <section class="signin__form">
 
-        <h1 class="form__title">Log in to ProjectName</h1>
+        <h1 class="form__title">Log in to Vibar</h1>
 
         <?php if (isset($error)) : ?>
             <div class="alert alert-danger"><?php echo $error ?></div>
         <?php endif; ?>
 
         <form action="" method="POST">
-            <div class="mb-3">
-                <label for="email" class="form-label">Email adress</label>
-                <input type="email" name="email" id="email" class="form-control" required">
+            <div class="mb-3 form-floating">
+                <input type="email" name="email" id="email" class="form-control" placeholder="name@example.be" required">
+                <label for="email">Email adress</label>
             </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" id="password" class="form-control" required">
+            <div class="mb-3 form-floating">
+                <input type="password" name="password" id="password" class="form-control" placeholder="123456" required">
+                <label for="password">Password</label>
             </div>
             <div class="mb-3 form__link__password">
                 <a href="forgotPassword.php">Forgot password?</a>

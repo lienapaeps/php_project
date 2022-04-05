@@ -186,4 +186,32 @@ class User
             // username does not exist
         }
     }
+
+    // Jef: Function for validating email when password was forgotten
+    public function findByEmail($email)
+    {
+        $conn = DB::getConnection();
+        $statement = $conn->prepare('select * from users where email = :email or backup_email = :backup_email');
+        $statement->bindValue("email", $email);
+        $statement->bindValue("backup_email", $email);
+        $statement->execute();
+
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        // var_dump($user);
+
+        if ($user) {
+            // email exists
+            // echo "user exists";
+            return $user;
+        } else {
+            // email does not exist
+            return false;
+        }
+    }
+
+    public function sendPasswordReset()
+    {
+        echo "Email sent";
+    }
 }

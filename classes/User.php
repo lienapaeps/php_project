@@ -8,7 +8,6 @@ class User
     private $email;
     private $backupEmail;
     private $password;
-    private $password_reset_request;
 
     // get value of username
     public function getUsername()
@@ -193,6 +192,7 @@ class User
     {
         $conn = DB::getConnection();
         $statement = $conn->prepare('select * from users where email = :email or backup_email = :backup_email');
+        $email = htmlspecialchars($email);
         $statement->bindValue("email", $email);
         $statement->bindValue("backup_email", $email);
         $statement->execute();
@@ -211,19 +211,28 @@ class User
         }
     }
 
-    public function passwordReset($id)
+    public function passwordReset($userId)
     {
+        // generate token
         $token = openssl_random_pseudo_bytes(16);
         $token = bin2hex($token);
-
+        // insert token and other values into database table password_reset_request
         $conn = DB::getConnection();
-        $statement = $conn->prepare("update users set password_reset_token = :token where id = :id");
+        $statement = $conn->prepare("insert into password_reset_request (user_id, date_requested, token) values (:user_id, :date_requested, :token) ");
+
+        $statement->bindValue(":user_id", $userId);
+        $statement->bindValue(":date_requested", date("Y-m-d H:i:s"));
         $statement->bindValue(':token', $token);
-        $statement->bindValue(':id', $id);
+
         $inserted = $statement->execute();
 
+        $passwordRequestId = $conn->lastInsertId();
+
         if($inserted) {
-            echo "inserted ✅";
+            // echo "inserted ✅";
+            $verifyScript = "http://localhost:8888/Dev4-Joris/php_project/resetPassword.php";
+            $linkToSend = $verifyScript . '?uid=' . $userId . '&id=' . $passwordRequestId . '&token=' . $token;
+            return $linkToSend;
         } else {
             echo "not inserted ❌";
         }

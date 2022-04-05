@@ -1,6 +1,39 @@
 <?php
 
 include_once("bootstrap.php");
+include_once(__DIR__ . "/classes/DB.php");
+
+$conn = Db::getConnection();
+
+$userId = isset($_GET['uid']) ? trim($_GET['uid']) : '';
+$token = isset($_GET['token']) ? trim($_GET['token']) : '';
+$passwordReqestId = isset($_GET['id']) ? trim($_GET['id']) : '';
+
+
+//echo $userId;
+
+$statement = $conn->prepare('select id, user_id, date_requested from password_reset_request where user_id = :user_id and id = :id and token = :token');
+
+$statement->bindValue(":user_id", $userId);
+$statement->bindValue(":id", $passwordReqestId);
+$statement->bindValue(":token", $token);
+
+$statement->execute(array(
+    ":user_id" => $userId,
+    ":id" => $passwordReqestId,
+    ":token" => $token
+));
+
+$result = $statement->fetch(PDO::FETCH_ASSOC);
+
+//var_dump($result);
+
+if (!empty($result)) {
+    $_SESSION['user_id'] = $userId;
+}
+else {
+    $error = "Invalid password reset request";
+}
 
 ?>
 <!DOCTYPE html>
@@ -17,30 +50,38 @@ include_once("bootstrap.php");
 </head>
 
 <body>
+    
+        <section class="reset__password__form">
 
-    <section class="reset__password__form">
+            <h1 class="form__title">Reset your password</h1>
 
-        <h1 class="form__title">Reset your password</h1>
+            <?php if (isset($error)) : ?>
+                <div class="alert alert-danger"><?php echo $error ?></div>
+            <?php endif; ?>
 
-        <?php if (isset($error)) : ?>
-            <div class="alert alert-danger"><?php echo $error ?></div>
-        <?php endif; ?>
+            <form action="" method="POST">
+                <fieldset <?php if( isset($error) ) { echo "disabled"; } ?> >
+                    <div class="mb-3 form-floating">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="123456" required">
+                        <label for="password" class="form-label">New Password</label>
+                    </div>
 
-        <form action="" method="POST">
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" id="password" class="form-control" required">
-            </div>
-            <div class="mb-3">
-                <label for="password__verify" class="form-label">Password Verify</label>
-                <input type="password" name="password__verify" id="password__verify" class="form-control" required">
-            </div>
-            <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="submit">Reset password</button>
-            </div>
-        </form>
-    </section>
+                    <div class="mb-3 form-floating">
+                        <input type="password" name="password__verify" id="password__verify" class="form-control" placeholder="123456" required">
+                        <label for="password__verify" class="form-label">New Password Verify</label>
+                    </div>
 
+                    <div class="d-grid mb-3 gap-2">
+                        <button class="btn btn-primary" type="submit" <?php if (isset($error)) {echo "disabled";} ?> >Reset password</button>
+                    </div>
+                </fieldset>
+
+                <?php if ( isset($error) ): ?> 
+                    <a role="button" class="d-block btn btn-danger mt-3 text-center" href="index.php">Go back to the homepage</a>
+                <?php endif; ?>
+            </form>
+        </section>
+    
 </body>
 
 </html>

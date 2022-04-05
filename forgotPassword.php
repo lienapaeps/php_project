@@ -8,7 +8,8 @@ if(!empty($_POST)) {
     $userEmail = $user->findByEmail($email);
 
     if ($userEmail) {
-        $token = $user->passwordReset($userEmail['id']);
+        $linkToSend = $user->passwordReset($userEmail['id']);
+        echo $linkToSend;
     }
     else {
         $alert = true;

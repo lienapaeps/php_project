@@ -8,6 +8,7 @@ class User
     private $email;
     private $backupEmail;
     private $password;
+    private $password_reset_request;
 
     // get value of username
     public function getUsername()
@@ -210,8 +211,21 @@ class User
         }
     }
 
-    public function sendPasswordReset()
+    public function passwordReset($id)
     {
-        echo "Email sent";
+        $token = openssl_random_pseudo_bytes(16);
+        $token = bin2hex($token);
+
+        $conn = DB::getConnection();
+        $statement = $conn->prepare("update users set password_reset_token = :token where id = :id");
+        $statement->bindValue(':token', $token);
+        $statement->bindValue(':id', $id);
+        $inserted = $statement->execute();
+
+        if($inserted) {
+            echo "inserted ✅";
+        } else {
+            echo "not inserted ❌";
+        }
     }
 }

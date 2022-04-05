@@ -5,12 +5,10 @@ include_once("bootstrap.php");
 if(!empty($_POST)) {
     $email = htmlspecialchars($_POST['email']);
     $user = new User();
-    $user = $user->findByEmail($email);
+    $userEmail = $user->findByEmail($email);
 
-    if ($user) {
-        $message = "Check your email for a password reset link.";
-        echo $message;
-        
+    if ($userEmail) {
+        $token = $user->passwordReset($userEmail['id']);
     }
     else {
         $alert = true;
@@ -55,9 +53,9 @@ if(!empty($_POST)) {
             </div>
 
             <?php if(isset($alert)): ?>
-            <div class="alert-message alert alert-danger mb-3">
-                <span>This email is not found</span>
-            </div>
+                <div class="alert-message alert alert-danger mb-3">
+                    <span>This email is not found</span>
+                </div>
             <?php endif; ?>
 
             <div class="d-grid gap-2">

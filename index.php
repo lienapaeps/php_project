@@ -76,7 +76,7 @@ $projects = Project::getAll();
 
         <!-- empty state -->
         <?php if (empty($projects)) : ?>
-            <div>
+            <div class="card bg-light rounded-3 d-flex justify-content-center text-center my-3" style="max-width: 24rem; height: 24rem;">
                 <p>There is no content to show yet.</p>
             </div>
             <!-- end empty state -->

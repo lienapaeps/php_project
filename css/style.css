@@ -307,6 +307,9 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
 
 /* Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+    div#offcanvasNavbar {
+        margin: 0 1em;
+    }
 
     .register__form,
     .signin__form,
@@ -457,10 +460,6 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
 
     #nav__profile {
         order: 4;
-    }
-
-    #offcanvasRight {
-        display: none;
     }
 
     .hide-mobile {

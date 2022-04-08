@@ -32,7 +32,7 @@
                             <a href="profile.php" class="nav-link">Profile</a>
                         </li>
                     </ul>
-                    <form class="d-flex mt-3" action="" method="get">
+                    <form class="d-flex mt-xs-3" action="" method="get">
                         <input class="form-control me-2" type="search" name="searchbar" id="searchbar" placeholder="Search" aria-label="Search">
                         <button class="btn btn-primary" type="submit">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search" viewBox="0 0 18 18">

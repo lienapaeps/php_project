@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg mb-3">
         <div class="container-fluid">
-            <a href="index.php" class="navbar-brand logo">Vibar</a>
+            <a href="index.php" class="navbar-brand"><h3 class="logo">Vibar</h3></a>
 
             <div class="order-lg-last text-end">
                 <button class="btn ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasUser" aria-controls="offcanvasUser">
@@ -20,7 +20,7 @@
 
             <div id="offcanvasNavbar" class="offcanvas offcanvas-start offcanvas-light" data-bs-hideresize="true" tabindex="-1" aria-labelledby="offcanvasNavbarLabel" style="visibility: hidden;" aria-hidden="true">
                 <div class="offcanvas-header">
-                    <h3 id="offcanvasLabel" class="offcanvas-title">Offcanvas Title</h3>
+                    <h3 id="offcanvasLabel" class="offcanvas-title logo">Vibar</h3>
                     <button class="btn-close" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
@@ -32,7 +32,7 @@
                             <a href="profile.php" class="nav-link">Profile</a>
                         </li>
                     </ul>
-                    <form class="d-flex" action="">
+                    <form class="d-flex mt-3" action="" method="get">
                         <input class="form-control me-2" type="search" name="searchbar" id="searchbar" placeholder="Search" aria-label="Search">
                         <button class="btn btn-primary" type="submit">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search" viewBox="0 0 18 18">
@@ -47,13 +47,30 @@
 
     <div id="offcanvasUser" class="offcanvas offcanvas-end" tabindex="-1" aria-labelledby="offcanvasUserLabel" style="visibility: hidden;" aria-modal="true" role="dialog">
         <div class="offcanvas-header">
-            <h3 id="offcanvasUserLabel" class="offcanvas-title">Offcanvas-title</h3>
+            <!-- <h3 id="offcanvasUserLabel" class="offcanvas-title">Offcanvas-title</h3> -->  
+            <div class="offcanvas-title d-flex align-content-center">
+                <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-2" style="height: 40px; width: 40px;">
+                <h4 class="me-2 fw-bolder align-self-end">Username</h4>
+            </div>
             <button class="btn-close" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 
         <div class="offcanvas-body">
             <ul class="list-group">
-                <li class="list-group-item">List group item</li>
+                <?php if(1 == 1): ?>
+                <li class="list-group-item border-0 mx-0 p-0 mb-3">
+                    <a href="login.php" class="btn btn-outline-primary d-block">Log in</a>
+                </li>
+                <?php else: ?>
+                <!-- If logged in => show this -->
+                <li class="list-group-item border-0 mx-0 p-0 mb-3">
+                    <a href="profile.php" class="d-block text-center">Profile</a>
+                </li>
+                <li class="list-group-item border-0 mx-0 p-0 mb-3">
+                    <a href="logout.php" class="btn btn-outline-primary d-block">Log out</a>
+                </li>
+                <!-- If logged in => show this -->
+                <?php endif; ?>
             </ul>
         </div>
     </div>

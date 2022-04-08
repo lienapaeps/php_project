@@ -1,5 +1,6 @@
 <?php
 
+require './PHPMailerAutoload.php';
 include_once("bootstrap.php");
 
 if(!empty($_POST)) {
@@ -9,15 +10,48 @@ if(!empty($_POST)) {
 
     if ($userEmail) {
         $linkToSend = $user->passwordReset($userEmail['id']);
-        echo $linkToSend;
+        // echo $linkToSend;
+
+        // sending mail with PHPMailer
+        $mail = new PHPMailer;
+
+        $smtpPort = 25;
+        $mailSubject = "Hello " . $userEmail['username'] . ", you have requested a password reset";
+        $mailAdress = "r0846107@student.thomasmore.be"; //$userEmail['email'];
+        $mailUser = "Jef Fasseur"; //$userEmail['username'];
+
+        $mail->isSMTP();
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        $mail->Host = 'localhost';
+        $mail->Port = $smtpPort;
+        $mail->SMTPAuth = true;
+        $mail->isHTML(true);
+        $mail->addAddress($mailAdress, $mailUser);
+        $mail->Subject = $mailSubject;
+        $mail->Body = '<a href="' . $linkToSend . '">Reset your password</a>';
+        $mail->AltBody = 'Copy and paste this link into your browser: ' . $linkToSend;
+
+        $mail->setFrom('from@example.com', 'Mailer');
+
+        $mail->isHTML(true);                                  // Set email format to HTML
+
+        if(!$mail->send()) {
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+            /*
+            * echo "<br>";
+            * var_dump($mail);
+            */
+        } else {
+            echo 'Message has been sent';
+        }
     }
     else {
         $alert = true;
     }
 }
 
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -49,7 +83,7 @@ if(!empty($_POST)) {
         <form action="" method="POST">
             
             <div class="mb-3 form-floating">
-                <input type="email" name="email" id="email" class="form-control" placeholder="name@example.be" required">
+                <input type="email" name="email" id="email" class="form-control <?php if(isset($alert)){echo "border border-danger";} ?>" placeholder="name@example.be" required">
                 <label for="email">Email adress</label>
             </div>
 

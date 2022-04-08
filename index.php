@@ -25,6 +25,8 @@ $projects = Project::getAll();
     <link rel="stylesheet" href="css/style.css?<?php echo time() ?>">
     <!-- Font: Museo Sans -->
     <link rel="stylesheet" href="https://use.typekit.net/kkv2fee.css">
+
+    <link rel="shortcut icon" href="./assets/img/Favicon.png" type="image/x-icon">
 </head>
 
 <body>

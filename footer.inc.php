@@ -15,11 +15,11 @@
             </div>
 
             <div class="col-6 col-lg-2 offset-lg-1 mb-2">
-                <h5 class="menu-title">Menu</h5>
+                <h5 class="menu-title">Links</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2"><a class="text-decoration-none" href="index.php">Home</a></li>
-                    <li class="mb-2"><a class="text-decoration-none" href="#">Link</a></li>
-                    <li class="mb-2"><a class="text-decoration-none" href="#">Link</a></li>
+                    <li class="mb-2"><a class="text-decoration-none" href="profile.php">Profile</a></li>
+                    <li class="mb-2"><a class="text-decoration-none" href="https://thomasmore.be" target="_blank">Thomas More</a></li>
                 </ul>
             </div>
 

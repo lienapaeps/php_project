@@ -29,6 +29,13 @@ $result = $statement->fetch(PDO::FETCH_ASSOC);
 //var_dump($result);
 
 if (!empty($result)) {
+    // check if link is expired
+    $delta = 86400; // 24 hours (60sec * 60min * 24hrs)
+
+    if(strtotime($result['date_requested']) + (60 * 60 * 24) < time()) {
+        //throw new Exception('Link expired');    
+        header("Location: forgotPassword.php?error=Link-expired");
+    }
     $_SESSION['user_id'] = $userId;
 }
 else {

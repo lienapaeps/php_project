@@ -1,55 +1,57 @@
 <?php
+    require './PHPMailerAutoload.php';
+    include_once("bootstrap.php");
 
-require './PHPMailerAutoload.php';
-include_once("bootstrap.php");
+    if(!empty($_POST)) {
+        $email = htmlspecialchars($_POST['email']);
+        $user = new User();
+        $userEmail = $user->findByEmail($email);
 
-if(!empty($_POST)) {
-    $email = htmlspecialchars($_POST['email']);
-    $user = new User();
-    $userEmail = $user->findByEmail($email);
+        if ($userEmail) {
+            $linkToSend = $user->passwordReset($userEmail['id']);
+            // echo $linkToSend;
 
-    if ($userEmail) {
-        $linkToSend = $user->passwordReset($userEmail['id']);
-        // echo $linkToSend;
+            // sending mail with PHPMailer
+            $mail = new PHPMailer(true);
+            
+            $smtpPort = 25;
+            $mailSubject = "Hello " . $userEmail['username'] . ", you have requested a password reset";
+            $mailAdress = $userEmail['email'];
+            $mailUser = $userEmail['username'];
 
-        // sending mail with PHPMailer
-        $mail = new PHPMailer;
+            //$mail->isSMTP();
+            $mail->isSendmail();
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+            $mail->Host = 'localhost';
+            $mail->Port = $smtpPort;
+            $mail->SMTPAuth = true;
+            $mail->isHTML(true);
+            $mail->addAddress($mailAdress, $mailUser);
+            $mail->isHTML(true);
+            $mail->Subject = $mailSubject;
+            $mail->Body = '<a href="' . $linkToSend . '">Reset your password</a>';
+            $mail->AltBody = 'Copy and paste this link into your browser: ' . $linkToSend;
 
-        $smtpPort = 25;
-        $mailSubject = "Hello " . $userEmail['username'] . ", you have requested a password reset";
-        $mailAdress = "r0846107@student.thomasmore.be"; //$userEmail['email'];
-        $mailUser = "Jef Fasseur"; //$userEmail['username'];
+            $mail->setFrom('from@example.com', 'Mailer');
 
-        $mail->isSMTP();
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-        $mail->Host = 'localhost';
-        $mail->Port = $smtpPort;
-        $mail->SMTPAuth = true;
-        $mail->isHTML(true);
-        $mail->addAddress($mailAdress, $mailUser);
-        $mail->Subject = $mailSubject;
-        $mail->Body = '<a href="' . $linkToSend . '">Reset your password</a>';
-        $mail->AltBody = 'Copy and paste this link into your browser: ' . $linkToSend;
-
-        $mail->setFrom('from@example.com', 'Mailer');
-
-        $mail->isHTML(true);                                  // Set email format to HTML
-
-        if(!$mail->send()) {
-            echo 'Message could not be sent.';
-            echo 'Mailer Error: ' . $mail->ErrorInfo;
-            /*
-            * echo "<br>";
-            * var_dump($mail);
-            */
-        } else {
-            echo 'Message has been sent';
+            if(!$mail->send()) {
+                echo 'Message could not be sent.';
+                echo 'Mailer Error: ' . $mail->ErrorInfo;
+                /*
+                * echo "<br>";
+                * var_dump($mail);
+                */
+            } else {
+                echo 'Message has been sent to ' . $mailAdress;
+                echo '<br>' . $mailUser;
+                echo '<br>' . $mailSubject;
+                echo '<br>' . $linkToSend;
+            }
+        }
+        else {
+            $alert = true;
         }
     }
-    else {
-        $alert = true;
-    }
-}
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -68,6 +70,11 @@ if(!empty($_POST)) {
 </head>
 
 <body>
+    <?php if (isset($_GET['error']) == "Link-expired"): ?>
+    <div class="alert alert-danger" role="alert">
+        <strong>Error!</strong> The link has expired. Enter your email below for a new link
+    </div>
+    <?php endif; ?>
 
     <section class="forgot__password__form">
 

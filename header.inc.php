@@ -50,14 +50,16 @@
             <!-- <h3 id="offcanvasUserLabel" class="offcanvas-title">Offcanvas-title</h3> -->  
             <div class="offcanvas-title d-flex align-content-center">
                 <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-2" style="height: 40px; width: 40px;">
-                <h4 class="me-2 fw-bolder align-self-end">Username</h4>
+                <h4 class="me-2 fw-bolder align-self-end">
+                    <?php echo "Username"; ?>
+                </h4>
             </div>
             <button class="btn-close" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 
         <div class="offcanvas-body">
             <ul class="list-group">
-                <?php if(1 == 1): ?>
+                <?php if($loggedin === false): ?>
                 <li class="list-group-item border-0 mx-0 p-0 mb-3">
                     <a href="login.php" class="btn btn-outline-primary d-block">Log in</a>
                 </li>

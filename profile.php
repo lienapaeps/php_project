@@ -2,6 +2,14 @@
 
     include_once("ProfileImgForm.inc.php");
 
+    session_start();
+
+    if (isset($_SESSION["user"])) {
+        $loggedin = true;
+    } else {
+        $loggedin = false;
+    }
+
 ?><!DOCTYPE html>
 <html lang="en">
     <head>

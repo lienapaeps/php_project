@@ -15,7 +15,7 @@
  * @note This program is distributed in the hope that it will be useful - WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
  * FITNESS FOR A PARTICULAR PURPOSE.
- */
+*/
 
 /**
  * PHPMailer RFC821 SMTP email transport class.
@@ -23,7 +23,7 @@
  * @package PHPMailer
  * @author Chris Ryan
  * @author Marcus Bointon <phpmailer@synchromedia.co.uk>
- */
+*/
 class SMTP
 {
     /**
@@ -388,7 +388,7 @@ class SMTP
      * @param string $workstation The auth workstation for NTLM
      * @param null|OAuth $OAuth An optional OAuth instance (@see PHPMailerOAuth)
      * @return bool True if successfully authenticated.* @access public
-     */
+    */
     public function authenticate(
         $username,
         $password,

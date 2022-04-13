@@ -236,6 +236,8 @@ class User
         } else {
             echo "not inserted ❌";
         }
+    }
+
     // this function gets the user id
     public static function getUserById(int $id)
     {

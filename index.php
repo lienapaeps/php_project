@@ -118,6 +118,7 @@ function getUser($id)
                             </div>
                             <div class="card-right">
                                 <a href="#" class="card-link"><i class="far fa-heart"></i> 101</a>
+                                <a href="#" class="card-link"><i class="far fa-comment"></i> 101</a>
                                 <a href="#" class="card-link"><i class="fas fa-eye"></i> 101</a>
                             </div>
                         </div>

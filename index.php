@@ -62,32 +62,6 @@ function getUser($id)
     </div>
 
     <main class="dashboard container">
-        <!--
-        <ul class="nav nav-pills pb-4 my-4 overflow-scroll flex-nowrap justify-content-md-center">
-            <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">All</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">Animation</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">Branding</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">Illustration</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">Mobile</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link text-nowrap">Product Design</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">Webdesign</a>
-            </li>
-        </ul>
-        -->
-
         <?php if ($loggedin) : ?>
             <h1>Je bent ingelogd</h1>
         <?php else : ?>

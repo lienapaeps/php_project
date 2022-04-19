@@ -273,10 +273,6 @@ a:hover {
     text-align: left;
 }
 
-.form__title {
-    font-size: 1.5em;
-}
-
 .form__link {
     text-align: center;
 }
@@ -289,6 +285,7 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
     font-family: blaakblack, museo-sans, sans-serif;
     font-size: 2.5em;
     color: var(--IMD_Blue);
+    text-align: center;
 }
 
 .form-check-input:checked {

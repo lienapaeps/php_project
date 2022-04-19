@@ -29,7 +29,8 @@ if (!empty($_POST)) {
     }
 }
 
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>

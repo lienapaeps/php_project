@@ -17,7 +17,7 @@ class Project
     public static function countProjects()
     {
         $conn = DB::getConnection();
-        $statement = $conn->prepare("select count(id) as id from projects");
+        $statement = $conn->prepare("select count(id) as id from projects"); // 100
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }

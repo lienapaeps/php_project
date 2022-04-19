@@ -21,6 +21,9 @@ $count = Project::countProjects();
 $total = $count[0]["id"];
 $pages = ceil($total / $limit);
 
+$previous = $page - 1;
+$next = $page + 1;
+
 // gets the username from project
 function getUser($id)
 {
@@ -131,17 +134,17 @@ function getUser($id)
                 <?php endforeach; ?>
             </div>
             <!-- page navigation -->
-            <div>
+            <div class="m-4">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            <a class="page-link" href="index.php?page=<?php $previous; ?>" tabindex="-1">Previous</a>
                         </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <?php for ($i = 1; $i <= $pages; $i++) : ?>
+                            <li class="page-item"><a class="page-link" href="index.php?page=<?php $i; ?>"><?php $i; ?></a></li>
+                        <?php endfor; ?>
                         <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
+                            <a class="page-link" href="index.php?page=<?php $next; ?>">Next</a>
                         </li>
                     </ul>
                 </nav>

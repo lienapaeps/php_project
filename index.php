@@ -1,22 +1,22 @@
 <?php
-include_once("bootstrap.php");
+    include_once("bootstrap.php");
 
-session_start();
+    session_start();
 
-if (isset($_SESSION["user"])) {
-    $loggedin = true;
-} else {
-    $loggedin = false;
-}
+    if (isset($_SESSION["user"])) {
+        $loggedin = true;
+    } else {
+        $loggedin = false;
+    }
 
-$projects = Project::getAll();
+    $projects = Project::getAll();
 
-function getUser($id)
-{
-    $user = User::getUserById($id);
-    $name = $user["username"];
-    return $name;
-}
+    function getUser($id)
+    {
+        $user = User::getUserById($id);
+        $name = $user["username"];
+        return $name;
+    }
 
 ?><!DOCTYPE html>
 <html lang="en">

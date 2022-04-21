@@ -1,4 +1,4 @@
-<header class="px-4 py-2">
+<header>
     <nav class="navbar navbar-expand-lg mb-3">
         <div class="container-fluid">
             <a href="index.php" class="navbar-brand"><h3 class="logo">Vibar</h3></a>

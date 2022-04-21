@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | Vibar</title>
+
+    <!-- links to css and scripts -->
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- Fontawesome icons -->
+    <script src="https://kit.fontawesome.com/d5a678d06c.js" crossorigin="anonymous"></script>
+    <!-- Own CSS file -->
+    <link rel="stylesheet" href="css/style.css?<?php echo time() ?>">
+    <!-- Font: Museo Sans -->
+    <link rel="stylesheet" href="https://use.typekit.net/kkv2fee.css">
+
+    <link rel="shortcut icon" href="./assets/img/Favicon.png" type="image/x-icon">
+</head>
+
+<body>
+    <?php include_once("header.inc.php"); ?>
+
+    <form action="" method="post" class="mx-4 mb-4">
+        <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-4" style="height: 80px; width: 80px;">
+        <input class="" type="file" name="profile_picture" id="profile_picture" style="max-width: 150px;">
+        <!-- button href="#" type="submit" class="btn btn-primary me-2">Upload new picture</button> -->
+        <button href="#" type="submit" class="btn btn-outline-secondary">Delete</button>
+    </form>
+
+    <form action="" method="POST" class="mx-4">
+        <div class="mb-3 form-floating">
+            <input type="email" name="profile_email" id="profile_email" class="form-control" placeholder="name@example.be" required">
+            <label for="profile_email">Second email adress</label>
+        </div>
+
+        <div class="mb-3 form-floating">
+            <textarea type="email" name="profile_email" id="profile_email" class="form-control" placeholder="Type here your bio"" style="height: 100px"></textarea>
+            <label for="profile_email">Bio</label>
+        </div>
+    </form>
+
+    <?php include_once("footer.inc.php"); ?>
+</body>
+</html>

@@ -248,7 +248,6 @@ class User
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-<<<<<<< HEAD
     public static function getUserId($username)
     {
         $conn = DB::getConnection();
@@ -257,7 +256,4 @@ class User
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
-=======
-
->>>>>>> rixlocal
 }

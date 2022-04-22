@@ -3,8 +3,6 @@ include_once("bootstrap.php");
 
 session_start();
 
-var_dump($_SESSION['user']);
-
 // variable loggedin is used to see if user is logged in or not
 if (isset($_SESSION["user"])) {
     $loggedin = true;

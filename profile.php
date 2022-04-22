@@ -79,16 +79,13 @@
                 <?php endif; ?>
                 </div>
                 <div class="profile__mainInfo ">
-<<<<<<< HEAD
-                    <div class="profile__username mb-2"><h1>Josefien Jacobs</h1></div>
-                    <div class="profile__course mb-2"><span>Interactive Multimedia Design</span></div>
+                <div class="profile__username"><h1><?php     echo $user["username"]; ?></h1></div>
+                    <div class="profile__course"><span>Interactive Multimedia Design</span></div>
+                    <?php if( $key === $_SESSION["user"]["id"]): ?>
                     <div class="profile__edit">
-                        <a href="/Dev4-Joris/php_project/account/profile-edit.php" class="btn btn-outline-secondary">Edit Profile</a>
+                        <a href="profile-edit.php" class="btn btn-outline-secondary">Edit Profile</a>
                     </div>
-=======
-                    <div class="profile__username"><h1><?php     echo $user["username"]; ?></h1></div>
-                    <div class="profile__course"><span>Interactive Multimedia Design <?php  ?></span></div>
->>>>>>> rixlocal
+                    <?php endif; ?>
                 </div>
                 <div class="edit_button"></div>
             </div>
@@ -112,7 +109,6 @@
                 <div class="profile__infos">
                     <div class="profile__info description-area">
                         <h2>Who am I?</h2>
-                        <p class="profile__description"><?php     var_dump($_SESSION); ?></p>
                         <p class="profile__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, est quae aliquam ipsa error recusandae, nobis dicta sed repellendus ea odit veniam quibusdam sit, doloremque deserunt delectus perferendis optio non!</p>
                     </div>
                     <div class="profile__info extra-area">

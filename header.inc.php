@@ -28,7 +28,7 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a href="/Dev4-Joris/php_project/" class="nav-link">Home</a>
+                            <a href="index.php" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
                             <a href="profile.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="nav-link">Profile</a>                        </li>

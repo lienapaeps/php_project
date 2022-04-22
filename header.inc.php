@@ -10,9 +10,6 @@
                     <p class="me-2 fw-bolder hide-mobile">Username</p>
                     <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-2" style="height: 30px; width: 30px;">
                 </button>
-                <button type="button" class="btn btn-primary">
-                    <a href="projectForm.php">Upload project</a>
-                </button>
             </div>
 
             <button class="navbar-toggler ms-2 order-first" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -36,11 +33,15 @@
                         <li class="nav-item">
                             <a href="/Dev4-Joris/php_project/profile.php" class="nav-link">Profile</a>
                         </li>
-                        <li><hr class="dropdown-divider mb-3"></li>
+                        <li>
+                            <hr class="dropdown-divider mb-3">
+                        </li>
                         <li class="nav-item">
                             <a href="#" class="fw-bold nav-link">Upload a project</a>
                         </li>
-                        <li><hr class="dropdown-divider mb-3"></li>
+                        <li>
+                            <hr class="dropdown-divider mb-3">
+                        </li>
                     </ul>
                     <form class="d-flex mt-xs-3" action="" method="get">
                         <input class="form-control me-2" type="search" name="searchbar" id="searchbar" placeholder="Search" aria-label="Search">
@@ -69,24 +70,28 @@
 
         <div class="offcanvas-body">
             <ul class="list-group">
-                <?php if($loggedin === false): ?>
-                <li class="list-group-item border-0 mx-0 p-0 mb-3">
-                    <a href="/Dev4-Joris/php_project/login.php" class="btn btn-outline-primary d-block">Log in</a>
-                </li>
-                <?php else: ?>
-                <!-- If logged in => show this -->
-                <li class="list-group-item border-0 mx-0 p-0 mb-3">
-                    <a href="/Dev4-Joris/php_project/profile.php" class="d-block text-center">Profile</a>
-                </li>
-                <li><hr class="dropdown-divider mb-3"></li>
-                <li class="list-group-item border-0 mx-0 p-0 mb-3">
-                    <a href="/Dev4-Joris/php_project/account/profile-edit.php" class="d-block text-center">Edit Profile</a>
-                </li>
-                <li><hr class="dropdown-divider mb-3"></li>
-                <li class="list-group-item border-0 mx-0 p-0 mb-3">
-                    <a href="/Dev4-Joris/php_project/logout.php" class="btn btn-outline-primary d-block">Log out</a>
-                </li>
-                <!-- If logged in => show this -->
+                <?php if ($loggedin === false) : ?>
+                    <li class="list-group-item border-0 mx-0 p-0 mb-3">
+                        <a href="/Dev4-Joris/php_project/login.php" class="btn btn-outline-primary d-block">Log in</a>
+                    </li>
+                <?php else : ?>
+                    <!-- If logged in => show this -->
+                    <li class="list-group-item border-0 mx-0 p-0 mb-3">
+                        <a href="/Dev4-Joris/php_project/profile.php" class="d-block text-center">Profile</a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider mb-3">
+                    </li>
+                    <li class="list-group-item border-0 mx-0 p-0 mb-3">
+                        <a href="/Dev4-Joris/php_project/account/profile-edit.php" class="d-block text-center">Edit Profile</a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider mb-3">
+                    </li>
+                    <li class="list-group-item border-0 mx-0 p-0 mb-3">
+                        <a href="/Dev4-Joris/php_project/logout.php" class="btn btn-outline-primary d-block">Log out</a>
+                    </li>
+                    <!-- If logged in => show this -->
                 <?php endif; ?>
             </ul>
         </div>

@@ -1,24 +1,8 @@
 <?php
-    include_once("bootstrap.php");
+include_once("bootstrap.php");
 
-    session_start();
+session_start();
 
-<<<<<<< HEAD
-    if (isset($_SESSION["user"])) {
-        $loggedin = true;
-    } else {
-        $loggedin = false;
-    }
-
-    $projects = Project::getAll();
-
-    function getUser($id)
-    {
-        $user = User::getUserById($id);
-        $name = $user["username"];
-        return $name;
-    }
-=======
 var_dump($_SESSION['user']);
 
 // variable loggedin is used to see if user is logged in or not
@@ -53,9 +37,9 @@ function getUser($id)
     $name = $user["username"];
     return $name;
 }
->>>>>>> liena
 
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -104,7 +88,7 @@ function getUser($id)
             <div class="card bg-light rounded-3 d-flex justify-content-center text-center my-3" style="max-width: 24rem; height: 24rem;">
                 <p>There is no content to show yet.</p>
             </div>
-        <!-- end empty state -->
+            <!-- end empty state -->
 
         <?php else : ?>
             <div class="card-group gap-3">
@@ -129,10 +113,6 @@ function getUser($id)
                     </div>
                 <?php endforeach; ?>
             </div>
-<<<<<<< HEAD
-        <?php endif; ?>
-
-=======
             <!-- page navigation -->
             <div class="m-4">
                 <nav aria-label="Page navigation example">
@@ -162,7 +142,6 @@ function getUser($id)
             </div>
 
         <?php endif; ?>
->>>>>>> liena
     </main>
 
     <?php include_once("footer.inc.php"); ?>

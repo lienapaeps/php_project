@@ -141,16 +141,25 @@ function getUser($id)
             <div class="m-4">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="index.php?page=<?php $previous; ?>" tabindex="-1">Previous</a>
+                        <li class="page-item 
+                        <?php if ($page <= 1) {
+                            echo "disabled";
+                        }; ?>">
+                            <a class="page-link" href="index.php?page=<?php echo $previous; ?>" tabindex="-1">Previous</a>
                         </li>
                         <?php for ($i = 1; $i <= $pages; $i++) : ?>
-                            <li class="page-item">
+                            <li class="page-item 
+                            <?php if ($page == $i) {
+                                echo "active";
+                            }; ?>">
                                 <a class="page-link" href="index.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
                             </li>
                         <?php endfor; ?>
-                        <li class="page-item">
-                            <a class="page-link" href="index.php?page=<?php $next; ?>">Next</a>
+                        <li class="page-item 
+                        <?php if ($page >= $pages) {
+                            echo "disabled";
+                        }; ?>">
+                            <a class="page-link" href="index.php?page=<?php echo $next; ?>">Next</a>
                         </li>
                     </ul>
                 </nav>
@@ -160,7 +169,7 @@ function getUser($id)
     </main>
 
     <?php include_once("footer.inc.php"); ?>
-
+    <script src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 

@@ -35,7 +35,7 @@
                         </li>
                         <li><hr class="dropdown-divider mb-3"></li>
                         <li class="nav-item">
-                            <a href="#" class="fw-bold">Upload a project</a>
+                            <a href="#" class="fw-bold nav-link">Upload a project</a>
                         </li>
                         <li><hr class="dropdown-divider mb-3"></li>
                     </ul>

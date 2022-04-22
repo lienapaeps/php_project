@@ -23,7 +23,6 @@ $start = ($page - 1) * $limit;
 $projects = Project::getAll($start, $limit);
 $count = Project::countProjects(); // 100
 
-// $total = $count[0];
 $pages = ceil($count / $limit); // 100 / 20 = 5
 
 $previous = $page - 1;
@@ -147,7 +146,7 @@ function getUser($id)
                         </li>
                         <?php for ($i = 1; $i <= $pages; $i++) : ?>
                             <li class="page-item">
-                                <a class="page-link" href="index.php?page=<?php $i; ?>"><?php echo $i; ?></a>
+                                <a class="page-link" href="index.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
                             </li>
                         <?php endfor; ?>
                         <li class="page-item">

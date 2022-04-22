@@ -246,4 +246,13 @@ class User
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
+
+    public static function getUserId($username)
+    {
+        $conn = DB::getConnection();
+        $statement = $conn->prepare("select id from users where username = :username");
+        $statement->bindValue("username", $username);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
 }

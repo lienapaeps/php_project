@@ -3,6 +3,8 @@ include_once("bootstrap.php");
 
 session_start();
 
+var_dump($_SESSION['user']);
+
 // variable loggedin is used to see if user is logged in or not
 if (isset($_SESSION["user"])) {
     $loggedin = true;
@@ -118,7 +120,7 @@ function getUser($id)
             <div class="card-group gap-3">
                 <?php foreach ($projects as $project) : ?>
                     <div class="card">
-                        <a href="project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
+                        <a href=" project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
                             <img class="card-img" src="<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
                         </a>
                         <div class="card-body">
@@ -169,7 +171,6 @@ function getUser($id)
     </main>
 
     <?php include_once("footer.inc.php"); ?>
-    <script src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 

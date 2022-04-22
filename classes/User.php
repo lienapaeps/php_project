@@ -237,10 +237,6 @@ class User
             echo "not inserted ❌";
         }
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> f582cd1222a06738973cbba22e5312434b7dc198
     // this function gets the user id
     public static function getUserById(int $id)
     {

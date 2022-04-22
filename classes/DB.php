@@ -6,11 +6,6 @@ abstract class Db
     public static function getConnection()
     {
         if (self::$conn != null) {
-<<<<<<< HEAD
-=======
-            //echo "🚫";
-            // echo "🚫";
->>>>>>> f582cd1222a06738973cbba22e5312434b7dc198
             // connection found, return connection
             return self::$conn;
         } else {

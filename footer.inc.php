@@ -2,7 +2,7 @@
     <div class="container pt-4">
         <div class="row py-4 justify-content-between">
             <div class="col-lg-3 mb-4">
-                <a href="index.php" class="d-inline-flex align-items-center mb-2 fs-3 text-decoration-none">
+                <a href="/Dev4-Joris/php_project/index.php" class="d-inline-flex align-items-center mb-2 fs-3 text-decoration-none">
                     <strong class="logo">Vibar</strong>
                 </a>
                 <p><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi ad totam rem necessitatibus dignissimos quidem minus, obcaecati quia quibusdam laborum tempore odio.</small></p>
@@ -17,8 +17,8 @@
             <div class="col-6 col-lg-2 offset-lg-1 mb-2">
                 <h5 class="menu-title">Links</h5>
                 <ul class="list-unstyled">
-                    <li class="mb-2"><a class="text-decoration-none" href="index.php">Home</a></li>
-                    <li class="mb-2"><a class="text-decoration-none" href="profile.php">Profile</a></li>
+                    <li class="mb-2"><a class="text-decoration-none" href="/Dev4-Joris/php_project/index.php">Home</a></li>
+                    <li class="mb-2"><a class="text-decoration-none" href="/Dev4-Joris/php_project/profile.php">Profile</a></li>
                     <li class="mb-2"><a class="text-decoration-none" href="https://thomasmore.be" target="_blank">Thomas More</a></li>
                 </ul>
             </div>

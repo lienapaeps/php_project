@@ -9,6 +9,7 @@ class User
     private $backupEmail;
     private $password;
 
+
     // get value of username
     public function getUsername()
     {
@@ -98,11 +99,11 @@ class User
     public function canLogin($email, $password)
     {
         $conn = DB::getConnection();
-        $statement = $conn->prepare("select * from users where email = :email OR backup_email = :backup_email");
+        $statement = $conn->prepare("select * from users where email = :email OR backup_email = :email");
         $statement->bindValue(":email", $email);
 
-        $backupEmail = $this->getBackupEmail();
-        $statement->bindValue(":backup_email", $backupEmail);
+        // $backupEmail = $this->getBackupEmail();
+        // $statement->bindValue(":backup_email", $backupEmail);
 
         $statement->execute();
         $user = $statement->fetch(PDO::FETCH_ASSOC);
@@ -247,6 +248,7 @@ class User
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
+<<<<<<< HEAD
     public static function getUserId($username)
     {
         $conn = DB::getConnection();
@@ -255,4 +257,7 @@ class User
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
+=======
+
+>>>>>>> rixlocal
 }

@@ -31,8 +31,7 @@
                             <a href="/Dev4-Joris/php_project/" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/Dev4-Joris/php_project/profile.php" class="nav-link">Profile</a>
-                        </li>
+                            <a href="profile.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="nav-link">Profile</a>                        </li>
                         <li>
                             <hr class="dropdown-divider mb-3">
                         </li>
@@ -41,6 +40,7 @@
                         </li>
                         <li>
                             <hr class="dropdown-divider mb-3">
+                            
                         </li>
                     </ul>
                     <form class="d-flex mt-xs-3" action="" method="get">

@@ -101,7 +101,7 @@ function getUser($id)
                             <div class="card-text card-left">
                                 <h5 class="card-title"><?php echo htmlspecialchars($project["title"]); ?></h5>
                                 <?php if ($loggedin) : ?>
-                                    <a href="profile.php?filteruser=<?php echo htmlspecialchars($project["user_id"]); ?>" class="card-link"><?php echo htmlspecialchars(getUser($project["user_id"])); ?></a>
+                                    <a href="profile.php?profile=<?php echo htmlspecialchars($project["user_id"]); ?>" class="card-link"><?php echo htmlspecialchars(getUser($project["user_id"])); ?></a>
                                 <?php endif; ?>
                             </div>
                             <div class="card-text card-right">

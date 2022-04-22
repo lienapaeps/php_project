@@ -11,15 +11,20 @@ if (isset($_SESSION["user"])) {
 }
 
 // show a limited number of projects, in our case the limit is 20
+if (!isset($_GET["page"])) {
+    $page = 1;
+} else {
+    $page = $_GET["page"];
+}
+
 $limit = 20;
-$page = isset($_GET["page"]) ? $_GET["page"] : 1;
 $start = ($page - 1) * $limit;
 
 $projects = Project::getAll($start, $limit);
-$count = Project::countProjects();
+$count = Project::countProjects(); // 100
 
-$total = $count[0]["id"];
-$pages = ceil($total / $limit);
+// $total = $count[0];
+$pages = ceil($count / $limit); // 100 / 20 = 5
 
 $previous = $page - 1;
 $next = $page + 1;
@@ -118,13 +123,13 @@ function getUser($id)
                             <img class="card-img" src="<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
                         </a>
                         <div class="card-body">
-                            <div class="card-left">
+                            <div class="card-text card-left">
                                 <h5 class="card-title"><?php echo htmlspecialchars($project["title"]); ?></h5>
                                 <?php if ($loggedin) : ?>
                                     <a href="profile.php?filteruser=<?php echo htmlspecialchars($project["user_id"]); ?>" class="card-link"><?php echo htmlspecialchars(getUser($project["user_id"])); ?></a>
                                 <?php endif; ?>
                             </div>
-                            <div class="card-right">
+                            <div class="card-text card-right">
                                 <a href="#" class="card-link"><i class="bi bi-heart"></i> 101</a>
                                 <a href="#" class="card-link"><i class="bi bi-chat"></i> 101</a>
                                 <a href="#" class="card-link"><i class="bi bi-eye"></i> 101</a>
@@ -141,7 +146,9 @@ function getUser($id)
                             <a class="page-link" href="index.php?page=<?php $previous; ?>" tabindex="-1">Previous</a>
                         </li>
                         <?php for ($i = 1; $i <= $pages; $i++) : ?>
-                            <li class="page-item"><a class="page-link" href="index.php?page=<?php $i; ?>"><?php $i; ?></a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="index.php?page=<?php $i; ?>"><?php echo $i; ?></a>
+                            </li>
                         <?php endfor; ?>
                         <li class="page-item">
                             <a class="page-link" href="index.php?page=<?php $next; ?>">Next</a>

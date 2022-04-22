@@ -18,7 +18,9 @@
     --IMD_Pink: #FCD7F7;
     --White: #FFF;
     --Grey: #EEEEEE;
+    --box-shadow-grey: rgba(17,17,17,0.1);
     --Black: #111;
+    --box-shadow: 5px 5px 7px 0px;
 }
 
 h1, h2 {
@@ -211,7 +213,7 @@ a:hover {
     background-color: var(--IMD_Pink);
     height: 48px;
     margin: 1.6em 0;
-    box-shadow: 0px 10px 20px 0px rgba(17,17,17, 0.3);
+    box-shadow: 3px 5px 5px 0px rgba(224, 168, 220, 0.3);
     border-radius: 2px;
     display: flex;
     flex-direction: row;
@@ -273,10 +275,6 @@ a:hover {
     text-align: left;
 }
 
-.form__title {
-    font-size: 1.5em;
-}
-
 .form__link {
     text-align: center;
 }
@@ -289,6 +287,7 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
     font-family: blaakblack, museo-sans, sans-serif;
     font-size: 2.5em;
     color: var(--IMD_Blue);
+    text-align: center;
 }
 
 .form-check-input:checked {
@@ -390,7 +389,9 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
     }
 
     .profile__info {
-        box-shadow: 0px 10px 20px 0px rgba(17,17,17, 0.3);
+        /*box-shadow: 0px 10px 20px 0px rgba(17,17,17, 0.3);*/
+        box-shadow: var(--box-shadow) var(--box-shadow-grey);
+        border: 1px solid var(--box-shadow-grey);
         border-radius: 2px;
         padding: 24px;
         margin: 0;
@@ -404,7 +405,6 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
 
     }
     
-
 }
 
 /* X-Large devices (large desktops, 1200px and up) */

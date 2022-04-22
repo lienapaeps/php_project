@@ -12,7 +12,7 @@ $passwordReqestId = isset($_GET['id']) ? trim($_GET['id']) : '';
 
 //echo $userId;
 
-$statement = $conn->prepare('select id, user_id, date_requested from password_reset_request where user_id = :user_id and id = :id and token = :token');
+$statement = $conn->prepare('select * from password_reset_request where user_id = :user_id and id = :id and token = :token');
 
 $statement->bindValue(":user_id", $userId);
 $statement->bindValue(":id", $passwordReqestId);
@@ -29,14 +29,30 @@ $result = $statement->fetch(PDO::FETCH_ASSOC);
 //var_dump($result);
 
 if (!empty($result)) {
-    // check if link is expired
+    //create veriable for time expired
     $delta = 86400; // 24 hours (60sec * 60min * 24hrs)
 
-    if(strtotime($result['date_requested']) + (60 * 60 * 24) < time()) {
+    // check if link is expired (24u)
+    if(strtotime($result['date_requested']) + (60 * 60 * 24) > time()) {
+        // check if link is already opened
+        if($result['link_opened'] == 0) {
+            // update link_opened to 1
+            $statement = $conn->prepare('update password_reset_request set link_opened = 1 where user_id = :user_id and id = :id and token = :token');
+            $statement->bindValue(":user_id", $userId);
+            $statement->bindValue(":id", $passwordReqestId);
+            $statement->bindValue(":token", $token);
+            $statement->execute();
+
+            $_SESSION['user_id'] = $userId;
+        }
+        else {
+            header("Location: forgotPassword.php?error=Link-already-opened");
+        }
+    }
+    else {
         //throw new Exception('Link expired');    
         header("Location: forgotPassword.php?error=Link-expired");
     }
-    $_SESSION['user_id'] = $userId;
 }
 else {
     $error = "Invalid password reset request";

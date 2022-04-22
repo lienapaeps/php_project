@@ -8,31 +8,33 @@
         $userEmail = $user->findByEmail($email);
 
         if ($userEmail) {
+            date_default_timezone_set('Etc/UTC');
             $linkToSend = $user->passwordReset($userEmail['id']);
             // echo $linkToSend;
 
-            // sending mail with PHPMailer
-            $mail = new PHPMailer(true);
-            
-            $smtpPort = 25;
+            $smtpPort = 587;
             $mailSubject = "Hello " . $userEmail['username'] . ", you have requested a password reset";
-            $mailAdress = $userEmail['email'];
+            $mailAdress = $_POST['email'];
             $mailUser = $userEmail['username'];
 
-            //$mail->isSMTP();
-            $mail->isSendmail();
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-            $mail->Host = 'localhost';
-            $mail->Port = $smtpPort;
-            $mail->SMTPAuth = true;
-            $mail->isHTML(true);
+            // sending mail with PHPMailer
+            $mail = new PHPMailer;
+            // $mail->isSendmail();
+            $mail->isSMTP();
+            $mail->setFrom('vibar.thomasmore@gmail.com', 'Vibar');
             $mail->addAddress($mailAdress, $mailUser);
-            $mail->isHTML(true);
             $mail->Subject = $mailSubject;
             $mail->Body = '<a href="' . $linkToSend . '">Reset your password</a>';
             $mail->AltBody = 'Copy and paste this link into your browser: ' . $linkToSend;
 
-            $mail->setFrom('from@example.com', 'Mailer');
+            // $mail->SMTPDebug = SMTP::DEBUG_CONNECTION;
+            $mail->Host = 'tls://smtp.gmail.com';
+            $mail->Port = $smtpPort;
+            $mail->SMTPSecure = 'tls';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'vibar.thomasmore@gmail.com';
+            $mail->Password = 'vibar.thomasmore07';
+            $mail->isHTML(true);
 
             if(!$mail->send()) {
                 echo 'Message could not be sent.';
@@ -76,7 +78,7 @@
 </head>
 
 <body>
-    <?php if (isset($_GET['error']) == "Link-expired"): ?>
+    <?php if (isset($_GET['error']) == "Link-expired" || isset($_GET['error']) == "Link-already-opened"): ?>
     <div class="alert alert-danger" role="alert">
         <strong>Error!</strong> The link has expired. Enter your email below for a new link
     </div>

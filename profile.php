@@ -64,8 +64,11 @@
                     <img onclick="showForm" src="<?php echo $target; ?>" alt="profile image" class="profile__image">
                 </div>
                 <div class="profile__mainInfo ">
-                    <div class="profile__username"><h1>Josefien Jacobs</h1></div>
-                    <div class="profile__course"><span>Interactive Multimedia Design</span></div>
+                    <div class="profile__username mb-2"><h1>Josefien Jacobs</h1></div>
+                    <div class="profile__course mb-2"><span>Interactive Multimedia Design</span></div>
+                    <div class="profile__edit">
+                        <a href="/Dev4-Joris/php_project/account/profile-edit.php" class="btn btn-outline-secondary">Edit Profile</a>
+                    </div>
                 </div>
                 <div class="edit_button"></div>
             </div>

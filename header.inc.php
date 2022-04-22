@@ -31,7 +31,7 @@
                             <a href="index.php" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="profile.php" class="nav-link">Profile</a>
+                            <a href="profile.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="nav-link">Profile</a>
                         </li>
                     </ul>
                     <form class="d-flex mt-xs-3" action="" method="get">

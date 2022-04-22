@@ -5,8 +5,6 @@ if (!empty($_POST)) {
     try {
         $user = new User();
 
-        $email = "";
-
         if (str_ends_with($_POST['email'], "@student.thomasmore.be") && str_ends_with($_POST['email'], "@thomasmore.be")) {
             $user->setEmail($_POST['email']);
             $email = $user->getEmail();
@@ -21,7 +19,8 @@ if (!empty($_POST)) {
 
         if ($user->canLogin($email, $password)) {
             session_start();
-            $_SESSION['user'] = $user;
+            //$_SESSION['user'] = $user;
+            $_SESSION['user'] = $user->findByEmail($email);
             header("Location: index.php");
         }
     } catch (Throwable $e) {

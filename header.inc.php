@@ -10,6 +10,9 @@
                     <p class="me-2 fw-bolder hide-mobile">Username</p>
                     <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-2" style="height: 30px; width: 30px;">
                 </button>
+                <button type="button" class="btn btn-primary">
+                    <a href="projectForm.php">Upload project</a>
+                </button>
             </div>
 
             <button class="navbar-toggler ms-2 order-first" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">

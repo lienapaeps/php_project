@@ -3,6 +3,7 @@
 
     session_start();
 
+<<<<<<< HEAD
     if (isset($_SESSION["user"])) {
         $loggedin = true;
     } else {
@@ -17,6 +18,42 @@
         $name = $user["username"];
         return $name;
     }
+=======
+var_dump($_SESSION['user']);
+
+// variable loggedin is used to see if user is logged in or not
+if (isset($_SESSION["user"])) {
+    $loggedin = true;
+} else {
+    $loggedin = false;
+}
+
+// show a limited number of projects, in our case the limit is 20
+if (!isset($_GET["page"])) {
+    $page = 1;
+} else {
+    $page = $_GET["page"];
+}
+
+$limit = 20;
+$start = ($page - 1) * $limit;
+
+$projects = Project::getAll($start, $limit);
+$count = Project::countProjects(); // 100
+
+$pages = ceil($count / $limit); // 100 / 20 = 5
+
+$previous = $page - 1;
+$next = $page + 1;
+
+// gets the username from project
+function getUser($id)
+{
+    $user = User::getUserById($id);
+    $name = $user["username"];
+    return $name;
+}
+>>>>>>> liena
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -25,20 +62,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP Project</title>
-
-    <!-- links to css and scripts -->
-    <!-- Bootstrap -->
+    <title>Profile Name</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <!-- Fontawesome icons -->
     <script src="https://kit.fontawesome.com/d5a678d06c.js" crossorigin="anonymous"></script>
     <!-- Own CSS file -->
     <link rel="stylesheet" href="css/style.css?<?php echo time() ?>">
-    <!-- Font: Museo Sans -->
-    <link rel="stylesheet" href="https://use.typekit.net/kkv2fee.css">
-
-    <link rel="shortcut icon" href="./assets/img/Favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -79,31 +110,62 @@
             <div class="card-group gap-3">
                 <?php foreach ($projects as $project) : ?>
                     <div class="card">
-                        <a href="project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
+                        <a href=" project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
                             <img class="card-img" src="<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
                         </a>
                         <div class="card-body">
-                            <div class="card-left">
+                            <div class="card-text card-left">
                                 <h5 class="card-title"><?php echo htmlspecialchars($project["title"]); ?></h5>
                                 <?php if ($loggedin) : ?>
                                     <a href="profile.php?filteruser=<?php echo htmlspecialchars($project["user_id"]); ?>" class="card-link"><?php echo htmlspecialchars(getUser($project["user_id"])); ?></a>
                                 <?php endif; ?>
                             </div>
-                            <div class="card-right">
-                                <a href="#" class="card-link"><i class="far fa-heart"></i> 101</a>
-                                <a href="#" class="card-link"><i class="far fa-comment"></i> 101</a>
-                                <a href="#" class="card-link"><i class="fas fa-eye"></i> 101</a>
+                            <div class="card-text card-right">
+                                <a href="#" class="card-link"><i class="bi bi-heart"></i> 101</a>
+                                <a href="#" class="card-link"><i class="bi bi-chat"></i> 101</a>
+                                <a href="#" class="card-link"><i class="bi bi-eye"></i> 101</a>
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
+<<<<<<< HEAD
         <?php endif; ?>
 
+=======
+            <!-- page navigation -->
+            <div class="m-4">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item 
+                        <?php if ($page <= 1) {
+                            echo "disabled";
+                        }; ?>">
+                            <a class="page-link" href="index.php?page=<?php echo $previous; ?>" tabindex="-1">Previous</a>
+                        </li>
+                        <?php for ($i = 1; $i <= $pages; $i++) : ?>
+                            <li class="page-item 
+                            <?php if ($page == $i) {
+                                echo "active";
+                            }; ?>">
+                                <a class="page-link" href="index.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                            </li>
+                        <?php endfor; ?>
+                        <li class="page-item 
+                        <?php if ($page >= $pages) {
+                            echo "disabled";
+                        }; ?>">
+                            <a class="page-link" href="index.php?page=<?php echo $next; ?>">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        <?php endif; ?>
+>>>>>>> liena
     </main>
 
     <?php include_once("footer.inc.php"); ?>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 

@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg mb-3">
         <div class="container-fluid">
-            <a href="/Dev4-Joris/php_project/index.php" class="navbar-brand">
+            <a href="index.php" class="navbar-brand">
                 <h3 class="logo">Vibar</h3>
             </a>
 
@@ -31,7 +31,8 @@
                             <a href="index.php" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="profile.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="nav-link">Profile</a>                        </li>
+                            <a href="profile.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="nav-link">Profile</a>
+                        </li>
                         <li>
                             <hr class="dropdown-divider mb-3">
                         </li>
@@ -40,7 +41,7 @@
                         </li>
                         <li>
                             <hr class="dropdown-divider mb-3">
-                            
+
                         </li>
                     </ul>
                     <form class="d-flex mt-xs-3" action="" method="get">
@@ -59,7 +60,7 @@
     <div id="offcanvasUser" class="offcanvas offcanvas-end" tabindex="-1" aria-labelledby="offcanvasUserLabel" style="visibility: hidden;" aria-modal="true" role="dialog">
         <div class="offcanvas-header">
             <!-- <h3 id="offcanvasUserLabel" class="offcanvas-title">Offcanvas-title</h3> -->
-            <a href="/Dev4-Joris/php_project/profile.php" class="offcanvas-title d-flex align-content-center">
+            <a href="profile.php" class="offcanvas-title d-flex align-content-center">
                 <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-2" style="height: 40px; width: 40px;">
                 <h4 class="me-2 fw-bolder align-self-end">
                     <?php echo "Username"; ?>
@@ -72,24 +73,24 @@
             <ul class="list-group">
                 <?php if ($loggedin === false) : ?>
                     <li class="list-group-item border-0 mx-0 p-0 mb-3">
-                        <a href="/Dev4-Joris/php_project/login.php" class="btn btn-outline-primary d-block">Log in</a>
+                        <a href="login.php" class="btn btn-outline-primary d-block">Log in</a>
                     </li>
                 <?php else : ?>
                     <!-- If logged in => show this -->
                     <li class="list-group-item border-0 mx-0 p-0 mb-3">
-                        <a href="/Dev4-Joris/php_project/profile.php" class="d-block text-center">Profile</a>
+                        <a href="profile.php" class="d-block text-center">Profile</a>
                     </li>
                     <li>
                         <hr class="dropdown-divider mb-3">
                     </li>
                     <li class="list-group-item border-0 mx-0 p-0 mb-3">
-                        <a href="/Dev4-Joris/php_project/account/profile-edit.php" class="d-block text-center">Edit Profile</a>
+                        <a href="account/profile-edit.php" class="d-block text-center">Edit Profile</a>
                     </li>
                     <li>
                         <hr class="dropdown-divider mb-3">
                     </li>
                     <li class="list-group-item border-0 mx-0 p-0 mb-3">
-                        <a href="/Dev4-Joris/php_project/logout.php" class="btn btn-outline-primary d-block">Log out</a>
+                        <a href="logout.php" class="btn btn-outline-primary d-block">Log out</a>
                     </li>
                     <!-- If logged in => show this -->
                 <?php endif; ?>

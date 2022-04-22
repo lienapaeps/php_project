@@ -228,7 +228,7 @@ class User
 
         $passwordRequestId = $conn->lastInsertId();
 
-        if($inserted) {
+        if ($inserted) {
             // echo "inserted ✅";
             $verifyScript = "http://localhost:8888/Dev4-Joris/php_project/resetPassword.php";
             $linkToSend = $verifyScript . '?uid=' . $userId . '&id=' . $passwordRequestId . '&token=' . $token;
@@ -237,7 +237,10 @@ class User
             echo "not inserted ❌";
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> f582cd1222a06738973cbba22e5312434b7dc198
     // this function gets the user id
     public static function getUserById(int $id)
     {

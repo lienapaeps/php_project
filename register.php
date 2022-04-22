@@ -19,7 +19,7 @@ if (!empty($_POST)) {
         $user->register();
 
         session_start();
-        $_SESSION['user'] = $user->getUsername();
+        $_SESSION['user'] = $user;
         header("Location: index.php");
     } catch (Throwable $e) {
         $error = $e->getMessage();

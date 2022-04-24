@@ -49,11 +49,26 @@ if (!empty($_POST)) {
 
 </head>
 
-<body>
+<body class="register-grid">
 
-    <section class="register__form">
+    <header class="bg-pink">
+        <nav class="navbar px-3 justify-content-center">
+            <a href="/Dev4-Joris/php_project/index.php" class="navbar-brand">
+                <h3 class="logo text-center">Vibar</h3>
+            </a>
+        </nav>
+    </header>
 
-        <h1 class="form__title">Register to Vibar</h1>
+    <section class="register-header">
+        <h1 class="logo fs-1 hide-desktop">Register to Vibar</h1>
+        <div class="register-header__banner">
+            <img src="./assets/img/home_text.png" alt="img text IMD branding" class="register-header__banner__textimg">
+        </div>
+    </section>
+
+    <section class="register__form mb-8">
+
+        <h1 class="form__title hide-mobile">Register to Vibar</h1>
 
         <?php if (isset($error)) : ?>
             <div class="alert alert-danger"><?php echo $error; ?></div>

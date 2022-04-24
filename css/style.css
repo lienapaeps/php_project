@@ -91,6 +91,10 @@ a:hover {
     background-color: var(--IMD_Green);
 }
 
+.bg-pink {
+    background-color: var(--IMD_Pink);
+}
+
 .logo {
     font-family: 'blaakBlack', museo-sans, sans-serif;
     font-size: 1.3em;
@@ -274,9 +278,9 @@ a:hover {
 .reset__password__form,
 .forgot__password__form {
     background-color: var(--White);
-    padding: 2em;
+    padding: 0 2em;
     border-radius: .5em;
-    margin: 4em 2em 0 2em;
+    margin: 2em 2em 0 2em;
 }
 
 .form__link__password {
@@ -310,6 +314,27 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
 
 .arrow__back i {
     margin-bottom: .6em;
+}
+
+/* STYLE FOR LOGIN PAGE */
+.login-header, .register-header {
+    background-color: var(--IMD_Pink);
+    padding: 1em 2em;
+}
+
+.login-header__banner, .register-header__banner {
+    position: relative;
+    background: url(../assets/img/home_banner.png) no-repeat bottom center;
+    background-size: contain;
+    min-height: 40vh;
+}
+
+.login-header__banner__textimg, .register-header__banner__textimg {
+    position: absolute;
+    width: 35%;
+    max-width: 200px;
+    left: 50%;
+    top: 5%;
 }
 
 /* STYLE FOR PROJECTS */
@@ -495,6 +520,47 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
 
     .hide-desktop {
         display: none;
+    }
+
+    .register-grid, .login-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 58px calc(100vh - 58px);
+        height: 100vh;
+    }
+
+    .register-grid>header, .login-grid>header { 
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+        background-color: var(--White);
+    }
+
+    .register-grid>header>nav>a.navbar-brand {
+        margin: 0;
+    }
+
+    .register-header, .login-header {
+        grid-column: 1/2;
+        grid-row: 2/3;
+        height: 100%;
+    }
+
+    .register__form, .signin__form {
+        grid-column: 2/3;
+        grid-row: 2/3;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .form__title {
+        justify-content: center;
+    }
+
+    .login-header__banner, .register-header__banner {
+        background-size: contain;
+        background-position: center;
+        height: 100%;
     }
 
 }

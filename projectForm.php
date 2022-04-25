@@ -26,7 +26,33 @@ session_start();
     <?php include_once("header.inc.php"); ?>
 
     <main class="dashboard container">
+        <h1>Upload your project</h1>
 
+        <form action="" method="POST" class="mx-4">
+
+            <!-- cover img  -->
+            <!-- img -->
+            <div class="mb-3">
+                <label for="formFileMultiple" class="form-label">Browse images</label>
+                <input class="form-control" type="file" id="formFileMultiple" multiple>
+            </div>
+            <!-- title  -->
+            <div class="mb-3 form-floating">
+                <input type="text" name="project_title" id="project_title" class="form-control" placeholder="Type here your title" required">
+                <label for="project_title">Project title</label>
+            </div>
+
+            <div class="mb-3 form-floating">
+                <textarea type="text" name="project_description" id="project_description" class="form-control" placeholder="Type here your description"" style=" height: 100px"></textarea>
+                <label for="project_description">Description</label>
+            </div>
+            <!-- tags  -->
+            <div class="mb-3 form-floating">
+                <input type="text" name="project_tags" id="project_tags" class="form-control" placeholder="Type here your title" required">
+                <label for="project_tags">Tags</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
     </main>
 
     <?php include_once("footer.inc.php"); ?>

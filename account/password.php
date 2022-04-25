@@ -22,7 +22,7 @@
 <body>
     <?php include_once("../header.inc.php"); ?>
 
-    <div class="px-4" style="margin-bottom: 8rem;">
+    <div class="px-4 profile-edit__grid" style="margin-bottom: 8rem;">
         <div class="profile-edit__header container-fluid d-flex mb-8">
             <div class="profile-edit__header__picture">
                 <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-4" style="height: 80px; width: 80px;">
@@ -43,9 +43,20 @@
             <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuLink">
                 <li><a class="dropdown-item" href="profile-edit.php">Edit Profile</a></li>
                 <li><a class="dropdown-item active" href="password.php">Password</a></li>
-                <li><a class="dropdown-item" href="#">Social Profiles</a></li>
+                <li><a class="dropdown-item" href="social-profiles.php">Social Profiles</a></li>
             </ul>
         </div>
+
+        <aside class="hide-mobile">
+            <div>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item"><a class="nav-link" href="profile-edit.php">Edit Profile</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="password.php">Password</a></li>
+                    <li class="nav-item"><a class="nav-link" href="social-profiles.php">Social Profiles</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-danger">Delete Account</a></li>
+                </ul>
+            </div>
+        </aside>
 
         <form action="" method="POST" class="mb-8">
             <div class="mb-4 form-floating">

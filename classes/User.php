@@ -8,7 +8,40 @@ class User
     private $email;
     private $backupEmail;
     private $password;
+    private $course;
+    private $bio;
+    private $profileImage;
 
+    public function setProfileImage($profileImage)
+    {
+        $this->profileImage = $profileImage;
+        return $this;
+    }
+
+    public function getProfileImage()
+    {
+        return $this->profileImage;
+    }
+        
+    public function setCourse($course)
+    {
+        $this->course = $course;
+
+        return $this;
+    }
+
+    public function getCourse()
+    {
+        return $this->course;
+    }
+
+    public function setBio($bio) {
+        $this->bio = $bio;
+    }
+
+    public function getBio() {
+        return $this->bio;
+    }
 
     // get value of username
     public function getUsername()
@@ -256,4 +289,5 @@ class User
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
+
 }

@@ -149,7 +149,7 @@ a:hover {
 }
 
 .profile__imageBox {
-    margin: 2em 16px 0 0; 
+    margin: 2em 0 0 0; 
     border-radius: 2px;
     width: 160px;
     height: 160px;
@@ -177,9 +177,8 @@ a:hover {
     overflow: hidden;
 }
 
-.profile__imageBox:hover {
-    border: solid 3px var(--IMD_Blue_Dark);
-    cursor: pointer;
+.profile__image__uploadLabel {
+    display: inline-block;
 }
 
 .profile__mainInfo {

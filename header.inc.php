@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg mb-3">
         <div class="container-fluid">
-            <a href="/Dev4-Joris/php_project/index.php" class="navbar-brand">
+            <a href="index.php" class="navbar-brand">
                 <h3 class="logo">Vibar</h3>
             </a>
 

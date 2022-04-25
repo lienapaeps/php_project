@@ -1,3 +1,12 @@
+<?php
+// variable loggedin is used to see if user is logged in or not
+if (isset($_SESSION["user"])) {
+    $loggedin = true;
+} else {
+    $loggedin = false;
+}
+?>
+
 <header>
     <nav class="navbar navbar-expand-lg mb-3">
         <div class="container-fluid">
@@ -31,7 +40,9 @@
                             <a href="index.php" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="profile.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="nav-link">Profile</a>
+                            <?php if ($loggedin) : ?>
+                                <a href="profile.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="nav-link">Profile</a>
+                            <?php endif; ?>
                         </li>
                         <li>
                             <hr class="dropdown-divider mb-3">

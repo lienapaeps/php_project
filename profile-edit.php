@@ -69,7 +69,7 @@
         </div>
         <div class="ms-4 mb-3 form-group profile__image__uploadLabel">
             <?php if(!empty($uploadStatusMsg)): ?>
-                <label for="profileImgUpload"><?php echo $uploadStatusMsg ?></label>
+                <label for="profileImgUpload" class="alert alert-danger mt-2"><?php echo $uploadStatusMsg ?></label>
             <?php endif; ?>
             <input type="file" name="profileImgUpload" id="profileImgUpload" class="image-form__upload form-control">
         </div>

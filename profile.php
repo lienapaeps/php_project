@@ -1,6 +1,5 @@
 <?php
     include_once("bootstrap.php");
-    include_once("ProfileImgForm.inc.php");
 
     session_start();
 
@@ -19,6 +18,7 @@
 
     $user = User::getUserById($key);
 
+    include_once("ProfileImgForm.inc.php");
 
 ?><!DOCTYPE html>
 <html lang="en">

@@ -54,7 +54,7 @@
 
 <body style="min-height: 100vh;" class="login-grid">
 
-    <?php $loggedin = false; include_once("header.inc.php"); ?>
+    <?php include_once("header.inc.php"); ?>
 
     <section class="login-header">
         <h1 class="logo fs-1 hide-desktop">Log in</h1>
@@ -98,7 +98,7 @@
             </form>
 
             <div class="mt-3 form__link">
-                <a href="register.php">Don't have a account? <span>Register now</span></a>
+                <a href="register.php">Don't have a account? <u>Register now</u></a>
             </div>
         </div>
     </section>

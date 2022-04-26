@@ -8,25 +8,12 @@ class User
     private $email;
     private $backupEmail;
     private $password;
-    private $course;
+    public $course;
     private $bio;
-    private $profileImage;
-
-    public function setProfileImage($profileImage)
-    {
-        $this->profileImage = $profileImage;
-        return $this;
-    }
-
-    public function getProfileImage()
-    {
-        return $this->profileImage;
-    }
         
     public function setCourse($course)
     {
         $this->course = $course;
-
         return $this;
     }
 
@@ -288,6 +275,17 @@ class User
         $statement->bindValue("username", $username);
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function save(){
+        $conn = DB::getConnection();
+        $statement = $conn->prepare("update users set username = :username, email = :email, backup_email = :backup_email, course = :course, bio = :bio where id = :id");
+        $statement->bindValue(":username", $this->username);
+        $statement->bindValue(":email", $this->email);
+        $statement->bindValue(":backup_email", $this->backupEmail);
+        $statement->bindValue(":course", $this->course);
+        $statement->bindValue(":bio", $this->bio);
+        return $statement->execute();
     }
 
 }

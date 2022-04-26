@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_reporting(E_ALL);
     include_once("bootstrap.php");
 
     session_start();
@@ -18,18 +19,17 @@
 
     $user = User::getUserById($key);
 
+    if(!empty($_POST["submitProfileInfo"])){
+        $conn = DB::getConnection();
+        $statement = $conn->prepare("insert into users (backup_email, course, bio) values (:backup, :course, :bio) where id = :id;");
+        $statement->bindValue(":id", $key);
+        $statement->bindValue(":bio", $_POST["bio"]);
+        $statement->bindValue(":course", $_POST["course"]);
+        $statement->bindValue(":backup", $_POST["profile_email"]);
+        return $statement->execute();
+    }
+    
     include_once("ProfileImgForm.inc.php");
-
-    // try {
-    //     if(!empty($_POST)) {
-    //         $user->setBio($_POST["bio"]);
-    //         $user->setCourse($_POST["course"]);
-    //         $user->setBackupMail($_POST["backup"]);    
-    //     }
-
-    // } catch (Exception $e) {
-    //     echo $e->getMessage();
-    // }
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -78,7 +78,7 @@
         <a href="#" name="deleteImageUpload" class=" btn btn-outline-secondary">Delete</a>
     </form>
 
-    <form action="profile.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" method="POST" class="m-4">
+    <form action="" method="POST" class="m-4">
         <div class="mb-3 form-floating">
             <input type="text" name="course" id="course" class="form-control"  value="<?php echo $user["course"]; ?>">
             <label for="course">Your study programme</label>
@@ -99,6 +99,6 @@
 
     </form>
 
-    <?php include_once("footer.inc.php"); ?>
+    <?php include_once("footer.inc.php"); //profile.php?profile=<?php echo $_SESSION['user']['id'];?>
 </body>
 </html>

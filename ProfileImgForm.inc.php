@@ -28,6 +28,7 @@
                 $stmt->bindValue(":profileImg", $target);
                 $stmt->bindValue(":userId", $_SESSION["user"]["id"]);
                 $stmt->execute($target);
+                header("Location: profile.php");
                 if($stmt){
                     $uploadStatusMsg = "The file ". basename( $_FILES["profileImgUpload"]["name"]). " has been uploaded.";
                 } else {

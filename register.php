@@ -38,8 +38,9 @@ if (!empty($_POST)) {
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <!-- Fontawesome icons -->
-    <script src="https://kit.fontawesome.com/d5a678d06c.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <!-- Own CSS file -->
     <link rel="stylesheet" href="css/style.css?<?php echo time() ?>">
     <!-- Font: Museo Sans -->
@@ -49,11 +50,26 @@ if (!empty($_POST)) {
 
 </head>
 
-<body>
+<body class="register-grid">
 
-    <section class="register__form">
+    <header class="bg-pink">
+        <nav class="navbar px-3 justify-content-center">
+            <a href="/Dev4-Joris/php_project/index.php" class="navbar-brand">
+                <h3 class="logo text-center">Vibar</h3>
+            </a>
+        </nav>
+    </header>
 
-        <h1 class="form__title">Register to Vibar</h1>
+    <section class="register-header">
+        <h1 class="logo fs-1 hide-desktop">Register to Vibar</h1>
+        <div class="register-header__banner">
+            <img src="./assets/img/home_text.png" alt="img text IMD branding" class="register-header__banner__textimg">
+        </div>
+    </section>
+
+    <section class="register__form mb-8">
+
+        <h1 class="form__title hide-mobile">Register to Vibar</h1>
 
         <?php if (isset($error)) : ?>
             <div class="alert alert-danger"><?php echo $error; ?></div>
@@ -87,7 +103,7 @@ if (!empty($_POST)) {
         </form>
 
         <div class="mt-3 form__link">
-            <a href="login.php">Already have a account? <span style="text-decoration: underline;">Log in now</span></a>
+            <a href="login.php">Already have a account? <u>Log in now</u></a>
         </div>
     </section>
 

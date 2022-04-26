@@ -1,5 +1,5 @@
 <?php 
-
+    
     
 
 
@@ -30,7 +30,7 @@
 <body>
     <?php include_once("../header.inc.php"); ?>
 
-    <div class="px-4" style="margin-bottom: 8rem;">
+    <div class="px-4 profile-edit__grid" style="margin-bottom: 8rem;">
         <div class="profile-edit__header container-fluid d-flex mb-8">
             <div class="profile-edit__header__picture">
                 <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-4" style="height: 80px; width: 80px;">
@@ -45,15 +45,26 @@
         <!-- DROPDOWN MENU -->
         <div class="dropdown mb-8 d-block w-100 hide-desktop">
             <a class="btn btn-outline-secondary dropdown-toggle w-100" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                <?php echo "Edit Profile" ?>
+                Edit Profile
             </a>
 
             <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuLink">
                 <li><a class="dropdown-item active" href="profile-edit.php">Edit Profile</a></li>
                 <li><a class="dropdown-item" href="password.php">Password</a></li>
-                <li><a class="dropdown-item" href="#">Social Profiles</a></li>
+                <li><a class="dropdown-item" href="social-profiles.php">Social Profiles</a></li>
             </ul>
         </div>
+
+        <aside class="hide-mobile">
+            <div>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item"><a class="nav-link active" href="profile-edit.php">Edit Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="password.php">Password</a></li>
+                    <li class="nav-item"><a class="nav-link" href="social-profiles.php">Social Profiles</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-danger">Delete Account</a></li>
+                </ul>
+            </div>
+        </aside>
 
         <!-- Aparte form to change profile picture -->
         <form action="" method="post" class=" mb-4">
@@ -69,22 +80,22 @@
         <!-- Form to change profile information -->
         <form action="" method="POST" class=" mb-8">
             <div class="mb-4 form-floating">
-                <input type="email" name="profile_username" id="profile_username" class="form-control" placeholder="Joris Hens" required">
-                <label for="profile_username">Username</label>
+                <input type="email" name="profile_username" id="profile_username" class="form-control" placeholder="Joris Hens">
+                <label for="profile_username"><?php echo "Current username"; ?></label>
             </div>
 
             <div class="mb-4 form-floating">
-                <input type="email" name="profile_emailTM" id="profile_emailTM" class="form-control" placeholder="r-nummer@student.thomasmore.be"">
-                <label for="profile_emailTM"><?php echo "r-nummer@student.thomasmore.be"; ?></label>
+                <input type="email" name="profile_emailTM" id="profile_emailTM" class="form-control" placeholder="r-nummer@student.thomasmore.be" disabled readonly>
+                <label for="profile_emailTM"><?php echo "r-nummer@student.thomasmore.be of current student"; ?></label>
             </div>
 
             <div class="mb-4 form-floating">
-                <input type="email" name="profile_email" id="profile_email" class="form-control" placeholder="name@example.be" required">
+                <input type="email" name="profile_email" id="profile_email" class="form-control" placeholder="name@example.be">
                 <label for="profile_email">Second email adress</label>
             </div>
 
             <div class="mb-4 form-floating">
-                <textarea type="email" name="profile_email" id="profile_email" class="form-control" placeholder="Type here your bio"" style="height: 100px"></textarea>
+                <textarea type="email" name="profile_email" id="profile_email" class="form-control" placeholder="Type here your bio" style="height: 100px"></textarea>
                 <label for="profile_email">Bio</label>
             </div>
 

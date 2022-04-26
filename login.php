@@ -50,13 +50,20 @@
     <title>IMD Showcase | Log in</title>
 </head>
 
-<body class="bg-green">
+<body style="min-height: 100vh;" class="login-grid">
 
-    <?php $loggedin = false; include_once("header.inc.php"); ?>
+    <?php include_once("header.inc.php"); ?>
 
-    <section class="signin__form">
+    <section class="login-header">
+        <h1 class="logo fs-1 hide-desktop">Log in</h1>
+        <div class="login-header__banner">
+            <img src="./assets/img/home_text.png" alt="img text IMD branding" class="login-header__banner__textimg">
+        </div>
+    </section>
 
-        <h1 class="form__title mb-3">Log in to Vibar</h1>
+    <section class="signin__form mb-3">
+
+        <h1 class="form__title mb-3 hide-mobile">Log in</h1>
 
         <?php if (isset($error)) : ?>
             <div class="alert alert-danger"><?php echo $error ?></div>
@@ -89,7 +96,7 @@
             </form>
 
             <div class="mt-3 form__link">
-                <a href="register.php">Don't have a account? <span>Register now</span></a>
+                <a href="register.php">Don't have a account? <u>Register now</u></a>
             </div>
         </div>
     </section>

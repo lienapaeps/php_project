@@ -2,7 +2,7 @@
     <div class="container pt-4">
         <div class="row py-4 justify-content-between">
             <div class="col-lg-3 mb-4">
-                <a href="/Dev4-Joris/php_project/index.php" class="d-inline-flex align-items-center mb-2 fs-3 text-decoration-none">
+                <a href="index.php" class="d-inline-flex align-items-center mb-2 fs-3 text-decoration-none">
                     <strong class="logo">Vibar</strong>
                 </a>
                 <p><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi ad totam rem necessitatibus dignissimos quidem minus, obcaecati quia quibusdam laborum tempore odio.</small></p>

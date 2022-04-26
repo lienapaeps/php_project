@@ -75,11 +75,6 @@ function getUser($id)
     </div>
 
     <main class="dashboard container">
-        <?php if ($loggedin) : ?>
-            <h1>Je bent ingelogd</h1>
-        <?php else : ?>
-            <h1>Je bent NIET ingelogd</h1>
-        <?php endif; ?>
 
         <!-- empty state -->
         <?php if (empty($projects)) : ?>
@@ -89,28 +84,23 @@ function getUser($id)
             <!-- end empty state -->
 
         <?php else : ?>
-            <div class="card-group gap-3">
-                <?php foreach ($projects as $project) : ?>
-                    <div class="card">
+            <?php foreach ($projects as $project) : ?>
+                <div class="card-deck">
+                    <div class="card" style="max-width: 24rem; height: 24em;">
                         <a href=" project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
                             <img class="card-img" src="<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
                         </a>
                         <div class="card-body">
-                            <div class="card-text card-left">
-                                <h5 class="card-title"><?php echo htmlspecialchars($project["title"]); ?></h5>
-                                <?php if ($loggedin) : ?>
-                                    <a href="profile.php?profile=<?php echo htmlspecialchars($project["user_id"]); ?>" class="card-link"><?php echo htmlspecialchars(getUser($project["user_id"])); ?></a>
-                                <?php endif; ?>
-                            </div>
-                            <div class="card-text card-right">
-                                <a href="#" class="card-link"><i class="bi bi-heart"></i> 101</a>
-                                <a href="#" class="card-link"><i class="bi bi-chat"></i> 101</a>
-                                <a href="#" class="card-link"><i class="bi bi-eye"></i> 101</a>
-                            </div>
+                            <h5 class="card-title"><?php echo htmlspecialchars($project["title"]); ?></h5>
+                            <a href="profile.php?profile=<?php echo htmlspecialchars($project["user_id"]); ?>" class="card-link"><?php echo htmlspecialchars(getUser($project["user_id"])); ?></a>
+                            <a href="#" class="card-link"><i class="bi bi-heart"></i> 101</a>
+                            <a href="#" class="card-link"><i class="bi bi-chat"></i> 101</a>
+                            <a href="#" class="card-link"><i class="bi bi-eye"></i> 101</a>
                         </div>
                     </div>
-                <?php endforeach; ?>
-            </div>
+                </div>
+            <?php endforeach; ?>
+
             <!-- page navigation -->
             <div class="m-4">
                 <nav aria-label="Page navigation example">
@@ -138,7 +128,6 @@ function getUser($id)
                     </ul>
                 </nav>
             </div>
-
         <?php endif; ?>
     </main>
 

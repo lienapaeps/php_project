@@ -83,7 +83,7 @@
                     <div class="profile__course"><span>Interactive Multimedia Design</span></div>
                     <?php if( $key === $_SESSION["user"]["id"]): ?>
                     <div class="profile__edit">
-                        <a href="profile-edit.php" class="btn btn-outline-secondary">Edit Profile</a>
+                        <a href="account/profile-edit.php" class="btn btn-outline-secondary">Edit Profile</a>
                     </div>
                     <?php endif; ?>
                 </div>

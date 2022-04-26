@@ -17,7 +17,7 @@ if (!isset($_GET["page"])) {
     $page = $_GET["page"];
 }
 
-$limit = 20;
+$limit = 18;
 $start = ($page - 1) * $limit;
 
 $projects = Project::getAll($start, $limit);

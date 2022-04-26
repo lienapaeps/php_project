@@ -8,7 +8,27 @@ class User
     private $email;
     private $backupEmail;
     private $password;
+    public $course;
+    private $bio;
+        
+    public function setCourse($course)
+    {
+        $this->course = $course;
+        return $this;
+    }
 
+    public function getCourse()
+    {
+        return $this->course;
+    }
+
+    public function setBio($bio) {
+        $this->bio = $bio;
+    }
+
+    public function getBio() {
+        return $this->bio;
+    }
 
     // get value of username
     public function getUsername()
@@ -256,4 +276,16 @@ class User
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function save(){
+        $conn = DB::getConnection();
+        $statement = $conn->prepare("update users set username = :username, email = :email, backup_email = :backup_email, course = :course, bio = :bio where id = :id");
+        $statement->bindValue(":username", $this->username);
+        $statement->bindValue(":email", $this->email);
+        $statement->bindValue(":backup_email", $this->backupEmail);
+        $statement->bindValue(":course", $this->course);
+        $statement->bindValue(":bio", $this->bio);
+        return $statement->execute();
+    }
+
 }

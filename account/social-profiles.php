@@ -19,7 +19,7 @@
 
     <link rel="shortcut icon" href="../assets/img/Favicon.png" type="image/x-icon">
 </head>
-<body>
+<body class="social-profiles__body">
     <?php include_once("../header.inc.php"); ?>
 
     <div class="px-4 profile-edit__grid" style="margin-bottom: 8rem;">
@@ -58,7 +58,7 @@
             </div>
         </aside>
 
-        <form action="" method="POST" class="mb-8">
+        <form action="" method="POST" class="mb-8 social-profiles__form">
             <div class="form-floating input-group mb-3">
                 <span class="input-group-text" style="width: 35px;"><i class="bi bi-facebook"></i></span>
                 <input type="text" class="form-control" name="Facebook" placeholder="Facebook">

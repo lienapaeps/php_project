@@ -107,6 +107,10 @@ a:hover {
     margin-bottom: 3rem !important;
 }
 
+.social-profiles__form>div>label {
+    z-index: 100;
+}
+
 /* STYLE FOR PROFILE PAGE */
 
 .profile__body {

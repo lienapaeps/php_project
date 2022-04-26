@@ -1,6 +1,9 @@
 <?php
 include_once("bootstrap.php");
 
+// https://www.positronx.io/php-multiple-files-images-upload-in-mysql-database/
+// https://codingstatus.com/upload-multiple-files-in-mysql-database-using-php/?fbclid=IwAR0_Mik5Nkqe2vzaZwYGf9RE8ykoBHZLUCjQeiBqcuIW7qahkudlh4wjRk0
+
 //upload file to server
 if (isset($_POST['submit'])) {
     $title = $_POST['project_title'];
@@ -16,16 +19,6 @@ if (isset($_POST['submit'])) {
 
     $fileExt = explode('.', $fileName);
     $fileActualExt = strtolower(end($fileExt));
-
-    $files = $_FILES['project_imgs'];
-    $filesName = $_FILES['project_imgs']['name'];
-    $filesTmpName = $_FILES['project_imgs']['tmp_name'];
-    $filesSize = $_FILES['project_imgs']['size'];
-    $filesError = $_FILES['project_imgs']['error'];
-    $filesType = $_FILES['project_imgs']['type'];
-
-    $filesExt = explode('.', $filesName);
-    $filesActualExt = strtolower(end($filesExt));
 
     $allowed = array('jpg', 'jpeg', 'png', "mp4", "gif");
 
@@ -48,31 +41,6 @@ if (isset($_POST['submit'])) {
                 $statement->bindValue(':cover_img', $fileNameNew);
                 $statement->bindValue(':user_id', $_SESSION['user_id']);
                 $statement->bindValue(':project_content_id', );
-                $statement->execute();
-
-                header("Location: projectForm.php?uploadsuccess");
-            } else {
-                echo "Your file is too big!";
-            }
-        } else {
-            echo "There was an error uploading your file!";
-        }
-    } else {
-        echo "You cannot upload files of this type!";
-    }
-
-    //table project_content
-    if (in_array($filesActualExt, $allowed)) {
-        if ($filesError === 0) {
-            if ($filesSize < 1000000) {
-                $filesNameNew = uniqid('', true) . "." . $filesActualExt;
-                $filesDestination = 'uploads/' . $filesNameNew;
-                move_uploaded_file($filesTmpName, $filesDestination);
-
-                //query 
-                $conn = DB::getConnection();
-                $statement = $conn->prepare("insert into project_content ( url, alt, content_type ) values ( :url, :alt, :content_type )");
-
                 $statement->execute();
 
                 header("Location: projectForm.php?uploadsuccess");

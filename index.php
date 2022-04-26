@@ -84,9 +84,9 @@ function getUser($id)
             <!-- end empty state -->
 
         <?php else : ?>
-            <?php foreach ($projects as $project) : ?>
-                <div class="card-deck">
-                    <div class="card" style="max-width: 24rem; height: 24em;">
+            <div class="card-deck" >
+                <?php foreach ($projects as $project) : ?>
+                    <div class="card my-4" style="width: 24em; height: 24em;">
                         <a href=" project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
                             <img class="card-img" src="<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
                         </a>
@@ -98,8 +98,8 @@ function getUser($id)
                             <a href="#" class="card-link"><i class="bi bi-eye"></i> 101</a>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
 
             <!-- page navigation -->
             <div class="m-4">

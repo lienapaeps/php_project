@@ -28,16 +28,20 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a href="/Dev4-Joris/php_project/" class="nav-link">Home</a>
+                            <a href="index.php" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/Dev4-Joris/php_project/profile.php" class="nav-link">Profile</a>
+                            <a href="profile.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="nav-link">Profile</a>                        </li>
+                        <li>
+                            <hr class="dropdown-divider mb-3">
                         </li>
-                        <li><hr class="dropdown-divider mb-3"></li>
                         <li class="nav-item">
                             <a href="#" class="fw-bold nav-link">Upload a project</a>
                         </li>
-                        <li><hr class="dropdown-divider mb-3"></li>
+                        <li>
+                            <hr class="dropdown-divider mb-3">
+                            
+                        </li>
                     </ul>
                     <form class="d-flex mt-xs-3" action="" method="get">
                         <input class="form-control me-2" type="search" name="searchbar" id="searchbar" placeholder="Search" aria-label="Search">
@@ -66,24 +70,28 @@
 
         <div class="offcanvas-body">
             <ul class="list-group">
-                <?php if($loggedin === false): ?>
-                <li class="list-group-item border-0 mx-0 p-0 mb-3">
-                    <a href="/Dev4-Joris/php_project/login.php" class="btn btn-outline-primary d-block">Log in</a>
-                </li>
-                <?php else: ?>
-                <!-- If logged in => show this -->
-                <li class="list-group-item border-0 mx-0 p-0 mb-3">
-                    <a href="/Dev4-Joris/php_project/profile.php" class="d-block text-center">Profile</a>
-                </li>
-                <li><hr class="dropdown-divider mb-3"></li>
-                <li class="list-group-item border-0 mx-0 p-0 mb-3">
-                    <a href="/Dev4-Joris/php_project/account/profile-edit.php" class="d-block text-center">Edit Profile</a>
-                </li>
-                <li><hr class="dropdown-divider mb-3"></li>
-                <li class="list-group-item border-0 mx-0 p-0 mb-3">
-                    <a href="/Dev4-Joris/php_project/logout.php" class="btn btn-outline-primary d-block">Log out</a>
-                </li>
-                <!-- If logged in => show this -->
+                <?php if ($loggedin === false) : ?>
+                    <li class="list-group-item border-0 mx-0 p-0 mb-3">
+                        <a href="/Dev4-Joris/php_project/login.php" class="btn btn-outline-primary d-block">Log in</a>
+                    </li>
+                <?php else : ?>
+                    <!-- If logged in => show this -->
+                    <li class="list-group-item border-0 mx-0 p-0 mb-3">
+                        <a href="/Dev4-Joris/php_project/profile.php" class="d-block text-center">Profile</a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider mb-3">
+                    </li>
+                    <li class="list-group-item border-0 mx-0 p-0 mb-3">
+                        <a href="/Dev4-Joris/php_project/account/profile-edit.php" class="d-block text-center">Edit Profile</a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider mb-3">
+                    </li>
+                    <li class="list-group-item border-0 mx-0 p-0 mb-3">
+                        <a href="/Dev4-Joris/php_project/logout.php" class="btn btn-outline-primary d-block">Log out</a>
+                    </li>
+                    <!-- If logged in => show this -->
                 <?php endif; ?>
             </ul>
         </div>

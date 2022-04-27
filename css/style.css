@@ -365,8 +365,17 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
     font-family: museo-sans, sans-serif;
 }
 
+.card-img {
+    max-height: 300px;
+}
+
 /* STYLE FOR ACCOUNT SETTINGS AND CHANGING PASSWORDE, UPDATING BIO, ETC. */
 
+/* STYLE PROJECT UPLOAD */
+.imgGallery {
+    margin-left: 1em;
+    padding: 1em;
+}
 
 /* Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) {

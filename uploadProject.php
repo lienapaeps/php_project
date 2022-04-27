@@ -1,8 +1,13 @@
 <?php
 include_once("bootstrap.php");
 
+session_start();
+
 // https://www.positronx.io/php-multiple-files-images-upload-in-mysql-database/
 // https://codingstatus.com/upload-multiple-files-in-mysql-database-using-php/?fbclid=IwAR0_Mik5Nkqe2vzaZwYGf9RE8ykoBHZLUCjQeiBqcuIW7qahkudlh4wjRk0
+
+$error = "";
+$succes = "";
 
 //upload file to server
 if (isset($_POST['submit'])) {
@@ -31,26 +36,34 @@ if (isset($_POST['submit'])) {
                 move_uploaded_file($fileTmpName, $fileDestination);
 
                 //query 
+
+                // id, title, description, time, cover_img, warned, showcase, amount_views, user_id
                 $date = date('Y-m-d H:i:s');
 
                 $conn = DB::getConnection();
-                $statement = $conn->prepare("insert into projects (title, description, time, cover_img, user_id, project_content_id) values (:title, :description, :time, :cover_img, :user_id, :project_content_id)");
+                $statement = $conn->prepare("insert into projects (title, description, time, cover_img, user_id) values (:title, :description, :time, :cover_img, :user_id)");
                 $statement->bindValue(':title', $title);
                 $statement->bindValue(':description', $description);
                 $statement->bindValue(':time', $date);
                 $statement->bindValue(':cover_img', $fileNameNew);
-                $statement->bindValue(':user_id', $_SESSION['user_id']);
-                $statement->bindValue(':project_content_id', );
+                $statement->bindValue(':user_id', $_SESSION['user']['id']);
                 $statement->execute();
 
+                if ($statement) {
+                    $succes = "Project uploaded succesfully";
+                } else {
+                    $error = "Upload failed, please try again.";
+                }
+
                 header("Location: projectForm.php?uploadsuccess");
+
             } else {
-                echo "Your file is too big!";
+                $error = "Your file is too big!";
             }
         } else {
-            echo "There was an error uploading your file!";
+            $error = "There was an error uploading your file!";
         }
     } else {
-        echo "You cannot upload files of this type!";
+        $error = "You cannot upload files of this type!";
     }
 }

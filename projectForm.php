@@ -1,7 +1,6 @@
 <?php
 include_once("bootstrap.php");
-
-session_start();
+include_once("uploadProject.php");
 
 ?>
 <!DOCTYPE html>
@@ -28,27 +27,38 @@ session_start();
     <main class="dashboard container">
         <h1>Upload your project</h1>
 
+        <?php if(!empty($succes)): ?>
+            <div class="alert alert-success" role="alert">
+                <?php echo $succes; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if(!empty($error)): ?>
+            <div class="alert alert-danger" role="alert">
+                <?php echo $error; ?>
+            </div>
+        <?php endif; ?>
+
+        <div class="imgGallery">
+            <!-- image preview -->
+        </div>
+
         <form action="uploadProject.php" method="POST" enctype="multipart/form-data" class="mx-4">
 
             <!-- cover img  -->
             <div class="mb-3">
                 <label for="project_cover" class="form-label">Browse cover image</label>
-                <input class="form-control" type="file" id="project_cover" name="project_cover">
-            </div>
-            <!-- imgs -->
-            <div class="mb-3">
-                <label for="project_imgs" class="form-label">Browse images</label>
-                <input class="form-control" type="file" id="project_imgs" name="project_imgs" multiple>
+                <input class="form-control" type="file" id="project_cover" name="project_cover" required>
             </div>
             <!-- title  -->
             <div class="mb-3 form-floating">
-                <input type="text" name="project_title" id="project_title" class="form-control" placeholder="Type here your title" required">
+                <input type="text" name="project_title" id="project_title" class="form-control" placeholder="Type here your title" required>
                 <label for="project_title">Project title</label>
             </div>
             <!-- description -->
             <div class="mb-3 form-floating">
-                <textarea type="text" name="project_description" id="project_description" class="form-control" placeholder="Type here your description"" style=" height: 100px"></textarea>
-                <label for="project_description">Description</label>
+                <textarea type="text" name="project_description" id="project_description" class="form-control" placeholder="Type here your description and tags" style=" height: 200px" required></textarea>
+                <label for="project_description">Description and tags</label>
             </div>
             <button type="submit" name="submit" class="btn btn-primary">Upload</button>
         </form>
@@ -57,6 +67,22 @@ session_start();
 
     <?php include_once("footer.inc.php"); ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+        function imagePreview(fileInput) {
+            if (fileInput.files && fileInput.files[0]) {
+                var fileReader = new FileReader();
+                fileReader.onload = function (event) {
+                    $('.imgGallery').html('<img src="'+event.target.result+'" width="300" height="auto"/>');
+                };
+                fileReader.readAsDataURL(fileInput.files[0]);
+            }
+        }
+
+        $("#project_cover").change(function () {
+            imagePreview(this);
+        });
+    </script>
 </body>
 
 </html>

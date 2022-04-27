@@ -66,10 +66,12 @@ function getUser($id)
                 <h5 class="fw-normal">
                     Vibar is the most important destination to find & showcase creative work and give a voice to the design & develop students of Thomas More.
                 </h5>
+                <?php if(!$loggedin): ?>
                 <div class="hero-cta">
                     <p><small class="text-muted">No account yet?</small></p>
                     <a class="offcanvas-title btn btn-primary" href="register.php">Sign up</a>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

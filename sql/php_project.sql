@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 27, 2022 at 08:00 AM
+-- Generation Time: Apr 29, 2022 at 07:27 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -133,7 +133,7 @@ INSERT INTO `password_reset_request` (`id`, `user_id`, `date_requested`, `token`
 CREATE TABLE `projects` (
   `id` int(11) NOT NULL,
   `title` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `time` datetime DEFAULT NULL,
   `cover_img` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `warned` tinyint(1) DEFAULT NULL,
@@ -141,6 +141,21 @@ CREATE TABLE `projects` (
   `amount_views` int(11) DEFAULT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `projects`
+--
+
+INSERT INTO `projects` (`id`, `title`, `description`, `time`, `cover_img`, `warned`, `showcase`, `amount_views`, `user_id`) VALUES
+(7, 'test 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel ex vitae est finibus tristique in at mauris. Praesent pharetra finibus nibh id volutpat. Fusce tincidunt nec lectus et cursus. Nam nec malesuada urna. Morbi hendrerit eros arcu, eget imperdiet diam imperdiet sed. Integer finibus sapien eu suscipit scelerisque. Curabitur fringilla turpis sit amet urna lacinia, eu condimentum arcu aliquet. Curabitur at tellus at eros sagittis placerat nec quis tellus. In laoreet dui at ullamcorper pellentesque. Donec cursus lacinia ex in mollis. Aliquam non ligula quis metus malesuada ultrices. Nullam ut felis eget elit lacinia ultrices.', '2022-04-27 09:04:40', '62690728195bb9.77187818.jpg', NULL, NULL, NULL, 1),
+(8, 'test 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel ex vitae est finibus tristique in at mauris. Praesent pharetra finibus nibh id volutpat. Fusce tincidunt nec lectus et cursus. Nam nec malesuada urna. Morbi hendrerit eros arcu, eget imperdiet diam imperdiet sed. Integer finibus sapien eu suscipit scelerisque. Curabitur fringilla turpis sit amet urna lacinia, eu condimentum arcu aliquet. Curabitur at tellus at eros sagittis placerat nec quis tellus. In laoreet dui at ullamcorper pellentesque. Donec cursus lacinia ex in mollis. Aliquam non ligula quis metus malesuada ultrices. Nullam ut felis eget elit lacinia ultrices.', '2022-04-27 09:04:51', '62690733db66c9.89678542.jpg', NULL, NULL, NULL, 1),
+(9, 'test 3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel ex vitae est finibus tristique in at mauris. Praesent pharetra finibus nibh id volutpat. Fusce tincidunt nec lectus et cursus. Nam nec malesuada urna. Morbi hendrerit eros arcu, eget imperdiet diam imperdiet sed. Integer finibus sapien eu suscipit scelerisque. Curabitur fringilla turpis sit amet urna lacinia, eu condimentum arcu aliquet. Curabitur at tellus at eros sagittis placerat nec quis tellus. In laoreet dui at ullamcorper pellentesque. Donec cursus lacinia ex in mollis. Aliquam non ligula quis metus malesuada ultrices. Nullam ut felis eget elit lacinia ultrices.\r\n', '2022-04-27 09:04:59', '6269073b096118.54187154.jpg', NULL, NULL, NULL, 1),
+(10, 'test', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel ex vitae est finibus tristique in at mauris. Praesent pharetra finibus nibh id volutpat. Fusce tincidunt nec lectus et cursus. Nam nec malesuada urna. Morbi hendrerit eros arcu, eget imperdiet diam imperdiet sed. Integer finibus sapien eu suscipit scelerisque. Curabitur fringilla turpis sit amet urna lacinia, eu condimentum arcu aliquet. Curabitur at tellus at eros sagittis placerat nec quis tellus. In laoreet dui at ullamcorper pellentesque. Donec cursus lacinia ex in mollis. Aliquam non ligula quis metus malesuada ultrices. Nullam ut felis eget elit lacinia ultrices.', '2022-04-27 09:15:40', '626909bccb9ab7.62359308.jpg', NULL, NULL, NULL, 1),
+(11, 'hrttrezerth', 'hgrtesyd,yjthhftgfrgdfgrt', '2022-04-27 09:16:28', '626909ec172ea5.01604395.jpg', NULL, NULL, NULL, 1),
+(12, 'azertyhjk', 'azertyuk', '2022-04-27 09:18:05', '62690a4d4f0441.77202976.jpg', NULL, NULL, NULL, 1),
+(13, 'jhgfds', 'kjhgfds', '2022-04-27 09:21:35', '62690b1fdbeb13.49512025.jpg', NULL, NULL, NULL, 1),
+(14, 'testgwfxb', ',jh,ydyrhhtrdtrthgr', '2022-04-27 09:24:28', '62690bcc0a8fa7.21044081.jpg', NULL, NULL, NULL, 1),
+(15, 'dwrxtfcygvuhbijk', 'rwxdtfcygvuhbijnok,l', '2022-04-27 09:26:34', '62690c4a0bbe17.97900136.jpg', NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -292,7 +307,7 @@ ALTER TABLE `password_reset_request`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `reported`

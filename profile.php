@@ -19,6 +19,7 @@
 
     $user = User::getUserById($key);
 
+    $projects = Project::getProjectsFromUser($key);
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -103,7 +104,25 @@
                 </div>
 
                 <div class="profile__projects">
-                    <p class="nothing">No projects submitted.</p>
+                    <?php if (empty($projects)): ?>
+                        <p class="nothing">No projects submitted.</p>
+                    <?php else: ?>
+                        <div class="card-deck">
+                            <?php foreach ($projects as $project): ?>
+                                <div class="card my-4" style="width: 24em; height: 24em;">
+                                    <a href=" project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
+                                        <img class="card-img" src="uploads/<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
+                                    </a>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?php echo htmlspecialchars($project["title"]); ?></h5>
+                                        <a href="#" class="card-link"><i class="bi bi-heart"></i> 101</a>
+                                        <a href="#" class="card-link"><i class="bi bi-chat"></i> 101</a>
+                                        <a href="#" class="card-link"><i class="bi bi-eye"></i> 101</a>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 
                 <div class="profile__infos">

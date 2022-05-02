@@ -81,7 +81,11 @@
                 </div>
                 <div class="profile__mainInfo ">
                 <div class="profile__username"><h1><?php echo $user["username"]; ?></h1></div>
-                    <div class="profile__course"><span>Interactive Multimedia Design</span></div>
+                    <?php if (empty($user["course"])): ?>
+                        <div class="profile__course"><span>No course added yet.</span></div>
+                    <?php else: ?>
+                        <div class="profile__course"><span><?php echo $user["course"]; ?></span></div>
+                    <?php endif; ?>
                     <?php if( $key === $_SESSION["user"]["id"]): ?>
                     <div class="profile__edit">
                         <a href="account/profile-edit.php" class="btn btn-outline-secondary">Edit Profile</a>
@@ -128,7 +132,11 @@
                 <div class="profile__infos">
                     <div class="profile__info description-area">
                         <h2>Who am I?</h2>
-                        <p class="profile__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, est quae aliquam ipsa error recusandae, nobis dicta sed repellendus ea odit veniam quibusdam sit, doloremque deserunt delectus perferendis optio non!</p>
+                        <?php if (empty($user["bio"])): ?>
+                            <p class="profile__description">No bio added yet.</p>
+                        <?php else: ?>
+                            <p class="profile__description"><?php echo $user["bio"]; ?></p>
+                        <?php endif; ?>
                     </div>
                     <div class="profile__info extra-area">
                         <h2>Information</h2>

@@ -327,6 +327,14 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
     margin-bottom: .6em;
 }
 
+.check-error {
+    color: tomato;
+}
+
+.check-success {
+    color: forestgreen;
+}
+
 /* STYLE FOR LOGIN PAGE */
 .login-header, .register-header {
     background-color: var(--IMD_Pink);

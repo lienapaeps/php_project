@@ -79,7 +79,7 @@
                 <?php endif; ?>
                 </div>
                 <div class="profile__mainInfo ">
-                <div class="profile__username"><h1><?php     echo $user["username"]; ?></h1></div>
+                <div class="profile__username"><h1><?php echo $user["username"]; ?></h1></div>
                     <div class="profile__course"><span>Interactive Multimedia Design</span></div>
                     <?php if( $key === $_SESSION["user"]["id"]): ?>
                     <div class="profile__edit">

@@ -92,7 +92,6 @@
                     </div>
                     <?php endif; ?>
                 </div>
-                <div class="edit_button"></div>
             </div>
 
             <div class="profile__nav">

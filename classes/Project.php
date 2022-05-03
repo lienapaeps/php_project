@@ -21,4 +21,12 @@ class Project
         $statement->execute();
         return $statement->fetchColumn();
     }
+
+    public static function getById($id) {
+        $conn = DB::getConnection();
+        $statement = $conn->prepare("select * from projects where id = :id");
+        $statement->bindParam(":id", $id);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
 }

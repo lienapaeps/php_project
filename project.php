@@ -4,6 +4,16 @@
 
     session_start();
 
+    if (!isset($_GET["id"])) {
+        header("Location: index.php");
+    } else {
+        $projectId = $_GET["id"];
+        $project = Project::getById($projectId);
+        $user = User::getUserById($project["user_id"]);
+        // var_dump($project);
+        // var_dump($user);
+    }
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,31 +33,36 @@
 <body>
     <?php include_once('header.inc.php') ?>
 
-    <main class="container-md project">
-        <div class="project__header mb-3">
-            <h1 class="project__header__title mb-3">Audi e-tron GT — showcase</h1>
+    <main class="container-md project mt-4 mb-8" style="max-width: 939px;">
+        <div class="project__header my-4">
+            <h1 class="project__header__title mb-4"><?php echo $project['title']; ?></h1>
             
             <div class="project__header__user d-flex justify-content-between align-items-center">
                 <div class="d-flex">
-                    <img src="https://autotijd.be/images/audi/2021/e-tron-gt/prijzen/audi-e-tron-gt-2021-prijzen-01.jpg" alt="Profile picture" class="rounded-circle me-3" style="height: 60px; width: 60px;">
+                    <img src="<?php if(!empty($user['profile_img'])){ echo $user['profile_img'];} else{ echo "./assets/img/home_banner.png"; }; ?>" alt="Profile picture" class="rounded-circle me-3" style="height: 60px; width: 60px; object-fit: cover;">
                     <div>
-                        <h3 class="project__header__user__name">Username</h3>
+                        <h3 class="project__header__user__name"><?php echo $user['username']; ?></h3>
                         <a href="#" class="btn btn-outline-primary">Follow now</a>
                     </div>
                 </div>
 
+
                 <div class="project__header__editProject">
                     <a href="#" class="btn btn-primary">
-                        <i class="bi bi-pen me-1"></i>
+                        <i class="bi bi-pen me-2"></i>
                         Edit project
                     </a>
                 </div>
                 
             </div>
         </div>
-        <img src="https://autotijd.be/images/audi/2021/e-tron-gt/prijzen/audi-e-tron-gt-2021-prijzen-01.jpg" alt="Project main image" class="img-fluid rounded mb-3">
+
+        <div class="project__coverImg">
+            <img src="<?php echo $project['cover_img'] ?>" alt="Project main image" class="img-fluid rounded mb-3">
+        </div>
+        
         <div class="project__body">
-            Hier komt de body van het Project
+            <?php echo $project['description']; ?>
         </div>
     </main>
 

@@ -37,10 +37,10 @@
                 </div>
 
                 <div class="project__header__editProject">
-                    <div class="btn btn-primary">
+                    <a href="#" class="btn btn-primary">
                         <i class="bi bi-pen me-1"></i>
-                        <a href="#">Edit project</a>
-                    </div>
+                        Edit project
+                    </a>
                 </div>
                 
             </div>

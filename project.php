@@ -27,7 +27,7 @@
         <div class="project__header mb-3">
             <h1 class="project__header__title mb-3">Audi e-tron GT — showcase</h1>
             
-            <div class="project__header__user d-flex justify-content-between">
+            <div class="project__header__user d-flex justify-content-between align-items-center">
                 <div class="d-flex">
                     <img src="https://autotijd.be/images/audi/2021/e-tron-gt/prijzen/audi-e-tron-gt-2021-prijzen-01.jpg" alt="Profile picture" class="rounded-circle me-3" style="height: 60px; width: 60px;">
                     <div>

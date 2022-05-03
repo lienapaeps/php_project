@@ -4,8 +4,10 @@ include_once("bootstrap.php");
 
 //upload file to server
 
-$succes = "";
-$error = "";
+$error = false;
+$errorMessage = "";
+
+session_start();
 
 if (isset($_POST['submit'])) {
     $title = $_POST['project_title'];
@@ -46,22 +48,19 @@ if (isset($_POST['submit'])) {
                 $statement->bindValue(':user_id', $_SESSION['user']['id']);
                 $statement->execute();
 
-                if ($statement) {
-                    $succes = "Project uploaded succesfully";
-                } else {
-                    $error = "Upload failed, please try again.";
-                }
-
                 header("Location: projectForm.php?uploadsuccess");
 
             } else {
-                $error = "Your file is too big!";
+                $error = true;
+                $errorMessage = "Your file is too big! Try to upload a smaller file.";
             }
         } else {
-            $error = "There was an error uploading your file!";
+            $error = true;
+            $errorMessage = "There was an error uploading your file! Try again.";
         }
     } else {
-        $error = "You cannot upload files of this type!";
+        $error = true;
+        $errorMessage = "You cannot upload files of this type! Try to upload a jpg, jpeg, png, mp4 or gif file.";
     }
 }
 
@@ -92,13 +91,13 @@ if (isset($_POST['submit'])) {
 
         <?php if(isset($_GET["uploadsuccess"])): ?>
             <div class="alert alert-success" role="alert">
-                <?php echo $succes; ?>
+                <?php echo "Project uploaded succesfully!"; ?>
             </div>
         <?php endif; ?>
 
-        <?php if(!empty($error)): ?>
+        <?php if(($error)): ?>
             <div class="alert alert-danger" role="alert">
-                <?php echo $error; ?>
+                <?php echo $errorMessage; ?>
             </div>
         <?php endif; ?>
 
@@ -106,7 +105,7 @@ if (isset($_POST['submit'])) {
             <!-- image preview -->
         </div>
 
-        <form action="uploadProject.php" method="POST" enctype="multipart/form-data" class="mx-4">
+        <form action="" method="POST" enctype="multipart/form-data" class="mx-4">
 
             <!-- cover img  -->
             <div class="mb-3">

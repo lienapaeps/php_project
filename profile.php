@@ -57,7 +57,9 @@
                             <a href="account/profile-edit.php" class="btn btn-outline-secondary">Edit Profile</a>
                         </div>
                     <?php endif; ?>
+                    
                 </div>
+
             </div>
 
             <div class="profile__nav">

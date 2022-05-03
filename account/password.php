@@ -5,27 +5,27 @@
     include_once("../bootstrap.php");
     session_start();
 
-    $msg = "<div class='alert alert-primary'>Fill in current password and new password.</div>";
-    if(!empty($_POST)) {
-        try {
-            $user = new User();
-            $conn = DB::getConnection();
-            if(!empty($_POST)) {
-                $res = $conn->prepare("select * from users where id = :id");
-                $res->bindValue(":id", $_SESSION["user"]["id"]);
-                $res->execute();
-                $row = $res->fetch(PDO::FETCH_ASSOC);
-                var_dump($row);
-                if($_POST["oldPW"] == $row["password"] && $_POST["newPW"] == $row["confirmPW"] ) {
-                    $conn->prepare("UPDATE student set password= :pw' WHERE id= :id");
-                    $conn->bindValue(":id", $_SESSION["user"]["id"]);
-                    $conn->bindValue(":pw", $_POST["newPW"]);
-                    $conn->execute();
-                    $msg = "<div class='alert alert-succes'>Password changed successfully.</div>";
-                    } else {
-                     $msg = "<div class='alert alert-danger'>Password is not correct.</div>";
-                    }
-                    }
+    // $msg = "<div class='alert alert-primary'>Fill in current password and new password.</div>";
+    // if(!empty($_POST)) {
+    //     try {
+    //         $user = new User();
+    //         $conn = DB::getConnection();
+    //         if(!empty($_POST)) {
+    //             $res = $conn->prepare("select * from users where id = :id");
+    //             $res->bindValue(":id", $_SESSION["user"]["id"]);
+    //             $res->execute();
+    //             $row = $res->fetch(PDO::FETCH_ASSOC);
+    //             var_dump($row);
+    //             if($_POST["oldPW"] == $row["password"] && $_POST["newPW"] == $row["confirmPW"] ) {
+    //                 $conn->prepare("UPDATE student set password= :pw' WHERE id= :id");
+    //                 $conn->bindValue(":id", $_SESSION["user"]["id"]);
+    //                 $conn->bindValue(":pw", $_POST["newPW"]);
+    //                 $conn->execute();
+    //                 $msg = "<div class='alert alert-succes'>Password changed successfully.</div>";
+    //                 } else {
+    //                  $msg = "<div class='alert alert-danger'>Password is not correct.</div>";
+    //                 }
+    //                 }
     
             // if($_POST["oldPW"] === $pw) {
             //     if(!empty($_POST["newPW"]) === !empty($_POST["confirmPW"])) {
@@ -38,10 +38,10 @@
             //     $msg = "<div class='alert alert-danger'>Incorrect current password!</div>";
             // }
     
-        } catch (Throwable $e) {
-            $error = $e->getMessage();
-        }
-    } 
+    //     } catch (Throwable $e) {
+    //         $error = $e->getMessage();
+    //     }
+    // } 
 
 
 

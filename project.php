@@ -14,6 +14,8 @@
         // var_dump($user);
     }
 
+    var_dump($_SESSION);
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,10 +50,17 @@
 
 
                 <div class="project__header__editProject">
-                    <a href="#" class="btn btn-primary">
-                        <i class="bi bi-pen me-2"></i>
-                        Edit project
-                    </a>
+                    <?php if( $project['user_id'] == $_SESSION['user']['id'] ): ?>
+                        <a href="#" class="btn btn-primary">
+                            <i class="bi bi-pen me-2"></i>
+                            Edit project
+                        </a>
+                    <?php else: ?>
+                        <a href="#" class="btn btn-primary">
+                            <i class="bi bi-heart me-2"></i>
+                            Like
+                        </a>
+                    <?php endif; ?>
                 </div>
                 
             </div>

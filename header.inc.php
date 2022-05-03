@@ -96,7 +96,7 @@ if (isset($_SESSION["user"])) {
                 <?php else : ?>
                     <!-- If logged in => show this -->
                     <li class="list-group-item border-0 mx-0 p-0 mb-3">
-                        <a href="profile.php" class="d-block text-center">Profile</a>
+                        <a href="profile.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="d-block text-center">Profile</a>
                     </li>
                     <li>
                         <hr class="dropdown-divider mb-3">

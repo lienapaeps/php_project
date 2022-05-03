@@ -13,14 +13,14 @@
     <!-- Bootstrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <!-- Own CSS file -->
-    <link rel="stylesheet" href="../css/style.css?<?php echo time() ?>">
+    <link rel="stylesheet" href="css/style.css?<?php echo time() ?>">
     <!-- Font: Museo Sans -->
     <link rel="stylesheet" href="https://use.typekit.net/kkv2fee.css">
 
-    <link rel="shortcut icon" href="../assets/img/Favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/img/Favicon.png" type="image/x-icon">
 </head>
 <body class="social-profiles__body">
-    <?php include_once("../header.inc.php"); ?>
+    <?php include_once("header.inc.php"); ?>
 
     <div class="px-4 profile-edit__grid" style="margin-bottom: 8rem;">
         <div class="profile-edit__header container-fluid d-flex mb-8">
@@ -106,6 +106,6 @@
         </form>
     </div>
 
-    <?php include_once("../footer.inc.php"); ?>
+    <?php include_once("footer.inc.php"); ?>
 </body>
 </html>

@@ -1,12 +1,67 @@
-<?php 
-    
-    
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 
+include_once("bootstrap.php");
+session_start();
 
+$user = User::getUserById($_SESSION["user"]["id"]);
 
+$uploadStatusMsg = "";
 
-?><!DOCTYPE html>
+//upload file to server
+if (isset($_POST['submitPFP'])) {
+    $file = $_FILES['profile_picture'];
+
+    $fileName = $_FILES['profile_picture']['name'];
+    $fileTmpName = $_FILES['profile_picture']['tmp_name'];
+    $fileSize = $_FILES['profile_picture']['size'];
+    $fileError = $_FILES['profile_picture']['error'];
+    $fileType = $_FILES['profile_picture']['type'];
+
+    $fileExt = explode('.', $fileName);
+    $fileActualExt = strtolower(end($fileExt));
+
+    $allowed = array('jpg', 'jpeg', 'png', "gif");
+
+    //table projects
+    if (in_array($fileActualExt, $allowed)) {
+        if ($fileError === 0) {
+            if ($fileSize < 10000000000) {
+                $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+                $fileDestination = 'uploads/' . $fileNameNew;
+                move_uploaded_file($fileTmpName, $fileDestination);
+
+                //query
+
+                $conn = DB::getConnection();
+                $statement = $conn->prepare("UPDATE users SET profile_img = :img where id = :id");
+                $statement->bindValue(':img', $fileNameNew);
+                $statement->bindValue(':id', $_SESSION['user']['id']);
+                $statement->execute();
+
+                if ($statement) {
+                    $uploadStatusMsg = "Project uploaded succesfully";
+                } else {
+                    $uploadStatusMsg = "Sorry, there was an error uploading your file.";
+                }
+            } else {
+                $uploadStatusMsg = "Your file is too big!";
+            }
+        } else {
+            $uploadStatusMsg = "Upload failed, please try again.";
+        }
+    } else {
+        $uploadStatusMsg = "";
+    } 
+} else {
+    $uploadStatusMsg = "";
+}
+
+?>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,15 +75,15 @@
     <!-- Fontawesome icons -->
     <script src="https://kit.fontawesome.com/d5a678d06c.js" crossorigin="anonymous"></script>
     <!-- Own CSS file -->
-    <link rel="stylesheet" href="../css/style.css?<?php echo time() ?>">
+    <link rel="stylesheet" href="css/style.css?<?php echo time() ?>">
     <!-- Font: Museo Sans -->
     <link rel="stylesheet" href="https://use.typekit.net/kkv2fee.css">
 
-    <link rel="shortcut icon" href="../assets/img/Favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/img/Favicon.png" type="image/x-icon">
 </head>
 
 <body>
-    <?php include_once("../header.inc.php"); ?>
+    <?php include_once("header.inc.php"); ?>
 
     <div class="px-4 profile-edit__grid" style="margin-bottom: 8rem;">
         <div class="profile-edit__header container-fluid d-flex mb-8">
@@ -55,6 +110,7 @@
             </ul>
         </div>
 
+
         <aside class="hide-mobile">
             <div>
                 <ul class="nav nav-pills flex-column">
@@ -67,12 +123,17 @@
         </aside>
 
         <!-- Aparte form to change profile picture -->
-        <form action="" method="post" class=" mb-4">
+        <form action="" method="post" class=" mb-4" enctype="multipart/form-data">
+        <?php if($uploadStatusMsg): ?>
+            <div class="alert alert-danger" role="alert">
+                <?php echo $uploadStatusMsg; ?>
+            </div>
+        <?php endif; ?>
             <!--<img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-4" style="height: 80px; width: 80px;">-->
             <label for="profile_picture" class="mb-2">Upload here your new picture</label>
             <div class="d-flex justify-content-between">
                 <input class="" type="file" name="profile_picture" id="profile_picture">
-                <!-- button href="#" type="submit" class="btn btn-primary me-2">Upload new picture</button> -->
+                <button href="#" type="submit" name="submitPFP" class="btn btn-primary me-2">Upload new picture</button>
                 <button href="#" type="submit" class="btn btn-outline-secondary">Delete</button>
             </div>
         </form>
@@ -81,28 +142,57 @@
         <form action="" method="POST" class=" mb-8">
             <div class="mb-4 form-floating">
                 <input type="email" name="profile_username" id="profile_username" class="form-control" placeholder="Joris Hens">
-                <label for="profile_username"><?php echo "Current username"; ?></label>
+                <label for="profile_username">
+                    <?php if (!empty($_SESSION["user"]["username"])) {
+                        echo $_SESSION["user"]["username"];
+                    } else {
+                        echo "Username";
+                    }
+                    ?>
+                </label>
             </div>
 
             <div class="mb-4 form-floating">
                 <input type="email" name="profile_emailTM" id="profile_emailTM" class="form-control" placeholder="r-nummer@student.thomasmore.be" disabled readonly>
-                <label for="profile_emailTM"><?php echo "r-nummer@student.thomasmore.be of current student"; ?></label>
+                <label for="profile_emailTM">
+                    <?php if (!empty($_SESSION["user"]["email"])) {
+                        echo $_SESSION["user"]["email"];
+                    } else {
+                        echo "TM Email Adress";
+                    }
+                    ?>
+                </label>
             </div>
 
             <div class="mb-4 form-floating">
                 <input type="email" name="profile_email" id="profile_email" class="form-control" placeholder="name@example.be">
-                <label for="profile_email">Second email adress</label>
+                <label for="profile_email">
+                    <?php if (!empty($_SESSION["user"]["backup_email"])) {
+                        echo $_SESSION["user"]["backup_email"];
+                    } else {
+                        echo "Backup Email";
+                    }
+                    ?>
+                </label>
             </div>
 
             <div class="mb-4 form-floating">
                 <textarea type="email" name="profile_email" id="profile_email" class="form-control" placeholder="Type here your bio" style="height: 100px"></textarea>
-                <label for="profile_email">Bio</label>
+                <label for="profile_email">
+                    <?php if (!empty($_SESSION["user"]["bio"])) {
+                        echo $_SESSION["user"]["bio"];
+                    } else {
+                        echo "Biography";
+                    }
+                    ?>
+                </label>
             </div>
 
-            <input type="submit" value="Save Profile" class="btn btn-primary d-block w-100">
+            <input type="submit" name="submitInfo" value="Save Profile" class="btn btn-primary d-block w-100">
         </form>
     </div>
 
-    <?php include_once("../footer.inc.php"); ?>
+    <?php include_once("footer.inc.php"); ?>
 </body>
+
 </html>

@@ -10,11 +10,7 @@
         $projectId = $_GET["id"];
         $project = Project::getById($projectId);
         $user = User::getUserById($project["user_id"]);
-        // var_dump($project);
-        // var_dump($user);
     }
-
-    var_dump($_SESSION);
 
 ?><!DOCTYPE html>
 <html lang="en">

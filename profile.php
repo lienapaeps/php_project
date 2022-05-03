@@ -14,7 +14,7 @@
         $key = $_GET["profile"];
     } 
     else {
-        $key = "default";
+        $key = $_SESSION["user"]["id"];
     }
 
     $user = User::getUserById($key);

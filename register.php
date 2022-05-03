@@ -71,15 +71,11 @@ if (!empty($_POST)) {
 
         <h1 class="form__title hide-mobile">Register to Vibar</h1>
 
-        <?php if (isset($error)) : ?>
-            <div class="alert alert-danger"><?php echo $error; ?></div>
-        <?php endif; ?>
-
-        <form action="" method="POST">
+        <form id="register__form" action="" method="POST">
             <div class="mb-3 form-floating">
                 <input type="text" name="username" id="username" class="form-control" placeholder="Username" required">
                 <label for="username">Username</label>
-                <span class="check-username"></span>
+                <span class="check-username">Dit is een boodschap</span>
             </div>
 
             <div class="mb-3 form-floating">
@@ -98,7 +94,7 @@ if (!empty($_POST)) {
             </div>
 
             <div class="d-grid gap-2 mb-3">
-                <button class="btn btn-primary" type="submit">Register</button>
+                <button id="register-submit" class="btn btn-primary" type="submit">Register</button>
             </div>
 
         </form>
@@ -107,6 +103,8 @@ if (!empty($_POST)) {
             <a href="login.php">Already have a account? <u>Log in now</u></a>
         </div>
     </section>
+
+    <script src="js/app.js"></script>
 
 </body>
 

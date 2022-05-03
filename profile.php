@@ -53,11 +53,11 @@
                 <div class="profile__username"><h1><?php echo $user["username"]; ?></h1></div>
                     <div class="profile__course"><span><?php echo $user["course"]; ?></span></div>
                     <?php if( $key === $_SESSION["user"]["id"]): ?>
-                        <a href="account/profile-edit.php" class="btn btn-outline-secondary">Edit Profile</a>
-                    </div>
+                        <div class="profile__edit">
+                            <a href="account/profile-edit.php" class="btn btn-outline-secondary">Edit Profile</a>
+                        </div>
                     <?php endif; ?>
                 </div>
-                <div class="edit_button"></div>
             </div>
 
             <div class="profile__nav">

@@ -348,6 +348,13 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
 }
 
 /* STYLE FOR PROJECTS */
+.card-deck {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 .card-title {
     font-family: blaakblack, museo-sans, sans-serif;
     font-size: 1.5em;
@@ -357,8 +364,17 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
     font-family: museo-sans, sans-serif;
 }
 
+.card-img {
+    max-height: 300px;
+}
+
 /* STYLE FOR ACCOUNT SETTINGS AND CHANGING PASSWORDE, UPDATING BIO, ETC. */
 
+/* STYLE PROJECT UPLOAD */
+.imgGallery {
+    margin-left: 1em;
+    padding: 1em;
+}
 
 /* Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) {

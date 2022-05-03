@@ -17,7 +17,7 @@ if (!isset($_GET["page"])) {
     $page = $_GET["page"];
 }
 
-$limit = 20;
+$limit = 18;
 $start = ($page - 1) * $limit;
 
 $projects = Project::getAll($start, $limit);
@@ -66,10 +66,12 @@ function getUser($id)
                 <h5 class="fw-normal">
                     Vibar is the most important destination to find & showcase creative work and give a voice to the design & develop students of Thomas More.
                 </h5>
+                <?php if(!$loggedin): ?>
                 <div class="hero-cta">
                     <p><small class="text-muted">No account yet?</small></p>
                     <a class="offcanvas-title btn btn-primary" href="register.php">Sign up</a>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -84,11 +86,11 @@ function getUser($id)
             <!-- end empty state -->
 
         <?php else : ?>
-            <?php foreach ($projects as $project) : ?>
-                <div class="card-deck">
-                    <div class="card" style="max-width: 24rem; height: 24em;">
+            <div class="card-deck" >
+                <?php foreach ($projects as $project) : ?>
+                    <div class="card my-4" style="width: 24em; height: 24em;">
                         <a href=" project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
-                            <img class="card-img" src="<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
+                            <img class="card-img" src="uploads/<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
                         </a>
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($project["title"]); ?></h5>
@@ -98,8 +100,8 @@ function getUser($id)
                             <a href="#" class="card-link"><i class="bi bi-eye"></i> 101</a>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
 
             <!-- page navigation -->
             <div class="m-4">

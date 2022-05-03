@@ -53,17 +53,7 @@
                 <div class="profile__username"><h1><?php echo $user["username"]; ?></h1></div>
                     <div class="profile__course"><span><?php echo $user["course"]; ?></span></div>
                     <?php if( $key === $_SESSION["user"]["id"]): ?>
-<<<<<<< HEAD
-                    <div class="profile__edit">
-<<<<<<< HEAD
                         <a href="account/profile-edit.php" class="btn btn-outline-secondary">Edit Profile</a>
-=======
-                        <a href="profile-edit.php" class="btn btn-outline-secondary">Edit Profile</a>
->>>>>>> 6aed1547f657c34ae9977914f3679013c6e66b55
-=======
-                    <div class="profile__edit mt-2">
-                        <a href="profile-edit.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="btn btn-outline-secondary">Edit Profile</a>
->>>>>>> rixlocal
                     </div>
                     <?php endif; ?>
                 </div>

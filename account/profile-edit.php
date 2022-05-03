@@ -1,9 +1,11 @@
 <?php 
+    ini_set('display_errors', 1); ini_set('display_startup_errors', 1);
+
+    include_once("../bootstrap.php");
+    session_start();
+
+    $user = User::getUserById($_SESSION["user"]["id"]);
     
-    
-
-
-
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -81,25 +83,45 @@
         <form action="" method="POST" class=" mb-8">
             <div class="mb-4 form-floating">
                 <input type="email" name="profile_username" id="profile_username" class="form-control" placeholder="Joris Hens">
-                <label for="profile_username"><?php echo "Current username"; ?></label>
+                <label for="profile_username">
+                <?php   if(!empty($_SESSION["user"]["username"])) {
+                                echo $_SESSION["user"]["username"];
+                            } else { echo "Username";}
+                    ?>
+                </label>
             </div>
 
             <div class="mb-4 form-floating">
                 <input type="email" name="profile_emailTM" id="profile_emailTM" class="form-control" placeholder="r-nummer@student.thomasmore.be" disabled readonly>
-                <label for="profile_emailTM"><?php echo "r-nummer@student.thomasmore.be of current student"; ?></label>
+                <label for="profile_emailTM">
+                    <?php   if(!empty($_SESSION["user"]["email"])) {
+                                echo $_SESSION["user"]["email"];
+                            } else { echo "TM Email Adress";}
+                    ?>
+                </label>
             </div>
 
             <div class="mb-4 form-floating">
                 <input type="email" name="profile_email" id="profile_email" class="form-control" placeholder="name@example.be">
-                <label for="profile_email">Second email adress</label>
+                <label for="profile_email">
+                <?php   if(!empty($_SESSION["user"]["backup_email"])) {
+                                echo $_SESSION["user"]["backup_email"];
+                            } else { echo "Backup Email";}
+                    ?>
+                </label>
             </div>
 
             <div class="mb-4 form-floating">
                 <textarea type="email" name="profile_email" id="profile_email" class="form-control" placeholder="Type here your bio" style="height: 100px"></textarea>
-                <label for="profile_email">Bio</label>
+                <label for="profile_email">
+                <?php   if(!empty($_SESSION["user"]["bio"])) {
+                                echo $_SESSION["user"]["bio"];
+                            } else { echo "Biography";}
+                    ?>
+                </label>
             </div>
 
-            <input type="submit" value="Save Profile" class="btn btn-primary d-block w-100">
+            <input type="submit" name="submitInfo" value="Save Profile" class="btn btn-primary d-block w-100">
         </form>
     </div>
 

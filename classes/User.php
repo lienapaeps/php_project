@@ -172,6 +172,16 @@ class User
         return $statement->execute();
     }
 
+    public function saveUserInfo() {
+        $conn = DB::getConnection();
+        $statement = $conn->prepare("update users set course = :course, bio = :bio where email = :email, backup_email = :backup");
+        $statement->bindValue(":course", $this->course);
+        $statement->bindValue(":bio", $this->bio);
+        $statement->bindValue(":email", $this->email);
+        $statement->bindValue(":backup", $this->backupEmail);
+        return $statement->execute();
+    }
+
     // this function checks if email already excists in database
     public function checkEmail($email)
     {

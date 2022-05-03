@@ -1,4 +1,52 @@
-<!DOCTYPE html>
+<?php
+
+    ini_set('display_errors', 1); ini_set('display_startup_errors', 1);
+
+    include_once("../bootstrap.php");
+    session_start();
+
+    $msg = "<div class='alert alert-primary'>Fill in current password and new password.</div>";
+    if(!empty($_POST)) {
+        try {
+            $user = new User();
+            $conn = DB::getConnection();
+            if(!empty($_POST)) {
+                $res = $conn->prepare("select * from users where id = :id");
+                $res->bindValue(":id", $_SESSION["user"]["id"]);
+                $res->execute();
+                $row = $res->fetch(PDO::FETCH_ASSOC);
+                var_dump($row);
+                if($_POST["oldPW"] == $row["password"] && $_POST["newPW"] == $row["confirmPW"] ) {
+                    $conn->prepare("UPDATE student set password= :pw' WHERE id= :id");
+                    $conn->bindValue(":id", $_SESSION["user"]["id"]);
+                    $conn->bindValue(":pw", $_POST["newPW"]);
+                    $conn->execute();
+                    $msg = "<div class='alert alert-succes'>Password changed successfully.</div>";
+                    } else {
+                     $msg = "<div class='alert alert-danger'>Password is not correct.</div>";
+                    }
+                    }
+    
+            // if($_POST["oldPW"] === $pw) {
+            //     if(!empty($_POST["newPW"]) === !empty($_POST["confirmPW"])) {
+            //         $user->changePassword($_POST["newPW"]);
+            //         $msg = "<div class='alert alert-succes'>Password changed!</div>";
+            //     } else {
+            //         $msg = "<div class='alert alert-danger'>Passwords do not match!</div>";
+            //     }
+            // } else {
+            //     $msg = "<div class='alert alert-danger'>Incorrect current password!</div>";
+            // }
+    
+        } catch (Throwable $e) {
+            $error = $e->getMessage();
+        }
+    } 
+
+
+
+
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -57,18 +105,25 @@
                 </ul>
             </div>
         </aside>
-
         <form action="" method="POST" class="mb-8">
+            <?php echo $msg; ?>
+
+
             <div class="mb-4 form-floating">
-                <input type="email" name="profile_username" id="profile_username" class="form-control" placeholder="Joris Hens" required">
+                <input type="password" name="oldPW" id="old-pw" class="form-control" required">
                 <label for="profile_username">Old password</label>
             </div>
-
             <div class="mb-4 form-floating">
-                <input type="email" name="profile_email" id="profile_email" class="form-control" placeholder="name@example.be" required">
-                <label for="profile_email">New password</label>
+                <input type="password" name="newPW" id="new-pw" class="form-control" required">
+                <label for="new-pw">New password</label>
                 <p class="text-muted">Minimum 6 characters</p>
             </div>
+            <div class="mb-4 form-floating">
+                <input type="password" name="confirmPW" id="confirm-pw" class="form-control" required">
+                <label for="confirm-pw">Confirm new password</label>
+                <p class="text-muted">Must be the same</p>
+            </div>
+
 
             <input type="submit" value="Change Password" class="btn btn-primary d-block w-100">
         </form>

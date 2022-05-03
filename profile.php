@@ -43,8 +43,8 @@
         <section class="profile">
             <div class="profile__header">
                 <div onclick="showForm" class="profile__imageBox ">
-                <?php if(isset($_POST["submitProfileImage"])): ?>
-                    <img src="<?php echo $target; ?>" alt="profile image" style="border: none;" class="profile__image">
+                <?php if(isset($user["profile_img"])): ?>
+                    <img src="<?php echo "uploads/" . $user["profile_img"] ?>" alt="profile image" style="border: none;" class="profile__image">
                 <?php else: ?>
                     <i class="bi bi-person-bounding-box"></i>
                 <?php endif; ?>
@@ -56,9 +56,10 @@
                     <?php else: ?>
                         <div class="profile__course"><span><?php echo $user["course"]; ?></span></div>
                     <?php endif; ?>
-                    <?php if( $key === $_SESSION["user"]["id"]): ?>
+                    <?php 
+                    if( $key == $_SESSION["user"]["id"]): ?>
                         <div class="profile__edit">
-                            <a href="account/profile-edit.php" class="btn btn-outline-secondary">Edit Profile</a>
+                            <a href="profile-edit.php" class="btn btn-outline-secondary">Edit Profile</a>
                         </div>
                     <?php endif; ?>
                     

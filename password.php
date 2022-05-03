@@ -2,7 +2,7 @@
 
     ini_set('display_errors', 1); ini_set('display_startup_errors', 1);
 
-    include_once("../bootstrap.php");
+    include_once("bootstrap.php");
     session_start();
 
     // $msg = "<div class='alert alert-primary'>Fill in current password and new password.</div>";
@@ -61,14 +61,14 @@
     <!-- Fontawesome icons -->
     <script src="https://kit.fontawesome.com/d5a678d06c.js" crossorigin="anonymous"></script>
     <!-- Own CSS file -->
-    <link rel="stylesheet" href="../css/style.css?<?php echo time() ?>">
+    <link rel="stylesheet" href="css/style.css?<?php echo time() ?>">
     <!-- Font: Museo Sans -->
     <link rel="stylesheet" href="https://use.typekit.net/kkv2fee.css">
 
-    <link rel="shortcut icon" href="../assets/img/Favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/img/Favicon.png" type="image/x-icon">
 </head>
 <body>
-    <?php include_once("../header.inc.php"); ?>
+    <?php include_once("header.inc.php"); ?>
 
     <div class="px-4 profile-edit__grid" style="margin-bottom: 8rem;">
         <div class="profile-edit__header container-fluid d-flex mb-8">
@@ -129,6 +129,6 @@
         </form>
     </div>
 
-    <?php include_once("../footer.inc.php"); ?>
+    <?php include_once("footer.inc.php"); ?>
 </body>
 </html>

@@ -118,5 +118,12 @@ class Project
         //$statement->bindParam(":time", $_POST["project_time"]);
         $statement->execute();
     }
+
+    public static function deleteProject($id) {
+        $conn = DB::getConnection();
+        $statement = $conn->prepare("DELETE from projects where id = :id");
+        $statement->bindParam(":id", $id);
+        $statement->execute();
+    }
 }
 

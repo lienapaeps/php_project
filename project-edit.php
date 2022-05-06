@@ -12,6 +12,13 @@
         // code here to update the project
     }
 
+    if(isset($_GET['delete'])) {
+        if($_GET['delete'] == 'true') {
+            $delete = Project::deleteProject($projectId);
+            header("Location: profile.php");
+        }
+    }
+
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -62,8 +69,8 @@
                             <h5 class="mb-2">Are you sure that you want to delete this project?</h5>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger">Delete project!</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Oh no, cancel pleaseeee</button>
+                            <a href="./project-edit.php?id=<?php echo $project['id'] ?>&delete=true" type="button" class="btn btn-outline-danger">Delete project!</a>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Oh no, cancel pleaseeee</button>
                         </div>
                         </div>
                     </div>

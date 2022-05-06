@@ -58,6 +58,28 @@ if (isset($_POST['submitPFP'])) {
     $uploadStatusMsg = "";
 }
 
+if(isset($_POST["submitInfo"])){
+    $username = $_POST["profile_username"];
+    $backup = $_POST["profile_email"];
+    $bio = $_POST["profile_bio"];
+    $course = $_POST["profile_course"];
+
+    $conn = DB::getConnection();
+    $statement = $conn->prepare("UPDATE users SET username = :uname , backup_email = :mail, course = :course, bio = :bio where id = :id");
+    $statement->bindValue(':mail', $backup);
+    $statement->bindValue(':uname', $username);
+    $statement->bindValue(':bio', $bio);
+    $statement->bindValue(':course', $course);
+    $statement->bindValue(':id', $_SESSION['user']['id']);
+    $statement->execute();
+
+    if($statement){
+        $uploadStatusMsg = "Profile updated succesfully";
+    } else {
+        $uploadStatusMsg = "Failed to update profile.";
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -125,7 +147,7 @@ if (isset($_POST['submitPFP'])) {
         <!-- Aparte form to change profile picture -->
         <form action="" method="post" class=" mb-4" enctype="multipart/form-data">
         <?php if($uploadStatusMsg): ?>
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-secondary" role="alert">
                 <?php echo $uploadStatusMsg; ?>
             </div>
         <?php endif; ?>
@@ -147,6 +169,18 @@ if (isset($_POST['submitPFP'])) {
                         echo $_SESSION["user"]["username"];
                     } else {
                         echo "Username";
+                    }
+                    ?>
+                </label>
+            </div>
+
+            <div class="mb-4 form-floating">
+                <input type="text" name="profile_course" id="profile_course" class="form-control" placeholder="Joris Hens">
+                <label for="profile_course">
+                    <?php if (!empty($_SESSION["user"]["course"])) {
+                        echo $_SESSION["user"]["course"];
+                    } else {
+                        echo "Course";
                     }
                     ?>
                 </label>
@@ -177,8 +211,8 @@ if (isset($_POST['submitPFP'])) {
             </div>
 
             <div class="mb-4 form-floating">
-                <textarea type="email" name="profile_email" id="profile_email" class="form-control" placeholder="Type here your bio" style="height: 100px"></textarea>
-                <label for="profile_email">
+                <textarea type="email" name="profile_bio" id="profile_bio" class="form-control" placeholder="Type here your bio" style="height: 100px"></textarea>
+                <label for="profile_bio">
                     <?php if (!empty($_SESSION["user"]["bio"])) {
                         echo $_SESSION["user"]["bio"];
                     } else {

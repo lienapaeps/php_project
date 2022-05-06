@@ -48,18 +48,10 @@
 
                 <div class="project__header__editProject">
                     <?php if( $project['user_id'] == $_SESSION['user']['id'] ): ?>
-                        <div class="btn-group">
                             <a href="project-edit.php?id=<?php echo $project['id']; ?>" class="btn btn-primary">
                                 <i class="bi bi-pen me-2"></i>
                                 Edit project
-                            </a>
-
-                            <a href="#" class="btn btn-outline-danger">
-                                <i class="bi bi-trash me-2"></i>
-                                Delete project
-                            </a>
-                        </div>
-                        
+                            </a>                        
                     <?php else: ?>
                         <a href="#" class="btn btn-primary">
                             <i class="bi bi-heart me-2"></i>

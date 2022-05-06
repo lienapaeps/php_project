@@ -40,6 +40,7 @@
                     <img src="<?php if(!empty($user['profile_img'])){ echo $user['profile_img'];} else{ echo "./assets/img/home_banner.png"; }; ?>" alt="Profile picture" class="rounded-circle me-3" style="height: 60px; width: 60px; object-fit: cover;">
                     <div>
                         <h3 class="project__header__user__name"><?php echo $user['username']; ?></h3>
+
                         <a href="#" class="btn btn-outline-primary">Follow now</a>
                     </div>
                 </div>
@@ -47,10 +48,18 @@
 
                 <div class="project__header__editProject">
                     <?php if( $project['user_id'] == $_SESSION['user']['id'] ): ?>
-                        <a href="#" class="btn btn-primary">
-                            <i class="bi bi-pen me-2"></i>
-                            Edit project
-                        </a>
+                        <div class="btn-group">
+                            <a href="project-edit.php?id=<?php echo $project['id']; ?>" class="btn btn-primary">
+                                <i class="bi bi-pen me-2"></i>
+                                Edit project
+                            </a>
+
+                            <a href="#" class="btn btn-outline-danger">
+                                <i class="bi bi-trash me-2"></i>
+                                Delete project
+                            </a>
+                        </div>
+                        
                     <?php else: ?>
                         <a href="#" class="btn btn-primary">
                             <i class="bi bi-heart me-2"></i>

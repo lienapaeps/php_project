@@ -46,6 +46,10 @@ a {
     color: inherit;
 }
 
+i.bi::before {
+    line-height: 1.2;
+}
+
 .hide-mobile {
     display: none;
 }

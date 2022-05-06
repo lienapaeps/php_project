@@ -1,12 +1,16 @@
 <?php 
     include_once("bootstrap.php");
-    //include_once("ProfileImgForm.inc.php");
 
     session_start();
 
     $projectId = $_GET["id"];
     $project = Project::getById($projectId);
     $user = User::getUserById($project["user_id"]);
+
+    if(!empty($_POST)) {
+        var_dump($_POST);
+        Project::updateProject($projectId);
+    }
 
 
 ?><!DOCTYPE html>
@@ -48,7 +52,7 @@
         <form action="" method="post" class="mb-8">
             <div class="project__header my-4">
                 <div class="mb-3 form-floating">
-                    <input type="text" name="project_title" id="project_title" class="form-control form-control-lg" placeholder="Type here your title" value="<?php echo $project['title'] ?>" required>
+                    <input type="text" name="project_title" id="project_title" class="form-control form-control-lg" placeholder="Type here your title" value="<?php echo $project['title'] ?>">
                     <label for="project_title">Project Title</label>
                 </div>
             </div>
@@ -56,7 +60,7 @@
             <div class="project__coverImg">
                 <div class="mb-3">
                     <label for="project_cover" class="form-label">Update cover image</label>
-                    <input class="form-control" type="file" id="project_cover" name="project_cover" required>
+                    <input class="form-control" type="file" id="project_cover" name="project_cover" value="<?php echo $project['cover_img']; ?>">
                 </div>
                 <img src="<?php echo $project['cover_img'] ?>" alt="Project main image" class="img-fluid rounded mb-3">
             </div>

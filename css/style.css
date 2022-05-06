@@ -384,6 +384,13 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
     padding: 1em;
 }
 
+/* STYLE PROJECT DETAIL PAGE */
+.project__coverImg>img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
 /* Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     div#offcanvasNavbar {

@@ -58,7 +58,7 @@ function getUser($id)
 
     <?php include_once("header.inc.php"); ?>
 
-    <div class="container-fluid hero-empty-state py-4 border-bottom">
+    <div class="container-fluid hero-empty-state py-4">
         <div class="hero-container text-center">
             <img class="w-50 mx-auto d-block hero-image" src="https://jeffasseur-visuals.be/wp-content/uploads/2022/03/20943391-scaled.jpg" alt="Hero image">
             <div class="hero-text">
@@ -89,11 +89,13 @@ function getUser($id)
             <div class="card-deck" >
                 <?php foreach ($projects as $project) : ?>
                     <div class="card my-4" style="width: 24em; height: 24em;">
-                        <a href=" project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
-                            <img class="card-img" src="uploads/<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
+                        <a href="project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
+                            <img class="card-img" src="<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
                         </a>
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo htmlspecialchars($project["title"]); ?></h5>
+                            <a href="project.php?id=<?php echo $project['id'] ?>" class="card-title">
+                                <h5 class="card-title fs-4"><?php echo htmlspecialchars($project["title"]); ?></h5>
+                            </a>
                             <a href="profile.php?profile=<?php echo htmlspecialchars($project["user_id"]); ?>" class="card-link"><?php echo htmlspecialchars(getUser($project["user_id"])); ?></a>
                             <a href="#" class="card-link"><i class="bi bi-heart"></i> 101</a>
                             <a href="#" class="card-link"><i class="bi bi-chat"></i> 101</a>

@@ -76,7 +76,7 @@ function getUser($id)
         </div>
     </div>
 
-    <main class="dashboard container">
+    <main class="dashboard container-fluid">
 
         <!-- empty state -->
         <?php if (empty($projects)) : ?>
@@ -88,7 +88,7 @@ function getUser($id)
         <?php else : ?>
             <div class="card-deck" >
                 <?php foreach ($projects as $project) : ?>
-                    <div class="card my-4" style="width: 24em; height: 24em;">
+                    <div class="card my-4">
                         <a href="project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
                             <img class="card-img" src="<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
                         </a>

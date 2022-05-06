@@ -1,6 +1,6 @@
 <?php 
     include_once("bootstrap.php");
-    include_once("ProfileImgForm.inc.php");
+    //include_once("ProfileImgForm.inc.php");
 
     session_start();
 

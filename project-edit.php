@@ -8,15 +8,15 @@
     $user = User::getUserById($project["user_id"]);
 
     if(!empty($_POST)) {
-        var_dump($_POST);
-        Project::updateProject($projectId);
+        //var_dump($_POST);
+        // code here to update the project
     }
 
 
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project-edit | Vibar</title>
@@ -42,10 +42,32 @@
         <div class="d-flex justify-content-between align-items-center">
             <h1>Edit your project</h1>
             <div>
-                <a href="#" class="btn btn-outline-danger">
+                <!-- DELETE button with popup for confirmation -->
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <i class="bi bi-trash me-2"></i>
                     Delete project
-                </a>
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title fs-4" id="exampleModalLabel">Whoooops, you are deleting your project</h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                            <img src="./assets/img/png/Middel 1@3x.png" alt="Alert vector image" style="width: 50%;" class="mb-4">
+                            <h5 class="mb-2">Are you sure that you want to delete this project?</h5>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger">Delete project!</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Oh no, cancel pleaseeee</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -62,7 +84,7 @@
                     <label for="project_cover" class="form-label">Update cover image</label>
                     <input class="form-control" type="file" id="project_cover" name="project_cover" value="<?php echo $project['cover_img']; ?>">
                 </div>
-                <img src="<?php echo $project['cover_img'] ?>" alt="Project main image" class="img-fluid rounded mb-3">
+                <img src="<?php echo $project['cover_img']; ?>" alt="Project main image" class="img-fluid rounded mb-3">
             </div>
 
             <div class="project__body">
@@ -72,9 +94,7 @@
                         class="form-control" 
                         id="project_body" 
                         style="height: 150px" 
-                        value="">
-                        <?php echo $project['description']; ?>
-                    </textarea>
+                        value=""><?php echo $project['description']; ?></textarea>
                     <label for="project_body">Update here your text</label>
                 </div>
             </div>

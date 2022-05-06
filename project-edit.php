@@ -10,11 +10,14 @@
     if(!empty($_POST)) {
         //var_dump($_POST);
         // code here to update the project
+        Project::updateProject($projectId, $_POST["project_title"], $_POST["project_body"]);
+        header("Location: project.php?id=$projectId");
     }
 
+    // Delete project => works
     if(isset($_GET['delete'])) {
         if($_GET['delete'] == 'true') {
-            $delete = Project::deleteProject($projectId);
+            Project::deleteProject($projectId);
             header("Location: profile.php");
         }
     }
@@ -43,6 +46,10 @@
     <link rel="shortcut icon" href="assets/img/Favicon.png" type="image/x-icon">
 </head>
 <body>
+    <div class="spinner-border text-primary" role="status" style="display: none;">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+
     <?php include_once('header.inc.php'); ?>
 
     <main class="container-md project mt-4 mb-8" style="max-width: 939px;">

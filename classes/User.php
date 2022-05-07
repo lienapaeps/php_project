@@ -298,4 +298,11 @@ class User
         return $statement->execute();
     }
 
+    public function deleteAccount() {
+        $conn = DB::getConnection();
+        $statement = $conn->prepare("delete * from users where id = :id");
+        $statement->bindValue(":id", $this->id);
+        return $statement->execute();
+    }
+
 }

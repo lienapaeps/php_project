@@ -85,26 +85,29 @@
         <!-- DROPDOWN MENU -->
         <div class="dropdown mb-8 d-block w-100 hide-desktop">
             <a class="btn btn-outline-secondary dropdown-toggle w-100" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                <?php echo "Password" ?>
+                Edit Profile
             </a>
 
             <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuLink">
-                <li><a class="dropdown-item" href="profile-edit.php">Edit Profile</a></li>
-                <li><a class="dropdown-item active" href="password.php">Password</a></li>
-                <li><a class="dropdown-item" href="social-profiles.php">Social Profiles</a></li>
+                <li><a class="dropdown-item" href="profile-edit.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Edit Profile</a></li>
+                <li><a class="dropdown-item active" href="password.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Password</a></li>
+                <li><a class="dropdown-item" href="social-profiles.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Social Profiles</a></li>
+                <li><a class="dropdown-item text-danger" href="profile-delete.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Social Profiles</a></li>
             </ul>
         </div>
+
 
         <aside class="hide-mobile">
             <div>
                 <ul class="nav nav-pills flex-column">
-                    <li class="nav-item"><a class="nav-link" href="profile-edit.php">Edit Profile</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="password.php">Password</a></li>
-                    <li class="nav-item"><a class="nav-link" href="social-profiles.php">Social Profiles</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-danger">Delete Account</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="profile-edit.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Edit Profile</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="password.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Password</a></li>
+                    <li class="nav-item"><a class="nav-link" href="social-profiles.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Social Profiles</a></li>
+                    <li class="nav-item"><a href="profile-delete.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="nav-link text-danger">Delete Account</a></li>
                 </ul>
             </div>
         </aside>
+
         <form action="" method="POST" class="mb-8">
             <?php echo $msg; ?>
 

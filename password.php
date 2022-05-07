@@ -5,45 +5,23 @@
     include_once("bootstrap.php");
     session_start();
 
-    // $msg = "<div class='alert alert-primary'>Fill in current password and new password.</div>";
-    // if(!empty($_POST)) {
-    //     try {
-    //         $user = new User();
-    //         $conn = DB::getConnection();
-    //         if(!empty($_POST)) {
-    //             $res = $conn->prepare("select * from users where id = :id");
-    //             $res->bindValue(":id", $_SESSION["user"]["id"]);
-    //             $res->execute();
-    //             $row = $res->fetch(PDO::FETCH_ASSOC);
-    //             var_dump($row);
-    //             if($_POST["oldPW"] == $row["password"] && $_POST["newPW"] == $row["confirmPW"] ) {
-    //                 $conn->prepare("UPDATE student set password= :pw' WHERE id= :id");
-    //                 $conn->bindValue(":id", $_SESSION["user"]["id"]);
-    //                 $conn->bindValue(":pw", $_POST["newPW"]);
-    //                 $conn->execute();
-    //                 $msg = "<div class='alert alert-succes'>Password changed successfully.</div>";
-    //                 } else {
-    //                  $msg = "<div class='alert alert-danger'>Password is not correct.</div>";
-    //                 }
-    //                 }
-    
-            // if($_POST["oldPW"] === $pw) {
-            //     if(!empty($_POST["newPW"]) === !empty($_POST["confirmPW"])) {
-            //         $user->changePassword($_POST["newPW"]);
-            //         $msg = "<div class='alert alert-succes'>Password changed!</div>";
-            //     } else {
-            //         $msg = "<div class='alert alert-danger'>Passwords do not match!</div>";
-            //     }
-            // } else {
-            //     $msg = "<div class='alert alert-danger'>Incorrect current password!</div>";
-            // }
-    
-    //     } catch (Throwable $e) {
-    //         $error = $e->getMessage();
-    //     }
-    // } 
-
-
+    $msg;
+    if(isset($_POST["submit"])) {
+        if(!empty($_POST["oldPW"])) {
+            if($_POST["newPW"] == $_POST["confirmPW"]) {
+                if(strlen($_POST["newPW"]) > 5) {
+                    User::adjustPassword($_SESSION["user"]["id"], $_POST["oldPW"], $_POST["newPW"]);
+                    $succes = "Password changed succesfully.";
+                } else {
+                    $msg = "Password must be at least 6 characters long.";
+                }
+            } else {
+                $msg = "Passwords do not match.";
+            }
+        } else {
+            $msg = "Please submit a new password.";
+        }
+    }
 
 
 ?><!DOCTYPE html>
@@ -109,8 +87,8 @@
         </aside>
 
         <form action="" method="POST" class="mb-8">
-            <?php echo $msg; ?>
-
+            <?php if(!empty($msg)) { echo "<p class='alert alert-danger'>$msg</p>"; }
+            else if(isset($succes)) { echo "<p class='alert alert-success'>$succes</p>"; } ?>
 
             <div class="mb-4 form-floating">
                 <input type="password" name="oldPW" id="old-pw" class="form-control" required">
@@ -119,7 +97,14 @@
             <div class="mb-4 form-floating">
                 <input type="password" name="newPW" id="new-pw" class="form-control" required">
                 <label for="new-pw">New password</label>
-                <p class="text-muted">Minimum 6 characters</p>
+                <p class="text-muted">
+                    <?php
+                        if(!empty($_POST["newPW"]) && strlen($_POST["newPW"]) < 6) {
+                            echo "<span class='text-danger'>New password must be at least 6 characters long.</span>";}
+                            else {
+                                echo "<span class='text-muted'>New password must be at least 6 characters long.</span>";
+                            }
+                    ?></p>
             </div>
             <div class="mb-4 form-floating">
                 <input type="password" name="confirmPW" id="confirm-pw" class="form-control" required">
@@ -128,7 +113,7 @@
             </div>
 
 
-            <input type="submit" value="Change Password" class="btn btn-primary d-block w-100">
+            <input type="submit" name="submit" value="Change Password" class="btn btn-primary d-block w-100">
         </form>
     </div>
 

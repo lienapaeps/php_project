@@ -24,7 +24,7 @@ class Social
 
     public static function setSocialLinks() {
         $conn = DB::getConnection();
-        $statement = $conn->prepare("INSERT INTO social_links (user_id) values (:user_id) ON DUPLICATE KEY UPDATE user_id = :user_id");
+        $statement = $conn->prepare("INSERT INTO social_links values (:user_id) ON DUPLICATE KEY UPDATE user_id = :user_id");
         $statement->bindValue("user_id", $_SESSION["user"]["id"]);
 
         if(!empty($_POST["website"])){

@@ -3,12 +3,22 @@
     include_once("bootstrap.php");
     session_start();
 
+    if(!empty($_POST["userPW"]) && isset($_POST["delete-def"])) {
+        $conn = DB::getConnection();
+        $statement = $conn->prepare("select * from users where id = :id");
+        $statement->bindValue(":id", $_SESSION["user"]["id"]);
+        $statement->execute();
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+        $hash = $user["password"];
 
-    if(isset($_POST["delete-def"])) {
-        $user = User::getUserById($_SESSION["user"]["id"]);
-        $user->deleteAccount();
-        session_destroy();
-        header("Location: login.php");
+        if(password_verify($_POST["userPW"], $hash)) {
+            User::deleteAccount($_SESSION["user"]["id"]);
+            session_destroy();
+            session_reset();
+            header("Location: login.php");    
+        } else {
+            $error = "Password is incorrect.";
+        }
     }
 
 ?><!DOCTYPE html>
@@ -75,11 +85,24 @@
 
 
     <!-- Aparte form to change profile picture -->
-    <form action="" method="post" class=" mb-4" enctype="multipart/form-data">
-        <?php if(isset($_POST["delete"])): ?>
+    <form action="" method="post" class=" mb-4">
+        <h2>Delete your profile and all your projects?</h2>
+        <?php if(isset($error)) {
+                    echo "<p class='alert alert-danger'>$error</p>";}?>
+
+    <?php if(!isset($_POST["delete"])): ?>
+        <div class="form-group">
+            <p>Warning! This action is irreversible!</p>
+            <button href="register.php" type="submit" name="delete" class="btn btn-danger">Delete Account</button>
+        </div>
+        <?php else: ?>
             <div class="alert alert-secondary" role="alert">
                 <h4 class="alert-heading">Are you sure?</h4>
                 <p>You are about to delete your account. This action cannot be undone.</p>
+                <div class="mb-4 form-floating">
+                    <input type="password" name="userPW" id="old-pw" class="form-control" required">
+                    <label for="userPW">Insert password</label>
+                </div>
                 <hr>
                 <p class="mb-0">
                     <button type="submit" class="btn btn-danger" name="delete-def">Delete Account</button>
@@ -87,12 +110,6 @@
                 </p>
             </div>
         <?php endif; ?>
-
-        <div class="form-group">
-            <h2>Delete your profile and all your projects?</h2>
-            <p>Warning! This action is irreversible!</p>
-            <button href="register.php" type="submit" name="delete" class="btn btn-danger">Delete Account</button>
-        </div>
     </form>
 </div>
 

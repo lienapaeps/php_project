@@ -132,7 +132,7 @@ class User
             // er is een onbestaande gebruiker ingevuld
             throw new Exception("We couldn't find an account matching the email and password you entered. Please check your email and password and try again.");
             return false;
-        }
+        } 
 
         $hash = $user["password"];
 
@@ -146,6 +146,7 @@ class User
         }
 
         return $this;
+
     }
 
     // this function saves the user in the database
@@ -162,7 +163,7 @@ class User
         $warned = 0;
 
         $conn = DB::getConnection();
-        $statement = $conn->prepare("insert into users (username, email, password, muted, admin, warned) values (:username, :email, :password, :muted, :admin, :warned);");
+        $statement = $conn->prepare("insert into users (username, email, password, muted, admin, warned) values (:username, :email, :password, :muted, :admin, :warned)"); 
         $statement->bindValue(":username", $this->username);
         $statement->bindValue(":email", $this->email);
         $statement->bindValue(":password", $password);
@@ -298,11 +299,47 @@ class User
         return $statement->execute();
     }
 
-    public function deleteAccount() {
+    public static function adjustPassword($id, $pw, $pw2){
+        
         $conn = DB::getConnection();
-        $statement = $conn->prepare("delete * from users where id = :id");
-        $statement->bindValue(":id", $this->id);
-        return $statement->execute();
+        $s = $conn->prepare("select password from users where id = :id");
+        $s->bindValue("id", $id);
+        $s->execute();
+        $user = $s->fetch(PDO::FETCH_ASSOC);
+
+        $hash = $user["password"];
+        
+        if (password_verify($pw, $hash)) {
+            $options = [
+                'cost' => 13
+            ];
+    
+            $password = password_hash($pw2, PASSWORD_DEFAULT, $options);
+    
+            $conn = DB::getConnection();
+            $statement = $conn->prepare("update users set password = :password where id = :id");
+            $statement->bindValue(":password", $password);
+            $statement->bindValue(":id", $id);
+            $statement->execute();
+    
+        } else {
+            return false;
+        }
+
+    }
+
+    public static function deleteAccount(int $id) {
+        $conn = DB::getConnection();
+        $statement = $conn->prepare("
+        delete from social_links where user_id = :id ; 
+        delete from following where user_follower = :id OR user_following = :id ;
+        delete from likes where user_id = :id ;
+        delete from comments where user_id = :id ;
+        delete from projects where user_id = :id ; 
+        delete from users where id = :id"
+    );
+        $statement->bindValue(":id", $id);
+        $statement->execute();
     }
 
 }

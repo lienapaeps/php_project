@@ -8,18 +8,26 @@
     $msg;
     if(isset($_POST["submit"])) {
         if(!empty($_POST["oldPW"])) {
-            if($_POST["newPW"] == $_POST["confirmPW"]) {
-                if(strlen($_POST["newPW"]) > 5) {
-                    User::adjustPassword($_SESSION["user"]["id"], $_POST["oldPW"], $_POST["newPW"]);
-                    $succes = "Password changed succesfully.";
+            if(!empty($_POST["newPW"])) {
+                if($_POST["newPW"] == $_POST["confirmPW"]) {
+                    if($_POST["oldPW"] != $_POST["newPW"]) {
+                        if(strlen($_POST["newPW"]) > 5) {
+                            User::adjustPassword($_SESSION["user"]["id"], $_POST["oldPW"], $_POST["newPW"]);
+                            $succes = "Password changed succesfully.";
+                        } else {
+                            $msg = "Password must be at least 6 characters long.";
+                        }
+                    } else {
+                        $msg = "New password must be different from old password.";
+                    }
                 } else {
-                    $msg = "Password must be at least 6 characters long.";
+                    $msg = "Passwords do not match.";
                 }
             } else {
-                $msg = "Passwords do not match.";
+                $msg = "Please submit a new password.";
             }
         } else {
-            $msg = "Please submit a new password.";
+            $msg = "Please fill in your current password.";
         }
     }
 
@@ -109,7 +117,13 @@
             <div class="mb-4 form-floating">
                 <input type="password" name="confirmPW" id="confirm-pw" class="form-control" required">
                 <label for="confirm-pw">Confirm new password</label>
-                <p class="text-muted">Must be the same</p>
+                <p class="text-muted">                    <?php
+                    if(!empty($_POST["confirmPW"]) && $_POST["confirmPW"] != $_POST["newPW"]) {
+                            echo "<span class='text-danger'>Passwords do not match.</span>";}
+                            else {
+                                echo "<span class='text-muted'>Passwords must match.</span>";
+                            }
+                    ?></p>
             </div>
 
 

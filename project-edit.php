@@ -8,7 +8,6 @@
     $user = User::getUserById($project["user_id"]);
 
     if(!empty($_POST)) {
-        //var_dump($_POST);
         // code here to update the project
         Project::updateProject($projectId, $_POST["project_title"], $_POST["project_body"]);
         header("Location: project.php?id=$projectId");

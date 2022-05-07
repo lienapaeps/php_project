@@ -16,7 +16,7 @@
 
     if(!empty($_POST)) {
         // code here to update the project
-        Project::updateProject($projectId, $_POST["project_title"], $_POST["project_body"]);
+        Project::updateProject($projectId, $_POST["project_title"], $_POST["project_body"], $_POST["project_cover"]);
         header("Location: project.php?id=$projectId");
     }
 

@@ -47,7 +47,9 @@
     <!-- Font: Museo Sans -->
     <link rel="stylesheet" href="https://use.typekit.net/kkv2fee.css">
 
-    <title>IMD Showcase | Log in</title>
+    <link rel="shortcut icon" href="assets/img/Favicon.png" type="image/x-icon">
+
+    <title>Log in | Vibar</title>
 </head>
 
 <body style="min-height: 100vh;" class="login-grid">

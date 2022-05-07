@@ -73,6 +73,8 @@
     <!-- Font: Museo Sans -->
     <link rel="stylesheet" href="https://use.typekit.net/kkv2fee.css">
 
+    <link rel="shortcut icon" href="assets/img/Favicon.png" type="image/x-icon">
+
 
     <title>IMD Showcase | Forgot Password</title>
 </head>

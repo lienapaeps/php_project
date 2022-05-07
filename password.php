@@ -100,8 +100,8 @@
         <aside class="hide-mobile">
             <div>
                 <ul class="nav nav-pills flex-column">
-                    <li class="nav-item"><a class="nav-link active" href="profile-edit.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Edit Profile</a></li>
-                    <li class="nav-item active"><a class="nav-link" href="password.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Password</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile-edit.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Edit Profile</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="password.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Password</a></li>
                     <li class="nav-item"><a class="nav-link" href="social-profiles.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Social Profiles</a></li>
                     <li class="nav-item"><a href="profile-delete.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="nav-link text-danger">Delete Account</a></li>
                 </ul>

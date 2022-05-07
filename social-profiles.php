@@ -11,12 +11,12 @@
 
     $conn = DB::getConnection();
     $user = User::getUserById($key);
-    $links = Social::getSocialsFromUser($key);
-    var_dump($links);
 
     if(isset($_POST["submitSocials"])){
         Social::setSocialLinks();
     }
+
+    $links = Social::getSocialsFromUser($key);
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -72,9 +72,9 @@
         <aside class="hide-mobile">
             <div>
                 <ul class="nav nav-pills flex-column">
-                    <li class="nav-item"><a class="nav-link active" href="profile-edit.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Edit Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile-edit.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Edit Profile</a></li>
                     <li class="nav-item"><a class="nav-link" href="password.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Password</a></li>
-                    <li class="nav-item active"><a class="nav-link" href="social-profiles.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Social Profiles</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="social-profiles.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Social Profiles</a></li>
                     <li class="nav-item"><a href="profile-delete.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="nav-link text-danger">Delete Account</a></li>
                 </ul>
             </div>
@@ -84,58 +84,112 @@
         <form action="" method="POST" class="mb-8 social-profiles__form">
             <div class="form-floating input-group mb-3">
                 <span class="input-group-text" style="width: 35px;"><i class="bi bi-globe"></i></span>
-                <input type="text" class="form-control" name="website" placeholder="Portfolio Website">
+                <input type="text" class="form-control" name="website" placeholder="Website url">
                 <label for="website" style="margin-left: 35px;">
                     <?php if (!empty($links["portfolio"])) {
                             echo $links["portfolio"];
                         } else {
-                            echo "Website url";
+                            echo "<span class='text-muted'>Website url</span>";
                         }
                     ?>
-
                 </label>
             </div>
             
             <div class="form-floating input-group mb-3">
                 <span class="input-group-text" style="width: 35px;"><i class="bi bi-linkedin"></i></span>
                 <input type="text" class="form-control" name="linkedin" placeholder="Linkedin">
-                <label for="linkedin" style="margin-left: 35px;">Linkedin url</label>
+                <label for="linkedin" style="margin-left: 35px;">
+                <?php if (!empty($links["linkedin"])) {
+                            echo $links["linkedin"];
+                        } else {
+                            echo "<span class='text-muted'>Linkedin url</span>";
+                        }
+                    ?>
+                </label>
             </div>
 
             <div class="form-floating input-group mb-3">
                 <span class="input-group-text" style="width: 35px;"><i class="bi bi-facebook"></i></span>
                 <input type="text" class="form-control" name="facebook" placeholder="Facebook">
-                <label for="facebook" style="margin-left: 35px;">Facebook url</label>
+                <label for="facebook" style="margin-left: 35px;">
+                    <?php if (!empty($links["facebook"])) {
+                            echo $links["facebook"];
+                        } else {
+                            echo "<span class='text-muted'>Facebook url</span>";
+                        }
+                    ?>
+                </label>
+
             </div>
 
             <div class="form-floating input-group mb-3">
                 <span class="input-group-text" style="width: 35px;"><i class="bi bi-instagram"></i></span>
                 <input type="text" class="form-control" name="instagram" placeholder="Instagram">
-                <label for="instagram" style="margin-left: 35px;">Instagram url</label>
+                <label for="instagram" style="margin-left: 35px;">
+                <?php if (!empty($links["instagram"])) {
+                            echo $links["instagram"];
+                        } else {
+                            echo "<span class='text-muted'>Instagram url</span>";
+                        }
+                    ?>
+                </label>
+
             </div>
 
             <div class="form-floating input-group mb-3">
                 <span class="input-group-text" style="width: 35px;"><i class="bi bi-behance"></i></span>
                 <input type="text" class="form-control" name="behance" placeholder="Behance">
-                <label for="behance" style="margin-left: 35px;">Behance url</label>
+                <label for="behance" style="margin-left: 35px;">
+                <?php if (!empty($links["behance"])) {
+                            echo $links["behance"];
+                        } else {
+                            echo "<span class='text-muted'>Behance url</span>";
+                        }
+                    ?>
+                </label>
+
             </div>
 
             <div class="form-floating input-group mb-3">
                 <span class="input-group-text" style="width: 35px;"><i class="bi bi-dribbble"></i></span>
                 <input type="text" class="form-control" name="dribbble" placeholder="Dribbble">
-                <label for="dribbble" style="margin-left: 35px;">Dribbble url</label>
+                <label for="dribbble" style="margin-left: 35px;">
+                <?php if (!empty($links["dribbble"])) {
+                            echo $links["dribbble"];
+                        } else {
+                            echo "<span class='text-muted'>Dribbble url</span>";
+                        }
+                    ?>
+                </label>
+
             </div>
 
             <div class="form-floating input-group mb-3">
                     <span class="input-group-text" style="width: 35px;"><i class="bi bi-github"></i></span>
                 <input type="text" class="form-control" name="github" placeholder="Github">
-                <label for="github" style="margin-left: 35px;">Github url</label>
+                <label for="github" style="margin-left: 35px;">
+                <?php if (!empty($links["github"])) {
+                            echo $links["github"];
+                        } else {
+                            echo "<span class='text-muted'>Github url</span>";
+                        }
+                    ?>
+                </label>
+
             </div>
 
             <div class="form-floating input-group mb-3">
                 <span class="input-group-text" style="width: 35px;"><i class="bi bi-stack-overflow"></i></span>
                 <input type="text" class="form-control" name="stackOverflow" placeholder="Stack Overflow">
-                <label for="stackOverflow" style="margin-left: 35px;">Stack Overflow url</label>
+                <label for="stackOverflow" style="margin-left: 35px;">
+                <?php if (!empty($links["stackoverflow"])) {
+                            echo $links["stackoverflow"];
+                        } else {
+                            echo "<span class='text-muted'>Stack Overflow url</span>";
+                        }
+                    ?>
+                </label>
+
             </div>
 
 

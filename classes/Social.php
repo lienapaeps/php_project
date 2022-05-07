@@ -19,7 +19,7 @@ class Social
         $statement = $conn->prepare("select * from social_links where user_id = :id"); 
         $statement->bindValue("id", $id);
         $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
     public static function setSocialLinks() {

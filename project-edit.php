@@ -45,10 +45,6 @@
     <link rel="shortcut icon" href="assets/img/Favicon.png" type="image/x-icon">
 </head>
 <body>
-    <div class="spinner-border text-primary" role="status" style="display: none;">
-        <span class="visually-hidden">Loading...</span>
-    </div>
-
     <?php include_once('header.inc.php'); ?>
 
     <main class="container-md project mt-4 mb-8" style="max-width: 939px;">

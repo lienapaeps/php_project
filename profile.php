@@ -89,7 +89,11 @@
                                         <img class="card-img" src="<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
                                     </a>
                                     <div class="card-body">
-                                        <h5 class="card-title"><?php echo htmlspecialchars($project["title"]); ?></h5>
+                                        <a href=" project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
+                                            <h5 class="card-title"><?php echo htmlspecialchars($project["title"]); ?></h5>
+                                        </a>  
+                                    </div>
+                                    <div class="card-footer">
                                         <a href="#" class="card-link"><i class="bi bi-heart"></i> 101</a>
                                         <a href="#" class="card-link"><i class="bi bi-chat"></i> 101</a>
                                         <a href="#" class="card-link"><i class="bi bi-eye"></i> 101</a>

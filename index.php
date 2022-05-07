@@ -93,11 +93,12 @@ function getUser($id)
                             <img class="card-img" src="<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
                         </a>
                         <div class="card-body">
-                            <a href="project.php?id=<?php echo $project['id'] ?>" class="card-title">
                                 <a href="project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
-                                    <h5 class="card-title fs-4"><?php echo htmlspecialchars($project["title"]); ?></h5></a>
-                                <a href="profile.php?profile=<?php echo htmlspecialchars($project["user_id"]); ?>" class="card-link"><?php echo htmlspecialchars(getUser($project["user_id"])); ?></a>
-                            </a>
+                                    <h5 class="card-title fs-4"><?php echo htmlspecialchars($project["title"]); ?></h5>
+                                </a>
+                                <a href="profile.php?profile=<?php echo htmlspecialchars($project["user_id"]); ?>" class="card-link">
+                                    <?php echo htmlspecialchars(getUser($project["user_id"])); ?>
+                                </a>
                         </div>
                         <div class="card-footer">
                             <a href="#" class="card-link"><i class="bi bi-heart"></i> 101</a>

@@ -3,6 +3,13 @@
 
     session_start();
 
+    // variable loggedin is used to see if user is logged in or not
+    if (isset($_SESSION["user"])) {
+        $loggedin = true;
+    } else {
+        $loggedin = false;
+    }
+
     $projectId = $_GET["id"];
     $project = Project::getById($projectId);
     $user = User::getUserById($project["user_id"]);

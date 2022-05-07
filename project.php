@@ -4,6 +4,13 @@
 
     session_start();
 
+    // variable loggedin is used to see if user is logged in or not
+    if (isset($_SESSION["user"])) {
+        $loggedin = true;
+    } else {
+        $loggedin = false;
+    }
+
     if (!isset($_GET["id"])) {
         header("Location: index.php");
     } else {
@@ -47,16 +54,16 @@
 
 
                 <div class="project__header__editProject">
-                    <?php if( $project['user_id'] == $_SESSION['user']['id'] ): ?>
-                            <a href="project-edit.php?id=<?php echo $project['id']; ?>" class="btn btn-primary">
-                                <i class="bi bi-pen me-2"></i>
-                                Edit project
-                            </a>                        
-                    <?php else: ?>
+                    <?php if( !isset($_SESSION['user'])): ?>
                         <a href="#" class="btn btn-primary">
                             <i class="bi bi-heart me-2"></i>
                             Like
-                        </a>
+                        </a>                     
+                    <?php elseif($project['user_id'] == $_SESSION['user']['id']): ?>
+                        <a href="project-edit.php?id=<?php echo $project['id']; ?>" class="btn btn-primary">
+                            <i class="bi bi-pen me-2"></i>
+                            Edit project
+                        </a>  
                     <?php endif; ?>
                 </div>
                 

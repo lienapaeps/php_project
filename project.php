@@ -44,7 +44,7 @@
         <div class="project__header my-4">
             <h1 class="project__header__title mb-4"><?php echo $project['title']; ?></h1>
             
-            <div class="project__header__user d-flex justify-content-between align-items-center">
+            <div class="project__header__user d-flex justify-content-between align-items-center mb-4">
                 <div class="d-flex">
                     <img src="<?php if(!empty($user['profile_img'])){ echo $user['profile_img'];} else{ echo "./assets/img/home_banner.png"; }; ?>" alt="Profile picture" class="rounded-circle me-3" style="height: 60px; width: 60px; object-fit: cover;">
                     <div>
@@ -53,7 +53,6 @@
                         <a href="#" class="btn btn-outline-primary">Follow now</a>
                     </div>
                 </div>
-
 
                 <div class="project__header__editProject">
                     <?php if( !isset($_SESSION['user'])): ?>
@@ -68,7 +67,21 @@
                         </a>  
                     <?php endif; ?>
                 </div>
-                
+            </div>
+
+            <div>
+                <a href="#" class="btn btn-pink-outline">
+                    <i class="bi bi-heart"></i>
+                    <span>11</span>
+                </a>
+                <a href="#" class="btn btn-pink-outline">
+                    <i class="bi bi-chat"></i> 
+                    <span>101</span>
+                </a>
+                <a href="#" class="btn btn-pink-outline">
+                    <i class="bi bi-eye"></i> 
+                    <span>101</span>
+                </a>
             </div>
         </div>
 

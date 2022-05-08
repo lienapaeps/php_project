@@ -16,7 +16,7 @@
 
     if(!empty($_POST)) {
         // code here to update the project
-        Project::updateProject($projectId, $_POST["project_title"], $_POST["project_body"], $_POST["project_cover"]);
+        Project::updateProject($projectId, $_POST["project_title"], $_POST["project_body"]);
         header("Location: project.php?id=$projectId");
     }
 
@@ -96,10 +96,6 @@
             </div>
 
             <div class="project__coverImg">
-                <div class="mb-3">
-                    <label for="project_cover" class="form-label">Update cover image</label>
-                    <input class="form-control" type="file" id="project_cover" name="project_cover" value="<?php echo $project['cover_img']; ?>">
-                </div>
                 <img src="<?php echo $project['cover_img']; ?>" alt="Project main image" class="img-fluid rounded mb-3">
             </div>
 

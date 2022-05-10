@@ -46,17 +46,19 @@ if (isset($_SESSION["user"])) {
                         <li class="nav-item">
                             <a href="index.php" class="nav-link">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <?php if ($loggedin) : ?>
-                                <a href="profile.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="nav-link">Profile</a>
-                            <?php endif; ?>
-                        </li>
+                        <?php if ($loggedin) : ?>
+                            <li class="nav-item">
+                                    <a href="profile.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="nav-link">Profile</a>
+                            </li>
+                        <?php endif; ?>
                         <li>
                             <hr class="dropdown-divider mb-3">
                         </li>
+                        <?php if ($loggedin) : ?>
                         <li class="nav-item">
                             <a href="projectForm.php" class="fw-bold nav-link">Upload a project</a>
                         </li>
+                        <?php endif; ?>
                         <li>
                             <hr class="dropdown-divider mb-3">
 

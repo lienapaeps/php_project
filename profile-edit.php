@@ -42,6 +42,7 @@ if (isset($_POST['submitPFP'])) {
 
                 if ($statement) {
                     $uploadStatusMsg = "Project uploaded succesfully";
+                    header("profile.php");
                 } else {
                     $uploadStatusMsg = "Sorry, there was an error uploading your file.";
                 }
@@ -56,6 +57,28 @@ if (isset($_POST['submitPFP'])) {
     } 
 } else {
     $uploadStatusMsg = "";
+}
+
+if(isset($_POST["submitInfo"])){
+    $username = $_POST["profile_username"];
+    $backup = $_POST["profile_email"];
+    $bio = $_POST["profile_bio"];
+    $course = $_POST["profile_course"];
+
+    $conn = DB::getConnection();
+    $statement = $conn->prepare("UPDATE users SET username = :uname , backup_email = :mail, course = :course, bio = :bio where id = :id");
+    $statement->bindValue(':mail', $backup);
+    $statement->bindValue(':uname', $username);
+    $statement->bindValue(':bio', $bio);
+    $statement->bindValue(':course', $course);
+    $statement->bindValue(':id', $_SESSION['user']['id']);
+    $statement->execute();
+
+    if($statement){
+        $uploadStatusMsg = "Profile updated succesfully";
+    } else {
+        $uploadStatusMsg = "Failed to update profile.";
+    }
 }
 
 ?>
@@ -104,9 +127,10 @@ if (isset($_POST['submitPFP'])) {
             </a>
 
             <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuLink">
-                <li><a class="dropdown-item active" href="profile-edit.php">Edit Profile</a></li>
-                <li><a class="dropdown-item" href="password.php">Password</a></li>
-                <li><a class="dropdown-item" href="social-profiles.php">Social Profiles</a></li>
+                <li><a class="dropdown-item active" href="profile-edit.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Edit Profile</a></li>
+                <li><a class="dropdown-item" href="password.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Password</a></li>
+                <li><a class="dropdown-item" href="social-profiles.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Social Profiles</a></li>
+                <li><a class="dropdown-item text-danger" href="profile-delete.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Social Profiles</a></li>
             </ul>
         </div>
 
@@ -114,10 +138,10 @@ if (isset($_POST['submitPFP'])) {
         <aside class="hide-mobile">
             <div>
                 <ul class="nav nav-pills flex-column">
-                    <li class="nav-item"><a class="nav-link active" href="profile-edit.php">Edit Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="password.php">Password</a></li>
-                    <li class="nav-item"><a class="nav-link" href="social-profiles.php">Social Profiles</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-danger">Delete Account</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="profile-edit.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Edit Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="password.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Password</a></li>
+                    <li class="nav-item"><a class="nav-link" href="social-profiles.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Social Profiles</a></li>
+                    <li class="nav-item"><a href="profile-delete.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="nav-link text-danger">Delete Account</a></li>
                 </ul>
             </div>
         </aside>
@@ -125,7 +149,7 @@ if (isset($_POST['submitPFP'])) {
         <!-- Aparte form to change profile picture -->
         <form action="" method="post" class=" mb-4" enctype="multipart/form-data">
         <?php if($uploadStatusMsg): ?>
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-secondary" role="alert">
                 <?php echo $uploadStatusMsg; ?>
             </div>
         <?php endif; ?>
@@ -141,12 +165,24 @@ if (isset($_POST['submitPFP'])) {
         <!-- Form to change profile information -->
         <form action="" method="POST" class=" mb-8">
             <div class="mb-4 form-floating">
-                <input type="email" name="profile_username" id="profile_username" class="form-control" placeholder="Joris Hens">
+                <input type="text" name="profile_username" id="profile_username" class="form-control" placeholder="Joris Hens">
                 <label for="profile_username">
                     <?php if (!empty($_SESSION["user"]["username"])) {
                         echo $_SESSION["user"]["username"];
                     } else {
                         echo "Username";
+                    }
+                    ?>
+                </label>
+            </div>
+
+            <div class="mb-4 form-floating">
+                <input type="text" name="profile_course" id="profile_course" class="form-control" placeholder="Joris Hens">
+                <label for="profile_course">
+                    <?php if (!empty($_SESSION["user"]["course"])) {
+                        echo $_SESSION["user"]["course"];
+                    } else {
+                        echo "Course";
                     }
                     ?>
                 </label>
@@ -177,8 +213,8 @@ if (isset($_POST['submitPFP'])) {
             </div>
 
             <div class="mb-4 form-floating">
-                <textarea type="email" name="profile_email" id="profile_email" class="form-control" placeholder="Type here your bio" style="height: 100px"></textarea>
-                <label for="profile_email">
+                <textarea type="email" name="profile_bio" id="profile_bio" class="form-control" placeholder="Type here your bio" style="height: 100px"></textarea>
+                <label for="profile_bio">
                     <?php if (!empty($_SESSION["user"]["bio"])) {
                         echo $_SESSION["user"]["bio"];
                     } else {

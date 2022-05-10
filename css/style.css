@@ -500,12 +500,12 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
     }
 
     .card-deck {
-        justify-content: space-around;
+        justify-content: space-between;
     }
 
     .card {
-        width: 28em;
-        height: 28em;
+        width: 18rem;
+        height: 18rem;
     }
     
 }

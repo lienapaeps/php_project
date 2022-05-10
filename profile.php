@@ -9,20 +9,12 @@ if (isset($_SESSION["user"])) {
     $loggedin = false;
 }
 
-<<<<<<< HEAD
     if(isset($_GET["profile"])){
         $key = $_GET["profile"];
     } 
     else {
         $key = $_SESSION["user"]["id"];
     }
-=======
-if (isset($_GET["profile"])) {
-    $key = $_GET["profile"];
-} else {
-    $key = "default";
-}
->>>>>>> d8b9f55c185bac930737af9a6f0aeaec6ecbd64b
 
 $user = User::getUserById($key);
 

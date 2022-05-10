@@ -331,11 +331,6 @@ class User
     public static function deleteAccount(int $id) {
         $conn = DB::getConnection();
         $statement = $conn->prepare("
-        delete from social_links where user_id = :id ; 
-        delete from following where user_follower = :id OR user_following = :id ;
-        delete from likes where user_id = :id ;
-        delete from comments where user_id = :id ;
-        delete from projects where user_id = :id ; 
         delete from users where id = :id"
     );
         $statement->bindValue(":id", $id);

@@ -77,7 +77,9 @@ else {
     <!-- Font: Museo Sans -->
     <link rel="stylesheet" href="https://use.typekit.net/kkv2fee.css">
 
-    <title>IMD Showcase | Reset Password</title>
+    <link rel="shortcut icon" href="assets/img/Favicon.png" type="image/x-icon">
+
+    <title>Reset Password | Vibar</title>
 </head>
 
 <body>

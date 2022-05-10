@@ -46,7 +46,9 @@ if (!empty($_POST)) {
     <!-- Font: Museo Sans -->
     <link rel="stylesheet" href="https://use.typekit.net/kkv2fee.css">
 
-    <title>IMD Showcase | Sign up</title>
+    <link rel="shortcut icon" href="assets/img/Favicon.png" type="image/x-icon">
+
+    <title>Register | Vibar</title>
 
 </head>
 

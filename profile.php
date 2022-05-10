@@ -21,7 +21,6 @@ $projects = Project::getProjectsFromUser($key);
 
 $links = Social::getSocialsFromUser($key);
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -145,22 +144,55 @@ $links = Social::getSocialsFromUser($key);
                 </div>
                 <div class="profile__info contact-area">
                     <h2>Contact</h2>
-                    <a href="#" class="profile__infoLink">
-                        <i class="bi bi-envelope"></i>
-                        <p class="link__text">josjacobs@gmail.com</p>
-                    </a>
-                    <a href="#" class="profile__infoLink">
-                        <i class="bi bi-instagram"></i>
-                        <p class="link__text">Josefien Jacobs</p>
-                    </a>
-                    <a href="#" class="profile__infoLink">
-                        <i class="bi bi-facebook"></i>
-                        <p class="link__text">@JosJacobs</p>
-                    </a>
-                    <a href="#" class="profile__infoLink">
-                        <i class="bi bi-github"></i>
-                        <p class="link__text">Josefien_code</p>
-                    </a>
+                    <?php if(!empty($links["portfolio"])): ?>
+                        <a href="<?php echo $links["portfolio"]; ?>" target="_blank" class="profile__infoLink">
+                            <i class="bi bi-globe"></i>
+                            <p class="link__text"><?php echo $links["portfolio"]; ?></p>
+                        </a>
+                    <?php endif; ?>
+                    <?php if(!empty($links["linkedin"])): ?>
+                        <a href="<?php echo $links["linkedin"]; ?>" target="_blank" class="profile__infoLink">
+                            <i class="bi bi-linkedin"></i>
+                            <p class="link__text"><?php echo $links["linkedin"]; ?></p>
+                        </a>
+                    <?php endif; ?>
+                    <?php if(!empty($links["facebook"])): ?>
+                        <a href="<?php echo $links["facebook"]; ?>" target="_blank" class="profile__infoLink">
+                            <i class="bi bi-facebook"></i>
+                            <p class="link__text"><?php echo $links["facebook"]; ?></p>
+                        </a>
+                    <?php endif; ?>
+                    <?php if(!empty($links["instagram"])): ?>
+                        <a href="<?php echo $links["instagram"]; ?>" target="_blank" class="profile__infoLink">
+                            <i class="bi bi-instagram"></i>
+                            <p class="link__text"><?php echo $links["instagram"]; ?></p>
+                        </a>
+                    <?php endif; ?>
+                    <?php if(!empty($links["behance"])): ?>
+                        <a href="<?php echo $links["behance"]; ?>" target="_blank" class="profile__infoLink">
+                            <i class="bi bi-behance"></i>
+                            <p class="link__text"><?php echo $links["behance"]; ?></p>
+                        </a>
+                    <?php endif; ?>
+                    <?php if(!empty($links["dribbble"])): ?>
+                        <a href="<?php echo $links["dribbble"]; ?>" target="_blank" class="profile__infoLink">
+                            <i class="bi bi-dribbble"></i>
+                            <p class="link__text"><?php echo $links["dribbble"]; ?></p>
+                        </a>
+                    <?php endif; ?>
+                    <?php if(!empty($links["github"])): ?>
+                        <a href="<?php echo $links["github"]; ?>" target="_blank" class="profile__infoLink">
+                            <i class="bi bi-github"></i>
+                            <p class="link__text"><?php echo $links["github"]; ?></p>
+                        </a>
+                    <?php endif; ?>
+                    <?php if(!empty($links["stackoverflow"])): ?>
+                        <a href="<?php echo $links["stackoverflow"]; ?>" target="_blank" class="profile__infoLink">
+                            <i class="bi bi-stack-overflow"></i>
+                            <p class="link__text"><?php echo $links["stackoverflow"]; ?></p>
+                        </a>
+                    <?php endif; ?>
+
                 </div>
 
             </div>

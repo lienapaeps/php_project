@@ -180,8 +180,8 @@
 
             <div class="form-floating input-group mb-3">
                 <span class="input-group-text" style="width: 35px;"><i class="bi bi-stack-overflow"></i></span>
-                <input type="text" class="form-control" name="stackOverflow" placeholder="Stack Overflow">
-                <label for="stackOverflow" style="margin-left: 35px;">
+                <input type="text" class="form-control" name="stackoverflow" placeholder="Stack Overflow">
+                <label for="stackoverflow" style="margin-left: 35px;">
                 <?php if (!empty($links["stackoverflow"])) {
                             echo $links["stackoverflow"];
                         } else {

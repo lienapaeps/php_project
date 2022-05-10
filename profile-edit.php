@@ -41,7 +41,7 @@ if (isset($_POST['submitPFP'])) {
                 $statement->execute();
 
                 if ($statement) {
-                    $uploadStatusMsg = "Project uploaded succesfully";
+                    $uploadStatusMsg = "Picture uploaded succesfully";
                     header("profile.php");
                 } else {
                     $uploadStatusMsg = "Sorry, there was an error uploading your file.";

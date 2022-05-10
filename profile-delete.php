@@ -59,15 +59,15 @@
 
         <!-- DROPDOWN MENU -->
         <div class="dropdown mb-8 d-block w-100 hide-desktop">
-            <a class="btn btn-outline-secondary dropdown-toggle w-100" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                Edit Profile
+            <a class="btn btn-outline-danger dropdown-toggle w-100" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                Delete Profile
             </a>
 
             <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuLink">
                 <li><a class="dropdown-item" href="profile-edit.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Edit Profile</a></li>
                 <li><a class="dropdown-item" href="password.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Password</a></li>
                 <li><a class="dropdown-item" href="social-profiles.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Social Profiles</a></li>
-                <li><a class="dropdown-item text-danger active"  href="profile-delete.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Social Profiles</a></li>
+                <li><a class="dropdown-item text-danger active"  href="profile-delete.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Delete Profile</a></li>
             </ul>
         </div>
 
@@ -78,7 +78,7 @@
                     <li class="nav-item"><a class="nav-link" href="profile-edit.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Edit Profile</a></li>
                     <li class="nav-item"><a class="nav-link" href="password.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Password</a></li>
                     <li class="nav-item"><a class="nav-link" href="social-profiles.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Social Profiles</a></li>
-                    <li class="nav-item"><a class="nav-link active danger text-danger" style="background-color:transparent;border:1px solid 	#df4759;" href="profile-delete.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Delete Account</a></li>
+                    <li class="nav-item"><a class="nav-link active danger text-danger" style="background-color:transparent;border:1px solid 	#df4759;" href="profile-delete.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Delete Profile</a></li>
                 </ul>
             </div>
         </aside>

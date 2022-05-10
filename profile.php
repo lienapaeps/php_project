@@ -93,7 +93,7 @@ $links = Social::getSocialsFromUser($key);
                             <?php foreach ($projects as $project): ?>
                                 <div class="card my-4">
                                     <a href="project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
-                                        <img class="card-img" src="uploads/<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
+                                        <img class="card-img" src="<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
                                     </a>
                                     <div class="card-body">
                                         <a href="project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
@@ -167,7 +167,6 @@ $links = Social::getSocialsFromUser($key);
                             <p class="link__text">Josefien_code</p>
                         </a>
                     </div>
-<<<<<<< HEAD
 
                 </div>
                 <div class="profile__info contact-area">
@@ -221,8 +220,6 @@ $links = Social::getSocialsFromUser($key);
                         </a>
                     <?php endif; ?>
 
-=======
->>>>>>> 37eac7ff13749e9bed8b9f3bc49c4958bf0cc54f
                 </div>
             </div>
         </section>

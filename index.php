@@ -92,7 +92,7 @@ function getUser($id)
                 <?php foreach ($projects as $project) : ?>
                     <div class="card my-4">
                         <a href="project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
-                            <img class="card-img" src="<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
+                            <img class="card-img" src="uploads/<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
                         </a>
                         <div class="card-body">
                                 <a href="project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">

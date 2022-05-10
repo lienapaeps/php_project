@@ -54,25 +54,24 @@ $links = Social::getSocialsFromUser($key);
                 <?php else : ?>
                     <i class="bi bi-person-bounding-box"></i>
                 <?php endif; ?>
-            </div>
-            <div class="profile__mainInfo mx-4">
-                <div class="profile__username">
-                    <h1><?php echo $user["username"]; ?></h1>
                 </div>
-                <?php if (empty($user["course"])) : ?>
-                    <div class="profile__course"><span>No course added yet.</span></div>
-                <?php else : ?>
-                    <div class="profile__course"><span><?php echo $user["course"]; ?></span></div>
-                <?php endif; ?>
-                <?php
-                if ($key == $_SESSION["user"]["id"]) : ?>
-                    <div class="profile__edit">
-                        <a href="profile-edit.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="btn btn-outline-secondary">Edit Profile</a>
+                <div class="profile__mainInfo mx-4">
+                    <div class="profile__username">
+                        <h1><?php echo $user["username"]; ?></h1>
                     </div>
-                <?php endif; ?>
-
+                    <?php if (empty($user["course"])) : ?>
+                        <div class="profile__course"><span>No course added yet.</span></div>
+                    <?php else : ?>
+                        <div class="profile__course"><span><?php echo $user["course"]; ?></span></div>
+                    <?php endif; ?>
+                    <?php
+                    if ($key == $_SESSION["user"]["id"]) : ?>
+                        <div class="profile__edit">
+                            <a href="profile-edit.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="btn btn-outline-secondary">Edit Profile</a>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
-        </div>
 
         <div class="profile__nav">
             <div class="profile__navBox">
@@ -86,33 +85,32 @@ $links = Social::getSocialsFromUser($key);
                 <p class="nothing">No showcase available.</p>
             </div>
 
-                <div class="profile__projects">
-                    <?php if (empty($projects)): ?>
-                        <p class="nothing">No projects submitted.</p>
-                    <?php else: ?>
-                        <div class="card-deck">
-                            <?php foreach ($projects as $project): ?>
-                                <div class="card my-4">
+            <div class="profile__projects">
+                <?php if (empty($projects)): ?>
+                    <p class="nothing">No projects submitted.</p>
+                <?php else: ?>
+                    <div class="card-deck">
+                        <?php foreach ($projects as $project): ?>
+                            <div class="card my-4">
+                                <a href=" project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
+                                    <img class="card-img" src="uploads/<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
+                                </a>
+                                <div class="card-body">
                                     <a href=" project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
-                                        <img class="card-img" src="<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
-                                    </a>
-                                    <div class="card-body">
-                                        <a href=" project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
-                                            <h5 class="card-title"><?php echo htmlspecialchars($project["title"]); ?></h5>
-                                        </a>  
-                                    </div>
-                                    <div class="card-footer">
-                                        <a href="#" class="card-link"><i class="bi bi-heart"></i> 101</a>
-                                        <a href="#" class="card-link"><i class="bi bi-chat"></i> 101</a>
-                                        <a href="#" class="card-link"><i class="bi bi-eye"></i> 101</a>
-                                    </div>
+                                        <h5 class="card-title"><?php echo htmlspecialchars($project["title"]); ?></h5>
+                                    </a>  
+                                </div>
+                                <div class="card-footer">
+                                    <a href="#" class="card-link"><i class="bi bi-heart"></i> 101</a>
+                                    <a href="#" class="card-link"><i class="bi bi-chat"></i> 101</a>
+                                    <a href="#" class="card-link"><i class="bi bi-eye"></i> 101</a>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
-            </div>
-
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+        </div>
             <div class="profile__infos">
                 <div class="profile__info description-area">
                     <h2>Who am I?</h2>
@@ -148,7 +146,6 @@ $links = Social::getSocialsFromUser($key);
                         <p class="extra__title">Most used tag</p>
                         <p class="extra__number">#design</p>
                     </div>
-
                 </div>
                 <div class="profile__info contact-area">
                     <h2>Contact</h2>

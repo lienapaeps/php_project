@@ -10,7 +10,7 @@ class Social
         $conn = DB::getConnection();
         $statement = $conn->prepare("select * from social_links"); // oud naar niew
         $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $statement->fetchAll(PDO::FETCH_ASSOC); 
     }
 
     // this function gets all social links from user with a certain id

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 29, 2022 at 07:27 AM
+-- Generation Time: May 10, 2022 at 09:22 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -155,7 +155,25 @@ INSERT INTO `projects` (`id`, `title`, `description`, `time`, `cover_img`, `warn
 (12, 'azertyhjk', 'azertyuk', '2022-04-27 09:18:05', '62690a4d4f0441.77202976.jpg', NULL, NULL, NULL, 1),
 (13, 'jhgfds', 'kjhgfds', '2022-04-27 09:21:35', '62690b1fdbeb13.49512025.jpg', NULL, NULL, NULL, 1),
 (14, 'testgwfxb', ',jh,ydyrhhtrdtrthgr', '2022-04-27 09:24:28', '62690bcc0a8fa7.21044081.jpg', NULL, NULL, NULL, 1),
-(15, 'dwrxtfcygvuhbijk', 'rwxdtfcygvuhbijnok,l', '2022-04-27 09:26:34', '62690c4a0bbe17.97900136.jpg', NULL, NULL, NULL, 1);
+(15, 'dwrxtfcygvuhbijk', 'rwxdtfcygvuhbijnok,l', '2022-04-27 09:26:34', '62690c4a0bbe17.97900136.jpg', NULL, NULL, NULL, 1),
+(16, 'test', 'test', '2022-05-02 14:32:34', '626feb8281fec1.51467285.jpg', NULL, NULL, NULL, 2),
+(17, 'nog een test', 'test', '2022-05-02 14:32:50', '626feb9229b704.03261003.jpg', NULL, NULL, NULL, 2),
+(18, 'nog een laatste test', 'test', '2022-05-02 14:33:00', '626feb9c054fa6.95437802.jpg', NULL, NULL, NULL, 2),
+(19, 'test', 'test', '2022-05-02 14:33:19', '626febaf073422.10940797.jpg', NULL, NULL, NULL, 3),
+(20, 'test 2', 'test', '2022-05-02 14:33:32', '626febbc7589f2.47861557.jpg', NULL, NULL, NULL, 3),
+(21, 'test 3', 'test', '2022-05-02 14:33:40', '626febc4637771.67370158.jpg', NULL, NULL, NULL, 3),
+(22, 'teststst', 'jyrsrhgxfb', '2022-05-02 14:33:59', '626febd77d4815.82815471.jpg', NULL, NULL, NULL, 3),
+(23, 'jhgfd', 'hgfdsehfgbrthgb', '2022-05-02 14:34:18', '626febeaa84439.32192298.jpg', NULL, NULL, NULL, 2),
+(24, 'jaja', 'nog is een test', '2022-05-02 14:34:48', '626fec084e2909.06822542.jpg', NULL, NULL, NULL, 2),
+(25, 'joejoe', 'joejoejoe', '2022-05-02 14:35:16', '626fec245f4c70.51071470.jpg', NULL, NULL, NULL, 1),
+(26, 'testsetetset', 'rsgfvbnjdhrgfngjsyetrgst', '2022-05-03 09:54:29', '6270fbd596c057.77349140.jpg', NULL, NULL, NULL, 1),
+(27, 'eqywtjxhcjdyjd,j', 'jysjsjr\'srdjtysdgt\'', '2022-05-03 10:04:30', '6270fe2eb516c3.84109949.jpg', NULL, NULL, NULL, 1),
+(28, 'test', 'test', '2022-05-03 10:38:27', '62710623ab8536.48801142.jpg', NULL, NULL, NULL, 1),
+(29, 'fds', 'gfds', '2022-05-03 10:39:06', '6271064a5e18a6.04366570.jpg', NULL, NULL, NULL, 1),
+(30, 'test', 'test', '2022-05-03 10:41:11', '627106c728c8b5.31253604.jpg', NULL, NULL, NULL, 1),
+(31, 'gfdsq', 'hgfds', '2022-05-03 10:41:35', '627106df8c2c51.86847103.jpg', NULL, NULL, NULL, 1),
+(32, 'qrgfesw', 'tqegfwd', '2022-05-03 10:43:30', '62710752e538b6.25106080.jpg', NULL, NULL, NULL, 1),
+(33, ',nbvcxwgfdshgfd', 'thdfstdf', '2022-05-03 12:22:51', '62711e9b0e68c9.35443999.jpg', NULL, NULL, NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -179,7 +197,14 @@ CREATE TABLE `reported` (
 
 CREATE TABLE `social_links` (
   `id` int(11) NOT NULL,
-  `url` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `instagram` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `behance` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dribbble` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `github` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linkedin` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `stackoverflow` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `portfolio` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -208,7 +233,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `backup_email`, `profile_img`, `course`, `bio`, `muted`, `admin`, `warned`) VALUES
-(1, 'p66liena', 'lienapaeps@thomasmore.be', '$2y$13$qxOtOj3qTUiV5Zf0IDJRluk8l32y32xs4DbaXZdBA31izJTfaVM4a', 'paepsliena@gmail.com', NULL, NULL, NULL, 0, 1, 0),
+(1, 'p66liena', 'lienapaeps@thomasmore.be', '$2y$13$qxOtOj3qTUiV5Zf0IDJRluk8l32y32xs4DbaXZdBA31izJTfaVM4a', 'paepsliena@gmail.com', NULL, 'Interactive Multimedia Design', 'Dit is mijn korte bio.', 0, 1, 0),
 (2, 'jefke', 'jeffasseur@thomasmore.be', '$2y$13$KcnN7rl.YQPeqdojESug9OxXwk3gcCZhy5rFLqo5lkB6ri.IiAt.i', NULL, NULL, NULL, NULL, 0, 1, 0),
 (3, 'rix', 'rickyheylen@thomasmore.be', '$2y$13$ygwBw3.gK7LjnDCrAfL3MuT1Ro5pDjZ6QXQq2.l9QPcn/liMBslUq', NULL, NULL, NULL, NULL, 0, 1, 0),
 (4, 'test', 'test@thomasmore.be', '$2y$13$pBNDpJh24YTLTr4K7ca9uO7pl7m9ItE3rUZvVFjUSvUtdzZx3iE9W', NULL, NULL, NULL, NULL, 0, 0, 0),
@@ -307,7 +332,7 @@ ALTER TABLE `password_reset_request`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `reported`

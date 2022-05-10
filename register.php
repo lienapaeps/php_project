@@ -46,7 +46,9 @@ if (!empty($_POST)) {
     <!-- Font: Museo Sans -->
     <link rel="stylesheet" href="https://use.typekit.net/kkv2fee.css">
 
-    <title>IMD Showcase | Sign up</title>
+    <link rel="shortcut icon" href="assets/img/Favicon.png" type="image/x-icon">
+
+    <title>Register | Vibar</title>
 
 </head>
 
@@ -75,7 +77,7 @@ if (!empty($_POST)) {
             <div class="mb-3 form-floating">
                 <input type="text" name="username" id="username" class="form-control" placeholder="Username" required">
                 <label for="username">Username</label>
-                <span class="check-username">Dit is een boodschap</span>
+                <span class="check-username"></span>
             </div>
 
             <div class="mb-3 form-floating">

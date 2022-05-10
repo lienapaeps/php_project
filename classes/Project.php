@@ -26,7 +26,7 @@ class Project
     // this function gets all projects from user with a certain id
     public static function getProjectsFromUser(int $id) {
         $conn = DB::getConnection();
-        $statement = $conn->prepare("select * from projects where user_id = :id");
+        $statement = $conn->prepare("select * from projects where user_id = :id"); 
         $statement->bindValue("id", $id);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);

@@ -42,6 +42,7 @@ if (isset($_POST['submitPFP'])) {
 
                 if ($statement) {
                     $uploadStatusMsg = "Project uploaded succesfully";
+                    header("profile.php");
                 } else {
                     $uploadStatusMsg = "Sorry, there was an error uploading your file.";
                 }
@@ -126,9 +127,10 @@ if(isset($_POST["submitInfo"])){
             </a>
 
             <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuLink">
-                <li><a class="dropdown-item active" href="profile-edit.php">Edit Profile</a></li>
-                <li><a class="dropdown-item" href="password.php">Password</a></li>
-                <li><a class="dropdown-item" href="social-profiles.php">Social Profiles</a></li>
+                <li><a class="dropdown-item active" href="profile-edit.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Edit Profile</a></li>
+                <li><a class="dropdown-item" href="password.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Password</a></li>
+                <li><a class="dropdown-item" href="social-profiles.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Social Profiles</a></li>
+                <li><a class="dropdown-item text-danger" href="profile-delete.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Social Profiles</a></li>
             </ul>
         </div>
 
@@ -136,10 +138,10 @@ if(isset($_POST["submitInfo"])){
         <aside class="hide-mobile">
             <div>
                 <ul class="nav nav-pills flex-column">
-                    <li class="nav-item"><a class="nav-link active" href="profile-edit.php">Edit Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="password.php">Password</a></li>
-                    <li class="nav-item"><a class="nav-link" href="social-profiles.php">Social Profiles</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-danger">Delete Account</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="profile-edit.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Edit Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="password.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Password</a></li>
+                    <li class="nav-item"><a class="nav-link" href="social-profiles.php?profile=<?php echo $_SESSION["user"]["id"]; ?>">Social Profiles</a></li>
+                    <li class="nav-item"><a href="profile-delete.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="nav-link text-danger">Delete Account</a></li>
                 </ul>
             </div>
         </aside>
@@ -163,7 +165,7 @@ if(isset($_POST["submitInfo"])){
         <!-- Form to change profile information -->
         <form action="" method="POST" class=" mb-8">
             <div class="mb-4 form-floating">
-                <input type="email" name="profile_username" id="profile_username" class="form-control" placeholder="Joris Hens">
+                <input type="text" name="profile_username" id="profile_username" class="form-control" placeholder="Joris Hens">
                 <label for="profile_username">
                     <?php if (!empty($_SESSION["user"]["username"])) {
                         echo $_SESSION["user"]["username"];

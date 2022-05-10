@@ -49,42 +49,42 @@ $links = Social::getSocialsFromUser($key);
         <section class="profile">
             <div class="profile__header">
                 <div onclick="showForm" class="profile__imageBox ">
-                <?php if(isset($user["profile_img"])): ?>
-                    <img src="<?php echo "uploads/" . $user["profile_img"] ?>" alt="profile image" style="border: none;" class="profile__image">
-                <?php else : ?>
-                    <i class="bi bi-person-bounding-box"></i>
-                <?php endif; ?>
-            </div>
-            <div class="profile__mainInfo mx-4">
-                <div class="profile__username">
-                    <h1><?php echo $user["username"]; ?></h1>
+                    <?php if(isset($user["profile_img"])): ?>
+                        <img src="<?php echo "uploads/" . $user["profile_img"] ?>" alt="profile image" style="border: none;" class="profile__image">
+                    <?php else : ?>
+                        <i class="bi bi-person-bounding-box"></i>
+                    <?php endif; ?>
                 </div>
-                <?php if (empty($user["course"])) : ?>
-                    <div class="profile__course"><span>No course added yet.</span></div>
-                <?php else : ?>
-                    <div class="profile__course"><span><?php echo $user["course"]; ?></span></div>
-                <?php endif; ?>
-                <?php
-                if ($key == $_SESSION["user"]["id"]) : ?>
-                    <div class="profile__edit">
-                        <a href="profile-edit.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="btn btn-outline-secondary">Edit Profile</a>
+                <div class="profile__mainInfo mx-4">
+                    <div class="profile__username">
+                        <h1><?php echo $user["username"]; ?></h1>
                     </div>
-                <?php endif; ?>
+                    <?php if (empty($user["course"])) : ?>
+                        <div class="profile__course"><span>No course added yet.</span></div>
+                    <?php else : ?>
+                        <div class="profile__course"><span><?php echo $user["course"]; ?></span></div>
+                    <?php endif; ?>
+                    <?php
+                    if ($key == $_SESSION["user"]["id"]) : ?>
+                        <div class="profile__edit">
+                            <a href="profile-edit.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="btn btn-outline-secondary">Edit Profile</a>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
 
+            <div class="profile__nav">
+                <div class="profile__navBox">
+                    <a href="#" class="profile__link" id="profilePersonalInfo"><span>Personal Info</span></a>
+                    <a href="#" class="profile__link" id="profileProjects"><span>Projects</span></a>
+                    <a href="#" class="profile__link" id="profileShowcase"><span>Showcase</span></a>
+                </div>
             </div>
-        </div>
 
-        <div class="profile__nav">
-            <div class="profile__navBox">
-                <a href="#" class="profile__link" id="profilePersonalInfo"><span>Personal Info</span></a>
-                <a href="#" class="profile__link" id="profileProjects"><span>Projects</span></a>
-                <a href="#" class="profile__link" id="profileShowcase"><span>Showcase</span></a>
-            </div>
-        </div>
-        <div class="profile__main">
-            <div class="profile__showcase">
-                <p class="nothing">No showcase available.</p>
-            </div>
+            <div class="profile__main">
+                <div class="profile__showcase">
+                    <p class="nothing">No showcase available.</p>
+                </div>
 
                 <div class="profile__projects">
                     <?php if (empty($projects)): ?>
@@ -93,11 +93,11 @@ $links = Social::getSocialsFromUser($key);
                         <div class="card-deck">
                             <?php foreach ($projects as $project): ?>
                                 <div class="card my-4">
-                                    <a href=" project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
+                                    <a href="project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
                                         <img class="card-img" src="<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
                                     </a>
                                     <div class="card-body">
-                                        <a href=" project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
+                                        <a href="project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
                                             <h5 class="card-title"><?php echo htmlspecialchars($project["title"]); ?></h5>
                                         </a>  
                                     </div>
@@ -107,72 +107,71 @@ $links = Social::getSocialsFromUser($key);
                                         <a href="#" class="card-link"><i class="bi bi-eye"></i> 101</a>
                                     </div>
                                 </div>
+                                <?php endforeach; ?>
                             </div>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
-            </div>
-
-            <div class="profile__infos">
-                <div class="profile__info description-area">
-                    <h2>Who am I?</h2>
-                    <?php if (empty($user["bio"])) : ?>
-                        <p class="profile__description">No bio added yet.</p>
-                    <?php else : ?>
-                        <p class="profile__description"><?php echo $user["bio"]; ?></p>
                     <?php endif; ?>
                 </div>
-                <div class="profile__info extra-area">
-                    <h2>Information</h2>
-                    <div class="extra__box">
-                        <p class="extra__title">Projects uploaded</p>
-                        <p class="extra__number">6</p>
+
+                <div class="profile__infos">
+                    <div class="profile__info description-area">
+                        <h2>Who am I?</h2>
+                        <?php if (empty($user["bio"])) : ?>
+                            <p class="profile__description">No bio added yet.</p>
+                        <?php else : ?>
+                            <p class="profile__description"><?php echo $user["bio"]; ?></p>
+                        <?php endif; ?>
                     </div>
-                    <div class="extra__box">
-                        <p class="extra__title">Following</p>
-                        <p class="extra__number">34</p>
+                    <div class="profile__info extra-area">
+                        <h2>Information</h2>
+                        <div class="extra__box">
+                            <p class="extra__title">Projects uploaded</p>
+                            <p class="extra__number">6</p>
+                        </div>
+                        <div class="extra__box">
+                            <p class="extra__title">Following</p>
+                            <p class="extra__number">34</p>
+                        </div>
+                        <div class="extra__box">
+                            <p class="extra__title">Followers</p>
+                            <p class="extra__number">27</p>
+                        </div>
+                        <div class="extra__box">
+                            <p class="extra__title">Written comments</p>
+                            <p class="extra__number">5</p>
+                        </div>
+                        <div class="extra__box">
+                            <p class="extra__title">Total project likes</p>
+                            <p class="extra__number">214</p>
+                        </div>
+                        <div class="extra__box">
+                            <p class="extra__title">Most used tag</p>
+                            <p class="extra__number">#design</p>
+                        </div>
+
                     </div>
-                    <div class="extra__box">
-                        <p class="extra__title">Followers</p>
-                        <p class="extra__number">27</p>
-                    </div>
-                    <div class="extra__box">
-                        <p class="extra__title">Written comments</p>
-                        <p class="extra__number">5</p>
-                    </div>
-                    <div class="extra__box">
-                        <p class="extra__title">Total project likes</p>
-                        <p class="extra__number">214</p>
-                    </div>
-                    <div class="extra__box">
-                        <p class="extra__title">Most used tag</p>
-                        <p class="extra__number">#design</p>
+                    <div class="profile__info contact-area">
+                        <h2>Contact</h2>
+                        <a href="#" class="profile__infoLink">
+                            <i class="bi bi-envelope"></i>
+                            <p class="link__text">josjacobs@gmail.com</p>
+                        </a>
+                        <a href="#" class="profile__infoLink">
+                            <i class="bi bi-instagram"></i>
+                            <p class="link__text">Josefien Jacobs</p>
+                        </a>
+                        <a href="#" class="profile__infoLink">
+                            <i class="bi bi-facebook"></i>
+                            <p class="link__text">@JosJacobs</p>
+                        </a>
+                        <a href="#" class="profile__infoLink">
+                            <i class="bi bi-github"></i>
+                            <p class="link__text">Josefien_code</p>
+                        </a>
                     </div>
 
                 </div>
-                <div class="profile__info contact-area">
-                    <h2>Contact</h2>
-                    <a href="#" class="profile__infoLink">
-                        <i class="bi bi-envelope"></i>
-                        <p class="link__text">josjacobs@gmail.com</p>
-                    </a>
-                    <a href="#" class="profile__infoLink">
-                        <i class="bi bi-instagram"></i>
-                        <p class="link__text">Josefien Jacobs</p>
-                    </a>
-                    <a href="#" class="profile__infoLink">
-                        <i class="bi bi-facebook"></i>
-                        <p class="link__text">@JosJacobs</p>
-                    </a>
-                    <a href="#" class="profile__infoLink">
-                        <i class="bi bi-github"></i>
-                        <p class="link__text">Josefien_code</p>
-                    </a>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
     <?php include_once("footer.inc.php"); ?>
 

@@ -81,27 +81,6 @@ $links = Social::getSocialsFromUser($key);
                 </div>
             </div>
 
-<<<<<<< HEAD
-            <div class="profile__projects">
-                <?php if (empty($projects)): ?>
-                    <p class="nothing">No projects submitted.</p>
-                <?php else: ?>
-                    <div class="card-deck">
-                        <?php foreach ($projects as $project): ?>
-                            <div class="card my-4">
-                                <a href=" project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
-                                    <img class="card-img" src="uploads/<?php echo htmlspecialchars($project["cover_img"]); ?>" alt="Card image">
-                                </a>
-                                <div class="card-body">
-                                    <a href=" project.php?id=<?php echo htmlspecialchars($project["id"]); ?>">
-                                        <h5 class="card-title"><?php echo htmlspecialchars($project["title"]); ?></h5>
-                                    </a>  
-                                </div>
-                                <div class="card-footer">
-                                    <a href="#" class="card-link"><i class="bi bi-heart"></i> 101</a>
-                                    <a href="#" class="card-link"><i class="bi bi-chat"></i> 101</a>
-                                    <a href="#" class="card-link"><i class="bi bi-eye"></i> 101</a>
-=======
             <div class="profile__main">
                 <div class="profile__showcase">
                     <p class="nothing">No showcase available.</p>
@@ -127,25 +106,9 @@ $links = Social::getSocialsFromUser($key);
                                         <a href="#" class="card-link"><i class="bi bi-chat"></i> 101</a>
                                         <a href="#" class="card-link"><i class="bi bi-eye"></i> 101</a>
                                     </div>
->>>>>>> 29ea13a9ef3cc65029a11067dc90010890852d59
                                 </div>
                                 <?php endforeach; ?>
                             </div>
-<<<<<<< HEAD
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            <?php endif; ?>
-        </div>
-            <div class="profile__infos">
-                <div class="profile__info description-area">
-                    <h2>Who am I?</h2>
-                    <?php if (empty($user["bio"])) : ?>
-                        <p class="profile__description">No bio added yet.</p>
-                    <?php else : ?>
-                        <p class="profile__description"><?php echo $user["bio"]; ?></p>
-=======
->>>>>>> 29ea13a9ef3cc65029a11067dc90010890852d59
                     <?php endif; ?>
                 </div>
 

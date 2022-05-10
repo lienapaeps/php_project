@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 10, 2022 at 09:22 AM
+-- Generation Time: May 10, 2022 at 09:33 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `comments`
 --
 
+DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `comment` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -42,6 +43,7 @@ CREATE TABLE `comments` (
 -- Table structure for table `following`
 --
 
+DROP TABLE IF EXISTS `following`;
 CREATE TABLE `following` (
   `id` int(11) NOT NULL,
   `user_follower` int(11) NOT NULL,
@@ -56,6 +58,7 @@ CREATE TABLE `following` (
 -- Table structure for table `likes`
 --
 
+DROP TABLE IF EXISTS `likes`;
 CREATE TABLE `likes` (
   `id` int(11) NOT NULL,
   `time` datetime NOT NULL,
@@ -69,6 +72,7 @@ CREATE TABLE `likes` (
 -- Table structure for table `password_reset_request`
 --
 
+DROP TABLE IF EXISTS `password_reset_request`;
 CREATE TABLE `password_reset_request` (
   `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -130,6 +134,7 @@ INSERT INTO `password_reset_request` (`id`, `user_id`, `date_requested`, `token`
 -- Table structure for table `projects`
 --
 
+DROP TABLE IF EXISTS `projects`;
 CREATE TABLE `projects` (
   `id` int(11) NOT NULL,
   `title` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -181,6 +186,7 @@ INSERT INTO `projects` (`id`, `title`, `description`, `time`, `cover_img`, `warn
 -- Table structure for table `reported`
 --
 
+DROP TABLE IF EXISTS `reported`;
 CREATE TABLE `reported` (
   `id` int(11) NOT NULL,
   `time` datetime NOT NULL,
@@ -195,6 +201,7 @@ CREATE TABLE `reported` (
 -- Table structure for table `social_links`
 --
 
+DROP TABLE IF EXISTS `social_links`;
 CREATE TABLE `social_links` (
   `id` int(11) NOT NULL,
   `facebook` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -208,12 +215,20 @@ CREATE TABLE `social_links` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `social_links`
+--
+
+INSERT INTO `social_links` (`id`, `facebook`, `instagram`, `behance`, `dribbble`, `github`, `linkedin`, `stackoverflow`, `portfolio`, `user_id`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -233,7 +248,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `backup_email`, `profile_img`, `course`, `bio`, `muted`, `admin`, `warned`) VALUES
-(1, 'p66liena', 'lienapaeps@thomasmore.be', '$2y$13$qxOtOj3qTUiV5Zf0IDJRluk8l32y32xs4DbaXZdBA31izJTfaVM4a', 'paepsliena@gmail.com', NULL, 'Interactive Multimedia Design', 'Dit is mijn korte bio.', 0, 1, 0),
+(1, '', 'lienapaeps@thomasmore.be', '$2y$13$qxOtOj3qTUiV5Zf0IDJRluk8l32y32xs4DbaXZdBA31izJTfaVM4a', '', NULL, '', '', 0, 1, 0),
 (2, 'jefke', 'jeffasseur@thomasmore.be', '$2y$13$KcnN7rl.YQPeqdojESug9OxXwk3gcCZhy5rFLqo5lkB6ri.IiAt.i', NULL, NULL, NULL, NULL, 0, 1, 0),
 (3, 'rix', 'rickyheylen@thomasmore.be', '$2y$13$ygwBw3.gK7LjnDCrAfL3MuT1Ro5pDjZ6QXQq2.l9QPcn/liMBslUq', NULL, NULL, NULL, NULL, 0, 1, 0),
 (4, 'test', 'test@thomasmore.be', '$2y$13$pBNDpJh24YTLTr4K7ca9uO7pl7m9ItE3rUZvVFjUSvUtdzZx3iE9W', NULL, NULL, NULL, NULL, 0, 0, 0),
@@ -344,7 +359,7 @@ ALTER TABLE `reported`
 -- AUTO_INCREMENT for table `social_links`
 --
 ALTER TABLE `social_links`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -106,7 +106,7 @@
                 <hr>
                 <p class="mb-0">
                     <button type="submit" class="btn btn-danger" name="delete-def">Delete Account</button>
-                    <a href="profile.php" class="btn btn-secondary">Cancel</a>
+                    <a href="profile.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="btn btn-secondary">Cancel</a>
                 </p>
             </div>
         <?php endif; ?>

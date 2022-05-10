@@ -9,6 +9,7 @@
         $loggedin = true;
     } else {
         $loggedin = false;
+        header("Location: index.php");
     }
 
     if (!isset($_GET["id"])) {

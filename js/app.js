@@ -17,13 +17,12 @@ document.querySelector("#register__form").addEventListener("submit", (e) => {
     })
         .then(response => response.json())
         .then(data => {
-            // console.log('Success:', data);
-            if (data.status === "success") {
-                console.log('Success:', data);
-            }
+            console.log('Success:', data);
         })
         .catch((error) => {
-            console.error('Error:', error);
+            // console.error('Error:', error);
+            let message = document.querySelector(".check-username");
+            message.innerHTML = "Username already exists";
         });
 
     //Refresh vermijden

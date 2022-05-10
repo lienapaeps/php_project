@@ -77,7 +77,7 @@ if (!empty($_POST)) {
             <div class="mb-3 form-floating">
                 <input type="text" name="username" id="username" class="form-control" placeholder="Username" required">
                 <label for="username">Username</label>
-                <span class="check-username">Dit is een boodschap</span>
+                <span class="check-username"></span>
             </div>
 
             <div class="mb-3 form-floating">

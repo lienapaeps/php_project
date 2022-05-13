@@ -24,8 +24,12 @@
         public function save() {
             $conn = DB::getConnection();
             $statement = $conn->prepare("INSERT INTO likes (project_id, user_id, time) VALUES (:projectID, :userId, NOW())");
-            $statement->bindParam(":projectId", $this->projectId);
-            $statement->bindParam(":userId", $this->userId);
+
+            $projectId = $this->getProjectId();
+            $userId = $this->getUserId();
+
+            $statement->bindValue(":projectId", $projectId);
+            $statement->bindValue(":userId", $userId);
 
             return $statement->execute();
         }

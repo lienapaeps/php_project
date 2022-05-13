@@ -1,6 +1,7 @@
 <?php
 
 include_once("bootstrap.php");
+// include_once("ajax/check_availability.php");
 
 if (!empty($_POST)) {
     try {
@@ -75,7 +76,7 @@ if (!empty($_POST)) {
 
         <form id="register__form" action="" method="POST">
             <div class="mb-3 form-floating">
-                <input type="text" name="username" id="username" class="form-control" placeholder="Username" required">
+                <input type="text" name="username" id="username" class="form-control" placeholder="Username" required onInput="checkUsername()"">
                 <label for="username">Username</label>
                 <span class="check-username"></span>
             </div>
@@ -106,8 +107,27 @@ if (!empty($_POST)) {
         </div>
     </section>
 
-    <script src="js/app.js"></script>
+    <!-- <script src="js/app.js"></script> -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        function checkUsername() {
+            
+            jQuery.ajax({
+            url: "ajax/check_availability.php",
+            data:'username='+$(".check-username").val(),
+            type: "POST",
+            success:function(data){
+                $(".check-username").html(data);
+            },
+            error:function (){}
+            });
+        }
+    </script>
 
 </body>
+
+
 
 </html>

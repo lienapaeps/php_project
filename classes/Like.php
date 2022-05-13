@@ -3,11 +3,11 @@
         private $projectId;
         private $userId;
 
-        public function getPostId() {
-            return $this->postId;
+        public function getProjectId() {
+            return $this->getprojectId;
         }
 
-        public function setPostId($projectId) {
+        public function setProjectId($projectId) {
             $this->projectId = $projectId;
             return $this;
         }

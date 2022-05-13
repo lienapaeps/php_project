@@ -101,7 +101,7 @@ $links = Social::getSocialsFromUser($key);
                                         </a>  
                                     </div>
                                     <div class="card-footer">
-                                        <a href="#" class="card-link"><i class="bi bi-heart"></i> 101</a>
+                                        <a href="#" class="card-link like-project"><i class="bi bi-heart"></i> 101</a>
                                         <a href="#" class="card-link"><i class="bi bi-chat"></i> 101</a>
                                         <a href="#" class="card-link"><i class="bi bi-eye"></i> 101</a>
                                     </div>
@@ -167,7 +167,6 @@ $links = Social::getSocialsFromUser($key);
                             <p class="link__text">Josefien_code</p>
                         </a>
                     </div>
-<<<<<<< HEAD
 
                 </div>
                 <div class="profile__info contact-area">
@@ -221,8 +220,6 @@ $links = Social::getSocialsFromUser($key);
                         </a>
                     <?php endif; ?>
 
-=======
->>>>>>> 37eac7ff13749e9bed8b9f3bc49c4958bf0cc54f
                 </div>
             </div>
         </section>

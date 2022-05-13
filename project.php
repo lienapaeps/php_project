@@ -71,7 +71,7 @@
             </div>
 
             <div>
-                <a href="#" class="btn btn-pink-outline">
+                <a href="#" class="btn btn-pink-outline like-project">
                     <i class="bi bi-heart"></i>
                     <span>11</span>
                 </a>

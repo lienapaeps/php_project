@@ -1,3 +1,10 @@
+// Liken van projecten
+document.querySelector(".like-project").addEventListener("click", (e) => {
+    console.log("Like ✅");
+
+    e.preventDefault();
+});
+
 // register form validation
 document.querySelector("#register__form").addEventListener("submit", (e) => {
     // data uitlezen

@@ -47,7 +47,7 @@
             
             <div class="project__header__user d-flex justify-content-between align-items-center mb-4">
                 <div class="d-flex">
-                    <img src="<?php if(!empty($user['profile_img'])){ echo $user['profile_img'];} else{ echo "./assets/img/home_banner.png"; }; ?>" alt="Profile picture" class="rounded-circle me-3" style="height: 60px; width: 60px; object-fit: cover;">
+                    <img src="uploads/<?php if(!empty($user['profile_img'])){ echo $user['profile_img'];} else{ echo "./assets/img/home_banner.png"; }; ?>" alt="Profile picture" class="rounded-circle me-3" style="height: 60px; width: 60px; object-fit: cover;">
                     <div>
                         <h3 class="project__header__user__name"><?php echo $user['username']; ?></h3>
 
@@ -87,14 +87,39 @@
         </div>
 
         <div class="project__coverImg">
-            <img src="<?php echo $project['cover_img'] ?>" alt="Project main image" class="img-fluid rounded mb-3">
+            <img src="uploads/<?php echo $project['cover_img'] ?>" alt="Project main image" class="img-fluid rounded mb-3">
         </div>
         
         <div class="project__body">
             <?php echo $project['description']; ?>
         </div>
-    </main>
 
-    <?php include_once('footer.inc.php') ?>
+        <div class="projects__comments">
+            <div class="mt-3">
+                <h4>Comments</h4>
+            </div>
+            <!-- input field for new comment -->
+            <div class="project__comments__input mt-3 mb-4 d-flex">
+                <img src="uploads/<?php if(!empty($user['profile_img'])){ echo $user['profile_img'];} else{ echo "./assets/img/home_banner.png"; }; ?>" alt="Profile picture" class="rounded-circle me-3" style="height: 60px; width: 60px; object-fit: cover;">
+                <input type="text" class="form-control" placeholder="Enter your comment...">
+            </div>
+            <!-- comments  -->
+            <div class="project__comments__comment">
+                <div class="project__comments__details mt-2 mb-2 d-flex">
+                    <div>
+                        <img src="uploads/<?php if(!empty($user['profile_img'])){ echo $user['profile_img'];} else{ echo "./assets/img/home_banner.png"; }; ?>" alt="Profile picture" class="rounded-circle me-3" style="height: 60px; width: 60px; object-fit: cover;">
+                    </div>
+                    <div>
+                        <p class="project__comments__user__name mb-2"><strong><?php echo $user['username']; ?></strong></p>
+                        <p class="mb-2">Dit is SUPER cool 😎</p>
+                        <p class="mb-1"><small>5 minutes ago</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>
+
+<?php include_once('footer.inc.php') ?>
+
 </body>
 </html>

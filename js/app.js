@@ -1,8 +1,9 @@
 // Liken van projecten
-document.querySelector("a.like-project").addEventListener("click", (e) => {
+let like = document.querySelector("a.like-project").addEventListener("click", (e) => {
 
         let projectId = e.target.dataset.project;
         let userId = e.target.dataset.user;
+        /*
     
         console.log(projectId, " + " ,userId);
         
@@ -15,9 +16,11 @@ document.querySelector("a.like-project").addEventListener("click", (e) => {
             body: data
         });
 
+        */
+
     console.log("Like ✅");
 
-    console.log(e.target);
+    console.log(projectId);
 
     
     // no refresh 

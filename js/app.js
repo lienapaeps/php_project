@@ -1,8 +1,26 @@
-<<<<<<< HEAD
 // Liken van projecten
-document.querySelector(".like-project").addEventListener("click", (e) => {
+document.querySelector("a.like-project").addEventListener("click", (e) => {
+
+        let projectId = e.target.dataset.project;
+        let userId = e.target.dataset.user;
+    
+        console.log(projectId, " + " ,userId);
+        
+        let data = new FormData();
+        data.append("projectId" = projectId);
+        data.append("userId" = userId);
+    
+        fetch("/ajax/save_like.php", {
+            method: "POST",
+            body: data
+        });
+
     console.log("Like ✅");
 
+    console.log(e.target);
+
+    
+    // no refresh 
     e.preventDefault();
 });
 
@@ -14,12 +32,12 @@ document.querySelector("#register__form").addEventListener("submit", (e) => {
     let password = document.querySelector("#password").value;
 
     // via AJAX naar server sturen/posten
-=======
+});
+
 // Comments
 document.querySelector("#addComment").addEventListener("click", (e) => {
     let comment = document.querySelector("#comment").value;
     
->>>>>>> 34cb7f1f0c7f94bc8914c3da63f3db3c2821d667
     let data = new FormData();
     data.append("comment", comment);
 

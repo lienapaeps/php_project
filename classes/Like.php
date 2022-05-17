@@ -33,4 +33,11 @@
 
             return $statement->execute();
         }
+
+        public function countLikes() {
+            $conn = DB::getConnection();
+            $statement = $conn->prepare("SELECT count(*) FROM likes WHERE project_id = :projectId");
+            $statement->bindParam(":projectId", $this->getProjectId());
+            return $statement->execute();
+        }
     }

@@ -20,12 +20,6 @@
             if ($user->canLogin($email, $password)) {
                 session_start();
                 $_SESSION['user'] = $user->findByEmail($email);
-                if(!empty($_SESSION['user'])) {
-                    $conn = DB::getConnection();
-                    $s = $conn->prepare("INSERT INTO social_links (user_id) values (:user_id) ON DUPLICATE KEY UPDATE user_id = :user_id");
-                    $s->bindValue("user_id", $_SESSION["user"]["id"]);
-                    $s->execute();
-                }
                 header("Location: index.php");
             }
         } catch (Throwable $e) {
@@ -112,14 +106,3 @@
 </body>
 
 </html>
-
-<!-- Admins:
-
-email: lienapaeps@thomasmore.be
-password: 1234567
-
-email: jeffasseur@thomasmore.be
-password: 1234567
-
-email: rickyheylen@thomasmore.be
-password: 1234567 -->

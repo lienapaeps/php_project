@@ -23,8 +23,8 @@ The purpose of this platform is to inspire eachother and showcase own work to pe
 - [x] Decide on brand name
 - [x] Decide on fonts
 - [x] Decide on colors
-- [ ] Decide on logo
-- [ ] Decide on other interface features
+- [x] Decide on logo
+- [x] Decide on other interface features
 
 
 ## ⚙Practical agreements⚙
@@ -56,22 +56,22 @@ The purpose of this platform is to inspire eachother and showcase own work to pe
 - [x] Sign in
 - [ ] Reset password
 - [x] Log out
-- [ ] Profile adjustment: profile picture
+- [x] Profile adjustment: profile picture
 --------
-- [ ] Profile adjustment: personal info
-- [ ] Profile adjustment: change password
+- [x] Profile adjustment: personal info
+- [x] Profile adjustment: change password
 - [ ] Profile deletion
-- [ ] Add projects
-- [ ] Show projects in feed
+- [x] Add projects
+- [x] Show projects in feed
 -------
 
 
 ### 🔥Level 2🔥
-- [ ] Search on profile
-- [ ] Edit own projects
-- [ ] Delete own projects
+- [x] Search on profile
+- [x] Edit own projects
+- [x] Delete own projects
 - [ ] Search on title or tags
-- [ ] On Signup: show if account is still available ⚡
+- [x] On Signup: show if account is still available ⚡
 -----------
 - [ ] Comments ⚡
 - [ ] Like ⚡

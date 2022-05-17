@@ -85,7 +85,10 @@
             </div>
 
             <div>
-                <a href="#" class="btn btn-pink-outline">
+                <a href="#" style="z-index: 10;" class="btn btn-pink-outline like-project"
+                    data-project="<?php echo htmlspecialchars($project["id"]); ?>" 
+                    data-user="<?php if(isset($_SESSION["user"])){echo $_SESSION["user"]["id"];} else {"NULL";} ?>"
+                 >
                     <i class="bi bi-heart"></i>
                     <span>11</span>
                 </a>

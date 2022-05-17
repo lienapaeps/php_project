@@ -116,11 +116,11 @@ if(isset($_POST["submitInfo"])){
     <div class="px-4 profile-edit__grid" style="margin-bottom: 8rem;">
         <div class="profile-edit__header container-fluid d-flex mb-8">
             <div class="profile-edit__header__picture">
-                <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-4" style="height: 80px; width: 80px;">
+                <img src="<?php echo "uploads/" . $user["profile_img"] ?>" alt="profile image" class="rounded-circle me-4" style="height: 80px; width: 80px; object-fit: cover;">
             </div>
 
             <div class="profile-edit__header__text">
-                <h1 class="profile-edit__header__text__name fs-3"><?php echo "Username"; ?> <span class="fs-5">/</span><span class="fs-5">General</span></h1>
+                <h1 class="profile-edit__header__text__name fs-3"><?php echo $user['username']; ?> <span class="fs-5">/</span><span class="fs-5">General</span></h1>
                 <p class="profile-edit__header__text__descr text-muted">Update here your general information and profile picture</p>
             </div>
         </div>

@@ -24,7 +24,7 @@ if (isset($_SESSION["user"])) {
                     <?php if ($loggedin) : ?>
                         <p class="me-2 fw-bolder hide-mobile"><?php echo $_SESSION["user"]["username"]; ?></p>
                     <?php endif; ?>
-                    <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-2" style="height: 30px; width: 30px;">
+                    <img src="<?php echo "uploads/" . $user["profile_img"] ?>" alt="profile image" class="rounded-circle me-2" style="height: 30px; width: 30px; object-fit: cover;">
                 </button>
             </div>
 

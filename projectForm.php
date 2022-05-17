@@ -12,6 +12,7 @@ session_start();
 if (isset($_POST['submit'])) {
     $title = $_POST['project_title'];
     $description = $_POST['project_description'];
+    $tags = $_POST['project_tags'];
 
     $file = $_FILES['project_cover'];
 
@@ -40,12 +41,14 @@ if (isset($_POST['submit'])) {
                 $date = date('Y-m-d H:i:s');
 
                 $conn = DB::getConnection();
-                $statement = $conn->prepare("insert into projects (title, description, time, cover_img, user_id) values (:title, :description, :time, :cover_img, :user_id)");
+                $statement = $conn->prepare("insert into projects (title, description, tags, time, cover_img, user_id) values (:title, :description, :tags, :time, :cover_img, :user_id)");
                 $statement->bindValue(':title', $title);
                 $statement->bindValue(':description', $description);
+                $statement->bindValue(':tags', $tags);
                 $statement->bindValue(':time', $date);
                 $statement->bindValue(':cover_img', $fileNameNew);
                 $statement->bindValue(':user_id', $_SESSION['user']['id']);
+
                 $statement->execute();
 
                 header("Location: projectForm.php?uploadsuccess");
@@ -107,7 +110,7 @@ if (isset($_POST['submit'])) {
             <!-- image preview -->
         </div>
 
-        <form action="uploadProject.php" method="POST" enctype="multipart/form-data" class="mx-4 mb-8">
+        <form action="" method="POST" enctype="multipart/form-data" class="mx-4 mb-8">
 
             <!-- cover img  -->
             <div class="mb-3">
@@ -121,8 +124,13 @@ if (isset($_POST['submit'])) {
             </div>
             <!-- description -->
             <div class="mb-3 form-floating">
-                <textarea type="text" name="project_description" id="project_description" class="form-control" placeholder="Type here your description and tags" style=" height: 200px" required></textarea>
-                <label for="project_description">Description and tags</label>
+                <textarea type="text" name="project_description" id="project_description" class="form-control" placeholder="Type here your description" style=" height: 200px" required></textarea>
+                <label for="project_description">Description</label>
+            </div>
+            <!-- tags -->
+            <div class="mb-3 form-floating">
+                <input type="text" name="project_tags" id="project_tags" class="form-control" placeholder="Type here your tags" required>
+                <label for="project_tags">Tags</label>
             </div>
             <button type="submit" name="submit" class="btn btn-primary">Upload</button>
         </form>

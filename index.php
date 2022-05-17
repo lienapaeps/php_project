@@ -17,10 +17,19 @@ if (!isset($_GET["page"])) {
     $page = $_GET["page"];
 }
 
-$limit = 18;
+// 20 projects per page
+$limit = 20;
+// 1 - 1 = 0 --> 0 tot 20
+// 2 - 1 = 1 --> 20 tot 40 
 $start = ($page - 1) * $limit;
 
-$projects = Project::getAll($start, $limit);
+if (!isset($_GET["search"]) || $_GET["search"] == "" || $_GET["search"] == "all") {
+    $projects = Project::getAll($start, $limit);
+} else {
+    $search = $_GET["search"];
+    $projects = Project::search($search, $start, $limit);
+}
+
 $count = Project::countProjects(); // 100
 
 $pages = ceil($count / $limit); // 100 / 20 = 5
@@ -100,6 +109,7 @@ function getUser($id)
                                 <a href="profile.php?profile=<?php echo htmlspecialchars($project["user_id"]); ?>" class="card-link">
                                     <?php echo htmlspecialchars(getUser($project["user_id"])); ?>
                                 </a>
+                                <a class="link-primary">#<?php echo htmlspecialchars($project['tags']); ?></a>            
                         </div>
                         <div class="card-footer">
                             <a href="#" class="card-link like-project" 

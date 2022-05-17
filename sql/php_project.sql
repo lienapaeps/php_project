@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 10, 2022 at 10:34 AM
+-- Generation Time: May 17, 2022 at 10:23 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -32,10 +32,18 @@ CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `comment` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
   `time` datetime NOT NULL,
-  `warned` tinyint(1) NOT NULL,
+  `warned` tinyint(1) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `comment`, `time`, `warned`, `user_id`, `project_id`) VALUES
+(1, 'Dit is een test comment', '2022-05-16 16:36:47', NULL, 1, 8),
+(2, 'Dit is een andere test', '2022-05-15 09:33:29', NULL, 2, 8);
 
 -- --------------------------------------------------------
 
@@ -139,6 +147,7 @@ CREATE TABLE `projects` (
   `id` int(11) NOT NULL,
   `title` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tags` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `time` datetime DEFAULT NULL,
   `cover_img` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `warned` tinyint(1) DEFAULT NULL,
@@ -151,34 +160,35 @@ CREATE TABLE `projects` (
 -- Dumping data for table `projects`
 --
 
-INSERT INTO `projects` (`id`, `title`, `description`, `time`, `cover_img`, `warned`, `showcase`, `amount_views`, `user_id`) VALUES
-(7, 'test 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel ex vitae est finibus tristique in at mauris. Praesent pharetra finibus nibh id volutpat. Fusce tincidunt nec lectus et cursus. Nam nec malesuada urna. Morbi hendrerit eros arcu, eget imperdiet diam imperdiet sed. Integer finibus sapien eu suscipit scelerisque. Curabitur fringilla turpis sit amet urna lacinia, eu condimentum arcu aliquet. Curabitur at tellus at eros sagittis placerat nec quis tellus. In laoreet dui at ullamcorper pellentesque. Donec cursus lacinia ex in mollis. Aliquam non ligula quis metus malesuada ultrices. Nullam ut felis eget elit lacinia ultrices.', '2022-04-27 09:04:40', '62690728195bb9.77187818.jpg', NULL, NULL, NULL, 1),
-(8, 'test 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel ex vitae est finibus tristique in at mauris. Praesent pharetra finibus nibh id volutpat. Fusce tincidunt nec lectus et cursus. Nam nec malesuada urna. Morbi hendrerit eros arcu, eget imperdiet diam imperdiet sed. Integer finibus sapien eu suscipit scelerisque. Curabitur fringilla turpis sit amet urna lacinia, eu condimentum arcu aliquet. Curabitur at tellus at eros sagittis placerat nec quis tellus. In laoreet dui at ullamcorper pellentesque. Donec cursus lacinia ex in mollis. Aliquam non ligula quis metus malesuada ultrices. Nullam ut felis eget elit lacinia ultrices.', '2022-04-27 09:04:51', '62690733db66c9.89678542.jpg', NULL, NULL, NULL, 1),
-(9, 'test 3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel ex vitae est finibus tristique in at mauris. Praesent pharetra finibus nibh id volutpat. Fusce tincidunt nec lectus et cursus. Nam nec malesuada urna. Morbi hendrerit eros arcu, eget imperdiet diam imperdiet sed. Integer finibus sapien eu suscipit scelerisque. Curabitur fringilla turpis sit amet urna lacinia, eu condimentum arcu aliquet. Curabitur at tellus at eros sagittis placerat nec quis tellus. In laoreet dui at ullamcorper pellentesque. Donec cursus lacinia ex in mollis. Aliquam non ligula quis metus malesuada ultrices. Nullam ut felis eget elit lacinia ultrices.\r\n', '2022-04-27 09:04:59', '6269073b096118.54187154.jpg', NULL, NULL, NULL, 1),
-(10, 'test', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel ex vitae est finibus tristique in at mauris. Praesent pharetra finibus nibh id volutpat. Fusce tincidunt nec lectus et cursus. Nam nec malesuada urna. Morbi hendrerit eros arcu, eget imperdiet diam imperdiet sed. Integer finibus sapien eu suscipit scelerisque. Curabitur fringilla turpis sit amet urna lacinia, eu condimentum arcu aliquet. Curabitur at tellus at eros sagittis placerat nec quis tellus. In laoreet dui at ullamcorper pellentesque. Donec cursus lacinia ex in mollis. Aliquam non ligula quis metus malesuada ultrices. Nullam ut felis eget elit lacinia ultrices.', '2022-04-27 09:15:40', '626909bccb9ab7.62359308.jpg', NULL, NULL, NULL, 1),
-(11, 'hrttrezerth', 'hgrtesyd,yjthhftgfrgdfgrt', '2022-04-27 09:16:28', '626909ec172ea5.01604395.jpg', NULL, NULL, NULL, 1),
-(12, 'azertyhjk', 'azertyuk', '2022-04-27 09:18:05', '62690a4d4f0441.77202976.jpg', NULL, NULL, NULL, 1),
-(13, 'jhgfds', 'kjhgfds', '2022-04-27 09:21:35', '62690b1fdbeb13.49512025.jpg', NULL, NULL, NULL, 1),
-(14, 'testgwfxb', ',jh,ydyrhhtrdtrthgr', '2022-04-27 09:24:28', '62690bcc0a8fa7.21044081.jpg', NULL, NULL, NULL, 1),
-(15, 'dwrxtfcygvuhbijk', 'rwxdtfcygvuhbijnok,l', '2022-04-27 09:26:34', '62690c4a0bbe17.97900136.jpg', NULL, NULL, NULL, 1),
-(16, 'test', 'test', '2022-05-02 14:32:34', '626feb8281fec1.51467285.jpg', NULL, NULL, NULL, 2),
-(17, 'nog een test', 'test', '2022-05-02 14:32:50', '626feb9229b704.03261003.jpg', NULL, NULL, NULL, 2),
-(18, 'nog een laatste test', 'test', '2022-05-02 14:33:00', '626feb9c054fa6.95437802.jpg', NULL, NULL, NULL, 2),
-(19, 'test', 'test', '2022-05-02 14:33:19', '626febaf073422.10940797.jpg', NULL, NULL, NULL, 3),
-(20, 'test 2', 'test', '2022-05-02 14:33:32', '626febbc7589f2.47861557.jpg', NULL, NULL, NULL, 3),
-(21, 'test 3', 'test', '2022-05-02 14:33:40', '626febc4637771.67370158.jpg', NULL, NULL, NULL, 3),
-(22, 'teststst', 'jyrsrhgxfb', '2022-05-02 14:33:59', '626febd77d4815.82815471.jpg', NULL, NULL, NULL, 3),
-(23, 'jhgfd', 'hgfdsehfgbrthgb', '2022-05-02 14:34:18', '626febeaa84439.32192298.jpg', NULL, NULL, NULL, 2),
-(24, 'jaja', 'nog is een test', '2022-05-02 14:34:48', '626fec084e2909.06822542.jpg', NULL, NULL, NULL, 2),
-(25, 'joejoe', 'joejoejoe', '2022-05-02 14:35:16', '626fec245f4c70.51071470.jpg', NULL, NULL, NULL, 1),
-(26, 'testsetetset', 'rsgfvbnjdhrgfngjsyetrgst', '2022-05-03 09:54:29', '6270fbd596c057.77349140.jpg', NULL, NULL, NULL, 1),
-(27, 'eqywtjxhcjdyjd,j', 'jysjsjr\'srdjtysdgt\'', '2022-05-03 10:04:30', '6270fe2eb516c3.84109949.jpg', NULL, NULL, NULL, 1),
-(28, 'test', 'test', '2022-05-03 10:38:27', '62710623ab8536.48801142.jpg', NULL, NULL, NULL, 1),
-(29, 'fds', 'gfds', '2022-05-03 10:39:06', '6271064a5e18a6.04366570.jpg', NULL, NULL, NULL, 1),
-(30, 'test', 'test', '2022-05-03 10:41:11', '627106c728c8b5.31253604.jpg', NULL, NULL, NULL, 1),
-(31, 'gfdsq', 'hgfds', '2022-05-03 10:41:35', '627106df8c2c51.86847103.jpg', NULL, NULL, NULL, 1),
-(32, 'qrgfesw', 'tqegfwd', '2022-05-03 10:43:30', '62710752e538b6.25106080.jpg', NULL, NULL, NULL, 1),
-(33, ',nbvcxwgfdshgfd', 'thdfstdf', '2022-05-03 12:22:51', '62711e9b0e68c9.35443999.jpg', NULL, NULL, NULL, 3);
+INSERT INTO `projects` (`id`, `title`, `description`, `tags`, `time`, `cover_img`, `warned`, `showcase`, `amount_views`, `user_id`) VALUES
+(7, 'test 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel ex vitae est finibus tristique in at mauris. Praesent pharetra finibus nibh id volutpat. Fusce tincidunt nec lectus et cursus. Nam nec malesuada urna. Morbi hendrerit eros arcu, eget imperdiet diam imperdiet sed. Integer finibus sapien eu suscipit scelerisque. Curabitur fringilla turpis sit amet urna lacinia, eu condimentum arcu aliquet. Curabitur at tellus at eros sagittis placerat nec quis tellus. In laoreet dui at ullamcorper pellentesque. Donec cursus lacinia ex in mollis. Aliquam non ligula quis metus malesuada ultrices. Nullam ut felis eget elit lacinia ultrices.', 'design', '2022-04-27 09:04:40', '62690728195bb9.77187818.jpg', NULL, NULL, NULL, 1),
+(8, 'test 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel ex vitae est finibus tristique in at mauris. Praesent pharetra finibus nibh id volutpat. Fusce tincidunt nec lectus et cursus. Nam nec malesuada urna. Morbi hendrerit eros arcu, eget imperdiet diam imperdiet sed. Integer finibus sapien eu suscipit scelerisque. Curabitur fringilla turpis sit amet urna lacinia, eu condimentum arcu aliquet. Curabitur at tellus at eros sagittis placerat nec quis tellus. In laoreet dui at ullamcorper pellentesque. Donec cursus lacinia ex in mollis. Aliquam non ligula quis metus malesuada ultrices. Nullam ut felis eget elit lacinia ultrices.', 'php', '2022-04-27 09:04:51', '62690733db66c9.89678542.jpg', NULL, NULL, NULL, 1),
+(9, 'test 3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel ex vitae est finibus tristique in at mauris. Praesent pharetra finibus nibh id volutpat. Fusce tincidunt nec lectus et cursus. Nam nec malesuada urna. Morbi hendrerit eros arcu, eget imperdiet diam imperdiet sed. Integer finibus sapien eu suscipit scelerisque. Curabitur fringilla turpis sit amet urna lacinia, eu condimentum arcu aliquet. Curabitur at tellus at eros sagittis placerat nec quis tellus. In laoreet dui at ullamcorper pellentesque. Donec cursus lacinia ex in mollis. Aliquam non ligula quis metus malesuada ultrices. Nullam ut felis eget elit lacinia ultrices.\r\n', 'development', '2022-04-27 09:04:59', '6269073b096118.54187154.jpg', NULL, NULL, NULL, 1),
+(10, 'test', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel ex vitae est finibus tristique in at mauris. Praesent pharetra finibus nibh id volutpat. Fusce tincidunt nec lectus et cursus. Nam nec malesuada urna. Morbi hendrerit eros arcu, eget imperdiet diam imperdiet sed. Integer finibus sapien eu suscipit scelerisque. Curabitur fringilla turpis sit amet urna lacinia, eu condimentum arcu aliquet. Curabitur at tellus at eros sagittis placerat nec quis tellus. In laoreet dui at ullamcorper pellentesque. Donec cursus lacinia ex in mollis. Aliquam non ligula quis metus malesuada ultrices. Nullam ut felis eget elit lacinia ultrices.', 'design', '2022-04-27 09:15:40', '626909bccb9ab7.62359308.jpg', NULL, NULL, NULL, 1),
+(11, 'hrttrezerth', 'hgrtesyd,yjthhftgfrgdfgrt', 'design', '2022-04-27 09:16:28', '626909ec172ea5.01604395.jpg', NULL, NULL, NULL, 1),
+(12, 'azertyhjk', 'azertyuk', 'branding', '2022-04-27 09:18:05', '62690a4d4f0441.77202976.jpg', NULL, NULL, NULL, 1),
+(13, 'jhgfds', 'kjhgfds', 'branding', '2022-04-27 09:21:35', '62690b1fdbeb13.49512025.jpg', NULL, NULL, NULL, 1),
+(14, 'testgwfxb', ',jh,ydyrhhtrdtrthgr', 'branding', '2022-04-27 09:24:28', '62690bcc0a8fa7.21044081.jpg', NULL, NULL, NULL, 1),
+(15, 'dwrxtfcygvuhbijk', 'rwxdtfcygvuhbijnok,l', 'design', '2022-04-27 09:26:34', '62690c4a0bbe17.97900136.jpg', NULL, NULL, NULL, 1),
+(16, 'test', 'test', 'website', '2022-05-02 14:32:34', '626feb8281fec1.51467285.jpg', NULL, NULL, NULL, 2),
+(17, 'nog een test', 'test', 'website', '2022-05-02 14:32:50', '626feb9229b704.03261003.jpg', NULL, NULL, NULL, 2),
+(18, 'nog een laatste test', 'test', 'website', '2022-05-02 14:33:00', '626feb9c054fa6.95437802.jpg', NULL, NULL, NULL, 2),
+(19, 'test', 'test', NULL, '2022-05-02 14:33:19', '626febaf073422.10940797.jpg', NULL, NULL, NULL, 3),
+(20, 'test 2', 'test', NULL, '2022-05-02 14:33:32', '626febbc7589f2.47861557.jpg', NULL, NULL, NULL, 3),
+(21, 'test 3', 'test', NULL, '2022-05-02 14:33:40', '626febc4637771.67370158.jpg', NULL, NULL, NULL, 3),
+(22, 'teststst', 'jyrsrhgxfb', NULL, '2022-05-02 14:33:59', '626febd77d4815.82815471.jpg', NULL, NULL, NULL, 3),
+(23, 'jhgfd', 'hgfdsehfgbrthgb', NULL, '2022-05-02 14:34:18', '626febeaa84439.32192298.jpg', NULL, NULL, NULL, 2),
+(24, 'jaja', 'nog is een test', NULL, '2022-05-02 14:34:48', '626fec084e2909.06822542.jpg', NULL, NULL, NULL, 2),
+(25, 'joejoe', 'joejoejoe', NULL, '2022-05-02 14:35:16', '626fec245f4c70.51071470.jpg', NULL, NULL, NULL, 1),
+(26, 'testsetetset', 'rsgfvbnjdhrgfngjsyetrgst', NULL, '2022-05-03 09:54:29', '6270fbd596c057.77349140.jpg', NULL, NULL, NULL, 1),
+(27, 'eqywtjxhcjdyjd,j', 'jysjsjr\'srdjtysdgt\'', NULL, '2022-05-03 10:04:30', '6270fe2eb516c3.84109949.jpg', NULL, NULL, NULL, 1),
+(28, 'test', 'test', NULL, '2022-05-03 10:38:27', '62710623ab8536.48801142.jpg', NULL, NULL, NULL, 1),
+(29, 'fds', 'gfds', NULL, '2022-05-03 10:39:06', '6271064a5e18a6.04366570.jpg', NULL, NULL, NULL, 1),
+(30, 'test', 'test', NULL, '2022-05-03 10:41:11', '627106c728c8b5.31253604.jpg', NULL, NULL, NULL, 1),
+(31, 'gfdsq', 'hgfds', NULL, '2022-05-03 10:41:35', '627106df8c2c51.86847103.jpg', NULL, NULL, NULL, 1),
+(32, 'qrgfesw', 'tqegfwd', 'illustration', '2022-05-03 10:43:30', '62710752e538b6.25106080.jpg', NULL, NULL, NULL, 1),
+(33, ',nbvcxwgfdshgfd', 'thdfstdf', 'illustration', '2022-05-03 12:22:51', '62711e9b0e68c9.35443999.jpg', NULL, NULL, NULL, 3),
+(34, 'Concept idea', 'dit is een beschrijving', 'app', '2022-05-17 10:01:35', '6283727fdb2f89.54639724.png', NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -190,8 +200,12 @@ DROP TABLE IF EXISTS `reported`;
 CREATE TABLE `reported` (
   `id` int(11) NOT NULL,
   `time` datetime NOT NULL,
-  `message` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL
+  `message` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content_type` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content_id` int(11) NOT NULL,
+  `reported_user` int(11) NOT NULL,
+  `reporter` int(11) NOT NULL,
+  `reason` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -219,7 +233,11 @@ CREATE TABLE `social_links` (
 --
 
 INSERT INTO `social_links` (`id`, `facebook`, `instagram`, `behance`, `dribbble`, `github`, `linkedin`, `stackoverflow`, `portfolio`, `user_id`) VALUES
-(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
+(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -247,12 +265,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `backup_email`, `profile_img`, `course`, `bio`, `muted`, `admin`, `warned`) VALUES
-(1, '', 'lienapaeps@thomasmore.be', '$2y$13$qxOtOj3qTUiV5Zf0IDJRluk8l32y32xs4DbaXZdBA31izJTfaVM4a', '', '627a3292ca06d8.40497673.jpg', '', '', 0, 1, 0),
+(1, 'p66liena', 'lienapaeps@thomasmore.be', '$2y$13$qxOtOj3qTUiV5Zf0IDJRluk8l32y32xs4DbaXZdBA31izJTfaVM4a', '', '627a3292ca06d8.40497673.jpg', '', '', 0, 1, 0),
 (2, 'jefke', 'jeffasseur@thomasmore.be', '$2y$13$KcnN7rl.YQPeqdojESug9OxXwk3gcCZhy5rFLqo5lkB6ri.IiAt.i', NULL, NULL, NULL, NULL, 0, 1, 0),
 (3, 'rix', 'rickyheylen@thomasmore.be', '$2y$13$ygwBw3.gK7LjnDCrAfL3MuT1Ro5pDjZ6QXQq2.l9QPcn/liMBslUq', NULL, NULL, NULL, NULL, 0, 1, 0),
 (4, 'test', 'test@thomasmore.be', '$2y$13$pBNDpJh24YTLTr4K7ca9uO7pl7m9ItE3rUZvVFjUSvUtdzZx3iE9W', NULL, NULL, NULL, NULL, 0, 0, 0),
 (5, 'test123', 'test123@thomasmore.be', '$2y$13$39ehXq9gMUzDSUgm1wkceOVw/5KcoIZcEPpQLjppOAsayK2Jj1zPu', NULL, NULL, NULL, NULL, 0, 0, 0),
-(6, 'ditiseentest', 'ditiseentest@thomasmore.be', '$2y$13$y9AokDK3dPB3hf19lJBLv.2L/bAyPO9EZaaAIxXMXDyDTfFFW0Rqe', NULL, NULL, NULL, NULL, 0, 0, 0);
+(6, 'ditiseentest', 'ditiseentest@thomasmore.be', '$2y$13$y9AokDK3dPB3hf19lJBLv.2L/bAyPO9EZaaAIxXMXDyDTfFFW0Rqe', NULL, NULL, NULL, NULL, 0, 0, 0),
+(7, 'testje', 'testje@thomasmore.be', '$2y$13$qaN01n/n7FArBUDKNj9FUu1zf.t5Zjk3vxCff/3c4lgKucG3GchRa', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -321,7 +340,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `following`
@@ -345,7 +364,7 @@ ALTER TABLE `password_reset_request`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `reported`
@@ -357,13 +376,13 @@ ALTER TABLE `reported`
 -- AUTO_INCREMENT for table `social_links`
 --
 ALTER TABLE `social_links`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

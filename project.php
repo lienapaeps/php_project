@@ -18,6 +18,7 @@
         $projectId = $_GET["id"];
         $project = Project::getById($projectId);
         $user = User::getUserById($project["user_id"]);
+        $report = Report::getReport($projectId);
     }
 
 ?><!DOCTYPE html>
@@ -44,29 +45,40 @@
     <main class="container-md project mt-4 mb-8" style="max-width: 939px;">
         <div class="project__header my-4">
             <h1 class="project__header__title mb-4"><?php echo $project['title']; ?></h1>
-            
-            <div class="project__header__user d-flex justify-content-between align-items-center mb-4">
+            <?php if($project["warned"] == true): ?>
+                <span class="text-danger">This project has been marked as reported because of <?php $report["message"]; ?></span>
+            <?php else: ?>
+                <span class="text-success">Okay to read</span>
+            <?php endif; ?>
+            <div class="project__header__user d-flex justify-content-between lign-items-stretch mb-4">
                 <div class="d-flex">
-                    <img src="<?php if(!empty($user['profile_img'])){ echo $user['profile_img'];} else{ echo "./assets/img/home_banner.png"; }; ?>" alt="Profile picture" class="rounded-circle me-3" style="height: 60px; width: 60px; object-fit: cover;">
+                    <img src="<?php if(!empty($user['profile_img'])){ echo "uploads/" . $user["profile_img"];} else { echo "./assets/img/home_banner.png"; }; ?>" alt="Profile picture" class="me-3" style="height: 6em; width: 6em; object-fit: cover;">
                     <div>
                         <h3 class="project__header__user__name"><?php echo $user['username']; ?></h3>
 
                         <a href="#" class="btn btn-outline-primary">Follow now</a>
                     </div>
                 </div>
-
-                <div class="project__header__editProject">
-                    <?php if( !isset($_SESSION['user'])): ?>
-                        <a href="#" class="btn btn-primary">
-                            <i class="bi bi-heart me-2"></i>
-                            Like
-                        </a>                     
-                    <?php elseif($project['user_id'] == $_SESSION['user']['id']): ?>
-                        <a href="project-edit.php?id=<?php echo $project['id']; ?>" class="btn btn-primary">
-                            <i class="bi bi-pen me-2"></i>
-                            Edit project
-                        </a>  
-                    <?php endif; ?>
+                <div class="d-flex-column justify-content-evenly align-items-evenly">
+                    <div class="project__header__editProject my-2">
+                        <?php if( !isset($_SESSION['user'])): ?>
+                            <a href="#" class="btn btn-primary pr-6">
+                                <i class="bi bi-heart me-2"></i>
+                                Like
+                            </a>                     
+                        <?php elseif($project['user_id'] == $_SESSION['user']['id']): ?>
+                            <a href="project-edit.php?id=<?php echo $project['id']; ?>" class="btn btn-primary w-100">
+                                <i class="bi bi-pen me-2"></i>
+                                Edit project
+                            </a>  
+                        <?php endif; ?>
+                    </div>
+                    <div class="project__header__reportProject ">
+                        <a href="reportForm.php?id=<?php echo $project['id']; ?>&type=project" class="btn btn-outline-danger">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            Report project
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -85,14 +97,14 @@
                 </a>
             </div>
         </div>
-
-        <div class="project__coverImg">
-            <img src="<?php echo $project['cover_img'] ?>" alt="Project main image" class="img-fluid rounded mb-3">
-        </div>
-        
         <div class="project__body">
             <?php echo $project['description']; ?>
         </div>
+
+        <div class="project__coverImg">
+            <img src="<?php echo "uploads/" . $project['cover_img'] ?>" alt="Project main image" class="img-fluid rounded mb-3">
+        </div>
+        
     </main>
 
     <?php include_once('footer.inc.php') ?>

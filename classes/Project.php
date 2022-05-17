@@ -14,6 +14,15 @@ class Project
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function search($search, $start, $limit)
+    {
+        $conn = DB::getConnection();
+        $statement = $conn->prepare("select * from projects where (title = :search) order by time ASC limit $start, $limit"); // oud naar niew
+        $statement->bindValue("search", $search);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     // this function counts the total of projects from the database
     public static function countProjects()
     {
@@ -27,6 +36,14 @@ class Project
     public static function getProjectsFromUser(int $id) {
         $conn = DB::getConnection();
         $statement = $conn->prepare("select * from projects where user_id = :id"); 
+        $statement->bindValue("id", $id);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function getUserFromProject(int $id) {
+        $conn = DB::getConnection();
+        $statement = $conn->prepare("select user_id from projects where id = :id"); 
         $statement->bindValue("id", $id);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);

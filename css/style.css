@@ -300,6 +300,10 @@ a:hover {
     font-size: 1.5em;
 }
 
+.showcase {
+    border: 1px solid var(--Black);
+}
+
 /* STYLE FOR ACCOUNT FORMS */
 
 .register__form,
@@ -390,7 +394,7 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
 }
 
 .card-title {
-    font-family: blaakblack, museo-sans, sans-serif;
+    font-family: var(--header-font);
     font-size: 1.5em;
 }
 

@@ -46,6 +46,7 @@ if (isset($_POST['submit'])) {
                 $statement->bindValue(':time', $date);
                 $statement->bindValue(':cover_img', $fileNameNew);
                 $statement->bindValue(':user_id', $_SESSION['user']['id']);
+
                 $statement->execute();
 
                 header("Location: projectForm.php?uploadsuccess");

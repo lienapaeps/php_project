@@ -20,7 +20,13 @@ if (!isset($_GET["page"])) {
 $limit = 18;
 $start = ($page - 1) * $limit;
 
-$projects = Project::getAll($start, $limit);
+if (!isset($_GET["search"]) || $_GET["search"] == "" || $_GET["search"] == "all") {
+    $projects = Project::getAll($start, $limit);
+} else {
+    $search = $_GET["search"];
+    $projects = Project::search($search, $start, $limit);
+}
+
 $count = Project::countProjects(); // 100
 
 $pages = ceil($count / $limit); // 100 / 20 = 5

@@ -29,7 +29,7 @@ $links = Social::getSocialsFromUser($key);
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Vibar | <?php echo $user['username'] ?></title>
+        <title>Vibar | <?php echo htmlspecialchars($user['username']) ?></title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -47,26 +47,26 @@ $links = Social::getSocialsFromUser($key);
 
         <section class="profile">
             <div class="profile__header">
-                <div onclick="showForm" class="profile__imageBox ">
+                <div class="profile__imageBox ">
                     <?php if(isset($user["profile_img"])): ?>
-                        <img src="<?php echo "uploads/" . $user["profile_img"] ?>" alt="profile image" style="border: none;" class="profile__image">
+                        <img src="<?php echo "uploads/" . htmlspecialchars($user["profile_img"]) ?>" alt="profile image" style="border: none;" class="profile__image">
                     <?php else : ?>
                         <i class="bi bi-person-bounding-box"></i>
                     <?php endif; ?>
                 </div>
                 <div class="profile__mainInfo mx-4">
                     <div class="profile__username">
-                        <h1><?php echo $user["username"]; ?></h1>
+                        <h1><?php echo htmlspecialchars($user["username"]); ?></h1>
                     </div>
                     <?php if (empty($user["course"])) : ?>
                         <div class="profile__course"><span>No course added yet.</span></div>
                     <?php else : ?>
-                        <div class="profile__course"><span><?php echo $user["course"]; ?></span></div>
+                        <div class="profile__course"><span><?php echo htmlspecialchars($user["course"]); ?></span></div>
                     <?php endif; ?>
                     <?php
                     if ($key == $_SESSION["user"]["id"]) : ?>
                         <div class="profile__edit">
-                            <a href="profile-edit.php?profile=<?php echo $_SESSION["user"]["id"]; ?>" class="btn btn-outline-secondary">Edit Profile</a>
+                            <a href="profile-edit.php?profile=<?php echo htmlspecialchars($_SESSION["user"]["id"]); ?>" class="btn btn-outline-secondary">Edit Profile</a>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -75,14 +75,22 @@ $links = Social::getSocialsFromUser($key);
             <div class="profile__nav">
                 <div class="profile__navBox">
                     <a href="#" class="profile__link" id="profilePersonalInfo"><span>Personal Info</span></a>
-                    <a href="#" class="profile__link" id="profileProjects"><span>Projects</span></a>
+                    <a href="#" class="profile__link profileProjects" id="profileProjects"><span>Projects</span></a>
                     <a href="#" class="profile__link" id="profileShowcase"><span>Showcase</span></a>
                 </div>
             </div>
 
             <div class="profile__main">
+                
                 <div class="profile__showcase">
-                    <p class="nothing">No showcase available.</p>
+                    <?php if ($key == $_SESSION["user"]["id"]) : ?>
+                        <div class="alert alert-secondary w-100"><i class="bi bi-exclamation-triangle me-2"></i>No showcased projects available. Please mark projects for showcasing in the projects tab.</div>
+                    <?php else: ?>
+                        <div class="alert alert-secondary w-100">This user has no showcased projects yet.</div>
+                    <?php endif; ?>
+                    <?php //if(): ?>
+                     <?php include_once("showcase.inc.php"); ?>
+                    <?php //endif; ?>
                 </div>
 
                 <div class="profile__projects">
@@ -117,7 +125,7 @@ $links = Social::getSocialsFromUser($key);
                         <?php if (empty($user["bio"])) : ?>
                             <p class="profile__description">No bio added yet.</p>
                         <?php else : ?>
-                            <p class="profile__description"><?php echo $user["bio"]; ?></p>
+                            <p class="profile__description"><?php echo htmlspecialchars($user["bio"]); ?></p>
                         <?php endif; ?>
                     </div>
                     <div class="profile__info extra-area">
@@ -149,78 +157,60 @@ $links = Social::getSocialsFromUser($key);
 
                     </div>
                     <div class="profile__info contact-area">
-                        <h2>Contact</h2>
-                        <a href="#" class="profile__infoLink">
-                            <i class="bi bi-envelope"></i>
-                            <p class="link__text">josjacobs@gmail.com</p>
-                        </a>
-                        <a href="#" class="profile__infoLink">
-                            <i class="bi bi-instagram"></i>
-                            <p class="link__text">Josefien Jacobs</p>
-                        </a>
-                        <a href="#" class="profile__infoLink">
-                            <i class="bi bi-facebook"></i>
-                            <p class="link__text">@JosJacobs</p>
-                        </a>
-                        <a href="#" class="profile__infoLink">
-                            <i class="bi bi-github"></i>
-                            <p class="link__text">Josefien_code</p>
-                        </a>
-                    </div>
-
-                </div>
-                <div class="profile__info contact-area">
                     <h2>Contact</h2>
                     <?php if(!empty($links["portfolio"])): ?>
-                        <a href="<?php echo $links["portfolio"]; ?>" target="_blank" class="profile__infoLink">
+                        <a href="<?php echo htmlspecialchars($links["portfolio"]); ?>" target="_blank" class="profile__infoLink">
                             <i class="bi bi-globe"></i>
-                            <p class="link__text"><?php echo $links["portfolio"]; ?></p>
+                            <p class="link__text"><?php echo htmlspecialchars($links["portfolio"]); ?></p>
                         </a>
                     <?php endif; ?>
                     <?php if(!empty($links["linkedin"])): ?>
-                        <a href="<?php echo $links["linkedin"]; ?>" target="_blank" class="profile__infoLink">
+                        <a href="<?php echo htmlspecialchars($links["linkedin"]); ?>" target="_blank" class="profile__infoLink">
                             <i class="bi bi-linkedin"></i>
-                            <p class="link__text"><?php echo $links["linkedin"]; ?></p>
+                            <p class="link__text"><?php echo htmlspecialchars($links["linkedin"]); ?></p>
                         </a>
                     <?php endif; ?>
                     <?php if(!empty($links["facebook"])): ?>
-                        <a href="<?php echo $links["facebook"]; ?>" target="_blank" class="profile__infoLink">
+                        <a href="<?php echo htmlspecialchars($links["facebook"]); ?>" target="_blank" class="profile__infoLink">
                             <i class="bi bi-facebook"></i>
-                            <p class="link__text"><?php echo $links["facebook"]; ?></p>
+                            <p class="link__text"><?php echo htmlspecialchars($links["facebook"]); ?></p>
                         </a>
                     <?php endif; ?>
                     <?php if(!empty($links["instagram"])): ?>
-                        <a href="<?php echo $links["instagram"]; ?>" target="_blank" class="profile__infoLink">
+                        <a href="<?php echo htmlspecialchars($links["instagram"]); ?>" target="_blank" class="profile__infoLink">
                             <i class="bi bi-instagram"></i>
-                            <p class="link__text"><?php echo $links["instagram"]; ?></p>
+                            <p class="link__text"><?php echo htmlspecialchars($links["instagram"]); ?></p>
                         </a>
                     <?php endif; ?>
                     <?php if(!empty($links["behance"])): ?>
-                        <a href="<?php echo $links["behance"]; ?>" target="_blank" class="profile__infoLink">
+                        <a href="<?php echo htmlspecialchars($links["behance"]); ?>" target="_blank" class="profile__infoLink">
                             <i class="bi bi-behance"></i>
-                            <p class="link__text"><?php echo $links["behance"]; ?></p>
+                            <p class="link__text"><?php echo htmlspecialchars($links["behance"]); ?></p>
                         </a>
                     <?php endif; ?>
                     <?php if(!empty($links["dribbble"])): ?>
-                        <a href="<?php echo $links["dribbble"]; ?>" target="_blank" class="profile__infoLink">
+                        <a href="<?php echo htmlspecialchars($links["dribbble"]); ?>" target="_blank" class="profile__infoLink">
                             <i class="bi bi-dribbble"></i>
-                            <p class="link__text"><?php echo $links["dribbble"]; ?></p>
+                            <p class="link__text"><?php echo htmlspecialchars($links["dribbble"]); ?></p>
                         </a>
                     <?php endif; ?>
                     <?php if(!empty($links["github"])): ?>
-                        <a href="<?php echo $links["github"]; ?>" target="_blank" class="profile__infoLink">
+                        <a href="<?php echo htmlspecialchars($links["github"]); ?>" target="_blank" class="profile__infoLink">
                             <i class="bi bi-github"></i>
-                            <p class="link__text"><?php echo $links["github"]; ?></p>
+                            <p class="link__text"><?php echo htmlspecialchars($links["github"]); ?></p>
                         </a>
                     <?php endif; ?>
                     <?php if(!empty($links["stackoverflow"])): ?>
-                        <a href="<?php echo $links["stackoverflow"]; ?>" target="_blank" class="profile__infoLink">
+                        <a href="<?php echo htmlspecialchars($links["stackoverflow"]); ?>" target="_blank" class="profile__infoLink">
                             <i class="bi bi-stack-overflow"></i>
-                            <p class="link__text"><?php echo $links["stackoverflow"]; ?></p>
+                            <p class="link__text"><?php echo htmlspecialchars($links["stackoverflow"]); ?></p>
                         </a>
                     <?php endif; ?>
 
                 </div>
+
+                </div>
+                
             </div>
         </section>
 
@@ -230,7 +220,7 @@ $links = Social::getSocialsFromUser($key);
     <script>
         document.querySelector("#profilePersonalInfo").addEventListener("click", (navigate) => {
             document.querySelector("#profilePersonalInfo").style.color = "var(--IMD_Blue)";
-            document.querySelector("#profileProjects").style.color = "var(--Black)";
+            document.querySelector(".profileProjects").style.color = "var(--Black)";
             document.querySelector("#profileShowcase").style.color = "var(--Black)";
 
             document.querySelector(".profile__infos").style.display = "grid";
@@ -242,7 +232,7 @@ $links = Social::getSocialsFromUser($key);
 
         document.querySelector("#profileProjects").addEventListener("click", (navigate) => {
             document.querySelector("#profilePersonalInfo").style.color = "var(--Black)";
-            document.querySelector("#profileProjects").style.color = "var(--IMD_Blue)";
+            document.querySelector(".profileProjects").style.color = "var(--IMD_Blue)";
             document.querySelector("#profileShowcase").style.color = "var(--Black)";
 
             document.querySelector(".profile__infos").style.display = "none";
@@ -254,7 +244,7 @@ $links = Social::getSocialsFromUser($key);
 
         document.querySelector("#profileShowcase").addEventListener("click", (navigate) => {
             document.querySelector("#profilePersonalInfo").style.color = "var(--Black)";
-            document.querySelector("#profileProjects").style.color = "var(--Black)";
+            document.querySelector(".profileProjects").style.color = "var(--Black)";
             document.querySelector("#profileShowcase").style.color = "var(--IMD_Blue)";
 
             document.querySelector(".profile__infos").style.display = "none";

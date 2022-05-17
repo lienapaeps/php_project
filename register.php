@@ -74,6 +74,10 @@ if (!empty($_POST)) {
 
         <h1 class="form__title hide-mobile">Register to Vibar</h1>
 
+        <?php if (isset($error)) : ?>
+            <div class="alert alert-danger"><?php echo $error ?></div>
+        <?php endif; ?>
+
         <form id="register__form" action="" method="POST">
             <div class="mb-3 form-floating">
                 <input type="text" name="username" id="username" class="form-control" placeholder="Username" required onInput="checkUsername()"">
@@ -108,23 +112,6 @@ if (!empty($_POST)) {
     </section>
 
     <!-- <script src="js/app.js"></script> -->
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script>
-        function checkUsername() {
-            
-            jQuery.ajax({
-            url: "ajax/check_availability.php",
-            data:'username='+$(".check-username").val(),
-            type: "POST",
-            success:function(data){
-                $(".check-username").html(data);
-            },
-            error:function (){}
-            });
-        }
-    </script>
 
 </body>
 

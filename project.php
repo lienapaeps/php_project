@@ -21,6 +21,8 @@
         $report = Report::getReport($projectId);
     }
 
+    $comments = Comment::getAll();
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +46,7 @@
 
     <main class="container-md project mt-4 mb-8" style="max-width: 939px;">
         <div class="project__header my-4">
-            <h1 class="project__header__title mb-4"><?php echo $project['title']; ?></h1>
+            <h1 class="project__header__title mb-4"><?php echo htmlspecialchars($project['title']); ?></h1>
             <?php if($project["warned"] == true): ?>
                 <span class="text-danger">This project has been marked as reported because of <?php $report["message"]; ?></span>
             <?php else: ?>
@@ -52,9 +54,9 @@
             <?php endif; ?>
             <div class="project__header__user d-flex justify-content-between lign-items-stretch mb-4">
                 <div class="d-flex">
-                    <img src="<?php if(!empty($user['profile_img'])){ echo "uploads/" . $user["profile_img"];} else { echo "./assets/img/home_banner.png"; }; ?>" alt="Profile picture" class="me-3" style="height: 6em; width: 6em; object-fit: cover;">
+                    <img src="<?php if(!empty($user['profile_img'])){ echo "uploads/" . htmlspecialchars($user["profile_img"]);} else { echo "./assets/img/home_banner.png"; }; ?>" alt="Profile picture" class="me-3" style="height: 6em; width: 6em; object-fit: cover;">
                     <div>
-                        <h3 class="project__header__user__name"><?php echo $user['username']; ?></h3>
+                        <h3 class="project__header__user__name"><?php echo htmlspecialchars($user['username']); ?></h3>
 
                         <a href="#" class="btn btn-outline-primary">Follow now</a>
                     </div>
@@ -102,11 +104,47 @@
         </div>
 
         <div class="project__coverImg">
-            <img src="<?php echo "uploads/" . $project['cover_img'] ?>" alt="Project main image" class="img-fluid rounded mb-3">
+            <img src="uploads/<?php echo htmlspecialchars($project['cover_img']); ?>" alt="Project main image" class="img-fluid rounded mb-3">
         </div>
         
-    </main>
+        <div class="project__body">
+            <p><?php echo htmlspecialchars($project['description']); ?></p>
+            <a class="project__tags">#<?php echo htmlspecialchars($project['tags']); ?></a>            
+        </div>
 
-    <?php include_once('footer.inc.php') ?>
+        <div class="projects__comments">
+            <div class="mt-3">
+                <h4>Comments</h4>
+            </div>
+            <!-- input field for new comment -->
+            <div class="project__comments__input mt-3 mb-4 d-flex">
+                <img src="uploads/<?php if(!empty($user['profile_img'])){ echo htmlspecialchars($user['profile_img']);} else{ echo "./assets/img/home_banner.png"; }; ?>" alt="Profile picture" class="rounded-circle me-3" style="height: 60px; width: 60px; object-fit: cover;">
+                <input type="text" id="comment" name="comment" class="form-control" placeholder="Enter your comment...">
+                <button type="submit" id="addComment" class="btn btn-primary">Add comment</button>
+            </div>
+            <!-- comments  -->
+            <?php if(!empty($comments)): ?>
+                <?php foreach($comments as $comment): ?>
+                <div class="project__comments__comment">
+                    <div class="project__comments__details mt-2 mb-2 d-flex">
+                        <div>
+                            <img src="uploads/<?php if(!empty($user['profile_img'])){ echo htmlspecialchars($comment['user_id']);} else{ echo "./assets/img/home_banner.png"; }; ?>" alt="Profile picture" class="rounded-circle me-3" style="height: 60px; width: 60px; object-fit: cover;">
+                        </div>
+                        <div>
+                            <p class="project__comments__user__name mb-2"><strong><?php echo htmlspecialchars($comment['user_id']); ?></strong></p>
+                            <p class="project__comments__user__comment mb-2"><?php echo htmlspecialchars($comment["comment"]); ?></p>
+                            <p class="project__comments__user__time mb-1"><small><?php echo htmlspecialchars($comment["time"]); ?></small></p>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+                <?php else: ?>
+                    <p>No comments yet</p>
+            <?php endif; ?>
+        </div>
+</main>
+
+<?php include_once('footer.inc.php') ?>
+
 </body>
 </html>

@@ -19,7 +19,7 @@ class Comment {
     public static function getAll() {
         $conn = DB::getConnection();
         $result = $conn->query("select * from comments order by id asc");
-        return $result->fetchAll(PDO::FETCH_CLASS, __CLASS__);
+        return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
     //this function saves a comment to the database

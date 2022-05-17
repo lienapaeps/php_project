@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 17, 2022 at 10:10 AM
+-- Generation Time: May 17, 2022 at 10:23 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -200,8 +200,12 @@ DROP TABLE IF EXISTS `reported`;
 CREATE TABLE `reported` (
   `id` int(11) NOT NULL,
   `time` datetime NOT NULL,
-  `message` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL
+  `message` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content_type` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content_id` int(11) NOT NULL,
+  `reported_user` int(11) NOT NULL,
+  `reporter` int(11) NOT NULL,
+  `reason` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------

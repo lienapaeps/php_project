@@ -172,35 +172,35 @@ if(isset($_POST["submitInfo"])){
         <hr>
 
             <div class="mb-4 form-floating">
-                <input value="<?php echo htmlspecialchars($user["username"]);?>" type="text" name="profile_username" id="profile_username" class="form-control" placeholder="Joris Hens">
+                <input value="<?php if(!empty($user["username"])){echo htmlspecialchars($user["username"]);};?>" type="text" name="profile_username" id="profile_username" class="form-control" placeholder="Joris Hens">
                 <label for="profile_username">
                     <?php echo "<span class='text-muted'>Username</span>";?>
                 </label>
             </div>
 
             <div class="mb-4 form-floating">
-                <input value="<?php echo htmlspecialchars($user["course"]);?>" type="text" name="profile_course" id="profile_course" class="form-control" placeholder="Joris Hens">
+                <input value="<?php if(!empty($user["course"])){echo htmlspecialchars($user["course"]);};?>" type="text" name="profile_course" id="profile_course" class="form-control" placeholder="Joris Hens">
                 <label for="profile_course">
                     <?php echo "<span class='text-muted'>Course</span>"; ?>
                 </label>
             </div>
 
             <div class="mb-4 form-floating">
-                <input value="<?php echo htmlspecialchars($user["email"]);?>" type="email" name="profile_emailTM" id="profile_emailTM" class="form-control" placeholder="r-nummer@student.thomasmore.be" disabled readonly>
+                <input value="<?php if(!empty($user["email"])){echo htmlspecialchars($user["email"]);};?>" type="email" name="profile_emailTM" id="profile_emailTM" class="form-control" placeholder="r-nummer@student.thomasmore.be" disabled readonly>
                 <label for="profile_emailTM">
                     <?php echo "<span class='text-muted'>TM Email Adress</span>";?>
                 </label>
             </div>
 
             <div class="mb-4 form-floating">
-                <input value="<?php echo htmlspecialchars($user["backup_email"]);?>" type="email" name="profile_email" id="profile_email" class="form-control" placeholder="name@example.be">
+                <input value="<?php if(!empty($user["backup_email"])){echo htmlspecialchars($user["backup_email"]);};?>" type="email" name="profile_email" id="profile_email" class="form-control" placeholder="name@example.be">
                 <label for="profile_email">
                     <?php echo "<span class='text-muted'>Backup Email</span>";?>
                 </label>
             </div>
 
             <div class="mb-4 form-floating">
-                <input type="text" name="profile_bio" value="<?php echo htmlspecialchars($user["bio"]);?>" id="profile_bio" class="form-control" placeholder="Type here your bio"></input>
+                <input type="text" name="profile_bio" value="<?php if(!empty($user["bio"])){echo htmlspecialchars($user["bio"]);};?>" id="profile_bio" class="form-control" placeholder="Type here your bio"></input>
                 <label for="profile_bio">
                     <?php echo "<span class='text-muted'>Biography</span>";?>
                 </label>

@@ -4,6 +4,7 @@
 --
 -- Host: localhost:3306
 -- Generation Time: May 17, 2022 at 10:10 AM
+-- Generation Time: May 17, 2022 at 10:23 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -202,6 +203,12 @@ CREATE TABLE `reported` (
   `time` datetime NOT NULL,
   `message` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL
+  `message` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content_type` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content_id` int(11) NOT NULL,
+  `reported_user` int(11) NOT NULL,
+  `reporter` int(11) NOT NULL,
+  `reason` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -419,4 +426,4 @@ COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

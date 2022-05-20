@@ -120,7 +120,7 @@
             <div class="project__comments__input mt-3 mb-4 d-flex">
                 <img src="uploads/<?php if(!empty($user['profile_img'])){ echo htmlspecialchars($user['profile_img']);} else{ echo "./assets/img/home_banner.png"; }; ?>" alt="Profile picture" class="rounded-circle me-3" style="height: 60px; width: 60px; object-fit: cover;">
                 <input type="text" id="comment" name="comment" class="form-control" placeholder="Enter your comment...">
-                <button type="submit" id="addComment" class="btn btn-primary">Add comment</button>
+                <input data-user="<?php echo $_SESSION['user']['id']; ?>" data-project="<?php echo $project['id']; ?>" type="submit" id="addComment" class="btn btn-primary" value="Add comment"></input>
             </div>
             <!-- comments  -->
             <?php if(!empty($comments)): ?>
@@ -145,6 +145,5 @@
 </main>
 
 <?php include_once('footer.inc.php') ?>
-
 </body>
 </html>

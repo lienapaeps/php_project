@@ -514,6 +514,11 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
         width: 18rem;
         height: 18rem;
     }
+
+    .select-feed-order {
+        width: 15%;
+        margin-left: 3.6em;
+    }
     
 }
 

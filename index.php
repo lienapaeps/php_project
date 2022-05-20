@@ -97,6 +97,12 @@ function getUser($id)
             <!-- end empty state -->
 
         <?php else : ?>
+            <form action="#" method="POST" class="select-feed-order">
+                <select class="form-select" name="limit-records" id="limit-records" aria-label="Default select example">
+                    <option value="chronological" selected>Chronological</option>
+                    <option value="following">Following</option>
+                </select>
+            </form>
             <div class="card-deck" >
                 <?php foreach ($projects as $project) : ?>
                     <div class="card my-4">

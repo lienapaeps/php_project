@@ -19,7 +19,7 @@
 
             if ($user->canLogin($email, $password)) {
                 session_start();
-                $_SESSION['user'] = $user->findByEmail($email);
+                $_SESSION['user'] = $user->userLogin($email);
                 header("Location: index.php");
             }
         } catch (Throwable $e) {

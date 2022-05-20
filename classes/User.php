@@ -158,18 +158,11 @@ class User
 
         $password = password_hash($this->password, PASSWORD_DEFAULT, $options);
 
-        // $muted = 0;
-        // $admin = 0;
-        // $warned = 0;
-
         $conn = DB::getConnection();
         $statement = $conn->prepare("insert into users (username, email, password) values (:username, :email, :password)"); 
         $statement->bindValue(":username", $this->username);
         $statement->bindValue(":email", $this->email);
         $statement->bindValue(":password", $password);
-        // $statement->bindValue(":muted", $muted);
-        // $statement->bindValue(":admin", $admin);
-        // $statement->bindValue(":warned", $warned);
         return $statement->execute();
     }
 
@@ -286,6 +279,29 @@ class User
         $statement->bindValue("username", $username);
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function userLogin($email)
+    {
+        $conn = DB::getConnection();
+        $statement = $conn->prepare('select * from users where email = :email or backup_email = :backup_email');
+        $email = htmlspecialchars($email);
+        $statement->bindValue("email", $email);
+        $statement->bindValue("backup_email", $email);
+        $statement->execute();
+
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        // var_dump($user);
+
+        if ($user) {
+            // email exists
+            // echo "user exists";
+            return $user;
+        } else {
+            // email does not exist
+            return false;
+        }
     }
 
     public function save(){

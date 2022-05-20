@@ -16,7 +16,7 @@
 
     if(!empty($_POST)) {
         // code here to update the project
-        Project::updateProject($projectId, $_POST["project_title"], $_POST["project_body"]);
+        Project::updateProject($projectId, $_POST["project_title"], $_POST["project_body"], $_POST["project_tags"]);
         header("Location: project.php?id=$projectId");
     }
 
@@ -108,6 +108,11 @@
                         style="height: 150px" 
                         value=""><?php echo $project['description']; ?></textarea>
                     <label for="project_body">Update here your text</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input class="form-control form-control-lg" type="text" name="project_tags" id="project_tags" value="<?php echo $project['tags'] ?>">
+                    <label for="project_tags">Update Tag</label>
                 </div>
             </div>
 

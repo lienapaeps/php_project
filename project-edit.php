@@ -10,13 +10,21 @@
         $loggedin = false;
     }
 
+    $project = new Project();
+
     $projectId = $_GET["id"];
     $project = Project::getById($projectId);
     $user = User::getUserById($project["user_id"]);
 
     if(!empty($_POST)) {
+        var_dump($_POST);
         // code here to update the project
-        Project::updateProject($projectId, $_POST["project_title"], $_POST["project_body"], $_POST["project_tags"]);
+        $project = new Project();
+        $project->setTitle($_POST["project_title"]);
+        $project->setDescription($_POST["project_body"]);
+        $project->setTags($_POST["project_tags"]);
+    
+        $project->updateProject($projectId);
         header("Location: project.php?id=$projectId");
     }
 

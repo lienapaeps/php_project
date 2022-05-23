@@ -89,8 +89,10 @@
                     data-project="<?php echo htmlspecialchars($project["id"]); ?>" 
                     data-user="<?php if(isset($_SESSION["user"])){echo $_SESSION["user"]["id"];} else {"NULL";} ?>"
                  >
-                    <i class="bi bi-heart"></i>
-                    <span>11</span>
+                    <i class="bi bi-heart" data-project="<?php echo htmlspecialchars($project["id"]); ?>" 
+                    data-user="<?php if(isset($_SESSION["user"])){echo $_SESSION["user"]["id"];} else {"NULL";} ?>"></i>
+                    <span data-project="<?php echo htmlspecialchars($project["id"]); ?>" 
+                    data-user="<?php if(isset($_SESSION["user"])){echo $_SESSION["user"]["id"];} else {"NULL";} ?>">11</span>
                 </a>
                 <a href="#" class="btn btn-pink-outline">
                     <i class="bi bi-chat"></i> 

@@ -25,11 +25,8 @@
             $conn = DB::getConnection();
             $statement = $conn->prepare("INSERT INTO likes (project_id, user_id, time) VALUES (:projectID, :userId, NOW())");
 
-            $projectId = $this->getProjectId();
-            $userId = $this->getUserId();
-
-            $statement->bindValue(":projectId", $projectId);
-            $statement->bindValue(":userId", $userId);
+            $statement->bindValue(":projectId", $this->getProjectId());
+            $statement->bindValue(":userId", $this->getUserId());
 
             return $statement->execute();
         }
@@ -37,7 +34,7 @@
         public function countLikes($projectid) {
             $conn = DB::getConnection();
             $statement = $conn->prepare("SELECT count(*) FROM likes WHERE project_id = :projectId");
-            $statement->bindParam(":projectId", $projectid);
+            $statement->bindParam(":projectId", $this->getProjectId());
             return $statement->execute();
         }
     }

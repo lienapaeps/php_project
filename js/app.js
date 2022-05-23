@@ -1,39 +1,33 @@
 // Liken van projecten
-let like = document.querySelector(".like");
+document.querySelector(".like-project").addEventListener("click", (e) => {
+    console.log("click");
 
-like.addEventListener("click", (e) => {
+    let projectId = e.target.dataset.project;
+    let userId = e.target.dataset.user;
+    // console.log(userId);
 
-        let projectId = e.target.dataset.project;
-        let userId = e.target.dataset.user;
+    let data = new FormData();
+    data.append("projectId", projectId);
+    data.append("userId", userId);
+    console.log(data);
 
-        if (like.classList.contains("like")) {
-            action = 'like';
-            console.log("liked");
+   fetch("ajax/save_like.php", {
+       method: "POST",
+       body: JSON.stringify({
+            projectId: projectId,
+            userId: userId
+       })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        if (data.success === "success") {
+            console.log("gelukt");
         }
-        else {
-            action = 'unlike';
-        }
-
-
-        /*
-    
-        console.log(projectId, " + " ,userId);
-        
-        let data = new FormData();
-        data.append("projectId" = projectId);
-        data.append("userId" = userId);
-    
-        fetch("/ajax/save_like.php", {
-            method: "POST",
-            body: data
-        });
-
-        */
-
-    console.log("Like ✅");
-
-    console.log(projectId);
-
+    })
+    .catch((err) => {
+        console.log(err);
+    });
     
     // no refresh 
     e.preventDefault();

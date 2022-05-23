@@ -4,7 +4,6 @@ include_once(__DIR__ . "/DB.php");
 
 class Project
 { 
-
     // this function gets all projects from the database
     public static function getAll($start, $limit)
     {
@@ -17,7 +16,7 @@ class Project
     public static function search($search, $start, $limit)
     {
         $conn = DB::getConnection();
-        $statement = $conn->prepare("select * from projects where (title = :search) order by time ASC limit $start, $limit"); // oud naar niew
+        $statement = $conn->prepare("select * from projects where (title = :search) order by time ASC limit $start, $limit"); // oud naar niew 
         $statement->bindValue("search", $search);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);

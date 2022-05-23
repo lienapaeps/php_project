@@ -27,15 +27,15 @@
                 <h5 class="menu-title">Developers</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2">
-                        <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Liena" class="rounded-circle me-2" style="height: 50px; width: 50px;">
+                        <img src="./assets/img/Favicon.png" alt="Avatar-Liena" class="rounded-circle me-2" style="height: 50px; width: 50px;">
                         Liena Paeps
                     </li>
                     <li class="mb-2">
-                        <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-2" style="height: 50px; width: 50px;">
+                        <img src="./assets/img/Favicon.png" alt="Avatar-Ricky" class="rounded-circle me-2" style="height: 50px; width: 50px;">
                         Ricky Heylen
                     </li>
                     <li class="mb-2">
-                        <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Jef" class="rounded-circle me-2" style="height: 50px; width: 50px">
+                        <img src="./assets/img/Favicon.png" alt="Avatar-Jef" class="rounded-circle me-2" style="height: 50px; width: 50px">
                         Jef Fasseur
                     </li>
                 </ul>

@@ -4,7 +4,7 @@
         private $userId;
 
         public function getProjectId() {
-            return $this->getprojectId;
+            return $this->projectId;
         }
 
         public function setProjectId($projectId) {
@@ -34,10 +34,10 @@
             return $statement->execute();
         }
 
-        public function countLikes() {
+        public function countLikes($projectid) {
             $conn = DB::getConnection();
             $statement = $conn->prepare("SELECT count(*) FROM likes WHERE project_id = :projectId");
-            $statement->bindParam(":projectId", $this->getProjectId());
+            $statement->bindParam(":projectId", $projectid);
             return $statement->execute();
         }
     }

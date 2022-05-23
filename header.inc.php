@@ -81,16 +81,16 @@ if (isset($_SESSION["user"])) {
         <div class="offcanvas-header">
             <!-- <h3 id="offcanvasUserLabel" class="offcanvas-title">Offcanvas-title</h3> -->
             <a href="profile.php" class="offcanvas-title d-flex align-content-center">
-                <img src="https://jeffasseur-visuals.be/wp-content/uploads/2022/01/Phoenix-logo-e1647853809997.png" alt="Avatar-Ricky" class="rounded-circle me-2" style="height: 40px; width: 40px;">
+                <img src="<?php echo "uploads/" . $user["profile_img"]; ?>" alt="Avatar-Ricky" class="rounded-circle me-4" style="height: 40px; width: 40px; object-fit: cover;">
                 <h4 class="me-2 fw-bolder align-self-end">
-                    <?php echo "Username"; ?>
+                    <?php echo $_SESSION["user"]["username"]; ?>
                 </h4>
             </a>
             <button class="btn-close" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 
         <div class="offcanvas-body">
-            <ul class="list-group">
+            <ul class="list-group" style="list-style: none;">
                 <?php if ($loggedin === false) : ?>
                     <li class="list-group-item border-0 mx-0 p-0 mb-3">
                         <a href="login.php" class="btn btn-outline-primary d-block">Log in</a>

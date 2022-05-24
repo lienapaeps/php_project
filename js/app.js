@@ -134,3 +134,4 @@ if(document.querySelector("#addComment")) {
             });
     });
 }
+});

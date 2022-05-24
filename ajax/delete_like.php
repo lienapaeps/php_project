@@ -7,11 +7,11 @@
         $like = new Like();
         $like->setProjectId($_POST['projectId']);
         $like->setUserId($_POST['userId']);
-        $amount = $like->countLikes($_POST['projectId']);
-        if($like->save()) {
+        if($like->delete()) {
             $response = [
                 'status' => 'success',
-                'amount' => $amount
+                'message' => 'like deleted!',
+                'amount' => $like->countLikes($_POST['projectId'])
             ];
         } else {
             $response = [

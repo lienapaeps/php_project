@@ -91,6 +91,11 @@ a:hover {
     border-color: var(--IMD_Blue_Dark);
 }
 
+.btn-pink {
+    background-color: var(--IMD_Pink);
+    border-color: var(--IMD_Pink);
+}
+
 .btn-pink-outline {
     border-color: var(--IMD_Pink_Dark);
     color: var(--IMD_Pink_Dark);

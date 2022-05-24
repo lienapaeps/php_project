@@ -112,11 +112,11 @@ function getUser($id)
                                 <a class="link-primary">#<?php echo htmlspecialchars($project['tags']); ?></a>            
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="like-index card-link like-project" 
+                            <a id="likeBtn" href="#" class="like-index card-link like-project" 
                                 data-project="<?php echo htmlspecialchars($project["id"]); ?>" 
                                 data-user="<?php if(isset($_SESSION["user"])){echo $_SESSION["user"]["id"];} else {"NULL";} ?>"
                                 >
-                                <i class="like-index bi bi-heart"
+                                <i id="likeIcon" class="like-index bi bi-heart"
                                 data-project="<?php echo htmlspecialchars($project["id"]); ?>" 
                                 data-user="<?php if(isset($_SESSION["user"])){echo $_SESSION["user"]["id"];} else {"NULL";} ?>"></i>
                                 <span class="like-index" data-project="<?php echo htmlspecialchars($project["id"]); ?>" 

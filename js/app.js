@@ -1,68 +1,167 @@
-// Liken van projecten
+// Liken van projecten op de project pagina zelf
 document.querySelector(".like-project").addEventListener("click", (e) => {
-    console.log("click");
+    let likeBtn = document.querySelector('#like');
 
-    let projectId = e.target.dataset.project;
-    let userId = e.target.dataset.user;
-    // console.log(userId);
+    if(likeBtn.classList.contains('btn-pink-outline')) {
+        console.log("click");
 
-    let data = new FormData();
-    data.append("projectId", projectId);
-    data.append("userId", userId);
-    console.log(data);
+        let projectId = e.target.dataset.project;
+        let userId = e.target.dataset.user;
+        console.log(userId);
+        console.log(projectId);
 
-   fetch("ajax/save_like.php", {
-       method: "POST",
-       body: JSON.stringify({
-            projectId: projectId,
-            userId: userId
-       })
-    })
-    .then(response => response.json())
-    .then(data => {
+        let data = new FormData();
+        data.append("projectId", projectId);
+        data.append("userId", userId);
         console.log(data);
-        if (data.success === "success") {
-            console.log("gelukt");
-        }
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+
+        fetch("ajax/save_like.php", {
+            method: "POST",
+            body: data
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log("success: " + result);
+                if(result.status == "success") {
+                    likeBtn.classList.remove("btn-pink-outline");
+                    likeBtn.classList.add("btn-pink");
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+    else {
+        console.log("delete like");
+
+        let projectId = e.target.dataset.project;
+        let userId = e.target.dataset.user;
+
+        let data = new FormData();
+        data.append("projectId", projectId);
+        data.append("userId", userId);
+
+        fetch("ajax/delete_like.php", {
+            method: "POST",
+            body: data
+        })
+        .then(response => response.json())
+        .then(result => {
+            console.log("success: " + result);
+            if(result.status == "success") {
+                console.log("like deleted");
+                likeBtn.classList.add("btn-pink-outline");
+                likeBtn.classList.remove("btn-pink");
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    }
     
     // no refresh 
     e.preventDefault();
 });
 
-// register form validation
-document.querySelector("#register__form").addEventListener("submit", (e) => {
-    // data uitlezen
-    let username = document.querySelector("#username").value;
-    let email = document.querySelector("#email").value;
-    let password = document.querySelector("#password").value;
+// like van projecten op de index pagina
+document.querySelector(".like-index").addEventListener("click", (e) => {
+    let likeIcon = document.querySelector('#likeIcon');
 
-    // via AJAX naar server sturen/posten
-});
+    if(likeIcon.classList.contains('bi-heart')) {
+        console.log("click");
 
-// Comments
-document.querySelector("#addComment").addEventListener("click", (e) => {
-    let comment = document.querySelector("#comment").value;
-    
-    let data = new FormData();
-    data.append("comment", comment);
+        let projectId = e.target.dataset.project;
+        let userId = e.target.dataset.user;
+        console.log(userId);
+        console.log(projectId);
 
-    fetch('./ajax/save_comment.php', {
-        method: 'post', // or 'PUT'
-        body: data,
-    })
+        let data = new FormData();
+        data.append("projectId", projectId);
+        data.append("userId", userId);
+        console.log(data);
+
+        fetch("ajax/save_like.php", {
+            method: "POST",
+            body: data
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log("success: " + result);
+                if(result.status == "success") {
+                    likeIcon.classList.remove("bi-heart");
+                    likeIcon.classList.add("bi-heart-fill");
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+    else {
+        console.log("delete like");
+
+        let projectId = e.target.dataset.project;
+        let userId = e.target.dataset.user;
+
+        let data = new FormData();
+        data.append("projectId", projectId);
+        data.append("userId", userId);
+
+        fetch("ajax/delete_like.php", {
+            method: "POST",
+            body: data
+        })
         .then(response => response.json())
-        .then(data => {
-            // console.log('Success:', data);
-            if (data.status === "success") {
-                //Add new comment to page
-                console.log('Success:', data);
+        .then(result => {
+            console.log("success: " + result);
+            if(result.status == "success") {
+                console.log("like deleted");
+                likeIcon.classList.add("bi-heart");
+                    likeIcon.classList.remove("bi-heart-fill");
             }
         })
-        .catch((error) => {
-            console.error('Error:', error);
+        .catch((err) => {
+            console.log(err);
         });
+    }
+    
+    // no refresh 
+    e.preventDefault();
 });
+
+if(document.querySelector("#register__form")) {
+    // register form validation
+    document.querySelector("#register__form").addEventListener("submit", (e) => {
+        // data uitlezen
+        let username = document.querySelector("#username").value;
+        let email = document.querySelector("#email").value;
+        let password = document.querySelector("#password").value;
+
+        // via AJAX naar server sturen/posten
+    });
+}
+
+if(document.querySelector("#addComment")) {
+    // Comments
+    document.querySelector("#addComment").addEventListener("click", (e) => {
+        let comment = document.querySelector("#comment").value;
+        
+        let data = new FormData();
+        data.append("comment", comment);
+
+        fetch('./ajax/save_comment.php', {
+            method: 'post', // or 'PUT'
+            body: data,
+        })
+            .then(response => response.json())
+            .then(data => {
+                // console.log('Success:', data);
+                if (data.status === "success") {
+                    //Add new comment to page
+                    console.log('Success:', data);
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    });
+}

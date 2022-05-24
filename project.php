@@ -85,13 +85,13 @@
             </div>
 
             <div>
-                <a href="#" style="z-index: 10;" class="btn btn-pink-outline like-project"
+                <a href="#" id="like" style="z-index: 10;" class="btn btn-pink-outline like-project"
                     data-project="<?php echo htmlspecialchars($project["id"]); ?>" 
                     data-user="<?php if(isset($_SESSION["user"])){echo $_SESSION["user"]["id"];} else {"NULL";} ?>"
                  >
                     <i class="bi bi-heart" data-project="<?php echo htmlspecialchars($project["id"]); ?>" 
                     data-user="<?php if(isset($_SESSION["user"])){echo $_SESSION["user"]["id"];} else {"NULL";} ?>"></i>
-                    <span data-project="<?php echo htmlspecialchars($project["id"]); ?>" 
+                    <span class="likeBtn__span" data-project="<?php echo htmlspecialchars($project["id"]); ?>" 
                     data-user="<?php if(isset($_SESSION["user"])){echo $_SESSION["user"]["id"];} else {"NULL";} ?>">11</span>
                 </a>
                 <a href="#" class="btn btn-pink-outline">

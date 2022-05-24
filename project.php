@@ -86,12 +86,16 @@
             </div>
 
             <div>
-                <a href="#" style="z-index: 10;" class="btn btn-pink-outline like-project"
+                <a href="#" id="like" style="z-index: 10;" class="btn btn-pink-outline like-project"
                     data-project="<?php echo htmlspecialchars($project["id"]); ?>" 
                     data-user="<?php if(isset($_SESSION["user"])){echo $_SESSION["user"]["id"];} else {"NULL";} ?>"
                  >
-                    <i class="bi bi-heart"></i>
-                    <span>11</span>
+                    <i class="bi bi-heart" data-project="<?php echo htmlspecialchars($project["id"]); ?>" 
+                    data-user="<?php if(isset($_SESSION["user"])){echo $_SESSION["user"]["id"];} else {"NULL";} ?>"></i>
+                    <span id="likeBtnSpan" data-project="<?php echo htmlspecialchars($project["id"]); ?>" 
+                    data-user="<?php if(isset($_SESSION["user"])){echo $_SESSION["user"]["id"];} else {"NULL";} ?>">
+                            <?php $like = new Like(); $amount = $like->countLikes($project["id"]); echo $amount; ?>
+                    </span>
                 </a>
                 <a href="#" class="btn btn-pink-outline">
                     <i class="bi bi-chat"></i> 

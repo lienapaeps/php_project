@@ -8,8 +8,8 @@
         $like->setProjectId($_POST['projectId']);
         $like->setUserId($_POST['userId']);
 
-        if($like->checkLiked() < 2 && $like->checkLiked() !== 1) {
-            if($like->save()) {
+       
+            if($like->delete()) {
                 $amount = $like->countLikes($_POST['projectId']);
                 $response = [
                     'status' => 'success',
@@ -23,6 +23,6 @@
             }
             
             echo json_encode($response);
-        }
+        
     }
 ?>

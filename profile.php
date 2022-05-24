@@ -63,10 +63,15 @@ $links = Social::getSocialsFromUser($key);
                     <?php else : ?>
                         <div class="profile__course"><span><?php echo htmlspecialchars($user["course"]); ?></span></div>
                     <?php endif; ?>
+
                     <?php
                     if ($key == $_SESSION["user"]["id"]) : ?>
                         <div class="profile__edit">
                             <a href="profile-edit.php?profile=<?php echo htmlspecialchars($_SESSION["user"]["id"]); ?>" class="btn btn-outline-secondary">Edit Profile</a>
+                        </div>
+                    <?php else: ?>
+                        <div class="profile__follow">
+                            <a class="btn btn-primary my-2" href="#">Follow</a>
                         </div>
                     <?php endif; ?>
                 </div>

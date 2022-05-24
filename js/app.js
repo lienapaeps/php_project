@@ -1,19 +1,20 @@
 // Liken van projecten op de project pagina zelf
 document.querySelector(".like-project").addEventListener("click", (e) => {
     let likeBtn = document.querySelector('#like');
+    let likeCount = document.querySelector('#likeBtnSpan');
 
     if(likeBtn.classList.contains('btn-pink-outline')) {
         console.log("click");
 
         let projectId = e.target.dataset.project;
         let userId = e.target.dataset.user;
-        console.log(userId);
-        console.log(projectId);
+        // console.log(userId);
+        // console.log(projectId);
 
         let data = new FormData();
         data.append("projectId", projectId);
         data.append("userId", userId);
-        console.log(data);
+        // console.log(data);
 
         fetch("ajax/save_like.php", {
             method: "POST",
@@ -25,6 +26,7 @@ document.querySelector(".like-project").addEventListener("click", (e) => {
                 if(result.status == "success") {
                     likeBtn.classList.remove("btn-pink-outline");
                     likeBtn.classList.add("btn-pink");
+                    likeCount.textContent = result.amount;
                 }
             })
             .catch((err) => {
@@ -52,71 +54,7 @@ document.querySelector(".like-project").addEventListener("click", (e) => {
                 console.log("like deleted");
                 likeBtn.classList.add("btn-pink-outline");
                 likeBtn.classList.remove("btn-pink");
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-    }
-    
-    // no refresh 
-    e.preventDefault();
-});
-
-// like van projecten op de index pagina
-document.querySelector(".like-index").addEventListener("click", (e) => {
-    let likeIcon = document.querySelector('#likeIcon');
-
-    if(likeIcon.classList.contains('bi-heart')) {
-        console.log("click");
-
-        let projectId = e.target.dataset.project;
-        let userId = e.target.dataset.user;
-        console.log(userId);
-        console.log(projectId);
-
-        let data = new FormData();
-        data.append("projectId", projectId);
-        data.append("userId", userId);
-        console.log(data);
-
-        fetch("ajax/save_like.php", {
-            method: "POST",
-            body: data
-            })
-            .then(response => response.json())
-            .then(result => {
-                console.log("success: " + result);
-                if(result.status == "success") {
-                    likeIcon.classList.remove("bi-heart");
-                    likeIcon.classList.add("bi-heart-fill");
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
-    else {
-        console.log("delete like");
-
-        let projectId = e.target.dataset.project;
-        let userId = e.target.dataset.user;
-
-        let data = new FormData();
-        data.append("projectId", projectId);
-        data.append("userId", userId);
-
-        fetch("ajax/delete_like.php", {
-            method: "POST",
-            body: data
-        })
-        .then(response => response.json())
-        .then(result => {
-            console.log("success: " + result);
-            if(result.status == "success") {
-                console.log("like deleted");
-                likeIcon.classList.add("bi-heart");
-                    likeIcon.classList.remove("bi-heart-fill");
+                likeCount.textContent = result.amount;
             }
         })
         .catch((err) => {

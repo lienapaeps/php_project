@@ -7,19 +7,22 @@
         $like = new Like();
         $like->setProjectId($_POST['projectId']);
         $like->setUserId($_POST['userId']);
-        $amount = $like->countLikes($_POST['projectId']);
-        if($like->save()) {
-            $response = [
-                'status' => 'success',
-                'amount' => $amount
-            ];
-        } else {
-            $response = [
-                'status' => 'error',
-                'message' => 'Like project failed!'
-            ];
+
+        if($like->checkLiked() < 2 && $like->checkLiked() !== 1) {
+            if($like->save()) {
+                $amount = $like->countLikes($_POST['projectId']);
+                $response = [
+                    'status' => 'success',
+                    'amount' => $amount
+                ];
+            } else {
+                $response = [
+                    'status' => 'error',
+                    'message' => 'Like project failed!'
+                ];
+            }
+            
+            echo json_encode($response);
         }
-        
-        echo json_encode($response);
     }
 ?>

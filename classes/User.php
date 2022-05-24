@@ -13,7 +13,13 @@ class User
 
     public function setCourse($course)
     {
+        // course cannot be empty
+        if (empty($course)) {
+            throw new Exception("Course cannot be empty.");
+        }
+
         $this->course = $course;
+    
         return $this;
     }
 
@@ -22,9 +28,15 @@ class User
         return $this->course;
     }
 
-    public function setBio($bio)
-    {
+    public function setBio($bio) {
+        // bio cannot be empty
+        if (empty($bio)) {
+            throw new Exception("Bio cannot be empty.");
+        }
+
         $this->bio = $bio;
+    
+        return $this;
     }
 
     public function getBio()
@@ -159,18 +171,11 @@ class User
 
         $password = password_hash($this->password, PASSWORD_DEFAULT, $options);
 
-        // $muted = 0;
-        // $admin = 0;
-        // $warned = 0;
-
         $conn = DB::getConnection();
         $statement = $conn->prepare("insert into users (username, email, password) values (:username, :email, :password)");
         $statement->bindValue(":username", $this->username);
         $statement->bindValue(":email", $this->email);
         $statement->bindValue(":password", $password);
-        // $statement->bindValue(":muted", $muted);
-        // $statement->bindValue(":admin", $admin);
-        // $statement->bindValue(":warned", $warned);
         return $statement->execute();
     }
 
@@ -271,7 +276,7 @@ class User
             echo "not inserted ❌";
         }
     }
-    // this function gets the user id
+    // this function gets all from the user by id
     public static function getUserById(int $id)
     {
         $conn = DB::getConnection();
@@ -281,6 +286,7 @@ class User
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
+    // this function gets the id from the user by username
     public static function getUserId($username)
     {
         $conn = DB::getConnection();

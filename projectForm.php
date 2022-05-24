@@ -3,7 +3,6 @@ include_once("bootstrap.php");
 // include_once("uploadProject.php");
 
 //upload file to server
-
 $error = false;
 $errorMessage = "";
 
@@ -35,21 +34,13 @@ if (isset($_POST['submit'])) {
                 $fileDestination = 'uploads/' . $fileNameNew;
                 move_uploaded_file($fileTmpName, $fileDestination);
 
-                //query 
+                $project = new Project();
+                $project->setTitle($title);
+                $project->setDescription($description);
+                $project->setTags($tags);
+                $project->setCover_img($fileNameNew);
 
-                // id, title, description, time, cover_img, warned, showcase, amount_views, user_id
-                $date = date('Y-m-d H:i:s');
-
-                $conn = DB::getConnection();
-                $statement = $conn->prepare("insert into projects (title, description, tags, time, cover_img, user_id) values (:title, :description, :tags, :time, :cover_img, :user_id)");
-                $statement->bindValue(':title', $title);
-                $statement->bindValue(':description', $description);
-                $statement->bindValue(':tags', $tags);
-                $statement->bindValue(':time', $date);
-                $statement->bindValue(':cover_img', $fileNameNew);
-                $statement->bindValue(':user_id', $_SESSION['user']['id']);
-
-                $statement->execute();
+                $project->save();
 
                 header("Location: projectForm.php?uploadsuccess");
 

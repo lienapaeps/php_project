@@ -139,6 +139,35 @@ a:hover {
     z-index: 100;
 }
 
+/* status styles  */
+
+.error input {
+    border-color: 
+red;
+    border-width: 2px;
+}
+
+.success input {
+    border-color: 
+green;
+    border-width: 2px;
+}
+
+.error span {
+    color: 
+red;
+}
+
+.success span {
+    color: 
+green;
+}
+
+span.error {
+    color: 
+red;
+}
+
 /* STYLE FOR PROFILE PAGE */
 
 .profile__body {
@@ -518,6 +547,11 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
     .card {
         width: 18rem;
         height: 18rem;
+    }
+
+    .select-feed-order {
+        width: 15%;
+        margin-left: 3.6em;
     }
     
 }

@@ -34,12 +34,10 @@
 
         public function countLikes($id) {
             $conn = DB::getConnection();
-            $statement = $conn->prepare("select count(*) as amount from likes where project_id = :projectId");
+            $statement = $conn->prepare("SELECT COUNT(*) as count_likes from likes where project_id = :projectId");
             $statement->bindValue(":projectId", $id);
-            $result = $statement->execute();
-            $row = $statement->fetch(PDO::FETCH_ASSOC);
-            $amount = $row['amount'];
-            return $amount;
+            $statement->execute();
+            return $statement->fetchColumn();
         }
 
         public function delete() {
@@ -54,5 +52,14 @@
             $dateTime = new DateTime();
             $dateTime = $dateTime->format('Y-m-d H:i:s');
             return $dateTime;
+        }
+
+        public function checkLiked() {
+            $conn = DB::getConnection();
+            $statement = $conn->prepare("select * from likes where project_id = :projectId and user_id = :userId");
+            $statement->bindValue(":projectId", $this->getProjectId());
+            $statement->bindValue(":userId", $this->getUserId());
+            $statement->execute();
+            return $statement->fetchColumn();
         }
     }

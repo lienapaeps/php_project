@@ -4,22 +4,10 @@
     session_start();
     $user = User::getUserById($_SESSION["user"]["id"]);
 
-    if(!empty($_POST["userPW"]) && isset($_POST["delete-def"])) {
-        $conn = DB::getConnection();
-        $statement = $conn->prepare("select * from users where id = :id");
-        $statement->bindValue(":id", $_SESSION["user"]["id"]);
-        $statement->execute();
-        $user = $statement->fetch(PDO::FETCH_ASSOC);
-        $hash = $user["password"];
+    $error = "";
 
-        if(password_verify($_POST["userPW"], $hash)) {
-            User::deleteAccount($_SESSION["user"]["id"]);
-            session_destroy();
-            session_reset();
-            header("Location: login.php");    
-        } else {
-            $error = "Password is incorrect.";
-        }
+    if(!empty($_POST["userPW"]) && isset($_POST["delete-def"])) {
+        User::deleteAccount($user, $_POST["userPW"]);
     }
 
 ?><!DOCTYPE html>

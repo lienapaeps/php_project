@@ -16,74 +16,15 @@ $uploadStatusMsg = "";
 
 //upload file to server
 if (isset($_POST['submitPFP'])) {
-    $file = $_FILES['profile_picture'];
-
-    $fileName = $_FILES['profile_picture']['name'];
-    $fileTmpName = $_FILES['profile_picture']['tmp_name'];
-    $fileSize = $_FILES['profile_picture']['size'];
-    $fileError = $_FILES['profile_picture']['error'];
-    $fileType = $_FILES['profile_picture']['type'];
-
-    $fileExt = explode('.', $fileName);
-    $fileActualExt = strtolower(end($fileExt));
-
-    $allowed = array('jpg', 'jpeg', 'png', "gif");
-
-    //table projects
-    if (in_array($fileActualExt, $allowed)) {
-        if ($fileError === 0) {
-            if ($fileSize < 10000000000) {
-                $fileNameNew = uniqid('', true) . "." . $fileActualExt;
-                $fileDestination = 'uploads/' . $fileNameNew;
-                move_uploaded_file($fileTmpName, $fileDestination);
-
-                //query
-
-                $conn = DB::getConnection();
-                $statement = $conn->prepare("UPDATE users SET profile_img = :img where id = :id");
-                $statement->bindValue(':img', $fileNameNew);
-                $statement->bindValue(':id', $_SESSION['user']['id']);
-                $statement->execute();
-
-                if ($statement) {
-                    $uploadStatusMsg = "Picture uploaded succesfully";
-                    header("profile.php");
-                } else {
-                    $uploadStatusMsg = "Sorry, there was an error uploading your file.";
-                }
-            } else {
-                $uploadStatusMsg = "Your file is too big!";
-            }
-        } else {
-            $uploadStatusMsg = "Upload failed, please try again.";
-        }
-    } else {
-        $uploadStatusMsg = "";
-    } 
+    User::uploadProfilePicture($_SESSION["user"]["id"],$_FILES['profile_picture']);
 } else {
     $uploadStatusMsg = "";
 }
 
 if(isset($_POST["submitInfo"])){
-    $username = $_POST["profile_username"];
-    $backup = $_POST["profile_email"];
-    $bio = $_POST["profile_bio"];
-    $course = $_POST["profile_course"];
-
-    $conn = DB::getConnection();
-    $statement = $conn->prepare("UPDATE users SET username = :uname , backup_email = :mail, course = :course, bio = :bio where id = :id");
-    $statement->bindValue(':mail', $backup);
-    $statement->bindValue(':uname', $username);
-    $statement->bindValue(':bio', $bio);
-    $statement->bindValue(':course', $course);
-    $statement->bindValue(':id', $_SESSION["user"]["id"]);
-    $statement->execute();
-
-    if($statement){
-        $uploadStatusMsg = "Profile updated succesfully";
-    } else {
-        $uploadStatusMsg = "Failed to update profile.";
-    }
+    User::editProfileInfo($_POST["profile_username"], $_POST["profile_email"], $_POST["profile_bio"], $_POST["profile_course"], $_SESSION["user"]["id"]);
+} else {
+    $uploadStatusMsg = "";
 }
 
 ?>

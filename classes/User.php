@@ -8,9 +8,9 @@ class User
     private $email;
     private $backupEmail;
     private $password;
-    public $course;
+    private $course;
     private $bio;
-        
+
     public function setCourse($course)
     {
         $this->course = $course;
@@ -22,11 +22,13 @@ class User
         return $this->course;
     }
 
-    public function setBio($bio) {
+    public function setBio($bio)
+    {
         $this->bio = $bio;
     }
 
-    public function getBio() {
+    public function getBio()
+    {
         return $this->bio;
     }
 
@@ -132,7 +134,7 @@ class User
             // er is een onbestaande gebruiker ingevuld
             throw new Exception("We couldn't find an account matching the email and password you entered. Please check your email and password and try again.");
             return false;
-        } 
+        }
 
         $hash = $user["password"];
 
@@ -146,7 +148,6 @@ class User
         }
 
         return $this;
-
     }
 
     // this function saves the user in the database
@@ -163,7 +164,7 @@ class User
         // $warned = 0;
 
         $conn = DB::getConnection();
-        $statement = $conn->prepare("insert into users (username, email, password) values (:username, :email, :password)"); 
+        $statement = $conn->prepare("insert into users (username, email, password) values (:username, :email, :password)");
         $statement->bindValue(":username", $this->username);
         $statement->bindValue(":email", $this->email);
         $statement->bindValue(":password", $password);
@@ -173,7 +174,8 @@ class User
         return $statement->execute();
     }
 
-    public function saveUserInfo() {
+    public function saveUserInfo()
+    {
         $conn = DB::getConnection();
         $statement = $conn->prepare("update users set course = :course, bio = :bio where email = :email, backup_email = :backup");
         $statement->bindValue(":course", $this->course);
@@ -288,7 +290,8 @@ class User
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function save(){
+    public function save()
+    {
         $conn = DB::getConnection();
         $statement = $conn->prepare("update users set username = :username, email = :email, backup_email = :backup_email, course = :course, bio = :bio where id = :id");
         $statement->bindValue(":username", $this->username);
@@ -299,8 +302,9 @@ class User
         return $statement->execute();
     }
 
-    public static function adjustPassword($id, $pw, $pw2){
-        
+    public static function adjustPassword($id, $pw, $pw2)
+    {
+
         $conn = DB::getConnection();
         $s = $conn->prepare("select password from users where id = :id");
         $s->bindValue("id", $id);
@@ -308,33 +312,115 @@ class User
         $user = $s->fetch(PDO::FETCH_ASSOC);
 
         $hash = $user["password"];
-        
+
         if (password_verify($pw, $hash)) {
             $options = [
                 'cost' => 13
             ];
-    
+
             $password = password_hash($pw2, PASSWORD_DEFAULT, $options);
-    
+
             $conn = DB::getConnection();
             $statement = $conn->prepare("update users set password = :password where id = :id");
             $statement->bindValue(":password", $password);
             $statement->bindValue(":id", $id);
             $statement->execute();
-    
         } else {
             return false;
         }
-
     }
 
-    public static function deleteAccount(int $id) {
+    public static function uploadProfilePicture($id, $pfpFile)
+    {
+        $file = $pfpFile;
+
+        $fileName = $_FILES['profile_picture']['name'];
+        $fileTmpName = $_FILES['profile_picture']['tmp_name'];
+        $fileSize = $_FILES['profile_picture']['size'];
+        $fileError = $_FILES['profile_picture']['error'];
+        $fileType = $_FILES['profile_picture']['type'];
+
+        $fileExt = explode('.', $fileName);
+        $fileActualExt = strtolower(end($fileExt));
+
+        $allowed = array('jpg', 'jpeg', 'png', "gif");
+
+        //table projects
+        if (in_array($fileActualExt, $allowed)) {
+            if ($fileError === 0) {
+                if ($fileSize < 10000000000) {
+                    $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+                    $fileDestination = 'uploads/' . $fileNameNew;
+                    move_uploaded_file($fileTmpName, $fileDestination);
+
+                    //query
+
+                    $conn = DB::getConnection();
+                    $statement = $conn->prepare("UPDATE users SET profile_img = :img where id = :id");
+                    $statement->bindValue(':img', $fileNameNew);
+                    $statement->bindValue(':id', $id);
+                    $statement->execute();
+
+                    if ($statement) {
+                        $uploadStatusMsg = "Picture uploaded succesfully";
+                        header("Location: profile.php?profile=" . $id);
+                    } else {
+                        $uploadStatusMsg = "Sorry, there was an error uploading your file.";
+                    }
+                } else {
+                    $uploadStatusMsg = "Your file is too big!";
+                }
+            } else {
+                $uploadStatusMsg = "Upload failed, please try again.";
+            }
+        } else {
+            $uploadStatusMsg = "";
+        }
+    }
+
+    public static function editProfileInfo($username, $backup, $bio, $course, $id) {
+   
         $conn = DB::getConnection();
-        $statement = $conn->prepare("
-        delete from users where id = :id"
-    );
+        $statement = $conn->prepare("UPDATE users SET username = :uname , backup_email = :mail, course = :course, bio = :bio where id = :id");
+        $statement->bindValue(':mail', $backup);
+        $statement->bindValue(':uname', $username);
+        $statement->bindValue(':bio', $bio);
+        $statement->bindValue(':course', $course);
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+    
+        if($statement){
+            $uploadStatusMsg = "Profile updated succesfully";
+            header("Location: profile.php?profile=" . $id);
+        } else {
+            $uploadStatusMsg = "Failed to update profile.";
+        }
+    
+    }
+
+
+    public static function deleteAccount($id, $pw)
+    {
+        $conn = DB::getConnection();
+        $statement = $conn->prepare("select * from users where id = :id");
         $statement->bindValue(":id", $id);
         $statement->execute();
-    }
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+        $hash = $user["password"];
 
+        if(password_verify($pw, $hash)) {
+            $conn = DB::getConnection();
+            $statement = $conn->prepare("delete from users where id = :id");
+            $statement->bindValue(":id", $id);
+            $statement->execute();
+
+            session_destroy();
+            session_reset();
+            header("Location: login.php");    
+        } else {
+            $error = "Password is incorrect.";
+        }
+
+
+    }
 }

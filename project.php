@@ -58,7 +58,8 @@
                     <div>
                         <h3 class="project__header__user__name"><?php echo htmlspecialchars($user['username']); ?></h3>
 
-                        <a href="#" class="btn btn-outline-primary">Follow now</a>
+                    <a href="#" id="follow" class="btn btn-outline-primary">Follow</a>
+
                     </div>
                 </div>
                 <div class="d-flex-column justify-content-evenly align-items-evenly">
@@ -148,6 +149,6 @@
 </main>
 
 <?php include_once('footer.inc.php') ?>
-
+<script src="/js/app.js"></script>
 </body>
 </html>

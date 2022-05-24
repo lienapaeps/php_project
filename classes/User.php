@@ -423,4 +423,16 @@ class User
 
 
     }
+
+    public static function followUser($id, $userId, $time, $status)
+    {
+        $conn = DB::getConnection();
+        $statement = $conn->prepare("insert into following (user_id, follow_id, time, status) values (:user_id, :follow_id, :time, :status)");
+        $statement->bindValue(":user_id", $id);
+        $statement->bindValue(":follow_id", $userId);
+        $statement->bindValue(":time", $time);
+        $statement->bindValue(":status", $status);
+        $f = $statement->execute();
+        return $f;
+    }
 }

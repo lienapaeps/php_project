@@ -57,3 +57,36 @@ document.querySelector("#addComment").addEventListener("click", (e) => {
             console.error('Error:', error);
         });
 });
+
+// volgen van users
+document.querySelector("#follow").addEventListener("click", (e) => {
+// no refresh 
+e.preventDefault();
+    let followingId = e.target.dataset.following;
+    console.log(followingId);
+
+    let data = new FormData();
+    data.append("user_follower" = userId);
+    data.append("user_following" = otherUserId);
+    data.append("time", new Date());
+    data.append("status", "true");
+
+    fetch("/ajax/follow.php", {
+        method: "POST",
+        body: data
+    })
+    .then(response => response.json())
+    .then(data => {
+            if(data.status == "true") {
+                console.log("Followed");
+                document.querySelector("#follow").innerHTML = "Unfollow";
+            }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+
+
+
+});
+

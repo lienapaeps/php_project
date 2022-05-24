@@ -47,4 +47,3 @@
         </div>
     </div>
 </footer>
-<script src="js/app.js"></script>

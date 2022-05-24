@@ -38,7 +38,7 @@
     <script src="https://kit.fontawesome.com/d5a678d06c.js" crossorigin="anonymous"></script>
     <!-- Own CSS file -->
     <link rel="stylesheet" href="css/style.css?<?php echo time() ?>">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="shortcut icon" href="assets/img/Favicon.png" type="image/x-icon">
 </head>
 <body>
@@ -116,24 +116,24 @@
             <div class="mt-3">
                 <h4>Comments</h4>
             </div>
-            <!-- input field for new comment -->
-            <div class="project__comments__input mt-3 mb-4 d-flex">
+            <!-- form for new comment -->
+            <form method="post" action="" id="form__comment" class="mt-3 mb-4 d-flex">
                 <img src="uploads/<?php if(!empty($user['profile_img'])){ echo htmlspecialchars($user['profile_img']);} else{ echo "./assets/img/home_banner.png"; }; ?>" alt="Profile picture" class="rounded-circle me-3" style="height: 60px; width: 60px; object-fit: cover;">
                 <input type="text" id="comment" name="comment" class="form-control" placeholder="Enter your comment...">
                 <input data-user="<?php echo $_SESSION['user']['id']; ?>" data-project="<?php echo $project['id']; ?>" type="submit" id="addComment" class="btn btn-primary" value="Add comment"></input>
-            </div>
-            <!-- comments  -->
+            </form>
+            <!-- display comments  -->
             <?php if(!empty($comments)): ?>
                 <?php foreach($comments as $comment): ?>
-                <div class="project__comments__comment">
-                    <div class="project__comments__details mt-2 mb-2 d-flex">
+                <div class="project__comment">
+                    <div class="mt-2 mb-2 d-flex">
                         <div>
                             <img src="uploads/<?php if(!empty($user['profile_img'])){ echo htmlspecialchars($comment['user_id']);} else{ echo "./assets/img/home_banner.png"; }; ?>" alt="Profile picture" class="rounded-circle me-3" style="height: 60px; width: 60px; object-fit: cover;">
                         </div>
                         <div>
-                            <p class="project__comments__user__name mb-2"><strong><?php echo htmlspecialchars($comment['user_id']); ?></strong></p>
-                            <p class="project__comments__user__comment mb-2"><?php echo htmlspecialchars($comment["comment"]); ?></p>
-                            <p class="project__comments__user__time mb-1"><small><?php echo htmlspecialchars($comment["time"]); ?></small></p>
+                            <p class="mb-2"><strong><?php echo htmlspecialchars($comment['user_id']); ?></strong></p>
+                            <p class="mb-2"><?php echo htmlspecialchars($comment["comment"]); ?></p>
+                            <p class="mb-1"><small><?php echo htmlspecialchars($comment["time"]); ?></small></p>
                         </div>
                     </div>
                 </div>
@@ -145,5 +145,21 @@
 </main>
 
 <?php include_once('footer.inc.php') ?>
+
+<script>
+    $(document).ready(function() {
+        $("#form__comment").on("submit", function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: "ajax/save_comment.php",
+                method: "POST",
+
+            })
+
+        });
+    })
+</script>
+
 </body>
 </html>

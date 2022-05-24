@@ -1,6 +1,7 @@
 <?php
 
 include_once("bootstrap.php");
+include_once("ajax/check.php");
 // include_once("ajax/check_availability.php");
 
 if (!empty($_POST)) {
@@ -47,6 +48,8 @@ if (!empty($_POST)) {
     <!-- Font: Museo Sans -->
     <link rel="stylesheet" href="https://use.typekit.net/kkv2fee.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <link rel="shortcut icon" href="assets/img/Favicon.png" type="image/x-icon">
 
     <title>Register | Vibar</title>
@@ -78,21 +81,25 @@ if (!empty($_POST)) {
             <div class="alert alert-danger"><?php echo $error ?></div>
         <?php endif; ?>
 
+        <div id="message"></div>
+
         <form id="register__form" action="" method="POST">
             <div class="mb-3 form-floating">
-                <input type="text" name="username" id="username" class="form-control" placeholder="Username" required onInput="checkUsername()"">
+                <input type="text" name="username" id="username" class="form-control" placeholder="Username" required>
                 <label for="username">Username</label>
-                <span class="check-username"></span>
+                <span class="error" id="username_err"></span>
             </div>
 
             <div class="mb-3 form-floating">
                 <input type="email" name="email" id="email" class="form-control" placeholder="name@example.be" required">
                 <label for="email">Email adress</label>
+                <span class="error" id="email_err"> </span>
             </div>
 
             <div class="mb-3 form-floating">
                 <input type="password" name="password" id="password" class="form-control" placeholder="123456" required">
                 <label for="password">Password</label>
+                <span class="error" id="password_err"> </span>
             </div>
 
             <div class="form-check mb-3">
@@ -111,10 +118,7 @@ if (!empty($_POST)) {
         </div>
     </section>
 
-    <!-- <script src="js/app.js"></script> -->
+    <script src="js/validation.js"></script>
 
 </body>
-
-
-
 </html>

@@ -85,10 +85,10 @@ class Project
     }
     
     // this function gets all projects from the database
-    public static function getAll($start, $limit)
+    public static function getAll($order, $start, $limit)
     {
         $conn = DB::getConnection();
-        $statement = $conn->prepare("select * from projects order by time ASC limit $start, $limit"); // oud naar niew
+        $statement = $conn->prepare("select * from projects order by time $order limit $start, $limit"); // oud naar niew
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }

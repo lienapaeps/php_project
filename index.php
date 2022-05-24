@@ -17,6 +17,19 @@ if (!isset($_GET["page"])) {
     $page = $_GET["page"];
 }
 
+$order = "ASC";
+
+switch($_POST['limit-records']){
+    case 'newest':
+        $order = "ASC";
+    break;
+    case 'oldest':
+        $order = "ASC";
+    break;
+    default:
+        // Something went wrong or form has been tampered.
+    }
+
 // 20 projects per page
 $limit = 20;
 // 1 - 1 = 0 --> 0 tot 20
@@ -24,7 +37,7 @@ $limit = 20;
 $start = ($page - 1) * $limit;
 
 if (!isset($_GET["search"]) || $_GET["search"] == "" || $_GET["search"] == "all") {
-    $projects = Project::getAll($start, $limit);
+    $projects = Project::getAll($order, $start, $limit);
 } else {
     $search = $_GET["search"];
     $projects = Project::search($search, $start, $limit);
@@ -97,12 +110,17 @@ function getUser($id)
             <!-- end empty state -->
 
         <?php else : ?>
-            <form action="#" method="POST" class="select-feed-order">
+            <form action="#" method="POST" id="projects-order" class="select-feed-order">
                 <select class="form-select" name="limit-records" id="limit-records" aria-label="Default select example">
-                    <option value="chronological" selected>Chronological</option>
-                    <option value="following">Following</option>
+                    <option value="newest">Newest first</option>
+                    <option value="oldest">Oldest first</option>
                 </select>
             </form>
+
+            <!-- <form action="GET">
+                <li><a href="#" class="sort-newest"><input type="submit" value="Newest first"></a></li>
+                <li><a href="#" class="sort-oldest"><input type="submit" value="Newest first"></a></li>
+            </form> -->
             <div class="card-deck" >
                 <?php foreach ($projects as $project) : ?>
                     <div class="card my-4">

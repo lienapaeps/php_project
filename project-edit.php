@@ -10,13 +10,21 @@
         $loggedin = false;
     }
 
+    $project = new Project();
+
     $projectId = $_GET["id"];
     $project = Project::getById($projectId);
     $user = User::getUserById($project["user_id"]);
 
     if(!empty($_POST)) {
+        var_dump($_POST);
         // code here to update the project
-        Project::updateProject($projectId, $_POST["project_title"], $_POST["project_body"]);
+        $project = new Project();
+        $project->setTitle($_POST["project_title"]);
+        $project->setDescription($_POST["project_body"]);
+        $project->setTags($_POST["project_tags"]);
+    
+        $project->updateProject($projectId);
         header("Location: project.php?id=$projectId");
     }
 
@@ -108,6 +116,11 @@
                         style="height: 150px" 
                         value=""><?php echo $project['description']; ?></textarea>
                     <label for="project_body">Update here your text</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input class="form-control form-control-lg" type="text" name="project_tags" id="project_tags" value="<?php echo $project['tags'] ?>">
+                    <label for="project_tags">Update Tag</label>
                 </div>
             </div>
 

@@ -136,12 +136,13 @@ class Project
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function updateProject($id, $project_title, $project_description) {
+    public function updateProject($id) {
         $conn = DB::getConnection();
-        $statement = $conn->prepare("update projects set title = :title, description = :description where id = :id");
-        $statement->bindParam(":id", $id);
-        $statement->bindParam(":title", $project_title);
-        $statement->bindParam(":description", $project_description);
+        $statement = $conn->prepare("update projects set title = :title, description = :description, tags = :tags where id = :id");
+        $statement->bindValue(":id", $id);
+        $statement->bindParam(":title", $this->title);
+        $statement->bindParam(":description", $this->description);
+        $statement->bindParam(":tags", $this->tags);
         $statement->execute();
     }
 

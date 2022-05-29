@@ -67,11 +67,7 @@ class Project
     public static function search($search, $start, $limit)
     {
         $conn = DB::getConnection();
-<<<<<<< HEAD
         $statement = $conn->prepare("select * from projects where (title = :search) OR (tags = :search) order by time ASC limit $start, $limit"); // oud naar niew
-=======
-        $statement = $conn->prepare("select * from projects where (title = :search) order by time ASC limit $start, $limit"); // oud naar niew 
->>>>>>> jef-local2
         $statement->bindValue("search", $search);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);

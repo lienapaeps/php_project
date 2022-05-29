@@ -269,7 +269,7 @@ class User
 
         if ($inserted) {
             // echo "inserted ✅";
-            $verifyScript = "http://localhost:8888/Dev4-Joris/php_project/resetPassword.php";
+            $verifyScript = "http://localhost:8080/Dev4-Joris/php_project/resetPassword.php";
             $linkToSend = $verifyScript . '?uid=' . $userId . '&id=' . $passwordRequestId . '&token=' . $token;
             return $linkToSend;
         } else {

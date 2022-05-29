@@ -70,11 +70,11 @@ The purpose of this platform is to inspire eachother and showcase own work to pe
 - [x] Search on profile
 - [x] Edit own projects
 - [x] Delete own projects
-- [ ] Search on title or tags
+- [x] Search on title or tags
 - [x] On Signup: show if account is still available ⚡
 -----------
 - [ ] Comments ⚡
-- [ ] Like ⚡
+- [x] Like ⚡
 - [ ] Report items ⚡
 - [ ] Report users ⚡
 - [ ] Follow & unfollow users ⚡

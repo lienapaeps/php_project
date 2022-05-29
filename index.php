@@ -19,18 +19,18 @@ if (!isset($_GET["page"])) {
 
 $order = "ASC";
 
-if(isset($_POST['limit-records'])){
-switch($_POST['limit-records']){
-    case 'newest':
-        $order = "ASC";
-    break;
-    case 'oldest':
-        $order = "ASC";
-    break;
-    default:
-        // Something went wrong or form has been tampered.
-    }
-}
+// if(isset($_POST['limit-records'])){
+// switch($_POST['limit-records']){
+//     case 'newest':
+//         $order = "ASC";
+//     break;
+//     case 'oldest':
+//         $order = "ASC";
+//     break;
+//     default:
+//         // Something went wrong or form has been tampered.
+//     }
+// }
 
 // 20 projects per page
 $limit = 20;
